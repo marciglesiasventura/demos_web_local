@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FisioVida · Clínica de Fisioterapia en Barcelona</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #2563EB;
+  --blue2: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --light: #f8fafc;
+  --border: #e2e8f0;
+  --green: #22c55e;
+}
+
+body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: #fff; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo { font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--blue); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .2s; }
+.nav-cta:hover { background: var(--blue2); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+  padding: 80px 24px 90px;
+}
+.hero-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #dcfce7; color: #16a34a;
+  padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600;
+  margin-bottom: 20px;
+}
+.hero-badge span { width: 8px; height: 8px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+h1 em { font-style: normal; color: var(--blue); }
+.hero-sub { font-size: 17px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-p { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 14px 28px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background .2s; text-decoration: none; display: inline-block; }
+.btn-p:hover { background: var(--blue2); }
+.btn-s { background: #fff; color: var(--text); border: 2px solid var(--border); border-radius: 8px; padding: 14px 28px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; transition: border-color .2s; text-decoration: none; display: inline-block; }
+.btn-s:hover { border-color: var(--blue); }
+
+/* HERO CARD */
+.hero-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+  overflow: hidden;
+}
+.card-header {
+  background: var(--blue);
+  padding: 20px 24px;
+  color: #fff;
+}
+.card-header h3 { font-size: 15px; font-weight: 700; }
+.card-header p { font-size: 13px; opacity: .8; margin-top: 4px; }
+.card-body { padding: 24px; }
+.review-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.review-item:last-child { border-bottom: none; }
+.review-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 600; }
+.review-stars { color: #f59e0b; font-size: 13px; }
+.review-text { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+.card-footer {
+  background: var(--light); padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.rating-big { font-size: 28px; font-weight: 800; color: var(--text); }
+.rating-label { font-size: 13px; color: var(--muted); }
+.google-badge { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 500; }
+
+/* STATS */
+.stats { padding: 60px 24px; background: #fff; border-bottom: 1px solid var(--border); }
+.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
+.stat-num { font-size: 40px; font-weight: 800; color: var(--blue); }
+.stat-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
+
+/* SERVICIOS */
+.servicios { padding: 80px 24px; background: var(--light); }
+.section-label { font-size: 13px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.section-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; margin-bottom: 48px; }
+.servicios-inner { max-width: 1100px; margin: 0 auto; }
+.servicios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.servicio-card {
+  background: #fff; border-radius: 16px; padding: 28px;
+  border: 1px solid var(--border);
+  transition: box-shadow .2s, transform .2s;
+}
+.servicio-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.10); transform: translateY(-2px); }
+.servicio-icon { font-size: 32px; margin-bottom: 16px; }
+.servicio-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.servicio-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* PROCESO */
+.proceso { padding: 80px 24px; background: #fff; }
+.proceso-inner { max-width: 1100px; margin: 0 auto; }
+.pasos { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 48px; position: relative; }
+.paso {
+  text-align: center; padding: 24px 16px;
+}
+.paso-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800;
+  margin: 0 auto 16px;
+}
+.paso h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.paso p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* RESEÑAS */
+.resenas { padding: 80px 24px; background: var(--light); }
+.resenas-inner { max-width: 1100px; margin: 0 auto; }
+.resenas-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+.resena-card {
+  background: #fff; border-radius: 16px; padding: 24px;
+  border: 1px solid var(--border);
+}
+.resena-stars { color: #f59e0b; font-size: 16px; margin-bottom: 12px; }
+.resena-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 16px; }
+.resena-autor { display: flex; align-items: center; gap: 10px; }
+.resena-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+}
+.resena-nombre { font-size: 14px; font-weight: 600; }
+.resena-fecha { font-size: 12px; color: var(--muted); }
+
+/* EQUIPO */
+.equipo { padding: 80px 24px; background: #fff; }
+.equipo-inner { max-width: 1100px; margin: 0 auto; }
+.equipo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 48px; }
+.fisio-card { text-align: center; }
+.fisio-foto {
+  width: 120px; height: 120px; border-radius: 50%;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.fisio-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.fisio-card .especialidad { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 8px; }
+.fisio-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* CTA FINAL */
+.cta-final {
+  background: var(--blue);
+  padding: 80px 24px;
+  text-align: center;
+  color: #fff;
+}
+.cta-final h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; margin-bottom: 16px; }
+.cta-final p { font-size: 17px; opacity: .85; margin-bottom: 36px; }
+.cta-final .btn-w { background: #fff; color: var(--blue); border: none; border-radius: 8px; padding: 16px 36px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.contacto-info { display: flex; gap: 32px; justify-content: center; margin-top: 32px; font-size: 15px; opacity: .85; flex-wrap: wrap; }
+
+/* FOOTER */
+footer {
+  background: var(--text); color: #94a3b8;
+  padding: 40px 24px; text-align: center;
+  font-size: 13px;
+}
+footer a { color: #94a3b8; text-decoration: none; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .servicios-grid { grid-template-columns: 1fr; }
+  .pasos { grid-template-columns: repeat(2,1fr); }
+  .resenas-grid { grid-template-columns: 1fr; }
+  .equipo-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Fisio<span>Vida</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo funciona</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#resenas">Opiniones</a></li>
+    </ul>
+    <button class="nav-cta" onclick="return false;">Pedir cita</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span></span> Aceptando nuevos pacientes</div>
+      <h1>Tu fisioterapeuta de confianza en <em>Barcelona</em></h1>
+      <p class="hero-sub">Más de 10 años ayudando a personas a recuperarse de lesiones y vivir sin dolor. Tratamiento personalizado, resultados reales.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-p" onclick="return false;">Pedir cita ahora</a>
+        <a href="#servicios" class="btn-s">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-header">
+        <h3>⭐ Reseñas recientes en Google</h3>
+        <p>Lo que dicen nuestros pacientes</p>
+      </div>
+      <div class="card-body">
+        <div class="review-item">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">Laura M.</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"Me recuperé de una contractura en 3 sesiones. Profesionales de verdad."</div>
+          </div>
+        </div>
+        <div class="review-item">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jordi P.</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"Llevaba meses con dolor de espalda. Ya puedo volver a entrenar."</div>
+          </div>
+        </div>
+        <div class="review-item">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ana R.</div>
+            <div class="review-stars">★★★★★</div>
+            <div class="review-text">"Trato cercano y muy efectivo. 100% recomendable."</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="rating-big">4.9 ⭐</div>
+          <div class="rating-label">87 reseñas verificadas</div>
+        </div>
+        <div class="google-badge">🔵 Google Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">+1.200</div><div class="stat-label">Pacientes tratados</div></div>
+    <div><div class="stat-num">10 años</div><div class="stat-label">De experiencia</div></div>
+    <div><div class="stat-num">4.9 ⭐</div><div class="stat-label">Valoración Google</div></div>
+    <div><div class="stat-num">87</div><div class="stat-label">Reseñas verificadas</div></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="servicios-inner">
+    <div class="section-label">Servicios</div>
+    <div class="section-title">¿En qué podemos ayudarte?</div>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="servicio-icon">🦴</div>
+        <h3>Fisioterapia traumatológica</h3>
+        <p>Recuperación de lesiones musculares, esguinces, fracturas y cirugías. Vuelve a moverte sin dolor.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">🧘</div>
+        <h3>Fisioterapia postural</h3>
+        <p>Corrección de malas posturas, dolor de espalda y cervical. Ideal si trabajas muchas horas sentado.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">⚡</div>
+        <h3>Electroterapia</h3>
+        <p>Técnicas de última generación para reducir el dolor y acelerar la recuperación.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">🏃</div>
+        <h3>Fisioterapia deportiva</h3>
+        <p>Para deportistas que quieren recuperarse rápido y volver al máximo rendimiento.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">👴</div>
+        <h3>Fisioterapia geriátrica</h3>
+        <p>Tratamiento especializado para personas mayores. Mejora la movilidad y calidad de vida.</p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-icon">🤰</div>
+        <h3>Suelo pélvico</h3>
+        <p>Tratamiento pre y postparto. Recuperación completa del suelo pélvico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="proceso-inner">
+    <div class="section-label">Cómo funciona</div>
+    <div class="section-title">Tu recuperación en 4 pasos</div>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <h3>Pide tu cita</h3>
+        <p>Online o por teléfono. Te confirmamos en menos de 2 horas.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <h3>Valoración inicial</h3>
+        <p>Analizamos tu caso y diseñamos un plan de tratamiento personalizado.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <h3>Tratamiento</h3>
+        <p>Sesiones enfocadas en resultados. Sin relleno, sin visitas innecesarias.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <h3>Alta y seguimiento</h3>
+        <p>Te damos pautas para mantener la mejora y evitar recaídas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="resenas" id="resenas">
+  <div class="resenas-inner">
+    <div class="section-label">Opiniones</div>
+    <div class="section-title">Lo que dicen nuestros pacientes</div>
+    <div class="resenas-grid">
+      <div class="resena-card">
+        <div class="resena-stars">★★★★★</div>
+        <p class="resena-text">"Llevaba más de un año con dolor lumbar crónico. Después de 6 sesiones con FisioVida puedo hacer vida normal. No me lo puedo creer todavía."</p>
+        <div class="resena-autor">
+          <div class="resena-avatar">C</div>
+          <div>
+            <div class="resena-nombre">Carlos G.</div>
+            <div class="resena-fecha">Hace 2 semanas · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="resena-card">
+        <div class="resena-stars">★★★★★</div>
+        <p class="resena-text">"Me operé de la rodilla y vine a hacer la rehabilitación. El trato es increíble y los resultados hablan solos. Volví a correr en 3 meses."</p>
+        <div class="resena-autor">
+          <div class="resena-avatar">M</div>
+          <div>
+            <div class="resena-nombre">Marta S.</div>
+            <div class="resena-fecha">Hace 1 mes · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="resena-card">
+        <div class="resena-stars">★★★★★</div>
+        <p class="resena-text">"Trabajo con el ordenador 8 horas al día y tenía contracturas constantes. Me han dado pautas y tratamiento. Ahora llevo meses sin problemas."</p>
+        <div class="resena-autor">
+          <div class="resena-avatar">R</div>
+          <div>
+            <div class="resena-nombre">Roberto F.</div>
+            <div class="resena-fecha">Hace 3 semanas · Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo" id="equipo">
+  <div class="equipo-inner">
+    <div class="section-label">Equipo</div>
+    <div class="section-title">Fisioterapeutas colegiados</div>
+    <div class="equipo-grid">
+      <div class="fisio-card">
+        <div class="fisio-foto">👩‍⚕️</div>
+        <h3>Dra. Elena Martín</h3>
+        <div class="especialidad">Fisioterapia deportiva y traumatológica</div>
+        <p>Más de 12 años de experiencia. Especialista en recuperación de lesiones de alta competición.</p>
+      </div>
+      <div class="fisio-card">
+        <div class="fisio-foto">👨‍⚕️</div>
+        <h3>Dr. Pau Ferrer</h3>
+        <div class="especialidad">Suelo pélvico y fisioterapia postural</div>
+        <p>Experto en rehabilitación postparto y tratamiento de dolor crónico.</p>
+      </div>
+      <div class="fisio-card">
+        <div class="fisio-foto">👩‍⚕️</div>
+        <h3>Dra. Sara Vidal</h3>
+        <div class="especialidad">Fisioterapia geriátrica y neurológica</div>
+        <p>Especializada en pacientes mayores y rehabilitación neurológica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>¿Tienes dolor? Podemos ayudarte.</h2>
+  <p>Primera visita con valoración completa. Sin compromiso.</p>
+  <button class="btn-w" onclick="return false;">Pedir cita ahora →</button>
+  <div class="contacto-info">
+    <span>📞 932 123 456</span>
+    <span>📍 Carrer de Provença 234, Barcelona</span>
+    <span>🕐 Lun–Vie 8:00–20:00</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 FisioVida · Clínica de Fisioterapia · Barcelona · <a href="#">Política de privacidad</a></p>
+</footer>
+
+</body>
+</html>
