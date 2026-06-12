@@ -198,6 +198,7 @@ nav {
   background: var(--white); border-radius: 16px; border: 1px solid var(--border);
   overflow: hidden; display: flex; flex-direction: column;
   transition: box-shadow .2s, transform .2s;
+  cursor: pointer; color: inherit;
 }
 .servicio-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.09); transform: translateY(-3px); }
 .servicio-img {
@@ -394,6 +395,43 @@ footer { background: #111827; padding: 48px 24px 28px; }
 .footer-legal a { font-size: 12px; color: #4b5563; transition: color .15s; }
 .footer-legal a:hover { color: #9ca3af; }
 
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: 20px;
+  max-width: 760px; width: 100%; max-height: 90vh;
+  overflow-y: auto; position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,.25);
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn { from { opacity:0; transform: scale(.95) translateY(12px); } to { opacity:1; transform: scale(1) translateY(0); } }
+.modal-close {
+  position: sticky; top: 0; float: right; margin: 16px 16px 0 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--light); border: 1px solid var(--border);
+  font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  z-index: 10; flex-shrink: 0;
+}
+.modal-close:hover { background: var(--border); }
+.modal-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px 20px 0 0; }
+.modal-body { padding: 32px; }
+.modal-kicker { font-size: 12px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.modal-body h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
+.modal-body .modal-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+.modal-section-title { font-size: 13px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.modal-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.modal-list li { font-size: 14px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+.modal-list li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.modal-tag { font-size: 12px; font-weight: 600; background: var(--green-light); color: var(--green); border-radius: 100px; padding: 5px 14px; }
+.modal-cta { display: block; background: var(--green); color: #fff; text-align: center; border-radius: 10px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s; }
+.modal-cta:hover { background: var(--green2); }
+
 /* ── MOBILE ── */
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: 1fr; }
@@ -420,6 +458,24 @@ footer { background: #111827; padding: 48px 24px 28px; }
 </style>
 </head>
 <body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <img class="modal-img" id="modal-img" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-kicker" id="modal-kicker"></div>
+      <h2 id="modal-title"></h2>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-section-title">Qué incluye el tratamiento</div>
+      <ul class="modal-list" id="modal-list"></ul>
+      <div class="modal-section-title">Indicado para</div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <a href="#" class="modal-cta" onclick="return false;">Pedir cita para este tratamiento →</a>
+    </div>
+  </div>
+</div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -535,7 +591,7 @@ footer { background: #111827; padding: 48px 24px 28px; }
     <p class="section-sub">Tratamientos especializados para cada tipo de lesión y perfil de paciente. Sin protocolos genéricos.</p>
     <div class="servicios-grid">
 
-      <div class="servicio-card">
+      <a class="servicio-card" href="servicios/fisioterapia.html">
         <img class="servicio-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=360&auto=format&fit=crop" alt="Fisioterapia">
         <div class="servicio-body">
           <h3>Fisioterapia</h3>
@@ -547,11 +603,11 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Ejercicio terapéutico supervisado</li>
             <li>Educación del paciente y pauta domiciliaria</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="servicio-card">
+      <a class="servicio-card" href="servicios/fisioterapia-deportiva.html">
         <img class="servicio-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=360&auto=format&fit=crop" alt="Fisioterapia Deportiva">
         <div class="servicio-body">
           <h3>Fisioterapia deportiva</h3>
@@ -563,11 +619,11 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Readaptación al deporte por fases</li>
             <li>Plan de prevención de lesiones</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="servicio-card">
+      <a class="servicio-card" href="servicios/rehabilitacion.html">
         <img class="servicio-img" src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=360&auto=format&fit=crop" alt="Rehabilitación">
         <div class="servicio-body">
           <h3>Rehabilitación</h3>
@@ -579,11 +635,11 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Fortalecimiento muscular progresivo</li>
             <li>Coordinación con el médico responsable</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="servicio-card">
+      <a class="servicio-card" href="servicios/accidente-trafico.html">
         <img class="servicio-img" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=360&auto=format&fit=crop" alt="Accidentes de tráfico">
         <div class="servicio-body">
           <h3>Rehabilitación por accidente de tráfico</h3>
@@ -595,11 +651,11 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Protocolo de recuperación funcional completa</li>
             <li>Seguimiento hasta el alta médica</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="servicio-card">
+      <a class="servicio-card" href="servicios/suelo-pelvico.html">
         <img class="servicio-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=360&auto=format&fit=crop&crop=center" alt="Suelo pélvico">
         <div class="servicio-body">
           <h3>Fisioterapia de suelo pélvico</h3>
@@ -611,12 +667,12 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Preparación al parto y recuperación postparto</li>
             <li>Hipopresivos y ejercicio dirigido</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="servicio-card">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=360&auto=format&fit=crop" alt="Osteopatía">
+      <a class="servicio-card" href="servicios/osteopatia.html">
+        <img class="servicio-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=360&auto=format&fit=crop" alt="Osteopatía">
         <div class="servicio-body">
           <h3>Osteopatía</h3>
           <p>Diagnóstico y tratamiento de las disfunciones de movilidad del aparato locomotor. Enfoque global de la salud musculoesquelética.</p>
@@ -627,9 +683,9 @@ footer { background: #111827; padding: 48px 24px 28px; }
             <li>Tratamiento visceral y estructural</li>
             <li>Reequilibrio postural y plan de mantenimiento</li>
           </ul>
-          <a href="#" class="servicio-link" onclick="return false;">Ver más →</a>
+          <span class="servicio-link">Ver más →</span>
         </div>
-      </div>
+      </a>
 
     </div>
 
@@ -1014,6 +1070,123 @@ function showTab(btn, id) {
   btn.classList.add('active');
   document.getElementById(id).classList.add('active');
 }
+
+const servicios = [
+  {
+    kicker: 'Fisioterapia general',
+    title: 'Fisioterapia',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=760&h=300&auto=format&fit=crop',
+    desc: 'La fisioterapia es una disciplina sanitaria que evalúa, diagnostica y trata alteraciones del movimiento y del aparato locomotor. Mediante técnicas manuales, ejercicio terapéutico y tecnología avanzada, recuperamos tu función y eliminamos el dolor de forma duradera, sin depender de medicación.',
+    incluye: [
+      'Evaluación funcional completa: anamnesis, exploración física y pruebas de movimiento',
+      'Terapia manual: masaje terapéutico, movilización articular y técnicas miofasciales',
+      'Ejercicio terapéutico supervisado y progresivo adaptado a tu caso',
+      'Electroterapia y ultrasonidos para acelerar la regeneración tisular',
+      'Pauta de ejercicios domiciliarios y educación postural para prevenir recaídas',
+    ],
+    tags: ['Contracturas', 'Dolor cervical', 'Lumbalgia', 'Esguinces', 'Tendinitis', 'Artrosis'],
+  },
+  {
+    kicker: 'Fisioterapia deportiva',
+    title: 'Fisioterapia deportiva',
+    img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=760&h=300&auto=format&fit=crop',
+    desc: 'Especialización orientada a deportistas amateurs y de competición. Trabajamos para que te recuperes en el menor tiempo posible sin arriesgar una recaída, con protocolos basados en evidencia científica y control de carga deportiva. Del diagnóstico a la vuelta al entreno, todo bajo un mismo techo.',
+    incluye: [
+      'Valoración biomecánica del gesto deportivo específico de tu deporte',
+      'Tratamiento de sobrecargas, contracturas, roturas fibrilares y tendinopatías',
+      'Readaptación deportiva estructurada por fases con control de carga',
+      'Prevención de lesiones: análisis de factores de riesgo y ejercicio correctivo',
+      'Coordinación con tu entrenador o preparador físico si lo necesitas',
+    ],
+    tags: ['Running', 'Fútbol', 'Ciclismo', 'Crossfit', 'Natación', 'Padel'],
+  },
+  {
+    kicker: 'Rehabilitación',
+    title: 'Rehabilitación',
+    img: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=760&h=300&auto=format&fit=crop',
+    desc: 'Proceso de recuperación funcional tras cirugías, fracturas o lesiones graves. Nuestro objetivo es que recuperes la movilidad, la fuerza y la función completas para volver a tu vida normal. Trabajamos en estrecha coordinación con tu médico responsable para garantizar una rehabilitación segura y efectiva.',
+    incluye: [
+      'Rehabilitación post-quirúrgica de rodilla (LCA, menisco), hombro (manguito rotador) y cadera',
+      'Recuperación de fracturas y prótesis articulares con protocolo progresivo',
+      'Reeducación de la marcha, el equilibrio y la propiocepción',
+      'Fortalecimiento muscular progresivo con control de dolor y función',
+      'Coordinación con traumatólogo o cirujano para seguir sus pautas al detalle',
+    ],
+    tags: ['Post-cirugía', 'LCA', 'Manguito rotador', 'Prótesis', 'Fracturas', 'Luxaciones'],
+  },
+  {
+    kicker: 'Accidente de tráfico',
+    title: 'Rehabilitación por accidente de tráfico',
+    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=760&h=300&auto=format&fit=crop',
+    desc: 'Tratamiento especializado en traumatismos severos derivados de accidentes de tráfico. Gestionamos todo el proceso: desde el diagnóstico inicial hasta el alta y el informe pericial para la aseguradora. No tienes que preocuparte de nada — nosotros nos encargamos de que tu recuperación sea completa.',
+    incluye: [
+      'Valoración exhaustiva de latigazo cervical, contusiones y traumatismos múltiples',
+      'Tratamiento intensivo con terapia manual, electroterapia y técnicas específicas',
+      'Redacción de informe pericial para reclamación a la aseguradora si se precisa',
+      'Protocolo de recuperación funcional completa adaptado a la gravedad del caso',
+      'Seguimiento hasta el alta médica con comunicación fluida con tu abogado si lo tienes',
+    ],
+    tags: ['Latigazo cervical', 'Contusiones', 'Traumatismos', 'Informe pericial', 'Aseguradora'],
+  },
+  {
+    kicker: 'Suelo pélvico',
+    title: 'Fisioterapia de suelo pélvico',
+    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=760&h=300&auto=format&fit=crop',
+    desc: 'Especialidad centrada en la evaluación y tratamiento de la musculatura del suelo pélvico. Tratamos tanto a mujeres como a hombres con disfunciones pélvicas. Especialmente indicada durante el embarazo y el periodo postparto para una recuperación completa y segura.',
+    incluye: [
+      'Valoración interna y externa de la musculatura del suelo pélvico',
+      'Tratamiento de incontinencia urinaria, disfunción sexual y prolapsos',
+      'Preparación al parto: ejercicios de movilidad pélvica y respiración',
+      'Recuperación postparto: diástasis abdominal, cicatriz de cesárea y periné',
+      'Hipopresivos y ejercicio hipopresivo guiado para tonificación sin presión abdominal',
+    ],
+    tags: ['Postparto', 'Embarazo', 'Incontinencia', 'Diástasis', 'Prolapso', 'Cesárea'],
+  },
+  {
+    kicker: 'Osteopatía',
+    title: 'Osteopatía',
+    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=760&h=300&auto=format&fit=crop',
+    desc: 'La osteopatía es una terapia manual que diagnostica y trata las disfunciones de movilidad del cuerpo desde un enfoque global. No solo tratamos la zona de dolor, sino que buscamos el origen de la restricción en cualquier parte del cuerpo. Ideal para personas con dolores recurrentes que no responden a tratamientos convencionales.',
+    incluye: [
+      'Evaluación global de cadenas musculares y fasciales de todo el cuerpo',
+      'Técnicas articulatorias y manipulativas suaves para liberar restricciones',
+      'Tratamiento visceral para órganos con tensión que afectan al sistema locomotor',
+      'Osteopatía craneal para cefaleas, mareos y disfunciones de la ATM',
+      'Plan de mantenimiento para mantener el equilibrio corporal a largo plazo',
+    ],
+    tags: ['Dolor crónico', 'Cefaleas', 'ATM', 'Migrañas', 'Digestivo', 'Vértigos'],
+  },
+];
+
+function openModal(link) {
+  const card = link.closest('.servicio-card');
+  const cards = Array.from(document.querySelectorAll('.servicio-card'));
+  const idx = cards.indexOf(card);
+  const s = servicios[idx];
+  if (!s) return;
+  document.getElementById('modal-kicker').textContent = s.kicker;
+  document.getElementById('modal-title').textContent = s.title;
+  document.getElementById('modal-desc').textContent = s.desc;
+  document.getElementById('modal-img').src = s.img;
+  document.getElementById('modal-img').alt = s.title;
+  const list = document.getElementById('modal-list');
+  list.innerHTML = s.incluye.map(i => `<li>${i}</li>`).join('');
+  const tags = document.getElementById('modal-tags');
+  tags.innerHTML = s.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalBtn();
+}
+
+function closeModalBtn() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
 </script>
 
 </body>
