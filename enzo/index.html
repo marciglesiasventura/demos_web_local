@@ -4,350 +4,506 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enzo · Fisioterapeuta a Domicilio en Madrid</title>
+<meta name="description" content="Fisioterapeuta a domicilio en Madrid. Me desplazo a tu casa para tratarte sin que tengas que moverte. Pide cita hoy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent: #4fa3c8;
-  --accent2: #2d89b0;
-  --accent-light: #f0f8fc;
-  --accent-mid: #d6edf6;
-  --text: #0a0a0a;
+  --accent: #0ea5e9;
+  --accent2: #0284c7;
+  --accent-light: #f0f9ff;
+  --accent-mid: #e0f2fe;
+  --dark: #0a0a0a;
   --muted: #6a7879;
-  --light: #fcfcfc;
-  --border: #e8eeef;
+  --border: #e8e8e8;
   --white: #ffffff;
+  --off-white: #f9f8f7;
 }
 
-body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
-/* ── TOPBAR ── */
+/* ─── TOPBAR ─── */
 .topbar {
-  background: var(--accent); color: #fff;
-  text-align: center; padding: 10px 24px;
-  font-size: 13px; font-weight: 600;
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.topbar a { color: #fff; font-weight: 800; text-decoration: underline; }
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
 
-/* ── NAV ── */
-nav {
+/* ─── HEADER + NAV ─── */
+header {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 200;
+  position: sticky; top: 0; z-index: 300;
 }
-.nav-inner {
-  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
   display: flex; align-items: center; justify-content: space-between;
-  height: 76px;
+  height: 64px;
 }
 .nav-logo {
-  font-size: 20px; font-weight: 900; color: var(--text);
-  letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
 }
-.nav-logo-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: radial-gradient(circle at center, #fff 0%, var(--accent-mid) 100%);
-  border: 2px solid var(--accent);
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 230px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: center;
+  background: var(--dark);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover; background-position: center 30%;
+  opacity: 0.35;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 110px 32px;
+  color: #fff;
+}
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(44px, 6vw, 78px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 680px;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,0.65); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.35); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s; display: inline-block;
+}
+.btn-hero-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+.hero-rating {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-rating-stars { font-size: 20px; }
+.hero-rating-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-rating-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 3px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(219,39,119,0.28);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── EQUIPO ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── TRATAMIENTOS INTRO ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+/* ─── TRATAMIENTO INDIVIDUAL ─── */
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 3px;
+}
+.treatment-img-placeholder {
+  width: 100%; height: 420px; border-radius: 3px;
+  background: linear-gradient(135deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  display: flex; align-items: center; justify-content: center; font-size: 72px;
+}
+
+/* ─── EDITORIAL ─── */
+.editorial { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.editorial-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 320px 1fr; gap: 88px;
+}
+.editorial-aside h2 {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; line-height: 1.15; margin-top: 14px;
+}
+.editorial-main { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.editorial-main p + p { margin-top: 18px; }
+.editorial-main h3 {
+  font-size: 19px; font-weight: 800; color: var(--dark);
+  margin-top: 36px; margin-bottom: 10px; letter-spacing: -0.3px;
+}
+.editorial-main strong { color: var(--dark); font-weight: 700; }
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
   display: flex; align-items: center; justify-content: center;
   font-size: 18px; flex-shrink: 0;
 }
-.nav-logo span { color: var(--accent); }
-.nav-menu { display: flex; align-items: center; gap: 2px; list-style: none; }
-.nav-menu > li > a {
-  display: block; padding: 8px 16px;
-  font-size: 14px; font-weight: 600; color: var(--muted);
-  border-radius: 8px; transition: color .15s, background .15s;
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
 }
-.nav-menu > li > a:hover { color: var(--text); background: var(--accent-light); }
-.nav-cta {
-  background: var(--accent); color: #fff;
-  border: none; border-radius: 20px; padding: 12px 24px;
-  font-size: 14px; font-weight: 700; cursor: pointer;
-  font-family: inherit; white-space: nowrap; transition: background .15s;
-}
-.nav-cta:hover { background: var(--accent2); }
-.nav-mobile { display: none; }
-
-/* ── HERO ── */
-.hero {
-  background: radial-gradient(ellipse at center, var(--white) 0%, var(--accent-mid) 100%);
-  padding: 100px 32px 110px;
-}
-.hero-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 440px; gap: 80px; align-items: center;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1.5px solid var(--accent); color: var(--accent);
-  padding: 5px 16px; border-radius: 100px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
-  margin-bottom: 24px; text-transform: uppercase;
-}
-.hero-badge-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-.hero h1 {
-  font-size: clamp(36px, 4vw, 56px); font-weight: 900;
-  line-height: 1.1; letter-spacing: -1.5px; color: var(--text);
-  margin-bottom: 16px;
-}
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero-sub {
-  font-size: 18px; color: var(--muted); line-height: 1.8; margin-bottom: 36px;
-  max-width: 480px;
-}
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
-.btn-primary {
-  background: var(--accent); color: #fff;
-  border: 2px solid var(--accent);
-  border-radius: 20px; padding: 14px 30px;
-  font-size: 15px; font-weight: 700; cursor: pointer;
-  font-family: inherit; transition: background .15s, transform .15s;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); transform: translateY(-1px); }
-.btn-secondary {
-  background: transparent; color: var(--accent);
-  border: 2px solid var(--accent); border-radius: 20px; padding: 14px 30px;
-  font-size: 15px; font-weight: 700; cursor: pointer;
-  font-family: inherit; transition: background .15s, transform .15s;
-}
-.btn-secondary:hover { background: var(--accent-light); transform: translateY(-1px); }
-.hero-trust { display: flex; align-items: center; gap: 12px; }
-.hero-trust-stars { font-size: 22px; }
-.hero-trust-text { font-size: 14px; color: var(--muted); font-weight: 600; }
-.hero-trust-text strong { color: var(--text); font-weight: 800; }
-
-/* Hero card */
-.hero-card {
-  background: var(--white);
-  border-radius: 24px;
-  padding: 36px;
-  box-shadow: 0 20px 60px rgba(79,163,200,0.12), 0 4px 16px rgba(0,0,0,0.06);
-}
-.hero-card-photo {
-  width: 120px; height: 120px; border-radius: 50%;
-  object-fit: cover; margin: 0 auto 20px;
-  border: 4px solid var(--accent-mid);
-}
-.hero-card-photo-placeholder {
-  width: 120px; height: 120px; border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, var(--accent-mid) 0%, var(--accent-light) 100%);
-  border: 4px solid var(--accent-mid);
-  margin: 0 auto 20px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 48px;
-}
-.hero-card-name { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-.hero-card-role { text-align: center; color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 20px; }
-.hero-card-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
-.hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.hero-card-stat {
-  background: var(--accent-light); border-radius: 14px; padding: 14px;
-  text-align: center;
-}
-.hero-card-stat-val { font-size: 22px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-.hero-card-stat-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
-.hero-card-badge {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  color: #fff; border-radius: 14px; padding: 14px 18px;
-  text-align: center; font-size: 14px; font-weight: 700;
-}
-
-/* ── SECCIÓN GENÉRICA ── */
-.section { padding: 90px 32px; }
-.section-alt { background: var(--accent-light); }
-.section-dark { background: linear-gradient(180deg, var(--accent) 0%, var(--accent2) 100%); color: #fff; }
-.section-inner { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-block; font-size: 12px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px; color: var(--accent);
-  margin-bottom: 12px;
-}
-.section-dark .section-label { color: rgba(255,255,255,0.7); }
-.section-title {
-  font-size: clamp(28px, 3vw, 42px); font-weight: 900;
-  letter-spacing: -1px; line-height: 1.15; margin-bottom: 14px;
-}
-.section-sub {
-  font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7;
-}
-.section-dark .section-sub { color: rgba(255,255,255,0.8); }
-.section-header { margin-bottom: 56px; }
-
-/* ── CÓMO FUNCIONA ── */
-.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
-.step {
-  background: var(--white); border-radius: 20px; padding: 36px;
-  border: 1px solid var(--border);
-  position: relative; transition: box-shadow .2s, transform .2s;
-}
-.step:hover { box-shadow: 0 12px 40px rgba(79,163,200,0.12); transform: translateY(-3px); }
-.step-num {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--accent); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 900; margin-bottom: 20px;
-}
-.step h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-.step p { font-size: 15px; color: var(--muted); line-height: 1.7; }
-
-/* ── SERVICIOS ── */
-.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.service-card {
-  background: var(--white); border-radius: 20px; padding: 32px;
-  border: 1px solid var(--border);
-  transition: box-shadow .2s, transform .2s;
-}
-.service-card:hover { box-shadow: 0 12px 40px rgba(79,163,200,0.12); transform: translateY(-3px); }
-.service-icon {
-  width: 56px; height: 56px; border-radius: 16px;
-  background: var(--accent-light); color: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px; margin-bottom: 20px;
-}
-.service-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-.service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-/* ── POR QUÉ YO ── */
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.why-list { display: flex; flex-direction: column; gap: 24px; }
-.why-item { display: flex; gap: 18px; align-items: flex-start; }
-.why-icon {
-  width: 52px; height: 52px; border-radius: 16px;
-  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px; flex-shrink: 0;
-}
-.why-item h4 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-.why-item p { font-size: 14px; opacity: 0.8; line-height: 1.6; }
-.why-cta-box {
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 24px; padding: 44px; text-align: center;
-}
-.why-cta-box p { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
-.why-cta-box span { font-size: 16px; opacity: 0.8; display: block; margin-bottom: 28px; }
-.btn-white {
-  background: var(--white); color: var(--accent);
-  border: none; border-radius: 20px; padding: 16px 32px;
-  font-size: 15px; font-weight: 800; cursor: pointer;
-  font-family: inherit; transition: opacity .15s, transform .15s;
-  display: inline-block;
-}
-.btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
-
-/* ── TESTIMONIOS ── */
-.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.review-card {
-  background: var(--white); border-radius: 20px; padding: 30px;
-  border: 1px solid var(--border);
-}
-.review-stars { font-size: 18px; margin-bottom: 14px; }
-.review-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
-.review-author { display: flex; align-items: center; gap: 12px; }
-.review-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--accent-mid); display: flex; align-items: center; justify-content: center;
-  font-size: 16px; font-weight: 800; color: var(--accent); flex-shrink: 0;
-}
-.review-name { font-size: 14px; font-weight: 800; }
-.review-via { font-size: 12px; color: var(--muted); }
-.reviews-header-right { display: flex; align-items: center; gap: 16px; }
-.reviews-score {
-  background: var(--accent); color: #fff; border-radius: 16px;
-  padding: 12px 20px; text-align: center;
-}
-.reviews-score-num { font-size: 32px; font-weight: 900; line-height: 1; }
-.reviews-score-label { font-size: 11px; opacity: 0.85; font-weight: 600; margin-top: 2px; }
-
-/* ── CONTACTO ── */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.contact-info { display: flex; flex-direction: column; gap: 20px; }
-.contact-item { display: flex; gap: 16px; align-items: flex-start; }
-.contact-item-icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--accent-light); color: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-}
-.contact-item h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 4px; }
-.contact-item p { font-size: 16px; font-weight: 700; color: var(--text); }
-.contact-item a { color: var(--accent); font-weight: 700; }
-.contact-form { display: flex; flex-direction: column; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
 .form-group input,
 .form-group select,
 .form-group textarea {
-  border: 1.5px solid var(--border); border-radius: 12px; padding: 13px 16px;
-  font-size: 15px; font-family: inherit; color: var(--text);
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
   transition: border-color .15s;
-  background: var(--white);
 }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus { outline: none; border-color: var(--accent); }
-.form-group textarea { resize: vertical; min-height: 100px; }
-.form-submit {
-  background: var(--accent); color: #fff;
-  border: none; border-radius: 20px; padding: 15px;
-  font-size: 15px; font-weight: 800; cursor: pointer;
-  font-family: inherit; transition: background .15s;
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
 }
-.form-submit:hover { background: var(--accent2); }
+.form-btn:hover { background: var(--accent2); }
 
-/* ── FOOTER ── */
-footer {
-  background: var(--text); color: rgba(255,255,255,0.7);
-  padding: 48px 32px;
-}
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
 .footer-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.footer-logo { font-size: 18px; font-weight: 900; color: #fff; }
-.footer-logo span { color: var(--accent); }
-.footer-links { display: flex; gap: 24px; font-size: 13px; }
-.footer-links a { color: rgba(255,255,255,0.5); transition: color .15s; }
-.footer-links a:hover { color: #fff; }
-.footer-copy { font-size: 13px; width: 100%; }
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: var(--accent); }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
 
-/* ── WHATSAPP FLOTANTE ── */
+/* ─── WHATSAPP FLOTANTE ─── */
 .wa-float {
   position: fixed; bottom: 28px; right: 28px; z-index: 999;
   background: #25d366; color: #fff; border-radius: 50%;
-  width: 60px; height: 60px;
+  width: 58px; height: 58px;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  font-size: 28px; transition: transform .2s;
-  cursor: pointer;
+  transition: transform .2s;
 }
-.wa-float:hover { transform: scale(1.1); }
+.wa-float:hover { transform: scale(1.08); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero-card { max-width: 400px; margin: 0 auto; }
-  .steps { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
+/* Hamburger — oculto por defecto, visible en móvil via media query */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 16/9; max-height: 280px; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .editorial-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
   .reviews-grid { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .nav-menu { display: none; }
-  .nav-mobile { display: block; font-size: 22px; cursor: pointer; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
 }
 @media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .section { padding: 64px 20px; }
-  .hero { padding: 64px 20px 72px; }
-  .hero-btns { flex-direction: column; }
-  .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-rating { display: none; }
+  .intro, .team-section, .editorial, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
 }
 </style>
 </head>
@@ -355,242 +511,385 @@ footer {
 
 <!-- TOPBAR -->
 <div class="topbar">
-  🏠 Fisioterapia a domicilio en Madrid &nbsp;·&nbsp; <a href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">Escríbeme por WhatsApp</a>
+  <div class="topbar-left">
+    <span>📍 Madrid · Zona centro</span>
+    <a href="tel:+34600000000">📞 +34 600 000 000</a>
+    <span>Lun–Vie · 9:00–20:00</span>
+  </div>
+  <span>Valoración perfecta ⭐ 5,0 en Google</span>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
     <div class="nav-logo">
-      <div class="nav-logo-icon">🦴</div>
-      <div>Enzo <span>Fisio</span></div>
+      Enzo
+      <span>Fisioterapeuta a Domicilio · Madrid</span>
     </div>
-    <ul class="nav-menu">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#como-funciona">Cómo funciona</a></li>
-      <li><a href="#opiniones">Opiniones</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <button class="nav-cta" onclick="window.open('https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio')">
-      Solicitar cita
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#tratamientos">Tratamientos</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Fisioterapia</span>
+            <li><a href="#fisioterapia-general">Fisioterapia General</a></li>
+            <li><a href="#fisioterapia-deportiva">Fisioterapia Deportiva</a></li>
+            <span class="dropdown-label">Especialidades</span>
+            <li><a href="#suelo-pelvico">Suelo Pélvico</a></li>
+            <li><a href="#osteopatia">Osteopatía</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </button>
-    <div class="nav-mobile">☰</div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Tratamientos</div>
+      <div class="mobile-sub">
+        <a href="#fisioterapia-general" onclick="closeMenu()">Fisioterapia General</a>
+        <a href="#fisioterapia-deportiva" onclick="closeMenu()">Fisioterapia Deportiva</a>
+      </div>
+      <div class="mobile-label">Especialidades</div>
+      <div class="mobile-sub">
+        <a href="#suelo-pelvico" onclick="closeMenu()">Suelo Pélvico</a>
+        <a href="#osteopatia" onclick="closeMenu()">Osteopatía</a>
+      </div>
+      <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir cita</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustar%C3%ADa%20pedir%20cita')">
+      Pedir cita
+    </button>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Disponible en Madrid
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Fisioterapeuta a Domicilio · Madrid</div>
+    <h1>Fisioterapia<br>en <em>tu casa</em>,<br>en Madrid</h1>
+    <p class="hero-sub">
+      Me desplazo a tu domicilio para que no tengas que moverte. Tratamiento personalizado, sin esperas, en la comodidad de tu hogar.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-hero" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustar%C3%ADa%20pedir%20cita">
+        Pedir cita por WhatsApp
+      </a>
+      <a class="btn-hero-outline" href="#tratamientos">Ver tratamientos</a>
+    </div>
+  </div>
+  <div class="hero-rating">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-rating-info">
+      <strong>5,0 / 5</strong>
+      Valoración perfecta en Google
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">A domicilio en Madrid</div>
+      <h2 class="intro-title">Enzo,<br>tu fisioterapeuta<br>a domicilio en Madrid</h2>
+      <div class="intro-body">
+        <p>
+          Soy Enzo, fisioterapeuta a domicilio en Madrid con más de 8 años de experiencia ayudando a personas a recuperar su bienestar y moverse sin dolor.
+        </p>
+        <p>
+          Mi consulta es un espacio donde <strong>cada paciente recibe atención completamente individualizada</strong>. No existen protocolos genéricos aquí: cada cuerpo es diferente, y cada tratamiento lo diseño para ti.
+        </p>
+        <p>
+          Combino fisioterapia manual, ejercicio terapéutico y las técnicas más actuales para ofrecerte resultados reales y duraderos.
+        </p>
       </div>
-      <h1>Fisioterapia<br>en <em>tu casa</em>,<br>en Madrid</h1>
-      <p class="hero-sub">
-        Me desplazo a tu domicilio para que no tengas que moverte. Tratamiento personalizado, sin esperas, en la comodidad de tu hogar.
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Enzo, fisioterapeuta en Madrid"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>+8</strong>
+        <span>años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ / EQUIPO -->
+<section class="team-section" id="sobre-mi">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quién soy</span>
+      <h2 class="section-title">Tu fisioterapeuta</h2>
+      <p class="section-body">
+        Ser profesional implica poner todas las herramientas disponibles al servicio de cada paciente. El compromiso con la formación continua y los resultados reales guía mi trabajo cada día.
       </p>
-      <div class="hero-btns">
-        <a class="btn-primary" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">
-          💬 Pedir cita por WhatsApp
-        </a>
-        <a class="btn-secondary" href="tel:+34600000000">📞 Llamar ahora</a>
-      </div>
-      <div class="hero-trust">
-        <div class="hero-trust-stars">⭐⭐⭐⭐⭐</div>
-        <div class="hero-trust-text"><strong>4,9/5</strong> · Más de 60 pacientes en Madrid</div>
-      </div>
     </div>
-
-    <div class="hero-card">
-      <div class="hero-card-photo-placeholder">🧑‍⚕️</div>
-      <div class="hero-card-name">Enzo</div>
-      <div class="hero-card-role">Fisioterapeuta a Domicilio · Madrid</div>
-      <div class="hero-card-divider"></div>
-      <div class="hero-card-stats">
-        <div class="hero-card-stat">
-          <div class="hero-card-stat-val">+8</div>
-          <div class="hero-card-stat-label">Años de experiencia</div>
-        </div>
-        <div class="hero-card-stat">
-          <div class="hero-card-stat-val">+300</div>
-          <div class="hero-card-stat-label">Pacientes tratados</div>
-        </div>
-        <div class="hero-card-stat">
-          <div class="hero-card-stat-val">4,9★</div>
-          <div class="hero-card-stat-label">Valoración Google</div>
-        </div>
-        <div class="hero-card-stat">
-          <div class="hero-card-stat-val">100%</div>
-          <div class="hero-card-stat-label">A domicilio</div>
-        </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80" alt="Enzo — Fisioterapeuta" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
       </div>
-      <div class="hero-card-badge">
-        🏠 Toda Madrid · Desplazamiento incluido
+      <div class="team-info">
+        <div class="team-name">Enzo</div>
+        <div class="team-role">Fisioterapeuta a Domicilio · Madrid</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Graduada en Fisioterapia con formación de posgrado en fisioterapia deportiva y suelo pélvico. Más de 8 años trabajando con personas que buscan recuperarse de lesiones, mejorar su calidad de vida o rendir mejor en el deporte.
+          </p>
+          <p>
+            Mi filosofía es sencilla: <strong>tratar la causa, no solo el síntoma</strong>. Antes de aplicar cualquier técnica, dedico tiempo a entender tu historia, tus hábitos y lo que realmente necesitas.
+          </p>
+          <p>
+            Trabajo con deportistas de todos los niveles, con personas mayores, con mujeres durante el embarazo y postparto, y con cualquier persona que quiera moverse sin dolor en su vida diaria.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Fisioterapia Manual</span>
+          <span class="team-tag">Fisioterapia Deportiva</span>
+          <span class="team-tag">Suelo Pélvico</span>
+          <span class="team-tag">Osteopatía</span>
+          <span class="team-tag">Ejercicio Terapéutico</span>
+          <span class="team-tag">Punción Seca</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CÓMO FUNCIONA -->
-<section class="section" id="como-funciona">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-label">El proceso</div>
-      <div class="section-title">Tan sencillo<br>como tres pasos</div>
-      <div class="section-sub">Sin clínicas, sin desplazamientos, sin esperas. Te atiendo donde estás.</div>
+<!-- TRATAMIENTOS: cabecera -->
+<div class="treatments-intro" id="tratamientos">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que trato</span>
+    <h2 class="section-title">Tratamientos especializados<br>para cada necesidad</h2>
+  </div>
+</div>
+
+<!-- TRATAMIENTO 1: Fisioterapia General -->
+<section class="treatment" id="fisioterapia-general">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Fisioterapia<br>General</h2>
+      <div class="treatment-body">
+        <p>
+          La base de todo: evaluación completa y tratamiento manual enfocado en recuperar tu movilidad y eliminar el dolor. Trabajo contracturas, cervicales, lumbalgias, ciáticas y cualquier dolencia musculoesquelética.
+        </p>
+        <p>
+          Cada sesión empieza con una valoración actualizada para adaptar el tratamiento a cómo estás ese día. El objetivo no es solo que salgas mejor, sino que entiendas por qué has llegado aquí y cómo evitar que vuelva.
+        </p>
+        <ul class="treatment-list">
+          <li>Cervicalgias y dolor de cuello</li>
+          <li>Lumbalgias y ciáticas</li>
+          <li>Contracturas musculares</li>
+          <li>Tendinitis y bursitis</li>
+          <li>Artrosis y artritis</li>
+        </ul>
+      </div>
     </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Me escribes por WhatsApp</h3>
-        <p>Cuéntame qué te pasa y acordamos el día y la hora que mejor te venga. Respondo en menos de 1 hora.</p>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=440&q=80" alt="Fisioterapia general Madrid" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 2: Fisioterapia Deportiva -->
+<section class="treatment treatment-alt" id="fisioterapia-deportiva">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Fisioterapia<br>Deportiva</h2>
+      <div class="treatment-body">
+        <p>
+          Tanto si eres corredor de fin de semana como si compites a nivel profesional, las lesiones deportivas tienen sus propias particularidades. Conozco las exigencias del deporte y trabajo para que vuelvas a rendir cuanto antes.
+        </p>
+        <p>
+          No solo trato la lesión: identifico también los desequilibrios que la han provocado para que no vuelva a aparecer.
+        </p>
+        <ul class="treatment-list">
+          <li>Esguinces y distensiones</li>
+          <li>Tendinitis rotuliana y del Aquiles</li>
+          <li>Fascitis plantar</li>
+          <li>Lesiones de hombro y rodilla</li>
+          <li>Recuperación postoperatoria deportiva</li>
+        </ul>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Voy a tu domicilio</h3>
-        <p>Me presento puntual con todo el material necesario. Tú solo tienes que estar cómodo en casa.</p>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&h=440&q=80" alt="Fisioterapia deportiva Madrid" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 3: Suelo Pélvico -->
+<section class="treatment" id="suelo-pelvico">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Suelo Pélvico</h2>
+      <div class="treatment-body">
+        <p>
+          La fisioterapia de suelo pélvico tiene un impacto enorme en la calidad de vida y sigue siendo una especialidad poco conocida. Trabajo tanto la preparación al parto como la recuperación postparto, y también problemas que muchas mujeres asumen erróneamente como normales.
+        </p>
+        <p>
+          Todo en un espacio de confianza, respeto y profesionalidad absoluta.
+        </p>
+        <ul class="treatment-list">
+          <li>Embarazo y preparación al parto</li>
+          <li>Recuperación postparto</li>
+          <li>Incontinencia urinaria</li>
+          <li>Dolor pélvico crónico</li>
+          <li>Diástasis abdominal</li>
+        </ul>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Tratamiento y seguimiento</h3>
-        <p>Aplicamos el tratamiento y te doy pautas para casa. Hacemos seguimiento hasta tu recuperación completa.</p>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=440&q=80" alt="Suelo pélvico Madrid" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 4: Osteopatía -->
+<section class="treatment treatment-alt" id="osteopatia">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Osteopatía</h2>
+      <div class="treatment-body">
+        <p>
+          La osteopatía entiende el cuerpo como un sistema global interconectado. A veces el origen del dolor está lejos de donde lo sientes. Con técnicas osteopáticas, trato la raíz del problema, no solo el síntoma.
+        </p>
+        <p>
+          Especialmente útil en dolores crónicos, cefaleas, dolores de espalda recurrentes y sensación general de rigidez o cansancio sin causa aparente.
+        </p>
+        <ul class="treatment-list">
+          <li>Cefaleas y migrañas de origen cervical</li>
+          <li>Dolores crónicos de espalda</li>
+          <li>ATM y bruxismo</li>
+          <li>Vértigos de origen cervical</li>
+          <li>Osteopatía visceral</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=440&q=80" alt="Osteopatía Madrid" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="editorial-inner">
+    <div class="editorial-aside">
+      <span class="section-label">Mi filosofía</span>
+      <h2>La fisio&shy;terapia es salud, no solo alivio</h2>
+    </div>
+    <div class="editorial-main">
+      <p>
+        En fisioterapia podemos encontrar multitud de herramientas y técnicas con las que mejorar nuestra salud. Es un área que abarca muchas disciplinas y con la que podemos actuar sobre el cuerpo humano para tratar diversas patologías, lesiones y estados funcionales.
+      </p>
+      <p>
+        El objetivo principal de la fisioterapia no es únicamente eliminar el dolor de forma temporal. Es restaurar el correcto funcionamiento del cuerpo, educar al paciente para que entienda cómo funciona y devolverle la capacidad de moverse con libertad.
+      </p>
+      <h3>Escuchar antes de tratar</h3>
+      <p>
+        Antes de aplicar ninguna técnica, necesito conocerte. Tu historia, tu trabajo, tus hábitos, tu deporte, tus miedos. El cuerpo siempre da información, y saber leerla correctamente es lo que marca la diferencia entre una mejora temporal y una recuperación real.
+      </p>
+      <h3>Resultados que duran</h3>
+      <p>
+        Una buena sesión no solo te deja mejor al salir. Te deja con herramientas —ejercicios, hábitos, conciencia corporal— para que no vuelvas al mismo punto de partida. Eso es lo que busco en cada tratamiento.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">El proceso</span>
+      <h2 class="section-title">Tres pilares fundamentales<br>en cada tratamiento</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Evaluar</div>
+        <h3>Evaluar</h3>
+        <p>Entender qué pasa en tu cuerpo es el primer paso. Una valoración rigurosa es la base de cualquier buen tratamiento. Sin diagnóstico claro, no hay tratamiento eficaz.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Tratar</div>
+        <h3>Tratar</h3>
+        <p>Con el diagnóstico claro, aplico las técnicas más adecuadas para tu caso. Fisioterapia manual, ejercicio terapéutico, punción seca u otras herramientas según lo que necesites.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Educar</div>
+        <h3>Educar</h3>
+        <p>El objetivo final es que no dependas de mí. Te doy las herramientas para cuidar tu cuerpo, corregir lo que hay que corregir y mantener los resultados a largo plazo.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="section section-alt" id="servicios">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-label">Lo que hago</div>
-      <div class="section-title">Tratamientos<br>a domicilio</div>
-      <div class="section-sub">Toda la fisioterapia que necesitas, sin salir de casa.</div>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🦴</div>
-        <h3>Fisioterapia General</h3>
-        <p>Contracturas, cervicales, lumbalgias, dolores musculares. Diagnóstico y tratamiento manual en tu domicilio.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Fisioterapia Deportiva</h3>
-        <p>Recuperación de lesiones deportivas, tendinitis, esguinces y sobrecargas. Vuelve al deporte antes.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🧠</div>
-        <h3>Neurológica y Geriátrica</h3>
-        <p>Tratamiento para pacientes con movilidad reducida, mayores o en proceso de rehabilitación.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🤰</div>
-        <h3>Embarazo y Postparto</h3>
-        <p>Fisioterapia adaptada durante el embarazo y recuperación postparto, en la comodidad de tu hogar.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏃</div>
-        <h3>Rehabilitación Postoperatoria</h3>
-        <p>Recuperación tras operaciones de rodilla, cadera, hombro u otras intervenciones quirúrgicas.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🤲</div>
-        <h3>Osteopatía</h3>
-        <p>Tratamiento global del cuerpo mediante técnicas osteopáticas para mejorar tu bienestar general.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ YO -->
-<section class="section section-dark" id="por-que">
-  <div class="section-inner">
-    <div class="why-grid">
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
       <div>
-        <div class="section-label">Por qué elegirme</div>
-        <div class="section-title">La fisioterapia<br>que mereces,<br>donde estás</div>
-        <div class="section-sub" style="margin-bottom: 44px;">Sin salas de espera. Sin aparcamiento. Sin desplazarte con dolor.</div>
-        <div class="why-list">
-          <div class="why-item">
-            <div class="why-icon">🏠</div>
-            <div>
-              <h4>100% a domicilio</h4>
-              <p>Me desplazo por toda Madrid. El desplazamiento está incluido en el precio, sin sorpresas.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">⏱️</div>
-            <div>
-              <h4>Horarios flexibles</h4>
-              <p>Mañanas, tardes, fines de semana. Me adapto a tu agenda, no al revés.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🩺</div>
-            <div>
-              <h4>Tratamiento personalizado</h4>
-              <p>Cada sesión está diseñada para ti. No soy una clínica masificada, soy tu fisio.</p>
-            </div>
-          </div>
-        </div>
+        <span class="section-label">Lo que dicen mis pacientes</span>
+        <h2 class="section-title">Opiniones reales<br>en Google</h2>
       </div>
-      <div class="why-cta-box">
-        <p>¿Tienes dolor ahora?</p>
-        <span>Escríbeme y te digo si puedo ir hoy</span>
-        <a class="btn-white" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">
-          💬 Escribirme ahora
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OPINIONES -->
-<section class="section" id="opiniones">
-  <div class="section-inner">
-    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px;">
-      <div>
-        <div class="section-label">Opiniones reales</div>
-        <div class="section-title">Lo que dicen<br>mis pacientes</div>
-      </div>
-      <div class="reviews-score">
-        <div class="reviews-score-num">4,9</div>
-        <div>⭐⭐⭐⭐⭐</div>
-        <div class="reviews-score-label">Google Reviews</div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">5,0</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">Valoración perfecta · Google</div>
       </div>
     </div>
     <div class="reviews-grid">
-      <div class="review-card">
+      <div class="review">
         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Llevaba meses con lumbalgia y no mejoraba. Enzo vino a casa, me evaluó bien y en 4 sesiones estaba como nuevo. Que no tengas que salir con dolor es una diferencia enorme."</p>
+        <p class="review-text">Llevaba más de un año con dolor de espalda crónico sin mejorar. Enzo me explicó exactamente qué me pasaba, por qué y qué íbamos a hacer. En pocas sesiones noté un cambio real. No voy a ningún otro sitio.</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ana García</div>
+            <div class="review-source">Google · hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Fui por una lesión de rodilla y volví para suelo pélvico postparto. En los dos casos, profesionalidad total y resultados increíbles. La recomiendo a todo el mundo sin dudarlo.</p>
         <div class="review-author">
           <div class="review-avatar">M</div>
           <div>
-            <div class="review-name">Miguel Ángel R.</div>
-            <div class="review-via">Google · hace 2 semanas</div>
+            <div class="review-name">María Sánchez</div>
+            <div class="review-source">Google · hace 3 semanas</div>
           </div>
         </div>
       </div>
-      <div class="review-card">
+      <div class="review">
         <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Lo recomiendo 100%. Muy profesional y cercano. Me recuperé de una tendinitis que me tenía parada. La comodidad de que venga a casa es un punto extra enorme."</p>
+        <p class="review-text">Muy cercana pero a la vez completamente profesional. Se nota que sabe lo que hace y que le importa que mejores de verdad. Mi cervical lleva meses sin molestarme, algo que no había conseguido en ningún otro sitio.</p>
         <div class="review-author">
-          <div class="review-avatar">L</div>
+          <div class="review-avatar">J</div>
           <div>
-            <div class="review-name">Laura P.</div>
-            <div class="review-via">Google · hace 1 mes</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">⭐⭐⭐⭐⭐</div>
-        <p class="review-text">"Para mi madre mayor es perfecta. No puede moverse bien y Enzo viene, muy amable y profesional. Ha mejorado su movilidad muchísimo. Gracias."</p>
-        <div class="review-author">
-          <div class="review-avatar">C</div>
-          <div>
-            <div class="review-name">Carlos M.</div>
-            <div class="review-via">Google · hace 3 semanas</div>
+            <div class="review-name">Javier Moreno</div>
+            <div class="review-source">Google · hace 2 meses</div>
           </div>
         </div>
       </div>
@@ -599,48 +898,42 @@ footer {
 </section>
 
 <!-- CONTACTO -->
-<section class="section section-alt" id="contacto">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-label">Contacto</div>
-      <div class="section-title">Pide tu cita<br>sin compromiso</div>
-      <div class="section-sub">Respondo siempre en menos de 1 hora. Cuéntame qué te pasa.</div>
-    </div>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <h4>Zona de cobertura</h4>
-              <p>Toda Madrid · Desplazamiento incluido</p>
-            </div>
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide tu cita</span>
+      <h2 class="section-title">Empieza hoy<br>tu recuperación</h2>
+      <p class="contact-desc">
+        Escríbeme por WhatsApp o rellena el formulario y te contacto en menos de una hora. La primera consulta incluye valoración completa.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Dirección</h4>
+            <p>Madrid · Desplazamiento incluido en toda la ciudad</p>
           </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">💬</div>
-            <div>
-              <h4>WhatsApp</h4>
-              <p><a href="https://wa.me/34600000000">+34 600 000 000</a></p>
-            </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34600000000">+34 600 000 000</a></p>
           </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div>
-              <h4>Teléfono</h4>
-              <p><a href="tel:+34600000000">+34 600 000 000</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">🕐</div>
-            <div>
-              <h4>Horario</h4>
-              <p>Lunes a Domingo · 8:00 – 21:00</p>
-            </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Horario</h4>
+            <p>Lunes a Domingo · 8:00 – 21:00</p>
           </div>
         </div>
       </div>
-      <div>
-        <form class="contact-form" onsubmit="handleForm(event)">
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué puedo ayudarte?</h3>
+        <div class="form-row">
           <div class="form-group">
             <label>Nombre</label>
             <input type="text" placeholder="Tu nombre" required>
@@ -649,26 +942,24 @@ footer {
             <label>Teléfono</label>
             <input type="tel" placeholder="+34 600 000 000" required>
           </div>
-          <div class="form-group">
-            <label>¿Qué te pasa?</label>
-            <select>
-              <option value="">Selecciona el motivo</option>
-              <option>Lumbalgia / Ciática</option>
-              <option>Cervicales</option>
-              <option>Lesión deportiva</option>
-              <option>Postoperatorio</option>
-              <option>Embarazo / Postparto</option>
-              <option>Paciente mayor / movilidad reducida</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Mensaje (opcional)</label>
-            <textarea placeholder="Cuéntame brevemente tu situación..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">Solicitar cita → </button>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué tratamiento necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Fisioterapia General</option>
+            <option>Fisioterapia Deportiva</option>
+            <option>Suelo Pélvico</option>
+            <option>Osteopatía</option>
+            <option>No sé, necesito valoración</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntame brevemente</label>
+          <textarea placeholder="¿Qué te pasa? ¿Desde cuándo? ¿Has recibido tratamiento antes?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Solicitar cita →</button>
+      </form>
     </div>
   </div>
 </section>
@@ -676,31 +967,66 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">Enzo <span>Fisio</span></div>
-    <div class="footer-links">
-      <a href="#">Política de privacidad</a>
-      <a href="#">Aviso legal</a>
-      <a href="#contacto">Contacto</a>
+    <div class="footer-brand">
+      <div class="footer-brand-name">Enzo <span>Fisio</span></div>
+      <div class="footer-brand-tagline">Fisioterapeuta a Domicilio · Madrid</div>
     </div>
-    <div class="footer-copy">© 2025 Enzo · Fisioterapeuta a Domicilio en Madrid</div>
+    <div class="footer-col">
+      <h4>Tratamientos</h4>
+      <ul>
+        <li><a href="#fisioterapia-general">Fisioterapia General</a></li>
+        <li><a href="#fisioterapia-deportiva">Fisioterapia Deportiva</a></li>
+        <li><a href="#suelo-pelvico">Suelo Pélvico</a></li>
+        <li><a href="#osteopatia">Osteopatía</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Enzo · Fisioterapeuta a Domicilio en Madrid</span>
+    <span>Fisioterapeuta a domicilio · Madrid</span>
   </div>
 </footer>
 
-<!-- BOTÓN WHATSAPP FLOTANTE -->
-<a class="wa-float" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio" target="_blank" title="Contactar por WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" fill="white">
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustar%C3%ADa%20pedir%20cita" target="_blank" title="Pedir cita por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="white">
     <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
   </svg>
 </a>
 
 <script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 function handleForm(e) {
   e.preventDefault();
   const name = e.target.querySelector('input[type=text]').value;
   const phone = e.target.querySelector('input[type=tel]').value;
-  const motivo = e.target.querySelector('select').value;
+  const tratamiento = e.target.querySelector('select').value;
   const msg = e.target.querySelector('textarea').value;
-  const text = `Hola Enzo, me llamo ${name} y me gustaría pedir cita a domicilio.${motivo ? ' Motivo: ' + motivo + '.' : ''}${msg ? ' ' + msg : ''} Mi teléfono es ${phone}.`;
+  let text = `Hola Enzo, me llamo ${name} y me gustaría pedir cita.`;
+  if (tratamiento) text += ` Tratamiento: ${tratamiento}.`;
+  if (msg) text += ` ${msg}`;
+  text += ` Mi teléfono es ${phone}.`;
   window.open('https://wa.me/34600000000?text=' + encodeURIComponent(text), '_blank');
 }
 </script>
