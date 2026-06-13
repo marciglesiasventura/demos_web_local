@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Ventura · Terapeuta · Indiba y Bienestar</title>
+<meta name="description" content="Terapeuta especializada en Indiba, masaje terapéutico y tratamientos de bienestar. Pide cita hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #7c3aed;
+  --accent2: #6d28d9;
+  --accent-light: #f5f3ff;
+  --accent-mid: #ede9fe;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #e8e8e8;
+  --white: #ffffff;
+  --off-white: #f9f8f7;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 230px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: center;
+  background: var(--dark);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover; background-position: center 30%;
+  opacity: 0.35;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 110px 32px;
+  color: #fff;
+}
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(44px, 6vw, 78px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 680px;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,0.65); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.35); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s; display: inline-block;
+}
+.btn-hero-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+.hero-rating {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-rating-stars { font-size: 20px; }
+.hero-rating-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-rating-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 3px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(219,39,119,0.28);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── EQUIPO ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── TRATAMIENTOS INTRO ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+/* ─── TRATAMIENTO INDIVIDUAL ─── */
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 3px;
+}
+.treatment-img-placeholder {
+  width: 100%; height: 420px; border-radius: 3px;
+  background: linear-gradient(135deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  display: flex; align-items: center; justify-content: center; font-size: 72px;
+}
+
+/* ─── EDITORIAL ─── */
+.editorial { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.editorial-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 320px 1fr; gap: 88px;
+}
+.editorial-aside h2 {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; line-height: 1.15; margin-top: 14px;
+}
+.editorial-main { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.editorial-main p + p { margin-top: 18px; }
+.editorial-main h3 {
+  font-size: 19px; font-weight: 800; color: var(--dark);
+  margin-top: 36px; margin-bottom: 10px; letter-spacing: -0.3px;
+}
+.editorial-main strong { color: var(--dark); font-weight: 700; }
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: var(--accent); }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* Hamburger — oculto por defecto, visible en móvil via media query */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 16/9; max-height: 280px; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .editorial-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-rating { display: none; }
+  .intro, .team-section, .editorial, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 tu ciudad · Zona centro</span>
+    <a href="tel:+34600000000">📞 +34 600 000 000</a>
+    <span>Lun–Vie · 9:00–20:00</span>
+  </div>
+  <span>Valoración perfecta ⭐ 5,0 en Google</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      Laura Ventura
+      <span>Terapeuta · Indiba y Bienestar</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#tratamientos">Tratamientos</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Tratamientos</span>
+            <li><a href="#indiba">Indiba</a></li>
+            <li><a href="#masaje-terapeutico">Masaje Terapéutico</a></li>
+            <span class="dropdown-label">Más</span>
+            <li><a href="#drenaje-linfatico">Drenaje Linfático</a></li>
+            <li><a href="#tratamiento-facial">Tratamiento Facial</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Tratamientos</div>
+      <div class="mobile-sub">
+        <a href="#indiba" onclick="closeMenu()">Indiba</a>
+        <a href="#masaje-terapeutico" onclick="closeMenu()">Masaje Terapéutico</a>
+      </div>
+      <div class="mobile-label">Más</div>
+      <div class="mobile-sub">
+        <a href="#drenaje-linfatico" onclick="closeMenu()">Drenaje Linfático</a>
+        <a href="#tratamiento-facial" onclick="closeMenu()">Tratamiento Facial</a>
+      </div>
+      <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir cita</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34600000000?text=Hola%20Laura,%20me%20gustar%C3%ADa%20pedir%20cita')">
+      Pedir cita
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Terapeuta · Indiba y Bienestar</div>
+    <h1>Tu bienestar<br>empieza <em>aquí</em></h1>
+    <p class="hero-sub">
+      Tratamientos personalizados de Indiba y bienestar. Me comprometo con tu salud y tu bienestar desde la primera sesión.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-hero" href="https://wa.me/34600000000?text=Hola%20Laura,%20me%20gustar%C3%ADa%20pedir%20cita">
+        Pedir cita por WhatsApp
+      </a>
+      <a class="btn-hero-outline" href="#tratamientos">Ver tratamientos</a>
+    </div>
+  </div>
+  <div class="hero-rating">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-rating-info">
+      <strong>5,0 / 5</strong>
+      Valoración perfecta en Google
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">Sobre la consulta</div>
+      <h2 class="intro-title">Laura Ventura,<br>tu terapeuta<br>de bienestar</h2>
+      <div class="intro-body">
+        <p>
+          Soy Laura Ventura, terapeuta especializada en Indiba y tratamientos de bienestar con más de 8 años de experiencia ayudando a personas a recuperar su bienestar y moverse sin dolor.
+        </p>
+        <p>
+          Mi consulta es un espacio donde <strong>cada paciente recibe atención completamente individualizada</strong>. No existen protocolos genéricos aquí: cada cuerpo es diferente, y cada tratamiento lo diseño para ti.
+        </p>
+        <p>
+          Combino Indiba, masaje terapéutico y las técnicas más actuales de bienestar para ofrecerte resultados reales y duraderos.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Laura Ventura, fisioterapeuta en tu ciudad"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>+8</strong>
+        <span>años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ / EQUIPO -->
+<section class="team-section" id="sobre-mi">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quién soy</span>
+      <h2 class="section-title">Tu fisioterapeuta</h2>
+      <p class="section-body">
+        Ser profesional implica poner todas las herramientas disponibles al servicio de cada paciente. El compromiso con la formación continua y los resultados reales guía mi trabajo cada día.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Laura Ventura — Fisioterapeuta" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Laura Ventura</div>
+        <div class="team-role">Terapeuta · Indiba y Bienestar</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Terapeuta especializada en Indiba y tratamientos de bienestar con más de 8 años acompañando a personas que buscan sentirse mejor, recuperarse antes y cuidarse de verdad.
+          </p>
+          <p>
+            Mi enfoque es integrador: <strong>combino tecnología avanzada con técnicas manuales</strong> para ofrecer tratamientos que funcionan tanto para el cuerpo como para la mente. Cada sesión es única porque cada persona lo es.
+          </p>
+          <p>
+            Trabajo con personas que quieren recuperarse de lesiones o postoperatorios, con quienes buscan bienestar y relajación profunda, y con quienes quieren cuidar su piel y su imagen de manera natural y efectiva.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Indiba</span>
+          <span class="team-tag">Masaje Terapéutico</span>
+          <span class="team-tag">Drenaje Linfático</span>
+          <span class="team-tag">Tratamiento Facial</span>
+          <span class="team-tag">Bienestar</span>
+          <span class="team-tag">Recuperación</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS: cabecera -->
+<div class="treatments-intro" id="tratamientos">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que trato</span>
+    <h2 class="section-title">Tratamientos especializados<br>para cada necesidad</h2>
+  </div>
+</div>
+
+<!-- TRATAMIENTO 1: Indiba -->
+<section class="treatment" id="indiba">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Indiba</h2>
+      <div class="treatment-body">
+        <p>
+          El Indiba es una tecnología de radiofrecuencia que actúa en profundidad para regenerar tejidos, reducir la inflamación y acelerar la recuperación. Es uno de los tratamientos más versátiles y eficaces disponibles hoy en día.
+        </p>
+        <p>
+          Se aplica tanto para dolencias musculoesqueléticas como para tratamientos estéticos y de bienestar general. Los resultados son visibles desde las primeras sesiones.
+        </p>
+        <ul class="treatment-list">
+          <li>Dolor muscular y articular</li>
+          <li>Recuperación post-lesión</li>
+          <li>Tratamiento antiinflamatorio</li>
+          <li>Mejora de la circulación</li>
+          <li>Bienestar y rejuvenecimiento tisular</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&h=440&q=80" alt="Indiba" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 2: Masaje Terapéutico -->
+<section class="treatment treatment-alt" id="masaje-terapeutico">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Masaje<br>Terapéutico</h2>
+      <div class="treatment-body">
+        <p>
+          El masaje terapéutico va más allá del simple alivio. Trabajo las zonas de tensión con técnicas manuales específicas para liberar contracturas, mejorar la movilidad y restablecer el equilibrio muscular.
+        </p>
+        <p>
+          Cada sesión está adaptada a tu estado: no hay dos masajes iguales. El objetivo es que salgas sintiéndote mejor de verdad.
+        </p>
+        <ul class="treatment-list">
+          <li>Contracturas y tensión muscular</li>
+          <li>Cervicales y zona lumbar</li>
+          <li>Estrés y tensión acumulada</li>
+          <li>Preparación y recuperación deportiva</li>
+          <li>Masaje descontracturante profundo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&h=440&q=80" alt="Masaje terapéutico" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 3: Drenaje Linfático -->
+<section class="treatment" id="drenaje-linfatico">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Drenaje<br>Linfático</h2>
+      <div class="treatment-body">
+        <p>
+          El drenaje linfático manual es una técnica suave y rítmica que estimula el sistema linfático, favoreciendo la eliminación de toxinas y la reducción de la retención de líquidos.
+        </p>
+        <p>
+          Especialmente indicado en postoperatorios, embarazo, sensación de pesadez en piernas y procesos inflamatorios.
+        </p>
+        <ul class="treatment-list">
+          <li>Retención de líquidos y edemas</li>
+          <li>Postoperatorio y cicatrices</li>
+          <li>Piernas cansadas y pesadas</li>
+          <li>Embarazo y postparto</li>
+          <li>Mejora del sistema inmune</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&h=440&q=80" alt="Drenaje linfático" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTO 4: Tratamiento Facial -->
+<section class="treatment treatment-alt" id="tratamiento-facial">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Tratamiento<br>Facial</h2>
+      <div class="treatment-body">
+        <p>
+          Los tratamientos faciales combinan técnicas manuales con tecnología avanzada para mejorar la calidad de la piel, estimular la producción de colágeno y conseguir un aspecto más luminoso y saludable.
+        </p>
+        <p>
+          Resultados visibles y duraderos sin procedimientos invasivos. Cada tratamiento se personaliza según el tipo de piel y los objetivos de cada persona.
+        </p>
+        <ul class="treatment-list">
+          <li>Rejuvenecimiento facial</li>
+          <li>Flacidez y pérdida de firmeza</li>
+          <li>Manchas y tono irregular</li>
+          <li>Hidratación profunda</li>
+          <li>Contorno facial y papada</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&h=440&q=80" alt="Tratamiento facial" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial">
+  <div class="editorial-inner">
+    <div class="editorial-aside">
+      <span class="section-label">Mi filosofía</span>
+      <h2>El bienes&shy;tar es un camino, no un destino</h2>
+    </div>
+    <div class="editorial-main">
+      <p>
+        Cuidarse no debería ser un lujo ni un esfuerzo. Mi trabajo es acompañarte para que te sientas bien en tu cuerpo — con menos dolor, más energía y más confianza en ti misma.
+      </p>
+      <p>
+        Combino tecnología avanzada como el Indiba con técnicas manuales de toda la vida porque creo en lo mejor de los dos mundos: la precisión de la ciencia y el cuidado del tacto humano.
+      </p>
+      <h3>Cada persona es diferente</h3>
+      <p>
+        No hay un protocolo único que funcione para todo el mundo. Antes de cada sesión te escucho, entiendo qué necesitas ese día y diseño el tratamiento en función de eso. Eso es lo que marca la diferencia.
+      </p>
+      <h3>Resultados que se notan</h3>
+      <p>
+        El objetivo no es que vuelvas indefinidamente. Es que salgas de cada sesión sintiéndote mejor, y que con el tiempo necesites venir cada vez menos — porque tu cuerpo ha aprendido a mantenerse en equilibrio.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">El proceso</span>
+      <h2 class="section-title">Tres pilares fundamentales<br>en cada sesión</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Escuchar</div>
+        <h3>Escuchar</h3>
+        <p>Cada persona llega con su historia. Dedico tiempo a entender qué te pasa, cómo te sientes y qué necesitas. Solo así puedo ofrecerte un tratamiento que realmente funcione.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Tratar</div>
+        <h3>Tratar</h3>
+        <p>Combino Indiba, técnicas manuales y tratamientos especializados para darte lo mejor de cada mundo. Sin protocolos genéricos — solo lo que tú necesitas.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Acompañar</div>
+        <h3>Acompañar</h3>
+        <p>El proceso no termina cuando sales de la sesión. Te doy pautas y herramientas para que puedas mantener los resultados en tu día a día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen mis pacientes</span>
+        <h2 class="section-title">Opiniones reales<br>en Google</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">5,0</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">Valoración perfecta · Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Llevaba meses con tensión acumulada en espalda y cuello. El Indiba combinado con el masaje fue una revelación. En tres sesiones dormía mejor y el dolor había desaparecido casi del todo. Totalmente recomendable."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sandra M.</div>
+            <div class="review-source">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Me hice el tratamiento facial con Indiba antes de una boda y el resultado fue increíble. La piel más luminosa y firme que he tenido en años. Laura es una profesional como pocas, muy cercana y atenta."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marta P.</div>
+            <div class="review-source">Google · hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Fui por el drenaje linfático postoperatorio y me quedé por todo lo demás. Cada sesión es un momento para mí. Laura sabe escuchar, es muy profesional y los resultados hablan solos."</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carmen R.</div>
+            <div class="review-source">Google · hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide tu cita</span>
+      <h2 class="section-title">Empieza hoy<br>tu recuperación</h2>
+      <p class="contact-desc">
+        Escríbeme por WhatsApp o rellena el formulario y te contacto en menos de una hora. La primera consulta incluye valoración completa.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Dirección</h4>
+            <p>Consulta · Pide cita para conocer la dirección</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34600000000">+34 600 000 000</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Horario</h4>
+            <p>Lunes a Viernes · 9:00 – 20:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué puedo ayudarte?</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué tratamiento necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Indiba</option>
+            <option>Masaje Terapéutico</option>
+            <option>Drenaje Linfático</option>
+            <option>Tratamiento Facial</option>
+            <option>No sé, necesito valoración</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntame brevemente</label>
+          <textarea placeholder="¿Qué te pasa? ¿Desde cuándo? ¿Has recibido tratamiento antes?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Solicitar cita →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Laura <span>Ventura</span></div>
+      <div class="footer-brand-tagline">Terapeuta · Indiba y Bienestar</div>
+    </div>
+    <div class="footer-col">
+      <h4>Tratamientos</h4>
+      <ul>
+        <li><a href="#fisioterapia-general">Fisioterapia General</a></li>
+        <li><a href="#fisioterapia-deportiva">Fisioterapia Deportiva</a></li>
+        <li><a href="#suelo-pelvico">Suelo Pélvico</a></li>
+        <li><a href="#osteopatia">Osteopatía</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Laura Ventura · Terapeuta · Indiba y Bienestar</span>
+    <span>Terapeuta · Indiba y Bienestar</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/34600000000?text=Hola%20Laura,%20me%20gustar%C3%ADa%20pedir%20cita" target="_blank" title="Pedir cita por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="white">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleForm(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type=text]').value;
+  const phone = e.target.querySelector('input[type=tel]').value;
+  const tratamiento = e.target.querySelector('select').value;
+  const msg = e.target.querySelector('textarea').value;
+  let text = `Hola Laura, me llamo ${name} y me gustaría pedir cita.`;
+  if (tratamiento) text += ` Tratamiento: ${tratamiento}.`;
+  if (msg) text += ` ${msg}`;
+  text += ` Mi teléfono es ${phone}.`;
+  window.open('https://wa.me/34600000000?text=' + encodeURIComponent(text), '_blank');
+}
+</script>
+
+</body>
+</html>
