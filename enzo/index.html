@@ -4,32 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enzo · Fisioterapeuta a Domicilio en Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green: #3b82f6;
-  --green2: #2563eb;
-  --green-light: #eff6ff;
-  --green-mid: #dbeafe;
-  --text: #111827;
-  --muted: #6b7280;
-  --light: #f9fafb;
-  --border: #e5e7eb;
+  --accent: #4fa3c8;
+  --accent2: #2d89b0;
+  --accent-light: #f0f8fc;
+  --accent-mid: #d6edf6;
+  --text: #0a0a0a;
+  --muted: #6a7879;
+  --light: #fcfcfc;
+  --border: #e8eeef;
   --white: #ffffff;
 }
 
-body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
 /* ── TOPBAR ── */
 .topbar {
-  background: var(--green); color: #fff;
-  text-align: center; padding: 9px 24px;
-  font-size: 13px; font-weight: 500;
+  background: var(--accent); color: #fff;
+  text-align: center; padding: 10px 24px;
+  font-size: 13px; font-weight: 600;
 }
-.topbar a { color: #fff; font-weight: 700; text-decoration: underline; }
+.topbar a { color: #fff; font-weight: 800; text-decoration: underline; }
 
 /* ── NAV ── */
 nav {
@@ -38,465 +41,340 @@ nav {
   position: sticky; top: 0; z-index: 200;
 }
 .nav-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
   display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+  height: 76px;
 }
 .nav-logo {
   font-size: 20px; font-weight: 900; color: var(--text);
   letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
 }
 .nav-logo-icon {
-  width: 38px; height: 38px; border-radius: 10px;
-  background: var(--green); display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: #fff; flex-shrink: 0;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: radial-gradient(circle at center, #fff 0%, var(--accent-mid) 100%);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
 }
-.nav-logo span { color: var(--green); }
-.nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-logo span { color: var(--accent); }
+.nav-menu { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-menu > li > a {
-  display: block; padding: 8px 14px;
-  font-size: 13px; font-weight: 600; color: var(--muted);
+  display: block; padding: 8px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
   border-radius: 8px; transition: color .15s, background .15s;
-  white-space: nowrap;
 }
-.nav-menu > li > a:hover { color: var(--text); background: var(--light); }
+.nav-menu > li > a:hover { color: var(--text); background: var(--accent-light); }
 .nav-cta {
-  background: var(--green); color: #fff;
-  border: none; border-radius: 8px; padding: 11px 20px;
-  font-size: 13px; font-weight: 700; cursor: pointer;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 20px; padding: 12px 24px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
   font-family: inherit; white-space: nowrap; transition: background .15s;
 }
-.nav-cta:hover { background: var(--green2); }
+.nav-cta:hover { background: var(--accent2); }
+.nav-mobile { display: none; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #eff6ff 100%);
-  padding: 80px 24px 90px;
-  border-bottom: 1px solid var(--border);
+  background: radial-gradient(ellipse at center, var(--white) 0%, var(--accent-mid) 100%);
+  padding: 100px 32px 110px;
 }
 .hero-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 440px; gap: 80px; align-items: center;
 }
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: var(--green); color: #fff;
-  padding: 5px 14px; border-radius: 100px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
-  margin-bottom: 20px;
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--accent); color: var(--accent);
+  padding: 5px 16px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  margin-bottom: 24px; text-transform: uppercase;
 }
-.hero-tag-dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hero-badge-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
 .hero h1 {
-  font-size: clamp(32px, 3.5vw, 50px); font-weight: 900;
-  line-height: 1.1; letter-spacing: -1px; color: var(--text);
-  margin-bottom: 12px;
+  font-size: clamp(36px, 4vw, 56px); font-weight: 900;
+  line-height: 1.1; letter-spacing: -1.5px; color: var(--text);
+  margin-bottom: 16px;
 }
-.hero h1 em { font-style: normal; color: var(--green); }
+.hero h1 em { font-style: normal; color: var(--accent); }
 .hero-sub {
-  font-size: 18px; color: var(--muted); line-height: 1.7; margin-bottom: 32px;
+  font-size: 18px; color: var(--muted); line-height: 1.8; margin-bottom: 36px;
+  max-width: 480px;
 }
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
 .btn-primary {
-  background: var(--green); color: #fff; border: none; border-radius: 8px;
-  padding: 14px 28px; font-size: 15px; font-weight: 700;
-  cursor: pointer; font-family: inherit; display: inline-block; transition: background .15s;
+  background: var(--accent); color: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 20px; padding: 14px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s, transform .15s;
+  display: inline-flex; align-items: center; gap: 8px;
 }
-.btn-primary:hover { background: var(--green2); }
-.btn-outline {
-  background: transparent; color: var(--text);
-  border: 2px solid var(--border); border-radius: 8px;
-  padding: 14px 28px; font-size: 15px; font-weight: 600;
-  cursor: pointer; font-family: inherit; display: inline-block; transition: border-color .15s;
+.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent; color: var(--accent);
+  border: 2px solid var(--accent); border-radius: 20px; padding: 14px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s, transform .15s;
 }
-.btn-outline:hover { border-color: var(--text); }
+.btn-secondary:hover { background: var(--accent-light); transform: translateY(-1px); }
 .hero-trust { display: flex; align-items: center; gap: 12px; }
-.hero-trust-stars { color: #f59e0b; font-size: 16px; letter-spacing: 1px; }
-.hero-trust-text { font-size: 14px; color: var(--muted); }
-.hero-trust-text strong { color: var(--text); }
+.hero-trust-stars { font-size: 22px; }
+.hero-trust-text { font-size: 14px; color: var(--muted); font-weight: 600; }
+.hero-trust-text strong { color: var(--text); font-weight: 800; }
 
-/* HERO CARD (reseñas) */
+/* Hero card */
 .hero-card {
-  background: #fff; border-radius: 20px;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,.07), 0 20px 60px rgba(0,0,0,.1);
-  border: 1px solid var(--border); overflow: hidden;
-}
-.hcard-head {
-  padding: 18px 22px; border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.hcard-head h3 { font-size: 13px; font-weight: 700; }
-.hcard-live { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--green); font-weight: 600; }
-.hcard-live span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 2s infinite; }
-.hcard-review { padding: 14px 22px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; }
-.hcard-review:last-of-type { border-bottom: none; }
-.hcard-av { width: 36px; height: 36px; border-radius: 50%; background: var(--green); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.hcard-name { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
-.hcard-stars { color: #f59e0b; font-size: 11px; margin-bottom: 3px; }
-.hcard-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.hcard-foot {
-  background: var(--light); padding: 14px 22px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.hcard-score { font-size: 24px; font-weight: 900; }
-.hcard-score-sub { font-size: 11px; color: var(--muted); }
-.hcard-badge {
-  background: #fff; border: 1px solid var(--border); border-radius: 100px;
-  padding: 5px 12px; font-size: 11px; font-weight: 700; color: var(--muted);
-}
-
-/* ── PROCESO ── */
-.proceso {
-  padding: 64px 24px;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 20px 60px rgba(79,163,200,0.12), 0 4px 16px rgba(0,0,0,0.06);
 }
-.proceso-inner { max-width: 1200px; margin: 0 auto; }
-.proceso h2 {
-  font-size: clamp(18px, 2vw, 24px); font-weight: 800;
-  text-align: center; margin-bottom: 48px; color: var(--text);
-}
-.proceso-steps {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-}
-.proceso-step {
-  padding: 36px 32px;
-  background: var(--white);
-  border-right: 1px solid var(--border);
-  position: relative;
-}
-.proceso-step:last-child { border-right: none; }
-.proceso-step-num {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--green); color: #fff;
-  font-size: 20px; font-weight: 900;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.proceso-step h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
-.proceso-step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-.proceso-cta { text-align: center; margin-top: 36px; }
-
-/* ── SERVICIOS ── */
-.servicios { padding: 80px 24px; background: var(--light); }
-.servicios-inner { max-width: 1200px; margin: 0 auto; }
-.section-kicker {
-  font-size: 12px; font-weight: 700; color: var(--green);
-  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;
-}
-.section-h2 {
-  font-size: clamp(24px, 2.5vw, 36px); font-weight: 900;
-  letter-spacing: -0.5px; margin-bottom: 8px;
-}
-.section-sub { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
-
-.servicios-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px;
-}
-.servicio-card {
-  background: var(--white); border-radius: 16px; border: 1px solid var(--border);
-  overflow: hidden; display: flex; flex-direction: column;
-  transition: box-shadow .2s, transform .2s;
-  cursor: pointer; color: inherit;
-}
-.servicio-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.09); transform: translateY(-3px); }
-.servicio-img {
-  width: 100%; height: 180px; object-fit: cover;
-}
-.servicio-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-.servicio-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
-.servicio-body p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; flex: 1; }
-.servicio-incluye-title {
-  font-size: 11px; font-weight: 700; color: var(--green);
-  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
-}
-.servicio-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
-.servicio-list li {
-  font-size: 13px; color: var(--text);
-  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
-}
-.servicio-list li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
-.servicio-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 13px; font-weight: 700; color: var(--green);
-  margin-top: auto;
-}
-.servicio-link:hover { text-decoration: underline; }
-
-/* servicios médicos (3 col más pequeñas) */
-.servicios-med-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px;
-}
-.servicio-med-card {
-  background: var(--white); border-radius: 14px; border: 1px solid var(--border);
-  padding: 28px; transition: box-shadow .2s;
-}
-.servicio-med-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-.smc-icon { font-size: 32px; margin-bottom: 14px; }
-.servicio-med-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
-.servicio-med-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
-
-/* ── TECNOLOGÍA ── */
-.tech { padding: 80px 24px; background: var(--white); border-top: 1px solid var(--border); }
-.tech-inner { max-width: 1200px; margin: 0 auto; }
-.tech-tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 40px; flex-wrap: wrap; }
-.tech-tab {
-  padding: 11px 22px; font-size: 14px; font-weight: 600; color: var(--muted);
-  border: none; background: none; cursor: pointer; font-family: inherit;
-  border-bottom: 2px solid transparent; margin-bottom: -2px;
-  transition: color .15s;
-}
-.tech-tab.active { color: var(--green); border-bottom-color: var(--green); }
-.tech-panel { display: none; }
-.tech-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.tech-panel-text h3 { font-size: 22px; font-weight: 800; margin-bottom: 14px; }
-.tech-panel-text p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
-.tech-panel-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.tech-panel-text ul li { font-size: 14px; color: var(--text); display: flex; gap: 8px; }
-.tech-panel-text ul li::before { content: '→'; color: var(--green); font-weight: 700; flex-shrink: 0; }
-.tech-panel-img { border-radius: 16px; overflow: hidden; }
-.tech-panel-img img { width: 100%; height: 340px; object-fit: cover; }
-
-/* ── BLOG ── */
-.blog { padding: 80px 24px; background: var(--light); }
-.blog-inner { max-width: 1200px; margin: 0 auto; }
-.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-.blog-card {
-  background: var(--white); border-radius: 16px; border: 1px solid var(--border);
-  overflow: hidden; transition: box-shadow .2s;
-}
-.blog-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-.blog-card-img { width: 100%; height: 180px; object-fit: cover; }
-.blog-card-body { padding: 22px; }
-.blog-cat { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.blog-card-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; line-height: 1.4; }
-.blog-card-body p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
-.blog-date { font-size: 12px; color: var(--muted); }
-
-/* ── SOBRE NOSOTROS ── */
-.sobre { padding: 80px 24px; background: var(--white); }
-.sobre-inner { max-width: 1200px; margin: 0 auto; }
-.sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
-.sobre-img { border-radius: 20px; overflow: hidden; }
-.sobre-img img { width: 100%; height: 420px; object-fit: cover; }
-.sobre-texto p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
-.sobre-texto h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: var(--text); }
-
-/* tabla comparativa */
-.tabla-comp { margin-top: 48px; }
-.tabla-comp h3 { font-size: 18px; font-weight: 800; margin-bottom: 24px; }
-.comp-row {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
-  border-bottom: 1px solid var(--border);
-}
-.comp-row.header { background: var(--green); border-radius: 12px 12px 0 0; border: none; }
-.comp-cell { padding: 14px 20px; font-size: 13px; }
-.comp-row.header .comp-cell { color: #fff; font-weight: 700; font-size: 13px; }
-.comp-row:not(.header):nth-child(even) { background: var(--light); }
-.comp-row:last-child { border-bottom: none; border-radius: 0 0 12px 12px; overflow: hidden; }
-.comp-yes { color: var(--green); font-weight: 700; }
-.comp-no { color: #ef4444; font-weight: 700; }
-
-/* ── TESTIMONIOS ── */
-.testimonios { padding: 80px 24px; background: var(--light); }
-.testimonios-inner { max-width: 1200px; margin: 0 auto; }
-.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-.test-card {
-  background: var(--white); border-radius: 16px; border: 1px solid var(--border);
-  padding: 28px;
-}
-.test-stars { color: #f59e0b; font-size: 16px; margin-bottom: 14px; }
-.test-text { font-size: 14px; color: var(--text); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
-.test-autor { display: flex; align-items: center; gap: 12px; }
-.test-av {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--green); color: #fff;
-  font-size: 15px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.test-name { font-size: 14px; font-weight: 700; }
-.test-meta { font-size: 12px; color: var(--muted); }
-.google-block {
-  margin-top: 48px; padding: 28px 32px;
-  background: var(--white); border: 1px solid var(--border); border-radius: 16px;
-  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-}
-.gb-score { font-size: 52px; font-weight: 900; line-height: 1; }
-.gb-stars { color: #f59e0b; font-size: 22px; margin-bottom: 4px; }
-.gb-label { font-size: 14px; color: var(--muted); }
-.gb-right { margin-left: auto; text-align: right; }
-.gb-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: 100px; padding: 8px 16px; font-size: 13px; font-weight: 600; }
-
-/* ── EQUIPO ── */
-.equipo { padding: 80px 24px; background: var(--white); }
-.equipo-inner { max-width: 1200px; margin: 0 auto; }
-.equipo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-.fisio-card {
-  background: var(--white); border-radius: 16px; border: 1px solid var(--border);
-  padding: 32px 24px; text-align: center;
-}
-.fisio-foto {
+.hero-card-photo {
   width: 120px; height: 120px; border-radius: 50%;
   object-fit: cover; margin: 0 auto 20px;
-  border: 3px solid var(--green-mid);
+  border: 4px solid var(--accent-mid);
 }
-.fisio-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-.fisio-col { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-.fisio-esp {
-  display: inline-block;
-  background: var(--green-light); color: var(--green);
-  font-size: 12px; font-weight: 700; border-radius: 100px;
-  padding: 4px 12px; margin-bottom: 12px;
+.hero-card-photo-placeholder {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border: 4px solid var(--accent-mid);
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
 }
-.fisio-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.hero-card-name { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.hero-card-role { text-align: center; color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+.hero-card-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+.hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.hero-card-stat {
+  background: var(--accent-light); border-radius: 14px; padding: 14px;
+  text-align: center;
+}
+.hero-card-stat-val { font-size: 22px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+.hero-card-stat-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+.hero-card-badge {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #fff; border-radius: 14px; padding: 14px 18px;
+  text-align: center; font-size: 14px; font-weight: 700;
+}
 
-/* ── CTA FINAL ── */
-.cta-final {
-  padding: 80px 24px;
-  background: linear-gradient(135deg, var(--green) 0%, var(--green2) 100%);
+/* ── SECCIÓN GENÉRICA ── */
+.section { padding: 90px 32px; }
+.section-alt { background: var(--accent-light); }
+.section-dark { background: linear-gradient(180deg, var(--accent) 0%, var(--accent2) 100%); color: #fff; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--accent);
+  margin-bottom: 12px;
 }
-.cta-final-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.cta-final h2 { font-size: clamp(26px, 2.5vw, 40px); font-weight: 900; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
-.cta-final p { font-size: 16px; color: rgba(255,255,255,.85); margin-bottom: 32px; line-height: 1.7; }
+.section-dark .section-label { color: rgba(255,255,255,0.7); }
+.section-title {
+  font-size: clamp(28px, 3vw, 42px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.15; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7;
+}
+.section-dark .section-sub { color: rgba(255,255,255,0.8); }
+.section-header { margin-bottom: 56px; }
+
+/* ── CÓMO FUNCIONA ── */
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.step {
+  background: var(--white); border-radius: 20px; padding: 36px;
+  border: 1px solid var(--border);
+  position: relative; transition: box-shadow .2s, transform .2s;
+}
+.step:hover { box-shadow: 0 12px 40px rgba(79,163,200,0.12); transform: translateY(-3px); }
+.step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 900; margin-bottom: 20px;
+}
+.step h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+.step p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+/* ── SERVICIOS ── */
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.service-card {
+  background: var(--white); border-radius: 20px; padding: 32px;
+  border: 1px solid var(--border);
+  transition: box-shadow .2s, transform .2s;
+}
+.service-card:hover { box-shadow: 0 12px 40px rgba(79,163,200,0.12); transform: translateY(-3px); }
+.service-icon {
+  width: 56px; height: 56px; border-radius: 16px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 20px;
+}
+.service-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+.service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ── POR QUÉ YO ── */
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.why-list { display: flex; flex-direction: column; gap: 24px; }
+.why-item { display: flex; gap: 18px; align-items: flex-start; }
+.why-icon {
+  width: 52px; height: 52px; border-radius: 16px;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.why-item h4 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+.why-item p { font-size: 14px; opacity: 0.8; line-height: 1.6; }
+.why-cta-box {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px; padding: 44px; text-align: center;
+}
+.why-cta-box p { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+.why-cta-box span { font-size: 16px; opacity: 0.8; display: block; margin-bottom: 28px; }
 .btn-white {
-  background: #fff; color: var(--green); border: none; border-radius: 8px;
-  padding: 15px 30px; font-size: 15px; font-weight: 800;
-  cursor: pointer; font-family: inherit; display: inline-block;
-  transition: opacity .15s;
+  background: var(--white); color: var(--accent);
+  border: none; border-radius: 20px; padding: 16px 32px;
+  font-size: 15px; font-weight: 800; cursor: pointer;
+  font-family: inherit; transition: opacity .15s, transform .15s;
+  display: inline-block;
 }
-.btn-white:hover { opacity: .92; }
-.contacto-items { display: flex; flex-direction: column; gap: 16px; }
-.contacto-item {
-  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
-  border-radius: 12px; padding: 18px 22px;
-  display: flex; align-items: center; gap: 16px;
+.btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── TESTIMONIOS ── */
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.review-card {
+  background: var(--white); border-radius: 20px; padding: 30px;
+  border: 1px solid var(--border);
 }
-.ci-icon { font-size: 24px; }
-.ci-label { font-size: 11px; color: rgba(255,255,255,.75); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
-.ci-value { font-size: 15px; color: #fff; font-weight: 700; margin-top: 2px; }
+.review-stars { font-size: 18px; margin-bottom: 14px; }
+.review-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent-mid); display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: var(--accent); flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; }
+.review-via { font-size: 12px; color: var(--muted); }
+.reviews-header-right { display: flex; align-items: center; gap: 16px; }
+.reviews-score {
+  background: var(--accent); color: #fff; border-radius: 16px;
+  padding: 12px 20px; text-align: center;
+}
+.reviews-score-num { font-size: 32px; font-weight: 900; line-height: 1; }
+.reviews-score-label { font-size: 11px; opacity: 0.85; font-weight: 600; margin-top: 2px; }
+
+/* ── CONTACTO ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-item-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.contact-item h4 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 4px; }
+.contact-item p { font-size: 16px; font-weight: 700; color: var(--text); }
+.contact-item a { color: var(--accent); font-weight: 700; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1.5px solid var(--border); border-radius: 12px; padding: 13px 16px;
+  font-size: 15px; font-family: inherit; color: var(--text);
+  transition: border-color .15s;
+  background: var(--white);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 20px; padding: 15px;
+  font-size: 15px; font-weight: 800; cursor: pointer;
+  font-family: inherit; transition: background .15s;
+}
+.form-submit:hover { background: var(--accent2); }
 
 /* ── FOOTER ── */
-footer { background: #111827; padding: 48px 24px 28px; }
-.footer-inner { max-width: 1200px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 24px; }
-.footer-brand .footer-logo { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 12px; display: block; }
-.footer-brand .footer-logo span { color: var(--green); }
-.footer-brand p { font-size: 13px; color: #6b7280; line-height: 1.7; max-width: 280px; }
-.footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-col ul a { font-size: 13px; color: #6b7280; transition: color .15s; }
-.footer-col ul a:hover { color: #fff; }
-.footer-contact-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-contact-list li { font-size: 13px; color: #6b7280; display: flex; align-items: flex-start; gap: 8px; }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.footer-bottom p { font-size: 12px; color: #4b5563; }
-.footer-legal { display: flex; gap: 20px; }
-.footer-legal a { font-size: 12px; color: #4b5563; transition: color .15s; }
-.footer-legal a:hover { color: #9ca3af; }
+footer {
+  background: var(--text); color: rgba(255,255,255,0.7);
+  padding: 48px 32px;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { font-size: 18px; font-weight: 900; color: #fff; }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 24px; font-size: 13px; }
+.footer-links a { color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 13px; width: 100%; }
 
-/* ── MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 1000;
-  background: rgba(0,0,0,.55); backdrop-filter: blur(4px);
-  align-items: center; justify-content: center; padding: 24px;
+/* ── WHATSAPP FLOTANTE ── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  font-size: 28px; transition: transform .2s;
+  cursor: pointer;
 }
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--white); border-radius: 20px;
-  max-width: 760px; width: 100%; max-height: 90vh;
-  overflow-y: auto; position: relative;
-  box-shadow: 0 24px 80px rgba(0,0,0,.25);
-  animation: modalIn .2s ease;
-}
-@keyframes modalIn { from { opacity:0; transform: scale(.95) translateY(12px); } to { opacity:1; transform: scale(1) translateY(0); } }
-.modal-close {
-  position: sticky; top: 0; float: right; margin: 16px 16px 0 0;
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--light); border: 1px solid var(--border);
-  font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  z-index: 10; flex-shrink: 0;
-}
-.modal-close:hover { background: var(--border); }
-.modal-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px 20px 0 0; }
-.modal-body { padding: 32px; }
-.modal-kicker { font-size: 12px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
-.modal-body h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
-.modal-body .modal-desc { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
-.modal-section-title { font-size: 13px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.modal-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-.modal-list li { font-size: 14px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
-.modal-list li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 13px; margin-top: 2px; flex-shrink: 0; }
-.modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.modal-tag { font-size: 12px; font-weight: 600; background: var(--green-light); color: var(--green); border-radius: 100px; padding: 5px 14px; }
-.modal-cta { display: block; background: var(--green); color: #fff; text-align: center; border-radius: 10px; padding: 15px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .15s; }
-.modal-cta:hover { background: var(--green2); }
+.wa-float:hover { transform: scale(1.1); }
 
-/* ── MOBILE ── */
-@media (max-width: 960px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .proceso-steps { grid-template-columns: 1fr; }
-  .proceso-step { border-right: none; border-bottom: 1px solid var(--border); }
-  .proceso-step:last-child { border-bottom: none; }
-  .servicios-grid { grid-template-columns: 1fr 1fr; }
-  .sobre-grid { grid-template-columns: 1fr; }
-  .cta-final-inner { grid-template-columns: 1fr; gap: 40px; }
-  .tech-panel.active { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-card { max-width: 400px; margin: 0 auto; }
+  .steps { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .nav-menu { display: none; }
+  .nav-mobile { display: block; font-size: 22px; cursor: pointer; }
 }
-@media (max-width: 640px) {
-  .servicios-grid { grid-template-columns: 1fr; }
-  .servicios-med-grid { grid-template-columns: 1fr; }
-  .test-grid { grid-template-columns: 1fr; }
-  .equipo-grid { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .comp-row { grid-template-columns: 1fr 1fr; }
-  .comp-row.header .comp-cell:last-child,
-  .comp-row:not(.header) .comp-cell:last-child { display: none; }
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .section { padding: 64px 20px; }
+  .hero { padding: 64px 20px 72px; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <img class="modal-img" id="modal-img" src="" alt="">
-    <div class="modal-body">
-      <div class="modal-kicker" id="modal-kicker"></div>
-      <h2 id="modal-title"></h2>
-      <p class="modal-desc" id="modal-desc"></p>
-      <div class="modal-section-title">Qué incluye el tratamiento</div>
-      <ul class="modal-list" id="modal-list"></ul>
-      <div class="modal-section-title">Indicado para</div>
-      <div class="modal-tags" id="modal-tags"></div>
-      <a href="#" class="modal-cta" onclick="return false;">Pedir cita para este tratamiento →</a>
-    </div>
-  </div>
-</div>
-
 <!-- TOPBAR -->
 <div class="topbar">
-  🏠 Fisioterapia <strong>en tu casa</strong> — Sin desplazamientos. Sin esperas. <a href="#cita">Pide cita hoy →</a>
+  🏠 Fisioterapia a domicilio en Madrid &nbsp;·&nbsp; <a href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">Escríbeme por WhatsApp</a>
 </div>
 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">✚</div>
-      Fisio<span>Enzo</span>
-    </a>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">🦴</div>
+      <div>Enzo <span>Fisio</span></div>
+    </div>
     <ul class="nav-menu">
-      <li><a href="#equipo">Nuestro equipo</a></li>
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#tech">Tecnología</a></li>
-      <li><a href="#sobre">Sobre nosotros</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="nav-cta" onclick="return false;" id="cita">Cita online</button>
+    <button class="nav-cta" onclick="window.open('https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio')">
+      Solicitar cita
+    </button>
+    <div class="nav-mobile">☰</div>
   </div>
 </nav>
 
@@ -504,505 +382,292 @@ footer { background: #111827; padding: 48px 24px 28px; }
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-tag"><span class="hero-tag-dot"></span> Servicio a domicilio en Madrid</div>
-      <h1>Fisioterapeuta<br>a domicilio en <em>Madrid</em></h1>
-      <p class="hero-sub">Enzo, fisioterapeuta colegiado. Me desplazo a tu casa en Madrid para tratarte sin que tengas que moverte. Mismo rigor clínico que en consulta, en la comodidad de tu hogar.</p>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Disponible en Madrid
+      </div>
+      <h1>Fisioterapia<br>en <em>tu casa</em>,<br>en Madrid</h1>
+      <p class="hero-sub">
+        Me desplazo a tu domicilio para que no tengas que moverte. Tratamiento personalizado, sin esperas, en la comodidad de tu hogar.
+      </p>
       <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="return false;">Pedir cita online</a>
-        <a href="#servicios" class="btn-outline">Ver servicios</a>
+        <a class="btn-primary" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">
+          💬 Pedir cita por WhatsApp
+        </a>
+        <a class="btn-secondary" href="tel:+34600000000">📞 Llamar ahora</a>
       </div>
       <div class="hero-trust">
-        <span class="hero-trust-stars">★★★★★</span>
-        <span class="hero-trust-text"><strong>5/5</strong> en Google · reseñas verificadas</span>
+        <div class="hero-trust-stars">⭐⭐⭐⭐⭐</div>
+        <div class="hero-trust-text"><strong>4,9/5</strong> · Más de 60 pacientes en Madrid</div>
       </div>
     </div>
+
     <div class="hero-card">
-      <div class="hcard-head">
-        <h3>Opiniones recientes</h3>
-        <div class="hcard-live"><span></span> Google en directo</div>
-      </div>
-      <div class="hcard-review">
-        <div class="hcard-av">L</div>
-        <div>
-          <div class="hcard-name">Laura M.</div>
-          <div class="hcard-stars">★★★★★</div>
-          <div class="hcard-text">"Recuperé mi rodilla en tiempo récord. Profesionales y muy cercanos."</div>
+      <div class="hero-card-photo-placeholder">🧑‍⚕️</div>
+      <div class="hero-card-name">Enzo</div>
+      <div class="hero-card-role">Fisioterapeuta a Domicilio · Madrid</div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-stats">
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">+8</div>
+          <div class="hero-card-stat-label">Años de experiencia</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">+300</div>
+          <div class="hero-card-stat-label">Pacientes tratados</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">4,9★</div>
+          <div class="hero-card-stat-label">Valoración Google</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">100%</div>
+          <div class="hero-card-stat-label">A domicilio</div>
         </div>
       </div>
-      <div class="hcard-review">
-        <div class="hcard-av">J</div>
-        <div>
-          <div class="hcard-name">Jordi P.</div>
-          <div class="hcard-stars">★★★★★</div>
-          <div class="hcard-text">"Llevaba meses con dolor lumbar. Después de 5 sesiones, solucionado."</div>
-        </div>
-      </div>
-      <div class="hcard-review">
-        <div class="hcard-av">A</div>
-        <div>
-          <div class="hcard-name">Ana R.</div>
-          <div class="hcard-stars">★★★★★</div>
-          <div class="hcard-text">"El mejor sitio al que he ido. Trato excelente y resultados reales."</div>
-        </div>
-      </div>
-      <div class="hcard-foot">
-        <div>
-          <div class="hcard-score">5.0 ⭐</div>
-          <div class="hcard-score-sub">Valoración perfecta · Google Business</div>
-        </div>
-        <div class="hcard-badge">🔵 Verificado en Google</div>
+      <div class="hero-card-badge">
+        🏠 Toda Madrid · Desplazamiento incluido
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESO -->
-<section class="proceso">
-  <div class="proceso-inner">
-    <h2>¿Cómo funciona el servicio a domicilio?</h2>
-    <div class="proceso-steps">
-      <div class="proceso-step">
-        <div class="proceso-step-num">1</div>
-        <h3>Me contactas</h3>
-        <p>Me escribes por WhatsApp o llamas. Me cuentas qué te pasa, tu zona de Madrid y tu disponibilidad. En menos de 24h te confirmo cita.</p>
-      </div>
-      <div class="proceso-step">
-        <div class="proceso-step-num">2</div>
-        <h3>Voy a tu casa</h3>
-        <p>Me presento con todo el material necesario. Hago una valoración completa en tu domicilio y te explico exactamente qué tienes y cuántas sesiones necesitas.</p>
-      </div>
-      <div class="proceso-step">
-        <div class="proceso-step-num">3</div>
-        <h3>Tratamiento y seguimiento</h3>
-        <p>Aplico el tratamiento más adecuado para tu caso. Entre sesiones estoy disponible por WhatsApp para cualquier duda o cambio de horario.</p>
-      </div>
+<!-- CÓMO FUNCIONA -->
+<section class="section" id="como-funciona">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">El proceso</div>
+      <div class="section-title">Tan sencillo<br>como tres pasos</div>
+      <div class="section-sub">Sin clínicas, sin desplazamientos, sin esperas. Te atiendo donde estás.</div>
     </div>
-    <div class="proceso-cta">
-      <a href="#" class="btn-primary" onclick="return false;">Reservar primera cita gratuita →</a>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Me escribes por WhatsApp</h3>
+        <p>Cuéntame qué te pasa y acordamos el día y la hora que mejor te venga. Respondo en menos de 1 hora.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Voy a tu domicilio</h3>
+        <p>Me presento puntual con todo el material necesario. Tú solo tienes que estar cómodo en casa.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Tratamiento y seguimiento</h3>
+        <p>Aplicamos el tratamiento y te doy pautas para casa. Hacemos seguimiento hasta tu recuperación completa.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICIOS -->
-<section class="servicios" id="servicios">
-  <div class="servicios-inner">
-    <div class="section-kicker">Tratamientos</div>
-    <div class="section-h2">Servicios de fisioterapia y fisioterapia deportiva</div>
-        <p class="section-sub">Tratamientos especializados para cada tipo de lesión y perfil de paciente. Sin protocolos genéricos — cada caso es único.</p>
-    <div class="servicios-grid">
-
-      <a class="servicio-card" href="servicios/fisioterapia.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=360&auto=format&fit=crop" alt="Fisioterapia">
-        <div class="servicio-body">
-          <h3>Fisioterapia</h3>
-          <p>Terapia física que ayuda a prevenir, resolver y recuperar diferentes lesiones del aparato locomotor. Tratamiento de la causa, no del síntoma.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Evaluación funcional completa</li>
-            <li>Terapia manual y movilización articular</li>
-            <li>Ejercicio terapéutico supervisado</li>
-            <li>Educación del paciente y pauta domiciliaria</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
-      <a class="servicio-card" href="servicios/fisioterapia-deportiva.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=360&auto=format&fit=crop" alt="Fisioterapia Deportiva">
-        <div class="servicio-body">
-          <h3>Fisioterapia deportiva</h3>
-          <p>Especialización para personas activas y deportistas que quieren recuperarse rápido y volver a su nivel sin riesgo de recaída.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Valoración biomecánica del gesto deportivo</li>
-            <li>Tratamiento de sobrecargas y roturas fibrilares</li>
-            <li>Readaptación al deporte por fases</li>
-            <li>Plan de prevención de lesiones</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
-      <a class="servicio-card" href="servicios/rehabilitacion.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&h=360&auto=format&fit=crop" alt="Rehabilitación">
-        <div class="servicio-body">
-          <h3>Rehabilitación</h3>
-          <p>Recuperación funcional tras cirugías, fracturas o lesiones graves. Proceso estructurado hasta recuperar movilidad y fuerza completas.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Rehabilitación post-quirúrgica (prótesis, LCA, manguito)</li>
-            <li>Reeducación de la marcha y el equilibrio</li>
-            <li>Fortalecimiento muscular progresivo</li>
-            <li>Coordinación con el médico responsable</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
-      <a class="servicio-card" href="servicios/accidente-trafico.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=360&auto=format&fit=crop" alt="Accidentes de tráfico">
-        <div class="servicio-body">
-          <h3>Rehabilitación por accidente de tráfico</h3>
-          <p>Tratamiento especializado en traumatismos severos derivados de accidentes de tráfico, con gestión aseguradora incluida.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Tratamiento de latigazo cervical y contusiones</li>
-            <li>Informe pericial para aseguradora si se precisa</li>
-            <li>Protocolo de recuperación funcional completa</li>
-            <li>Seguimiento hasta el alta médica</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
-      <a class="servicio-card" href="servicios/suelo-pelvico.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=360&auto=format&fit=crop&crop=center" alt="Suelo pélvico">
-        <div class="servicio-body">
-          <h3>Fisioterapia de suelo pélvico</h3>
-          <p>Tratamiento especializado pre y postparto. Recuperación completa con fisioterapeutas especializadas en disfunción del suelo pélvico.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Valoración interna y externa del suelo pélvico</li>
-            <li>Tratamiento de incontinencia y disfunción sexual</li>
-            <li>Preparación al parto y recuperación postparto</li>
-            <li>Hipopresivos y ejercicio dirigido</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
-      <a class="servicio-card" href="servicios/osteopatia.html">
-        <img class="servicio-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=360&auto=format&fit=crop" alt="Osteopatía">
-        <div class="servicio-body">
-          <h3>Osteopatía</h3>
-          <p>Diagnóstico y tratamiento de las disfunciones de movilidad del aparato locomotor. Enfoque global de la salud musculoesquelética.</p>
-          <div class="servicio-incluye-title">Qué incluye</div>
-          <ul class="servicio-list">
-            <li>Evaluación global de cadenas miofasciales</li>
-            <li>Técnicas articulatorias y manipulativas suaves</li>
-            <li>Tratamiento visceral y estructural</li>
-            <li>Reequilibrio postural y plan de mantenimiento</li>
-          </ul>
-          <span class="servicio-link">Ver más →</span>
-        </div>
-      </a>
-
+<section class="section section-alt" id="servicios">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Lo que hago</div>
+      <div class="section-title">Tratamientos<br>a domicilio</div>
+      <div class="section-sub">Toda la fisioterapia que necesitas, sin salir de casa.</div>
     </div>
-
-    <!-- SERVICIOS MÉDICOS -->
-    <div style="margin-top: 48px;">
-      <div class="section-kicker">Medicina deportiva</div>
-      <div class="section-h2" style="font-size: clamp(20px, 2vw, 26px); margin-bottom: 24px;">Servicios de medicina deportiva</div>
-    </div>
-    <div class="servicios-med-grid">
-      <div class="servicio-med-card">
-        <div class="smc-icon">💉</div>
-        <h3>Ácido hialurónico</h3>
-        <p>Infiltración intraarticular para preservar el cartílago y mejorar la lubricación articular. Indicado en artrosis de rodilla, cadera y hombro. Reduce el dolor y frena la degeneración.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🦴</div>
+        <h3>Fisioterapia General</h3>
+        <p>Contracturas, cervicales, lumbalgias, dolores musculares. Diagnóstico y tratamiento manual en tu domicilio.</p>
       </div>
-      <div class="servicio-med-card">
-        <div class="smc-icon">🩸</div>
-        <h3>PRP — Plasma Rico en Plaquetas</h3>
-        <p>Aprovechamos los factores de crecimiento del propio paciente para reparar tejidos dañados. Acelera la vuelta a la actividad deportiva y mejora la calidad del tejido regenerado.</p>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Fisioterapia Deportiva</h3>
+        <p>Recuperación de lesiones deportivas, tendinitis, esguinces y sobrecargas. Vuelve al deporte antes.</p>
       </div>
-      <div class="servicio-med-card">
-        <div class="smc-icon">⚕️</div>
-        <h3>Infiltraciones de corticoides</h3>
-        <p>Reducción directa de la inflamación en articulaciones y tejidos afectados. Alivio rápido del dolor para poder iniciar el proceso de rehabilitación funcional.</p>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Neurológica y Geriátrica</h3>
+        <p>Tratamiento para pacientes con movilidad reducida, mayores o en proceso de rehabilitación.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤰</div>
+        <h3>Embarazo y Postparto</h3>
+        <p>Fisioterapia adaptada durante el embarazo y recuperación postparto, en la comodidad de tu hogar.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏃</div>
+        <h3>Rehabilitación Postoperatoria</h3>
+        <p>Recuperación tras operaciones de rodilla, cadera, hombro u otras intervenciones quirúrgicas.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤲</div>
+        <h3>Osteopatía</h3>
+        <p>Tratamiento global del cuerpo mediante técnicas osteopáticas para mejorar tu bienestar general.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TECNOLOGÍA -->
-<section class="tech" id="tech">
-  <div class="tech-inner">
-    <div class="section-kicker">Equipamiento</div>
-    <div class="section-h2">Tecnología punta</div>
-    <p class="section-sub" style="margin-bottom: 36px;">Utilizamos las técnicas más modernas del mercado aplicables a la fisioterapia.</p>
-
-    <div class="tech-tabs">
-      <button class="tech-tab active" onclick="showTab(this,'t1')">Ecografía</button>
-      <button class="tech-tab" onclick="showTab(this,'t2')">Diatermia</button>
-      <button class="tech-tab" onclick="showTab(this,'t3')">Punción seca</button>
-      <button class="tech-tab" onclick="showTab(this,'t4')">Fibrolisis diacutánea</button>
-    </div>
-
-    <div id="t1" class="tech-panel active">
-      <div class="tech-panel-text">
-        <h3>Ecografía musculoesquelética</h3>
-        <p>Método diagnóstico por imagen que proporciona imágenes en tiempo real de músculos, tendones, ligamentos y articulaciones. Rápido, indoloro y sin efectos secundarios.</p>
-        <p>Nos permite ver exactamente qué está lesionado antes de empezar el tratamiento, ajustar la técnica en función de la evolución real y confirmar el diagnóstico sin esperar una cita externa.</p>
-        <ul>
-          <li>Diagnóstico inmediato en consulta</li>
-          <li>Valoración de roturas musculares y tendinosas</li>
-          <li>Guía para infiltraciones de precisión</li>
-          <li>Control de evolución de la lesión sesión a sesión</li>
-        </ul>
-      </div>
-      <div class="tech-panel-img">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop" alt="Ecografía">
-      </div>
-    </div>
-
-    <div id="t2" class="tech-panel">
-      <div class="tech-panel-text">
-        <h3>Diatermia (Tecarterapia)</h3>
-        <p>Aumenta la temperatura local del tejido, mejorando la circulación sanguínea y favoreciendo la regeneración celular. Penetra en profundidad donde el calor superficial no llega.</p>
-        <p>Indicada para tratar dolor profundo, inflamación crónica y tejidos fibróticos. Acelera la recuperación hasta un 40% comparado con técnicas convencionales.</p>
-        <ul>
-          <li>Lesiones de espalda y cervicales crónicas</li>
-          <li>Tendinitis y bursitis resistentes</li>
-          <li>Artritis y procesos inflamatorios articulares</li>
-          <li>Hernias discales y ciática</li>
-          <li>Cicatrices y fibrosis post-quirúrgica</li>
-        </ul>
-      </div>
-      <div class="tech-panel-img">
-        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&auto=format&fit=crop" alt="Diatermia">
-      </div>
-    </div>
-
-    <div id="t3" class="tech-panel">
-      <div class="tech-panel-text">
-        <h3>Punción seca</h3>
-        <p>Técnica invasiva que utiliza agujas de acupuntura para tratar los puntos gatillo miofasciales — los nódulos de tensión muscular que generan dolor local y referido.</p>
-        <p>A diferencia del masaje, la punción seca llega directamente al punto de máxima tensión, liberando el espasmo de forma inmediata y con resultados duraderos.</p>
-        <ul>
-          <li>Contracturas musculares resistentes a masaje</li>
-          <li>Dolor de cuello, hombros y zona lumbar</li>
-          <li>Cefaleas tensionales de origen muscular</li>
-          <li>Síndrome del piriforme y dolor glúteo</li>
-        </ul>
-      </div>
-      <div class="tech-panel-img">
-        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&auto=format&fit=crop" alt="Punción seca">
-      </div>
-    </div>
-
-    <div id="t4" class="tech-panel">
-      <div class="tech-panel-text">
-        <h3>Fibrolisis diacutánea</h3>
-        <p>Técnica con ganchos metálicos que actúa directamente sobre adherencias y microadherencias que impiden la correcta contracción muscular y generan dolor crónico.</p>
-        <p>Especialmente efectiva en lesiones antiguas donde se ha formado tejido cicatricial disfuncional. Modula la tensión entre compartimentos musculares.</p>
-        <ul>
-          <li>Cicatrices y adherencias post-quirúrgicas</li>
-          <li>Síndrome del túnel carpiano</li>
-          <li>Tendinitis crónicas del codo y hombro</li>
-          <li>Fascitis plantar resistente</li>
-        </ul>
-      </div>
-      <div class="tech-panel-img">
-        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop" alt="Fibrolisis">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section class="blog">
-  <div class="blog-inner">
-    <div class="section-kicker">Blog</div>
-    <div class="section-h2">Últimas noticias</div>
-    <p class="section-sub">Toda la información que necesitas para estar al día en el mundo de la fisioterapia.</p>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&h=280&auto=format&fit=crop" alt="Lesiones">
-        <div class="blog-card-body">
-          <div class="blog-cat">Información</div>
-          <h3>Lesiones más frecuentes en deportistas amateur y cómo prevenirlas</h3>
-          <p>Las sobrecargas y esguinces representan el 60% de las consultas. Te contamos cómo evitarlas sin renunciar a tu deporte.</p>
-          <div class="blog-date">10 de octubre de 2024</div>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&h=280&auto=format&fit=crop" alt="Deporte">
-        <div class="blog-card-body">
-          <div class="blog-cat">Consejos</div>
-          <h3>Claves para volver a hacer deporte tras una lesión sin recaer</h3>
-          <p>Volver demasiado pronto es la causa principal de recaída. Te explicamos el protocolo que seguimos con nuestros pacientes.</p>
-          <div class="blog-date">30 de enero de 2024</div>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img class="blog-card-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=280&auto=format&fit=crop" alt="Lumbar">
-        <div class="blog-card-body">
-          <div class="blog-cat">Patologías</div>
-          <h3>Lumbalgia crónica: por qué no mejora y qué podemos hacer</h3>
-          <p>El dolor lumbar crónico tiene un origen multifactorial. Analizar cada caso individualmente es la única vía hacia la solución.</p>
-          <div class="blog-date">15 de marzo de 2024</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOBRE NOSOTROS -->
-<section class="sobre" id="sobre">
-  <div class="sobre-inner">
-    <div class="section-kicker">Sobre nosotros</div>
-    <div class="section-h2">Tu fisioterapeuta a domicilio en Madrid</div>
-    <div class="sobre-grid">
-      <div class="sobre-img">
-        <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=700&auto=format&fit=crop" alt="Enzo Fisioterapia a domicilio Madrid">
-      </div>
-      <div class="sobre-texto">
-        <p>Soy Enzo, fisioterapeuta colegiado con servicio a domicilio en Madrid. Creo que recuperarse no debería implicar desplazamientos cuando tienes dolor. Por eso voy yo a ti — con todo el equipamiento necesario y el mismo rigor clínico que en cualquier consulta.</p>
-        <h3>Formación y especialización</h3>
-        <p>Graduado en Fisioterapia con formación de posgrado en fisioterapia deportiva y musculoesquelética. Actualizo mis conocimientos cada año para ofrecerte las técnicas más efectivas basadas en evidencia científica.</p>
-        <h3>¿Por qué elegirme?</h3>
-        <p>5/5 en Google con valoración perfecta. Soy yo quien te trata desde la primera sesión hasta el alta. Sin esperas en sala de espera, sin desplazamientos con dolor, sin cambios de fisio. Y disponible por WhatsApp entre sesiones.</p>
-      </div>
-    </div>
-
-    <!-- TABLA COMPARATIVA -->
-    <div class="tabla-comp">
-      <h3>Enzo a domicilio vs clínicas de fisioterapia en Madrid</h3>
-      <div class="comp-row header">
-        <div class="comp-cell">Característica</div>
-        <div class="comp-cell">Enzo a domicilio</div>
-        <div class="comp-cell">Clínicas</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Servicio en tu domicilio</div>
-        <div class="comp-cell comp-yes">✓ Siempre</div>
-        <div class="comp-cell comp-no">✗ Tienes que ir tú</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Sin esperas en sala</div>
-        <div class="comp-cell comp-yes">✓ Nunca esperas</div>
-        <div class="comp-cell comp-no">✗ Esperas habituales</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Mismo fisio de principio a fin</div>
-        <div class="comp-cell comp-yes">✓ Siempre Enzo</div>
-        <div class="comp-cell comp-no">✗ Rotación de personal</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Plan de tratamiento desde día 1</div>
-        <div class="comp-cell comp-yes">✓ Siempre</div>
-        <div class="comp-cell comp-no">✗ Raramente</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Seguimiento por WhatsApp</div>
-        <div class="comp-cell comp-yes">✓ Incluido</div>
-        <div class="comp-cell comp-no">✗ No disponible</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell">Horarios flexibles (mañana y tarde)</div>
-        <div class="comp-cell comp-yes">✓ A tu medida</div>
-        <div class="comp-cell comp-no">✗ Horario fijo</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS -->
-<section class="testimonios" id="testimonios">
-  <div class="testimonios-inner">
-    <div class="section-kicker">Opiniones</div>
-    <div class="section-h2">Lo que dicen nuestros pacientes</div>
-    <div class="test-grid">
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Llevaba más de un año con dolor lumbar crónico. Después de 6 sesiones puedo hacer vida completamente normal. No me lo puedo creer todavía."</p>
-        <div class="test-autor">
-          <div class="test-av">C</div>
-          <div>
-            <div class="test-name">Carlos G.</div>
-            <div class="test-meta">Hace 2 semanas · Google</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Me operé de la rodilla y vine a rehabilitación. El trato es increíble y los resultados hablan solos. Volví a correr en 3 meses, antes de lo previsto."</p>
-        <div class="test-autor">
-          <div class="test-av">M</div>
-          <div>
-            <div class="test-name">Marta S.</div>
-            <div class="test-meta">Hace 1 mes · Google</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Trabajo con el ordenador 8 horas al día y tenía contracturas constantes. Me han dado pautas y tratamiento. Llevo meses sin problemas."</p>
-        <div class="test-autor">
-          <div class="test-av">R</div>
-          <div>
-            <div class="test-name">Roberto F.</div>
-            <div class="test-meta">Hace 3 semanas · Google</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="google-block">
+<!-- POR QUÉ YO -->
+<section class="section section-dark" id="por-que">
+  <div class="section-inner">
+    <div class="why-grid">
       <div>
-        <div class="gb-score">5.0</div>
-        <div class="gb-stars">★★★★★</div>
-        <div class="gb-label">Valoración perfecta en Google</div>
+        <div class="section-label">Por qué elegirme</div>
+        <div class="section-title">La fisioterapia<br>que mereces,<br>donde estás</div>
+        <div class="section-sub" style="margin-bottom: 44px;">Sin salas de espera. Sin aparcamiento. Sin desplazarte con dolor.</div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-icon">🏠</div>
+            <div>
+              <h4>100% a domicilio</h4>
+              <p>Me desplazo por toda Madrid. El desplazamiento está incluido en el precio, sin sorpresas.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">⏱️</div>
+            <div>
+              <h4>Horarios flexibles</h4>
+              <p>Mañanas, tardes, fines de semana. Me adapto a tu agenda, no al revés.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🩺</div>
+            <div>
+              <h4>Tratamiento personalizado</h4>
+              <p>Cada sesión está diseñada para ti. No soy una clínica masificada, soy tu fisio.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="gb-right">
-        <div class="gb-badge">🔵 Google Business Profile</div>
+      <div class="why-cta-box">
+        <p>¿Tienes dolor ahora?</p>
+        <span>Escríbeme y te digo si puedo ir hoy</span>
+        <a class="btn-white" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio">
+          💬 Escribirme ahora
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EQUIPO -->
-<section class="equipo" id="equipo">
-  <div class="equipo-inner">
-    <div class="section-kicker">Tu fisioterapeuta</div>
-    <div class="section-h2">Enzo · Fisioterapeuta colegiado a domicilio</div>
-    <div class="equipo-grid" style="grid-template-columns: 1fr; max-width: 400px; margin: 48px auto 0;">
-      <div class="fisio-card">
-        <img class="fisio-foto" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=200&h=200&auto=format&fit=crop&crop=face" alt="Enzo fisioterapeuta">
-        <h3>Enzo</h3>
-        <div class="fisio-col">Fisioterapeuta colegiado · Madrid a domicilio</div>
-        <div class="fisio-esp">Fisioterapia general, deportiva y musculoesquelética</div>
-        <p>Graduado en Fisioterapia con formación de posgrado en fisioterapia deportiva. Me desplazo por toda Madrid con todo el equipamiento necesario para un tratamiento completo en tu casa.</p>
+<!-- OPINIONES -->
+<section class="section" id="opiniones">
+  <div class="section-inner">
+    <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px;">
+      <div>
+        <div class="section-label">Opiniones reales</div>
+        <div class="section-title">Lo que dicen<br>mis pacientes</div>
+      </div>
+      <div class="reviews-score">
+        <div class="reviews-score-num">4,9</div>
+        <div>⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">Google Reviews</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Llevaba meses con lumbalgia y no mejoraba. Enzo vino a casa, me evaluó bien y en 4 sesiones estaba como nuevo. Que no tengas que salir con dolor es una diferencia enorme."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Miguel Ángel R.</div>
+            <div class="review-via">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Lo recomiendo 100%. Muy profesional y cercano. Me recuperé de una tendinitis que me tenía parada. La comodidad de que venga a casa es un punto extra enorme."</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">Laura P.</div>
+            <div class="review-via">Google · hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Para mi madre mayor es perfecta. No puede moverse bien y Enzo viene, muy amable y profesional. Ha mejorado su movilidad muchísimo. Gracias."</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carlos M.</div>
+            <div class="review-via">Google · hace 3 semanas</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-final" id="contacto">
-  <div class="cta-final-inner">
-    <div>
-      <h2>¿Tienes dolor?<br>Voy a tu casa hoy.</h2>
-      <p>Me desplazo a tu domicilio en Madrid. Primera valoración gratuita y sin compromiso. Te digo exactamente qué tienes y cuántas sesiones necesitas antes de empezar.</p>
-      <a href="#" class="btn-white" onclick="return false;">Reservar cita gratuita →</a>
+<!-- CONTACTO -->
+<section class="section section-alt" id="contacto">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Contacto</div>
+      <div class="section-title">Pide tu cita<br>sin compromiso</div>
+      <div class="section-sub">Respondo siempre en menos de 1 hora. Cuéntame qué te pasa.</div>
     </div>
-    <div class="contacto-items">
-      <div class="contacto-item">
-        <div class="ci-icon">📞</div>
-        <div>
-          <div class="ci-label">Teléfono</div>
-          <div class="ci-value">932 123 456</div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <h4>Zona de cobertura</h4>
+              <p>Toda Madrid · Desplazamiento incluido</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/34600000000">+34 600 000 000</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <h4>Teléfono</h4>
+              <p><a href="tel:+34600000000">+34 600 000 000</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <h4>Horario</h4>
+              <p>Lunes a Domingo · 8:00 – 21:00</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="contacto-item">
-        <div class="ci-icon">💬</div>
-        <div>
-          <div class="ci-label">WhatsApp</div>
-          <div class="ci-value">600 123 456</div>
-        </div>
-      </div>
-      <div class="contacto-item">
-        <div class="ci-icon">📍</div>
-        <div>
-          <div class="ci-label">Dirección</div>
-          <div class="ci-value">Toda Madrid · Desplazamiento incluido</div>
-        </div>
-      </div>
-      <div class="contacto-item">
-        <div class="ci-icon">🕐</div>
-        <div>
-          <div class="ci-label">Horario</div>
-          <div class="ci-value">Lun–Vie · 8:00 a 20:00</div>
-        </div>
+      <div>
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+          <div class="form-group">
+            <label>¿Qué te pasa?</label>
+            <select>
+              <option value="">Selecciona el motivo</option>
+              <option>Lumbalgia / Ciática</option>
+              <option>Cervicales</option>
+              <option>Lesión deportiva</option>
+              <option>Postoperatorio</option>
+              <option>Embarazo / Postparto</option>
+              <option>Paciente mayor / movilidad reducida</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje (opcional)</label>
+            <textarea placeholder="Cuéntame brevemente tu situación..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Solicitar cita → </button>
+        </form>
       </div>
     </div>
   </div>
@@ -1011,168 +676,33 @@ footer { background: #111827; padding: 48px 24px 28px; }
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="footer-logo">Fisio<span>Enzo</span></a>
-        <p>Fisioterapeuta colegiado a domicilio en Madrid. Especializado en fisioterapia general, deportiva y musculoesquelética. Me desplazo a tu casa en toda la ciudad.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Servicios</h4>
-        <ul>
-          <li><a href="#">Fisioterapia</a></li>
-          <li><a href="#">Fisioterapia deportiva</a></li>
-          <li><a href="#">Rehabilitación</a></li>
-          <li><a href="#">Suelo pélvico</a></li>
-          <li><a href="#">Osteopatía</a></li>
-          <li><a href="#">Medicina deportiva</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul class="footer-contact-list">
-          <li>📍 Madrid · Servicio a domicilio</li>
-          <li>📞 910 000 000</li>
-          <li>💬 600 000 000</li>
-          <li>✉️ info@fisioenzo.es</li>
-          <li>🕐 Lun–Vie 8:00–20:00</li>
-        </ul>
-      </div>
+    <div class="footer-logo">Enzo <span>Fisio</span></div>
+    <div class="footer-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#contacto">Contacto</a>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Enzo · Fisioterapeuta a domicilio · Madrid · Todos los derechos reservados</p>
-      <div class="footer-legal">
-        <a href="#">Aviso legal</a>
-        <a href="#">Política de privacidad</a>
-        <a href="#">Política de cookies</a>
-      </div>
-    </div>
+    <div class="footer-copy">© 2025 Enzo · Fisioterapeuta a Domicilio en Madrid</div>
   </div>
 </footer>
 
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/34600000000?text=Hola%20Enzo,%20me%20gustaría%20solicitar%20una%20cita%20a%20domicilio" target="_blank" title="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 448 512" fill="white">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
+
 <script>
-function showTab(btn, id) {
-  document.querySelectorAll('.tech-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tech-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(id).classList.add('active');
+function handleForm(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type=text]').value;
+  const phone = e.target.querySelector('input[type=tel]').value;
+  const motivo = e.target.querySelector('select').value;
+  const msg = e.target.querySelector('textarea').value;
+  const text = `Hola Enzo, me llamo ${name} y me gustaría pedir cita a domicilio.${motivo ? ' Motivo: ' + motivo + '.' : ''}${msg ? ' ' + msg : ''} Mi teléfono es ${phone}.`;
+  window.open('https://wa.me/34600000000?text=' + encodeURIComponent(text), '_blank');
 }
-
-const servicios = [
-  {
-    kicker: 'Fisioterapia general',
-    title: 'Fisioterapia',
-    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=760&h=300&auto=format&fit=crop',
-    desc: 'La fisioterapia es una disciplina sanitaria que evalúa, diagnostica y trata alteraciones del movimiento y del aparato locomotor. Mediante técnicas manuales, ejercicio terapéutico y tecnología avanzada, recuperamos tu función y eliminamos el dolor de forma duradera, sin depender de medicación.',
-    incluye: [
-      'Evaluación funcional completa: anamnesis, exploración física y pruebas de movimiento',
-      'Terapia manual: masaje terapéutico, movilización articular y técnicas miofasciales',
-      'Ejercicio terapéutico supervisado y progresivo adaptado a tu caso',
-      'Electroterapia y ultrasonidos para acelerar la regeneración tisular',
-      'Pauta de ejercicios domiciliarios y educación postural para prevenir recaídas',
-    ],
-    tags: ['Contracturas', 'Dolor cervical', 'Lumbalgia', 'Esguinces', 'Tendinitis', 'Artrosis'],
-  },
-  {
-    kicker: 'Fisioterapia deportiva',
-    title: 'Fisioterapia deportiva',
-    img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=760&h=300&auto=format&fit=crop',
-    desc: 'Especialización orientada a deportistas amateurs y de competición. Trabajamos para que te recuperes en el menor tiempo posible sin arriesgar una recaída, con protocolos basados en evidencia científica y control de carga deportiva. Del diagnóstico a la vuelta al entreno, todo bajo un mismo techo.',
-    incluye: [
-      'Valoración biomecánica del gesto deportivo específico de tu deporte',
-      'Tratamiento de sobrecargas, contracturas, roturas fibrilares y tendinopatías',
-      'Readaptación deportiva estructurada por fases con control de carga',
-      'Prevención de lesiones: análisis de factores de riesgo y ejercicio correctivo',
-      'Coordinación con tu entrenador o preparador físico si lo necesitas',
-    ],
-    tags: ['Running', 'Fútbol', 'Ciclismo', 'Crossfit', 'Natación', 'Padel'],
-  },
-  {
-    kicker: 'Rehabilitación',
-    title: 'Rehabilitación',
-    img: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=760&h=300&auto=format&fit=crop',
-    desc: 'Proceso de recuperación funcional tras cirugías, fracturas o lesiones graves. Nuestro objetivo es que recuperes la movilidad, la fuerza y la función completas para volver a tu vida normal. Trabajamos en estrecha coordinación con tu médico responsable para garantizar una rehabilitación segura y efectiva.',
-    incluye: [
-      'Rehabilitación post-quirúrgica de rodilla (LCA, menisco), hombro (manguito rotador) y cadera',
-      'Recuperación de fracturas y prótesis articulares con protocolo progresivo',
-      'Reeducación de la marcha, el equilibrio y la propiocepción',
-      'Fortalecimiento muscular progresivo con control de dolor y función',
-      'Coordinación con traumatólogo o cirujano para seguir sus pautas al detalle',
-    ],
-    tags: ['Post-cirugía', 'LCA', 'Manguito rotador', 'Prótesis', 'Fracturas', 'Luxaciones'],
-  },
-  {
-    kicker: 'Accidente de tráfico',
-    title: 'Rehabilitación por accidente de tráfico',
-    img: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=760&h=300&auto=format&fit=crop',
-    desc: 'Tratamiento especializado en traumatismos severos derivados de accidentes de tráfico. Gestionamos todo el proceso: desde el diagnóstico inicial hasta el alta y el informe pericial para la aseguradora. No tienes que preocuparte de nada — nosotros nos encargamos de que tu recuperación sea completa.',
-    incluye: [
-      'Valoración exhaustiva de latigazo cervical, contusiones y traumatismos múltiples',
-      'Tratamiento intensivo con terapia manual, electroterapia y técnicas específicas',
-      'Redacción de informe pericial para reclamación a la aseguradora si se precisa',
-      'Protocolo de recuperación funcional completa adaptado a la gravedad del caso',
-      'Seguimiento hasta el alta médica con comunicación fluida con tu abogado si lo tienes',
-    ],
-    tags: ['Latigazo cervical', 'Contusiones', 'Traumatismos', 'Informe pericial', 'Aseguradora'],
-  },
-  {
-    kicker: 'Suelo pélvico',
-    title: 'Fisioterapia de suelo pélvico',
-    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=760&h=300&auto=format&fit=crop',
-    desc: 'Especialidad centrada en la evaluación y tratamiento de la musculatura del suelo pélvico. Tratamos tanto a mujeres como a hombres con disfunciones pélvicas. Especialmente indicada durante el embarazo y el periodo postparto para una recuperación completa y segura.',
-    incluye: [
-      'Valoración interna y externa de la musculatura del suelo pélvico',
-      'Tratamiento de incontinencia urinaria, disfunción sexual y prolapsos',
-      'Preparación al parto: ejercicios de movilidad pélvica y respiración',
-      'Recuperación postparto: diástasis abdominal, cicatriz de cesárea y periné',
-      'Hipopresivos y ejercicio hipopresivo guiado para tonificación sin presión abdominal',
-    ],
-    tags: ['Postparto', 'Embarazo', 'Incontinencia', 'Diástasis', 'Prolapso', 'Cesárea'],
-  },
-  {
-    kicker: 'Osteopatía',
-    title: 'Osteopatía',
-    img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=760&h=300&auto=format&fit=crop',
-    desc: 'La osteopatía es una terapia manual que diagnostica y trata las disfunciones de movilidad del cuerpo desde un enfoque global. No solo tratamos la zona de dolor, sino que buscamos el origen de la restricción en cualquier parte del cuerpo. Ideal para personas con dolores recurrentes que no responden a tratamientos convencionales.',
-    incluye: [
-      'Evaluación global de cadenas musculares y fasciales de todo el cuerpo',
-      'Técnicas articulatorias y manipulativas suaves para liberar restricciones',
-      'Tratamiento visceral para órganos con tensión que afectan al sistema locomotor',
-      'Osteopatía craneal para cefaleas, mareos y disfunciones de la ATM',
-      'Plan de mantenimiento para mantener el equilibrio corporal a largo plazo',
-    ],
-    tags: ['Dolor crónico', 'Cefaleas', 'ATM', 'Migrañas', 'Digestivo', 'Vértigos'],
-  },
-];
-
-function openModal(link) {
-  const card = link.closest('.servicio-card');
-  const cards = Array.from(document.querySelectorAll('.servicio-card'));
-  const idx = cards.indexOf(card);
-  const s = servicios[idx];
-  if (!s) return;
-  document.getElementById('modal-kicker').textContent = s.kicker;
-  document.getElementById('modal-title').textContent = s.title;
-  document.getElementById('modal-desc').textContent = s.desc;
-  document.getElementById('modal-img').src = s.img;
-  document.getElementById('modal-img').alt = s.title;
-  const list = document.getElementById('modal-list');
-  list.innerHTML = s.incluye.map(i => `<li>${i}</li>`).join('');
-  const tags = document.getElementById('modal-tags');
-  tags.innerHTML = s.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModalBtn();
-}
-
-function closeModalBtn() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
 </script>
 
 </body>
