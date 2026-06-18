@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silencio Studio | Estudio de Grabación y Producción Musical</title>
+<meta name="description" content="Silencio Studio - Estudio de grabación, mezcla y masterización profesional. Tu música, nuestra pasión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #7c4dff;
+    --accent-light: #b47cff;
+    --accent-dark: #4a148c;
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --text: #f0eeff;
+    --text-muted: #9e9bb8;
+    --border: rgba(124,77,255,0.18);
+    --card-bg: rgba(26,26,38,0.85);
+    --nav-h: 72px;
+    --radius: 16px;
+    --shadow: 0 8px 40px rgba(124,77,255,0.13);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(10,10,15,0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 1000;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--accent-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--accent-light); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.5rem 1.3rem;
+    border-radius: 50px;
+    transition: background 0.25s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: var(--nav-h) 5% 0;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+    filter: brightness(0.22) saturate(1.3);
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(10,10,15,0.92) 45%, rgba(124,77,255,0.13) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(124,77,255,0.15);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--accent-light);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.13;
+    margin-bottom: 1.3rem;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent-light);
+  }
+
+  .hero p {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 2.4rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 24px rgba(124,77,255,0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124,77,255,0.45);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid rgba(240,238,255,0.25);
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    margin-top: 5rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: left; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 6rem 5%; }
+
+  .section-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.7rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 520px;
+  }
+
+  .section-header { margin-bottom: 3.5rem; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    display: block;
+    filter: brightness(0.9) saturate(1.1);
+  }
+
+  .about-img-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .about-img-badge strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .about-img-badge span {
+    font-size: 0.78rem;
+    opacity: 0.88;
+    letter-spacing: 0.05em;
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .feat-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .feat-icon {
+    width: 38px; height: 38px;
+    background: rgba(124,77,255,0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .feat-text strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+
+  .feat-text span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--bg); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: rgba(124,77,255,0.38);
+  }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    background: rgba(124,77,255,0.14);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.3rem;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-icon {
+    background: rgba(124,77,255,0.28);
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.7rem;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.3rem;
+  }
+
+  .service-price {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-light);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--bg2); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), var(--accent), var(--border), transparent);
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 4px 20px rgba(124,77,255,0.4);
+  }
+
+  .step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--bg); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(0.85) saturate(1.1);
+  }
+
+  .gallery-item:first-child img { height: 320px; }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.7) saturate(1.3);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, transparent 50%, rgba(124,77,255,0.5));
+    opacity: 0;
+    transition: opacity 0.35s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  .gallery-overlay span {
+    font-size: 0.82rem;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--bg2); }
+
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .test-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.28s, box-shadow 0.28s;
+  }
+
+  .test-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .test-quote {
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .test-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .test-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    filter: brightness(0.9);
+  }
+
+  .test-author-info strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .test-author-info span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .stars {
+    color: #ffd166;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.7rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--bg); }
+
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .contact-info p {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 42px; height: 42px;
+    background: rgba(124,77,255,0.14);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-list strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-list a,
+  .contact-list span {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .contact-list a:hover { color: var(--accent-light); }
+
+  .contact-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    background: rgba(124,77,255,0.07);
+  }
+
+  .form-group select option { background: var(--bg3); }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 24px rgba(124,77,255,0.3);
+    letter-spacing: 0.03em;
+  }
+
+  .form-submit:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124,77,255,0.42);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 3.5rem 5% 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .nav-logo { display: block; margin-bottom: 1rem; font-size: 1.35rem; }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 260px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.3rem;
+  }
+
+  .social-btn {
+    width: 36px; height: 36px;
+    background: rgba(124,77,255,0.14);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .social-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .footer-col h5 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+
+  .footer-col ul a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--accent-light); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-bottom a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+
+  /* ── FLOATING CTA ── */
+  .float-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: #fff;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 0 6px 28px rgba(124,77,255,0.5);
+    z-index: 900;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .float-cta:hover {
+    transform: scale(1.12) translateY(-2px);
+    box-shadow: 0 10px 36px rgba(124,77,255,0.65);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(10,10,15,0.97);
+      padding: 2rem 5%;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-img-badge { right: 0; bottom: -1rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .test-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-stats { gap: 2rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: span 1; }
+    .about-features { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Silencio<span>Studio</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#galeria">Estudio</a></li>
+    <li><a href="#testimonios">Clientes</a></li>
+    <li><a href="#contacto" class="nav-cta">Reservar sesión</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div>
+    <div class="hero-content">
+      <div class="hero-badge">Producción Musical Profesional</div>
+      <h1>Donde tu música<br>cobra <em>vida propia</em></h1>
+      <p>Estudio de grabación, mezcla y masterización en Madrid. Más de 12 años creando el sonido que los artistas sueñan. Tu visión, nuestra técnica.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">Reservar sesión</a>
+        <a href="#servicios" class="btn-outline">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">+800</div>
+        <div class="stat-label">Proyectos grabados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Artistas en activo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="https://images.pexels.com/photos/3756766/pexels-photo-3756766.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ingeniero de sonido en la sala de control de Silencio Studio">
+      <div class="about-img-badge">
+        <strong>12+</strong>
+        <span>Años de pasión<br>por el sonido</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Sobre Silencio Studio</div>
+      <h2 class="section-title">El sonido perfecto nace de la <em style="font-style:normal; color:var(--accent-light)">dedicación</em></h2>
+      <p style="color:var(--text-muted); margin-bottom:1.2rem; font-size:0.97rem;">
+        Silencio Studio nació en Madrid en 2012 con una misión clara: ofrecer a cada artista, banda o productor el entorno técnico y creativo necesario para que su música suene exactamente como imagina.
+      </p>
+      <p style="color:var(--text-muted); font-size:0.97rem;">
+        Nuestro equipo de ingenieros y productores combina tecnología de primer nivel con un enfoque artesanal. Hemos trabajado con artistas independientes, sellos discográficos y bandas sonoras para cine y publicidad.
+      </p>
+      <div class="about-features">
+        <div class="feat-item">
+          <div class="feat-icon">🎛️</div>
+          <div class="feat-text">
+            <strong>Equipamiento SSL</strong>
+            <span>Mesa de mezclas analógica de referencia</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🎙️</div>
+          <div class="feat-text">
+            <strong>Cabina acústica</strong>
+            <span>Diseño acústico profesional</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🎚️</div>
+          <div class="feat-text">
+            <strong>Mezcla stem</strong>
+            <span>Flujo de trabajo moderno e híbrido</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🏆</div>
+          <div class="feat-text">
+            <strong>Premiados</strong>
+            <span>Proyectos reconocidos en España</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-header">
+    <div class="section-tag">Servicios</div>
+    <h2 class="section-title">Todo lo que tu música necesita</h2>
+    <p class="section-sub">Desde la primera nota hasta el máster final. Servicios completos de producción musical para artistas de todos los géneros.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🎙️</div>
+      <h3>Grabación Vocal</h3>
+      <p>Captamos la esencia de tu voz en nuestra cabina tratada acústicamente. Micrófonos de condensador vintage y modernos para cada registro y género.</p>
+      <div class="service-price">Desde 80 € / hora</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎸</div>
+      <h3>Grabación de Banda</h3>
+      <p>Sala de grabación para grupos en directo con monitorización independiente para cada músico. Captura el feeling real de tu banda en conjunto.</p>
+      <div class="service-price">Desde 350 € / día</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎛️</div>
+      <h3>Mezcla Profesional</h3>
+      <p>Equilibramos cada elemento de tu canción para que suene cohesionada, potente y emocionante. Mezcla analógica e híbrida de alta fidelidad.</p>
+      <div class="service-price">Desde 180 € / tema</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💿</div>
+      <h3>Masterización</h3>
+      <p>El toque final que hace que tu música suene al mismo nivel que los grandes referentes. Masterización para streaming, vinilo y distribución física.</p>
+      <div class="service-price">Desde 90 € / tema</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎹</div>
+      <h3>Producción Musical</h3>
+      <p>Co-creamos contigo desde cero: arreglos, instrumentación, programación de beats y búsqueda del sonido que define tu identidad artística.</p>
+      <div class="service-price">Presupuesto a medida</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <h3>Bandas Sonoras</h3>
+      <p>Composición y producción de música para cine, publicidad, videojuegos y contenido audiovisual. Entrega en cualquier formato y sincronización.</p>
+      <div class="service-price">Presupuesto a medida</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="section-header">
+    <div class="section-tag">Nuestro Proceso</div>
+    <h2 class="section-title">Cuatro pasos hacia el sonido que buscas</h2>
+    <p class="section-sub">Un flujo de trabajo claro y colaborativo para que cada sesión sea productiva y creativa.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Consulta inicial</h4>
+      <p>Hablamos de tu proyecto, referencias musicales, plazos y presupuesto. Diseñamos el plan de trabajo ideal para ti.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Pre-producción</h4>
+      <p>Preparamos los arreglos, demos y estructura antes de entrar al estudio para optimizar cada hora de grabación.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Grabación & Mezcla</h4>
+      <p>Sesiones de grabación enfocadas y proceso de mezcla con revisiones ilimitadas hasta que estés satisfecho.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Entrega final</h4>
+      <p>Recibes los archivos masterizados en todos los formatos necesarios, listos para publicar en cualquier plataforma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="section-header">
+    <div class="section-tag">El Estudio</div>
+    <h2 class="section-title">Un espacio creado para crear</h2>
+    <p class="section-sub">Instalaciones diseñadas para la inspiración y la máxima calidad técnica en Madrid centro.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1751731/pexels-photo-1751731.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Sala de control principal">
+      <div class="gallery-overlay"><span>Sala de control principal</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4709822/pexels-photo-4709822.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cabina de grabación vocal">
+      <div class="gallery-overlay"><span>Cabina vocal tratada</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/144428/pexels-photo-144428.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mesa de mezclas analógica">
+      <div class="gallery-overlay"><span>Mesa de mezclas SSL</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/1482476/pexels-photo-1482476.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sala de ensayo">
+      <div class="gallery-overlay"><span>Sala de bandas en vivo</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/373945/pexels-photo-373945.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Producción en DAW">
+      <div class="gallery-overlay"><span>Producción digital</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonios">
+  <div class="section-header">
+    <div class="section-tag">Testimonios</div>
+    <h2 class="section-title">Lo que dicen nuestros artistas</h2>
+    <p class="section-sub">Cada proyecto es una colaboración. La satisfacción de los artistas es nuestra mejor carta de presentación.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p>Grabé mi primer EP en Silencio Studio y fue una experiencia increíble. El equipo entendió exactamente lo que quería y el sonido final superó todas mis expectativas. No grabaré en otro sitio.</p>
+      <div class="test-author">
+        <img class="test-avatar" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Lucía Ferrer">
+        <div class="test-author-info">
+          <strong>Lucía Ferrer</strong>
+          <span>Cantautora indie, Madrid</span>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p>Como banda grabamos con ellos el último álbum. La sala para grupos es espectacular y la calidad de las tomas fue perfecta desde el primer día. Los ingenieros son unos cracks.</p>
+      <div class="test-author">
+        <img class="test-avatar" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Marcos Ruiz">
+        <div class="test-author-info">
+          <strong>Marcos Ruiz</strong>
+          <span>Bajista, The Broken Waves</span>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <div class="test-quote">"</div>
+      <p>La masterización que hicieron de mis tracks cambió completamente cómo suenan en los altavoces del club. Un antes y un después para mi música electrónica. Totalmente recomendados.</p>
+      <div class="test-author">
+        <img class="test-avatar" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Dani Montoya">
+        <div class="test-author-info">
+          <strong>Dani Montoya</strong>
+          <span>DJ & Productor, Valencia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="section-tag">Contacto</div>
+      <h2>Hablemos de tu próximo proyecto</h2>
+      <p>Rellena el formulario o contáctanos directamente. Respondemos en menos de 24 horas y organizamos una visita sin compromiso al estudio.</p>
+      <ul class="contact-list">
+        <li>
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Teléfono</strong>
+            <a href="tel:+34600000000">+34 600 000 000</a>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:hola@silenciostudio.es">hola@silenciostudio.es</a>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Ubicación</strong>
+            <span>Calle Gran Vía 45, Madrid</span>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">🕐</div>
+          <div>
+            <strong>Horario</strong>
+            <span>Lun–Sáb: 9:00 – 22:00</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" placeholder="Tu apellido">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" placeholder="+34 600 000 000">
+      </div>
+      <div class="form-group">
+        <label>Servicio</label>
+        <select>
+          <option value="">Selecciona un servicio</option>
+          <option>Grabación Vocal</option>
+          <option>Grabación de Banda</option>
+          <option>Mezcla Profesional</option>
+          <option>Masterización</option>
+          <option>Producción Musical</option>
+          <option>Banda Sonora</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Cuéntanos tu proyecto</label>
+        <textarea placeholder="Describe tu proyecto, género musical, número de temas, plazos..."></textarea>
+      </div>
+      <button class="form-submit">Enviar solicitud →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">Silencio<span>Studio</span></a>
+      <p>Estudio de grabación, mezcla y masterización profesional en Madrid. Tu música merece el mejor sonido.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" aria-label="Instagram">📷</a>
+        <a class="social-btn" href="#" aria-label="YouTube">▶️</a>
+        <a class="social-btn" href="#" aria-label="Spotify">🎵</a>
+        <a class="social-btn" href="#" aria-label="Facebook">👤</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios">Grabación vocal</a></li>
+        <li><a href="#servicios">Grabación de banda</a></li>
+        <li><a href="#servicios">Mezcla profesional</a></li>
+        <li><a href="#servicios">Masterización</a></li>
+        <li><a href="#servicios">Producción musical</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Estudio</h5>
+      <ul>
+        <li><a href="#nosotros">Sobre nosotros</a></li>
+        <li><a href="#galeria">Instalaciones</a></li>
+        <li><a href="#proceso">Nuestro proceso</a></li>
+        <li><a href="#testimonios">Clientes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+        <li><a href="mailto:hola@silenciostudio.es">hola@silenciostudio.es</a></li>
+        <li><a href="#contacto">Reservar sesión</a></li>
+        <li><a href="#">Gran Vía 45, Madrid</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Silencio Studio. Todos los derechos reservados.</p>
+    <p>Diseñado con ♪ en <a href="#">Madrid</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<a class="float-cta" href="tel:+34600000000" aria-label="Llamar ahora">📞</a>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Smooth scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+        window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .test-card, .step, .gallery-item, .feat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(el);
+  });
+
+  // Form submit
+  document.querySelector('.form-submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    this.textContent = '✓ Solicitud enviada';
+    this.style.background = '#22c55e';
+    setTimeout(() => {
+      this.textContent = 'Enviar solicitud →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
