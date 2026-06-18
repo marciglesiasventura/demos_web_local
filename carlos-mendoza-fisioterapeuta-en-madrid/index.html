@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Mendoza - Fisioterapeuta en Madrid</title>
+<meta name="description" content="Fisioterapia profesional en Madrid. Carlos Mendoza, especialista en fisioterapia deportiva, rehabilitación y tratamiento del dolor. Reserva tu cita hoy.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #2a6496;
+    --accent-light: #3a85c8;
+    --accent-dark: #1a4a70;
+    --accent-soft: #e8f2fa;
+    --bg: #f9fafb;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #5a6a7a;
+    --text-muted: #8a9ab0;
+    --border: #e2eaf2;
+    --shadow: 0 4px 24px rgba(42,100,150,0.10);
+    --shadow-lg: 0 8px 48px rgba(42,100,150,0.15);
+    --radius: 16px;
+    --radius-sm: 8px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: var(--transition);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.2rem; font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.1; }
+  .nav-logo-sub { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.9rem; font-weight: 500; transition: var(--transition); }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: white;
+    padding: 0.5rem 1.25rem; border-radius: 50px;
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+    transition: var(--transition);
+  }
+  .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(42,100,150,0.3); }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+    background: white; border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem; flex-direction: column; gap: 1rem;
+    box-shadow: var(--shadow);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--text); font-size: 1rem; font-weight: 500; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 72px 0 0;
+    display: flex; align-items: center;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f2fa 50%, #f9fafb 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,100,150,0.08) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,133,200,0.06) 0%, transparent 70%);
+  }
+  .hero-container {
+    max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 0.4rem 1rem; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--text); margin-bottom: 1.5rem; font-weight: 700;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--text-light); line-height: 1.8;
+    margin-bottom: 2rem; max-width: 500px;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary {
+    background: var(--accent); color: white;
+    padding: 0.85rem 2rem; border-radius: 50px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 20px rgba(42,100,150,0.3);
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(42,100,150,0.4); }
+  .btn-secondary {
+    background: white; color: var(--accent);
+    padding: 0.85rem 2rem; border-radius: 50px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid var(--border); box-shadow: var(--shadow);
+  }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .hero-stats { display: flex; gap: 2rem; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+  .hero-image-wrap {
+    position: relative; display: flex; justify-content: center; align-items: center;
+  }
+  .hero-img-card {
+    width: 100%; max-width: 480px; aspect-ratio: 4/5;
+    border-radius: 24px; overflow: hidden; position: relative;
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-img-card img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-floating-card {
+    position: absolute; bottom: 2rem; left: -2rem;
+    background: white; border-radius: var(--radius); padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px;
+    min-width: 200px;
+  }
+  .hero-floating-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+  }
+  .hero-floating-text { display: flex; flex-direction: column; }
+  .hero-floating-title { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+  .hero-floating-sub { font-size: 0.72rem; color: var(--text-muted); }
+  .hero-floating-card2 {
+    position: absolute; top: 2rem; right: -1.5rem;
+    background: var(--accent); border-radius: var(--radius); padding: 1rem 1.25rem;
+    box-shadow: 0 8px 32px rgba(42,100,150,0.3); color: white; text-align: center; min-width: 130px;
+  }
+  .hero-floating-card2 .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; }
+  .hero-floating-card2 .label { font-size: 0.72rem; opacity: 0.9; }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 0.35rem 1rem; border-radius: 50px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--text); margin-bottom: 1rem; }
+  .section-desc { font-size: 1rem; color: var(--text-light); max-width: 600px; line-height: 1.8; }
+
+  /* ABOUT */
+  .about { background: white; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-img-wrap { position: relative; }
+  .about-img {
+    width: 100%; aspect-ratio: 1; border-radius: 24px; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; }
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--accent); color: white;
+    padding: 1.5rem; border-radius: var(--radius);
+    text-align: center; box-shadow: 0 8px 32px rgba(42,100,150,0.3);
+  }
+  .about-badge-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; display: block; }
+  .about-badge-text { font-size: 0.75rem; opacity: 0.9; }
+  .about-content { padding-left: 1rem; }
+  .about-features { display: grid; gap: 1rem; margin-top: 2rem; }
+  .about-feature {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 1rem 1.25rem; background: var(--bg);
+    border-radius: var(--radius-sm); border: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .about-feature:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateX(4px); }
+  .about-feature-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .about-feature-text h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .about-feature-text p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* SERVICES */
+  .services { background: var(--bg); }
+  .services-header { text-align: center; margin-bottom: 3.5rem; }
+  .services-header .section-desc { margin: 0 auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card {
+    background: white; border-radius: var(--radius); padding: 2rem;
+    border: 1px solid var(--border); transition: var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transform: scaleX(0); transform-origin: left; transition: var(--transition);
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; font-family: 'Inter', sans-serif; }
+  .service-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.25rem; }
+  .service-tag {
+    display: inline-block; background: var(--accent-soft); color: var(--accent);
+    padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+  }
+
+  /* PROCESS */
+  .process { background: white; }
+  .process-header { text-align: center; margin-bottom: 3.5rem; }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 2rem; left: calc(12.5% + 1rem); right: calc(12.5% + 1rem);
+    height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    z-index: 0;
+  }
+  .process-step { text-align: center; position: relative; z-index: 1; }
+  .process-step-num {
+    width: 4rem; height: 4rem; border-radius: 50%;
+    background: var(--accent); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
+    margin: 0 auto 1.25rem; box-shadow: 0 4px 16px rgba(42,100,150,0.3);
+  }
+  .process-step h4 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: linear-gradient(135deg, #f0f7ff, #e8f2fa); }
+  .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .testimonial-card {
+    background: white; border-radius: var(--radius); padding: 2rem;
+    border: 1px solid var(--border); transition: var(--transition);
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .testimonial-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testimonial-text { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar {
+    width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+    background: var(--accent-soft); flex-shrink: 0;
+  }
+  .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .testimonial-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .testimonial-role { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* GALLERY */
+  .gallery { background: white; }
+  .gallery-header { margin-bottom: 2.5rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+  .gallery-item {
+    border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 4/3; position: relative;
+    box-shadow: var(--shadow);
+  }
+  .gallery-item:first-child { grid-row: span 2; aspect-ratio: auto; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  /* PRICING */
+  .pricing { background: var(--bg); }
+  .pricing-header { text-align: center; margin-bottom: 3.5rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pricing-card {
+    background: white; border-radius: var(--radius); padding: 2.5rem 2rem;
+    border: 2px solid var(--border); transition: var(--transition); position: relative;
+  }
+  .pricing-card.featured { border-color: var(--accent); }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .pricing-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: white;
+    padding: 0.25rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+    white-space: nowrap;
+  }
+  .pricing-name { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .pricing-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 0.5rem; }
+  .pricing-amount { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--text); }
+  .pricing-currency { font-size: 1.2rem; color: var(--text-light); align-self: flex-start; padding-top: 0.5rem; }
+  .pricing-period { font-size: 0.85rem; color: var(--text-muted); }
+  .pricing-desc { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-light); }
+  .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .btn-pricing {
+    display: block; text-align: center; padding: 0.85rem;
+    border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: var(--transition);
+  }
+  .btn-pricing-primary { background: var(--accent); color: white; box-shadow: 0 4px 16px rgba(42,100,150,0.3); }
+  .btn-pricing-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn-pricing-outline { border: 2px solid var(--border); color: var(--accent); }
+  .btn-pricing-outline:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+  /* FAQ */
+  .faq { background: white; }
+  .faq-header { text-align: center; margin-bottom: 3.5rem; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 900px; margin: 0 auto; }
+  .faq-item {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); overflow: hidden;
+    transition: var(--transition);
+  }
+  .faq-item:hover { border-color: var(--accent); }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+    text-align: left; gap: 1rem;
+  }
+  .faq-question span { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .faq-icon { color: var(--accent); font-size: 1.2rem; font-weight: 300; flex-shrink: 0; line-height: 1; transition: var(--transition); }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { padding: 0 1.5rem 1.25rem; font-size: 0.88rem; color: var(--text-light); line-height: 1.7; display: none; }
+  .faq-item.open .faq-answer { display: block; }
+
+  /* CONTACT */
+  .contact { background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 50%, var(--accent-light) 100%); color: white; }
+  .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .contact-info h2 { color: white; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 1rem; }
+  .contact-info p { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item { display: flex; align-items: center; gap: 16px; }
+  .contact-item-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-item-text label { display: block; font-size: 0.75rem; opacity: 0.7; margin-bottom: 2px; }
+  .contact-item-text span { font-size: 0.95rem; font-weight: 500; }
+  .contact-item-text a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+  .contact-item-text a:hover { text-decoration: underline; }
+  .contact-form-wrap {
+    background: white; border-radius: 24px; padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+  .contact-form-wrap h3 { font-size: 1.4rem; color: var(--text); margin-bottom: 0.5rem; }
+  .contact-form-wrap p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text);
+    background: var(--bg); transition: var(--transition); outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: white; box-shadow: 0 0 0 3px rgba(42,100,150,0.1); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; padding: 0.95rem; border-radius: 50px;
+    background: var(--accent); color: white; border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+    transition: var(--transition); box-shadow: 0 4px 16px rgba(42,100,150,0.3);
+  }
+  .form-submit:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(42,100,150,0.4); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text); color: white; padding: 4rem 2rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-top: 1rem; max-width: 300px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent); display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white;
+  }
+  .footer-logo-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; }
+  .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 1.25rem; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; margin-bottom: 0.75rem; transition: var(--transition); }
+  .footer-col a:hover { color: white; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto; padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+  }
+  .footer-social { display: flex; gap: 1rem; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.1); color: white;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 0.9rem; transition: var(--transition);
+  }
+  .footer-social a:hover { background: var(--accent); }
+
+  /* WHATSAPP FLOAT */
+  .whatsapp-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25d366; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: var(--transition); animation: pulse-green 2s infinite;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); background: #1dba5a; }
+  @keyframes pulse-green {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-container { grid-template-columns: 1fr; text-align: center; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-image-wrap { order: -1; }
+    .hero-img-card { max-width: 340px; margin: 0 auto; }
+    .hero-floating-card { left: 0; bottom: 1rem; }
+    .hero-floating-card2 { right: 0; top: 1rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-badge { right: 0; }
+    .about-content { padding-left: 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .contact-container { grid-template-columns: 1fr; gap: 2.5rem; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-row: span 1; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">C</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Carlos Mendoza</span>
+      <span class="nav-logo-sub">Fisioterapeuta · Madrid</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#precios">Tarifas</a>
+    <a href="#testimonios">Opiniones</a>
+    <a href="#contacto" class="nav-cta">Reservar cita</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre-mi" onclick="toggleMenu()">Sobre mí</a>
+  <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+  <a href="#proceso" onclick="toggleMenu()">Proceso</a>
+  <a href="#precios" onclick="toggleMenu()">Tarifas</a>
+  <a href="#testimonios" onclick="toggleMenu()">Opiniones</a>
+  <a href="#contacto" onclick="toggleMenu()">Reservar cita</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">Fisioterapia profesional en Madrid</div>
+      <h1>Tu bienestar físico<br>en <span>las mejores manos</span></h1>
+      <p class="hero-desc">Soy Carlos Mendoza, fisioterapeuta colegiado especializado en fisioterapia deportiva, rehabilitación del aparato locomotor y tratamiento del dolor crónico. Más de 10 años acompañando a mis pacientes hacia una vida sin limitaciones.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          <span>📅</span> Reservar primera cita
+        </a>
+        <a href="#servicios" class="btn-secondary">
+          <span>🔎</span> Ver servicios
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">+1.200</span>
+          <span class="stat-label">Pacientes tratados</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Años de experiencia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Satisfacción</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-img-card">
+        <img src="https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Carlos Mendoza Fisioterapeuta">
+      </div>
+      <div class="hero-floating-card">
+        <div class="hero-floating-icon">🏆</div>
+        <div class="hero-floating-text">
+          <span class="hero-floating-title">Colegiado n.º 28-4521</span>
+          <span class="hero-floating-sub">Colegio Oficial de Fisioterapeutas</span>
+        </div>
+      </div>
+      <div class="hero-floating-card2">
+        <div class="num">⭐ 5.0</div>
+        <div class="label">Valoración media<br>Google Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img">
+          <img src="https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Carlos Mendoza consulta fisioterapia Madrid">
+        </div>
+        <div class="about-badge">
+          <span class="about-badge-num">10+</span>
+          <span class="about-badge-text">años de experiencia</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">Sobre mí</div>
+        <h2 class="section-title">Fisioterapia con ciencia, experiencia y vocación</h2>
+        <p class="section-desc">Soy licenciado en Fisioterapia por la Universidad Complutense de Madrid, con formación especializada en fisioterapia deportiva (UEFA), punción seca y terapia manual ortopédica. Mi filosofía de trabajo se centra en el diagnóstico preciso y un plan de tratamiento personalizado para cada paciente.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🎓</div>
+            <div class="about-feature-text">
+              <h4>Formación continua</h4>
+              <p>Actualización constante en las técnicas más avanzadas de fisioterapia y rehabilitación.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🏃</div>
+            <div class="about-feature-text">
+              <h4>Especialista en deporte</h4>
+              <p>Fisioterapeuta oficial de varios clubes deportivos de Madrid y atletas de alto rendimiento.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🏠</div>
+            <div class="about-feature-text">
+              <h4>Atención domiciliaria</h4>
+              <p>Servicio de fisioterapia a domicilio en Madrid para pacientes con movilidad reducida.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">💬</div>
+            <div class="about-feature-text">
+              <h4>Seguimiento personalizado</h4>
+              <p>Comunicación directa con el paciente y revisiones periódicas para garantizar los resultados.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label">Servicios</div>
+      <h2 class="section-title">Tratamientos especializados</h2>
+      <p class="section-desc">Ofrezco una amplia gama de tratamientos fisioterapéuticos adaptados a cada patología y objetivo, combinando las técnicas más eficaces de la fisioterapia moderna.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏃</div>
+        <h3>Fisioterapia Deportiva</h3>
+        <p>Prevención y recuperación de lesiones deportivas: roturas musculares, esguinces, tendinopatías, sobrecargas y lesiones de rodilla o hombro.</p>
+        <span class="service-tag">Alta especialización</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Fisioterapia Neurológica</h3>
+        <p>Rehabilitación de pacientes con secuelas neurológicas: ictus, esclerosis múltiple, Parkinson y lesiones medulares para recuperar la funcionalidad.</p>
+        <span class="service-tag">Rehabilitación</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📌</div>
+        <h3>Punción Seca</h3>
+        <p>Técnica invasiva para el tratamiento de puntos gatillo miofasciales causantes de dolor muscular y cervicalgias, con resultados rápidos y duraderos.</p>
+        <span class="service-tag">Técnica avanzada</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤲</div>
+        <h3>Terapia Manual</h3>
+        <p>Manipulaciones articulares, movilizaciones y masoterapia para tratar contracturas, bloqueos vertebrales, hernias discales y dolor lumbar crónico.</p>
+        <span class="service-tag">Tratamiento manual</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Electroterapia y Ultrasonidos</h3>
+        <p>Aplicación de corrientes de estimulación eléctrica, TENS, corrientes interferenciales y ultrasonidos para acelerar la regeneración tisular.</p>
+        <span class="service-tag">Tecnología</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Fisioterapia a Domicilio</h3>
+        <p>Servicio de atención en el domicilio del paciente en Madrid, ideal para personas mayores, postoperados y pacientes con movilidad reducida.</p>
+        <span class="service-tag">Domicilio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-label">¿Cómo funciona?</div>
+      <h2 class="section-title">Tu camino hacia la recuperación</h2>
+      <p class="section-desc" style="margin:0 auto;">Un proceso claro, personalizado y orientado a resultados para que alcances tu máximo potencial físico.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">1</div>
+        <h4>Primera consulta</h4>
+        <p>Evaluación completa de tu historial clínico, análisis postural y exploración física exhaustiva para identificar la causa real del problema.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">2</div>
+        <h4>Diagnóstico fisioterapéutico</h4>
+        <p>Establecemos un diagnóstico preciso y fijamos objetivos reales y alcanzables adaptados a tu caso particular y ritmo de vida.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">3</div>
+        <h4>Plan de tratamiento</h4>
+        <p>Diseñamos un protocolo individualizado combinando las técnicas más adecuadas para tu lesión y objetivos de recuperación.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">4</div>
+        <h4>Seguimiento y alta</h4>
+        <p>Revisamos la evolución en cada sesión, ajustamos el plan según sea necesario y te damos pautas de mantenimiento para prevenir recaídas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonios">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-label">Opiniones reales</div>
+      <h2 class="section-title">Lo que dicen mis pacientes</h2>
+      <p class="section-desc" style="margin:0 auto;">La satisfacción de mis pacientes es el mejor indicador del trabajo bien hecho. Aquí tienes algunas de sus experiencias.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Llegué con una lesión de rodilla que no me dejaba entrenar desde hacía 3 meses. En 6 sesiones con Carlos volví a correr. Su diagnóstico fue exacto desde el principio y el tratamiento muy progresivo."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Javier R.">
+          </div>
+          <div>
+            <div class="testimonial-name">Javier Romero</div>
+            <div class="testimonial-role">Corredor amateur · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Sufría de cervicalgias crónicas desde hace años. Otros fisios me aliviaban momentáneamente pero Carlos fue el único que trató la causa real. Llevo 8 meses sin molestias. Totalmente recomendable."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Laura M.">
+          </div>
+          <div>
+            <div class="testimonial-name">Laura Martínez</div>
+            <div class="testimonial-role">Profesora · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Tras mi operación de hombro, Carlos llevó mi rehabilitación con mucha profesionalidad y paciencia. Explica cada paso del proceso y hace que te sientas seguro. He recuperado el 100% de la movilidad."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Miguel A.">
+          </div>
+          <div>
+            <div class="testimonial-name">Miguel Ángel Torres</div>
+            <div class="testimonial-role">Arquitecto · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Mi madre de 78 años con artrosis avanzada de cadera ha mejorado muchísimo con el tratamiento domiciliario. Carlos es muy cercano, puntual y eficaz. La calidad de vida de mi madre ha cambiado por completo."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Ana G.">
+          </div>
+          <div>
+            <div class="testimonial-name">Ana González</div>
+            <div class="testimonial-role">Hija de paciente · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Deportista de fin de semana con lumbalgia crónica. Carlos combinó terapia manual y ejercicio terapéutico y en pocas semanas noté el cambio. Además me enseñó a prevenir futuras recaídas. Excelente profesional."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Sergio P.">
+          </div>
+          <div>
+            <div class="testimonial-name">Sergio Palomo</div>
+            <div class="testimonial-role">Ingeniero · Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Tuve una rotura de fibras en el gemelo y me recuperé en tiempo récord gracias a Carlos. Su profesionalidad, puntualidad y trato humano hacen que vayas a las sesiones con ganas. Sin duda, el mejor fisio de Madrid."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">
+            <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Patricia L.">
+          </div>
+          <div>
+            <div class="testimonial-name">Patricia López</div>
+            <div class="testimonial-role">Bailarina · Madrid</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label">Instalaciones</div>
+      <h2 class="section-title">Nuestra clínica en Madrid</h2>
+      <p class="section-desc">Un espacio moderno, equipado con la tecnología más avanzada, diseñado para que te sientas cómodo desde el primer momento.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/3760275/pexels-photo-3760275.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sala de tratamiento fisioterapia">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/4506109/pexels-photo-4506109.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Equipo de fisioterapia">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5473182/pexels-photo-5473182.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Rehabilitación deportiva">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/4506110/pexels-photo-4506110.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Terapia manual fisioterapia">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/3823207/pexels-photo-3823207.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Consulta fisioterapia Madrid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="section-label">Tarifas</div>
+      <h2 class="section-title">Transparencia en los precios</h2>
+      <p class="section-desc" style="margin:0 auto;">Sin sorpresas. Elige el plan que mejor se adapte a tu necesidad y comienza tu recuperación hoy mismo.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <p class="pricing-name">Sesión única</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">€</span>
+          <span class="pricing-amount">55</span>
+        </div>
+        <p class="pricing-desc">Ideal para consultas puntuales o primera valoración sin compromiso.</p>
+        <ul class="pricing-features">
+          <li>Primera valoración fisioterapéutica</li>
+          <li>50 minutos de sesión</li>
+          <li>Plan de ejercicios básico</li>
+          <li>Informe de diagnóstico</li>
+          <li>Consulta de seguimiento por WhatsApp</li>
+        </ul>
+        <a href="#contacto" class="btn-pricing btn-pricing-outline">Reservar sesión</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Más popular</div>
+        <p class="pricing-name">Bono 10 sesiones</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">€</span>
+          <span class="pricing-amount">450</span>
+        </div>
+        <p class="pricing-desc">La opción más elegida para tratamientos de rehabilitación completos con ahorro garantizado.</p>
+        <ul class="pricing-features">
+          <li>10 sesiones de 50 minutos</li>
+          <li>Valoración inicial gratuita</li>
+          <li>Plan de tratamiento personalizado</li>
+          <li>Ejercicios terapéuticos en casa</li>
+          <li>Seguimiento continuo</li>
+          <li>Validez 3 meses</li>
+        </ul>
+        <a href="#contacto" class="btn-pricing btn-pricing-primary">Reservar bono</a>
+      </div>
+      <div class="pricing-card">
+        <p class="pricing-name">Fisioterapia a domicilio</p>
+        <div class="pricing-price">
+          <span class="pricing-currency">€</span>
+          <span class="pricing-amount">70</span>
+        </div>
+        <p class="pricing-desc">Atención en tu hogar para mayor comodidad. Ideal para personas mayores y postoperados.</p>
+        <ul class="pricing-features">
+          <li>Desplazamiento incluido (Madrid)</li>
+          <li>60 minutos de tratamiento</li>
+          <li>Material de tratamiento incluido</li>
+          <li>Informe para el médico</li>
+          <li>Bonos domicilio disponibles</li>
+        </ul>
+        <a href="#contacto" class="btn-pricing btn-pricing-outline">Solicitar cita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2 class="section-title">¿Tienes dudas?</h
