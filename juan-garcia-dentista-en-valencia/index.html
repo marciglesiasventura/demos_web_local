@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan García · Dentista en Valencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #2e7d52;
+    --green-light: #3d9e6a;
+    --green-pale: #e8f5ee;
+    --green-dark: #1c5436;
+    --dark: #121e16;
+    --dark2: #1a2e22;
+    --text: #2c3e30;
+    --text-light: #5a7262;
+    --white: #ffffff;
+    --gray: #f4f7f5;
+    --border: #d4e8db;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; color: var(--text); overflow-x: hidden; }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--green-dark);
+    color: rgba(255,255,255,0.88);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .topbar a { color: inherit; text-decoration: none; }
+  .topbar a:hover { color: #fff; }
+  .topbar-left, .topbar-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .topbar span { display: flex; align-items: center; gap: 6px; }
+  .topbar i { color: #7ecfa0; }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(46,125,82,0.10);
+    transition: box-shadow 0.3s;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--green);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+  .logo-text { line-height: 1.2; }
+  .logo-text strong { display: block; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+  .logo-text span { font-size: 0.75rem; color: var(--green); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { background: var(--green-pale); color: var(--green); }
+  .nav-cta {
+    background: var(--green) !important;
+    color: white !important;
+    padding: 10px 22px !important;
+    border-radius: 50px !important;
+  }
+  .nav-cta:hover { background: var(--green-dark) !important; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border: none;
+    background: none;
+  }
+  .hamburger span { display: block; width: 26px; height: 2.5px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--border);
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--text); text-decoration: none; font-weight: 700; padding: 10px 12px; border-radius: 8px; font-size: 0.95rem; }
+  .mobile-menu a:hover { background: var(--green-pale); color: var(--green); }
+  .mobile-menu .nav-cta { background: var(--green) !important; color: white !important; text-align: center; margin-top: 8px; }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 68px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-left {
+    background: var(--green-pale);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46,125,82,0.12);
+    color: var(--green);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+  .hero-badge i { font-size: 0.85rem; }
+  .hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 22px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green);
+    position: relative;
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+    font-weight: 500;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(46,125,82,0.30);
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(46,125,82,0.40); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 2px solid var(--green);
+    transition: all 0.25s;
+  }
+  .btn-secondary:hover { background: var(--green-pale); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: left; }
+  .hero-stat strong { display: block; font-size: 1.8rem; font-weight: 900; color: var(--green); line-height: 1; }
+  .hero-stat span { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-right-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(46,125,82,0.15) 0%, transparent 60%);
+  }
+  .hero-card {
+    position: absolute;
+    bottom: 40px;
+    left: -20px;
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 220px;
+  }
+  .hero-card-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .hero-card-text strong { display: block; font-size: 0.9rem; font-weight: 800; color: var(--dark); }
+  .hero-card-text span { font-size: 0.78rem; color: var(--text-light); font-weight: 600; }
+  .hero-card2 {
+    position: absolute;
+    top: 40px;
+    right: -10px;
+    background: var(--green);
+    border-radius: 16px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(46,125,82,0.35);
+    color: white;
+    text-align: center;
+    min-width: 140px;
+  }
+  .hero-card2 strong { display: block; font-size: 1.5rem; font-weight: 900; }
+  .hero-card2 span { font-size: 0.75rem; font-weight: 600; opacity: 0.88; }
+
+  /* SECTION BASE */
+  section { width: 100%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--green);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--green); }
+  h2.section-title {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  h2.section-title.light { color: white; }
+  .section-desc {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 500;
+  }
+  .section-desc.light { color: rgba(255,255,255,0.72); }
+
+  /* INTRO */
+  .intro { padding: 100px 0; background: white; }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .intro-img-wrap {
+    position: relative;
+  }
+  .intro-img-wrap img {
+    width: 100%;
+    border-radius: 24px;
+    display: block;
+    height: 500px;
+    object-fit: cover;
+  }
+  .intro-img-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--green);
+    color: white;
+    border-radius: 20px;
+    padding: 20px 24px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(46,125,82,0.35);
+  }
+  .intro-img-badge strong { display: block; font-size: 2rem; font-weight: 900; }
+  .intro-img-badge span { font-size: 0.8rem; font-weight: 600; opacity: 0.9; }
+  .intro-content { }
+  .intro-features { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
+  .intro-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--gray);
+    border-radius: 14px;
+    transition: all 0.2s;
+  }
+  .intro-feature:hover { background: var(--green-pale); }
+  .intro-feature-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .intro-feature-icon.active { background: var(--green); color: white; }
+  .intro-feature-text strong { display: block; font-weight: 800; font-size: 0.95rem; margin-bottom: 2px; color: var(--dark); }
+  .intro-feature-text span { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+
+  /* SERVICES */
+  .services { background: white; }
+  .service-block {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-block:last-child { border-bottom: none; }
+  .service-block.alt { background: var(--gray); }
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .service-grid.reverse { }
+  .service-img {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .service-img img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .service-img:hover img { transform: scale(1.04); }
+  .service-img-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--green);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+  }
+  .service-content { }
+  .service-icon-wrap {
+    width: 60px;
+    height: 60px;
+    background: var(--green-pale);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+  .service-content h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .service-content p {
+    color: var(--text-light);
+    line-height: 1.75;
+    font-size: 0.97rem;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+  .service-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .service-list li i { color: var(--green); font-size: 0.85rem; }
+
+  /* PILARES */
+  .pillars {
+    background: var(--dark);
+    padding: 100px 0;
+  }
+  .pillars-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .pillars-head .section-label { justify-content: center; }
+  .pillars-head .section-label::before { display: none; }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .pillar-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 36px 30px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .pillar-card:hover {
+    background: rgba(46,125,82,0.18);
+    border-color: rgba(46,125,82,0.4);
+    transform: translateY(-6px);
+  }
+  .pillar-icon {
+    width: 68px;
+    height: 68px;
+    background: rgba(46,125,82,0.2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7ecfa0;
+    font-size: 1.6rem;
+    margin: 0 auto 24px;
+  }
+  .pillar-card h3 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .pillar-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    font-weight: 500;
+  }
+
+  /* REVIEWS */
+  .reviews { padding: 100px 0; background: var(--green-pale); }
+  .reviews-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .reviews-head .section-label { justify-content: center; }
+  .reviews-head .section-label::before { display: none; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 28px;
+    box-shadow: 0 4px 24px rgba(46,125,82,0.08);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(46,125,82,0.14); }
+  .review-quote {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 2.5rem;
+    color: var(--green-pale);
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .review-stars { color: #f4a308; font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .review-text {
+    font-size: 0.93rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    font-weight: 500;
+    margin-bottom: 22px;
+    font-style: italic;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .review-author-info strong { display: block; font-size: 0.9rem; font-weight: 800; color: var(--dark); }
+  .review-author-info span { font-size: 0.78rem; color: var(--text-light); font-weight: 600; }
+  .reviews-cta { text-align: center; margin-top: 48px; }
+  .reviews-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .trust-item { text-align: center; }
+  .trust-item strong { display: block; font-size: 2rem; font-weight: 900; color: var(--green); }
+  .trust-item span { font-size: 0.82rem; color: var(--text-light); font-weight: 600; }
+
+  /* CONTACT */
+  .contact { padding: 100px 0; background: white; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .contact-info h2 { margin-bottom: 16px; }
+  .contact-info p {
+    color: var(--text-light);
+    line-height: 1.7;
+    font-size: 0.97rem;
+    font-weight: 500;
+    margin-bottom: 36px;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--gray);
+    border-radius: 14px;
+  }
+  .contact-item-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-text strong { display: block; font-size: 0.82rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .contact-item-text span { font-size: 0.95rem; font-weight: 700; color: var(--dark); }
+  .contact-item-text a { color: var(--dark); text-decoration: none; }
+  .contact-item-text a:hover { color: var(--green); }
+  .contact-form-wrap {
+    background: var(--gray);
+    border-radius: 28px;
+    padding: 40px 36px;
+  }
+  .contact-form-wrap h3 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .contact-form-wrap p {
+    font-size: 0.87rem;
+    color: var(--text-light);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 0.82rem; font-weight: 800; color: var(--text); letter-spacing: 0.3px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.93rem;
+    font-weight: 600;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--green); }
+  .form-submit {
+    width: 100%;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 24px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.30);
+  }
+  .form-submit:hover { background: #1ebc58; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.40); }
+  .form-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    padding: 64px 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand p {
+    font-size: 0.87rem;
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .footer-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green);
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+  }
+  .footer-logo-text strong { display: block; font-size: 0.95rem; font-weight: 800; color: white; }
+  .footer-logo-text span { font-size: 0.7rem; color: #7ecfa0; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .footer-social a:hover { background: var(--green); color: white; }
+  .footer-col h4 {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.87rem;
+    font-weight: 600;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-col ul li a:hover { color: #7ecfa0; }
+  .footer-col ul li a i { font-size: 0.7rem; color: var(--green); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-bottom a { color: #7ecfa0; text-decoration: none; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .wa-bubble {
+    background: white;
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: var(--text);
+    max-width: 220px;
+    line-height: 1.4;
+    animation: fadeInUp 0.4s ease;
+    display: none;
+  }
+  .wa-bubble.visible { display: block; }
+  .wa-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 24px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+  }
+  .wa-btn {
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.7rem;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+    transition: all 0.25s;
+    animation: pulse-wa 2.5s infinite;
+  }
+  .wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.55); animation: none; }
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.45); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.70), 0 0 0 10px rgba(37,211,102,0.08); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 40px; }
+    .hero-right { height: 420px; }
+    .hero-card { left: 20px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+    .intro-img-wrap img { height: 360px; }
+    .intro-img-badge { bottom: -16px; right: 16px; }
+    .service-grid { grid-template-columns: 1fr; gap: 40px; }
+    .service-grid.reverse .service-img { order: -1; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .topbar-left { display: none; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-left { padding: 48px 24px; }
+    .hero-right { height: 300px; }
+    .hero-card { display: none; }
+    .hero-card2 { display: none; }
+    .hero-stats { gap: 20px; }
+    .section-inner { padding: 0 20px; }
+    .intro { padding: 72px 0; }
+    .service-block { padding: 64px 0; }
+    .service-img img { height: 300px; }
+    .pillars { padding: 72px 0; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .reviews { padding: 72px 0; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contact { padding: 72px 0; }
+    .contact-form-wrap { padding: 28px 22px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 48px 0 0; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><i class="fas fa-map-marker-alt"></i> Valencia, España</span>
+      <span><i class="fas fa-clock"></i> Lun–Vie 9:00–20:00 · Sáb 9:00–14:00</span>
+    </div>
+    <div class="topbar-right">
+      <span><i class="fas fa-phone"></i> <a href="tel:+34600000000">+34 600 000 000</a></span>
+      <span><i class="fab fa-whatsapp"></i> <a href="https://wa.me/34600000000" target="_blank">Escríbenos</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-tooth"></i></div>
+      <div class="logo-text">
+        <strong>Juan García</strong>
+        <span>Dentista · Valencia</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#intro">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#por-que">Por qué yo</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto" class="nav-cta">Pedir cita</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#intro" onclick="closeMenu()">Sobre mí</a>
+    <a href="#servicios" onclick="closeMenu()">Servicios</a>
+    <a href="#por-que" onclick="closeMenu()">Por qué yo</a>
+    <a href="#resenas" onclick="closeMenu()">Reseñas</a>
+    <a href="#contacto" class="nav-cta" onclick="closeMenu()">Pedir cita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><i class="fas fa-star"></i> Dentista de confianza en Valencia</div>
+    <h1>Tu sonrisa<br><em>perfecta</em><br>me importa</h1>
+    <p class="hero-sub">Atención dental personalizada, cercana y profesional. Especialista en blanqueamiento dental y estética bucal en el corazón de Valencia.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Pedir cita ahora</a>
+      <a href="#servicios" class="btn-secondary"><i class="fas fa-tooth"></i> Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>+500</strong>
+        <span>Pacientes felices</span>
+      </div>
+      <div class="hero-stat">
+        <strong>10+</strong>
+        <span>Años de experiencia</span>
+      </div>
+      <div class="hero-stat">
+        <strong>4.9★</strong>
+        <span>Valoración media</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.pexels.com/photos/3779709/pexels-photo-3779709.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop" alt="Dentista profesional en Valencia">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-card">
+      <div class="hero-card-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="hero-card-text">
+        <strong>Sin listas de espera</strong>
+        <span>Primera cita en 48h</span>
+      </div>
+    </div>
+    <div class="hero-card2">
+      <strong>100%</strong>
+      <span>Trato personalizado</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="intro">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-img-wrap">
+        <img src="https://images.pexels.com/photos/4269693/pexels-photo-4269693.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop" alt="Juan García dentista">
+        <div class="intro-img-badge">
+          <strong>10+</strong>
+          <span>años de experiencia</span>
+        </div>
+      </div>
+      <div class="intro-content">
+        <div class="section-label">Sobre mí</div>
+        <h2 class="section-title">Hola, soy Juan.<br>Tu dentista en Valencia</h2>
+        <p class="section-desc">Con más de 10 años dedicados a la salud dental, mi filosofía es sencilla: cada paciente merece atención cercana, sin prisas y con los mejores resultados. Trabajo solo para ofrecerte un trato completamente personalizado y que siempre seas mi prioridad.</p>
+        <div class="intro-features">
+          <div class="intro-feature">
+            <div class="intro-feature-icon active"><i class="fas fa-user-md"></i></div>
+            <div class="intro-feature-text">
+              <strong>Atención 100% personalizada</strong>
+              <span>Trabajo solo, así que toda mi atención es para ti en cada visita.</span>
+            </div>
+          </div>
+          <div class="intro-feature">
+            <div class="intro-feature-icon"><i class="fas fa-teeth"></i></div>
+            <div class="intro-feature-text">
+              <strong>Especialista en blanqueamiento</strong>
+              <span>Técnicas profesionales para una sonrisa más blanca y natural.</span>
+            </div>
+          </div>
+          <div class="intro-feature">
+            <div class="intro-feature-icon"><i class="fas fa-heart"></i></div>
+            <div class="intro-feature-text">
+              <strong>Pacientes de todas las edades</strong>
+              <span>Desde los más pequeños hasta mayores, toda la familia bienvenida.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div id="servicios">
+
+  <div class="service-block">
+    <div class="section-inner">
+      <div class="service-grid">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800&h=700&fit=crop" alt="Blanqueamiento dental Valencia">
+          <span class="service-img-label">Más solicitado</span>
+        </div>
+        <div class="service-content">
+          <div class="service-icon-wrap"><i class="fas fa-magic"></i></div>
+          <h3>Blanqueamiento Dental Profesional</h3>
+          <p>Consigue una sonrisa hasta 8 tonos más blanca con tratamientos seguros y eficaces, adaptados a tu tipo de esmalte y necesidades concretas. Resultados visibles desde la primera sesión.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Blanqueamiento en consulta (1 sesión)</li>
+            <li><i class="fas fa-check-circle"></i> Férulas personalizadas para casa</li>
+            <li><i class="fas fa-check-circle"></i> Tratamiento combinado para mayor eficacia</li>
+            <li><i class="fas fa-check-circle"></i> Estudio previo sin compromiso</li>
+          </ul>
+          <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Solicitar info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-block alt">
+    <div class="section-inner">
+      <div class="service-grid reverse">
+        <div class="service-content">
+          <div class="service-icon-wrap"><i class="fas fa-tooth"></i></div>
+          <h3>Odontología General y Preventiva</h3>
+          <p>La base de una boca sana es la prevención. Revisiones completas, limpiezas profesionales y diagnóstico temprano para evitar problemas mayores y mantener tu salud bucal en perfecto estado.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Revisiones y radiografías</li>
+            <li><i class="fas fa-check-circle"></i> Limpieza dental profesional</li>
+            <li><i class="fas fa-check-circle"></i> Empastes y obturaciones</li>
+            <li><i class="fas fa-check-circle"></i> Fluorización y selladores</li>
+          </ul>
+          <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Pedir cita</a>
+        </div>
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/6812498/pexels-photo-6812498.jpeg?auto=compress&cs=tinysrgb&w=800&h=700&fit=crop" alt="Odontología general Valencia">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-block">
+    <div class="section-inner">
+      <div class="service-grid">
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/3902716/pexels-photo-3902716.jpeg?auto=compress&cs=tinysrgb&w=800&h=700&fit=crop" alt="Estética dental Valencia">
+        </div>
+        <div class="service-content">
+          <div class="service-icon-wrap"><i class="fas fa-star"></i></div>
+          <h3>Estética Dental y Carillas</h3>
+          <p>Transforma tu sonrisa con tratamientos estéticos avanzados. Las carillas de porcelana o composite permiten corregir forma, color y tamaño de los dientes con resultados completamente naturales.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Carillas de porcelana</li>
+            <li><i class="fas fa-check-circle"></i> Carillas de composite (mismo día)</li>
+            <li><i class="fas fa-check-circle"></i> Diseño de sonrisa digital</li>
+            <li><i class="fas fa-check-circle"></i> Contorneado y remodelado</li>
+          </ul>
+          <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Diseña tu sonrisa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-block alt">
+    <div class="section-inner">
+      <div class="service-grid reverse">
+        <div class="service-content">
+          <div class="service-icon-wrap"><i class="fas fa-align-center"></i></div>
+          <h3>Ortodoncia para Adultos y Niños</h3>
+          <p>Alinea tus dientes de forma eficaz con ortodoncia tradicional o con alineadores transparentes, discretos y cómodos. Tratamientos adaptados a cada edad y caso clínico.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Brackets metálicos y estéticos</li>
+            <li><i class="fas fa-check-circle"></i> Alineadores transparentes</li>
+            <li><i class="fas fa-check-circle"></i> Ortodoncia interceptiva en niños</li>
+            <li><i class="fas fa-check-circle"></i> Revisiones incluidas en el tratamiento</li>
+          </ul>
+          <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Consulta sin compromiso</a>
+        </div>
+        <div class="service-img">
+          <img src="https://images.pexels.com/photos/6812484/pexels-photo-6812484.jpeg?auto=compress&cs=tinysrgb&w=800&h=700&fit=crop" alt="Ortodoncia Valencia">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PILARES -->
+<section class="pillars" id="por-que">
+  <div class="section-inner">
+    <div class="pillars-head">
+      <div class="section-label" style="color:#7ecfa0;">Por qué elegirme</div>
+      <h2 class="section-title light">Lo que me diferencia</h2>
+      <p class="section-desc light" style="margin:0 auto;">Trabajo solo para que cada paciente reciba toda mi atención, experiencia y dedicación sin intermediarios.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-user-check"></i></div>
+        <h3>Trato directo y cercano</h3>
+        <p>Siempre atiende el mismo profesional. Sin rotación de personal ni cambios constantes. Te conozco y recuerdo tu historial en cada visita.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-clock"></i></div>
+        <h3>Sin esperas innecesarias</h3>
+        <p>Gestión de citas personalizada para que nunca esperes más de lo necesario. Tu tiempo es tan valioso como el mío.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Tecnología actual</h3>
+        <p>Equipamiento moderno y materiales de última generación para diagnósticos precisos y tratamientos más cómodos y eficaces.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-euro-sign"></i></div>
+        <h3>Precios transparentes</h3>
+        <p>Presupuesto detallado antes de cualquier tratamiento. Sin sorpresas ni costes ocultos. Financiación disponible sin intereses.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-heart"></i></div>
+        <h3>Trato con miedo al dentista</h3>
+        <p>Si eres de los que evitan el dentista por miedo, aquí encontrarás un ambiente tranquilo, pausado y completamente sin presión.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3>En el centro de Valencia</h3>
+        <p>Consulta bien ubicada, con fácil acceso en transporte público y aparcamiento cercano para que llegar sea lo de menos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="resenas">
+  <div class="section-inner">
+    <div class="reviews-head">
+      <div class="section-label">Reseñas de pacientes</div>
+      <h2 class="section-title">Lo que dicen mis pacientes</h2>
+      <p class="section-desc" style="margin:0 auto;">Más de 500 pacientes han confiado en mí. Sus palabras me motivan a seguir mejorando cada día.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Me hice el blanqueamiento y el resultado fue increíble. Juan te explica todo con muchísima paciencia y los resultados superaron mis expectativas. Ahora sonrío en todas las fotos sin vergüenza.</p>
+        <div class="review-author">
+          <div class="review-avatar">AL</div>
+          <div class="review-author-info">
+            <strong>Ana López</strong>
+            <span>Valencia · Blanqueamiento dental</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Llevaba años sin ir al dentista por miedo y con Juan fue completamente diferente. Trato muy humano, sin presiones. Me hizo una limpieza y empastes sin ningún dolor. Totalmente recomendable.</p>
+        <div class="review-author">
+          <div class="review-avatar">CM</div>
+          <div class="review-author-info">
+            <strong>Carlos Martínez</strong>
+            <span>Valencia · Odontología general</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Llevé a mis hijos y a mí misma. Para toda la familia un trato excelente. Los niños salieron encantados, que es lo más difícil. Muy buen profesional y muy buena persona.</p>
+        <div class="review-author">
+          <div class="review-avatar">SR</div>
+          <div class="review-author-info">
+            <strong>Sofía Ruiz</strong>
+            <span>Valencia · Odontología familiar</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Me pusieron ortodoncia invisible y estoy encantado con el seguimiento. Siempre disponible para cualquier duda, ya sea en consulta o por WhatsApp. Un profesional de verdad.</p>
+        <div class="review-author">
+          <div class="review-avatar">PG</div>
+          <div class="review-author-info">
+            <strong>Pablo García</strong>
+            <span>Valencia · Ortodoncia</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Las carillas de composite me cambiaron la sonrisa completamente. El resultado es natural y yo sigo siendo yo, pero con una sonrisa perfecta. Merece mucho la pena.</p>
+        <div class="review-author">
+          <div class="review-avatar">LF</div>
+          <div class="review-author-info">
+            <strong>Laura Fernández</strong>
+            <span>Valencia · Estética dental</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">El mejor dentista que he tenido. Presupuesto claro, sin letra pequeña y el resultado del blanqueamiento fue espectacular. Encima en pleno centro de Valencia. No busques más.</p>
+        <div class="review-author">
+          <div class="review-avatar">MS</div>
+          <div class="review-author-info">
+            <strong>Miguel Sánchez</strong>
+            <span>Valencia · Blanqueamiento + estética</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-trust">
+      <div class="trust-item"><strong>4.9★</strong><span>Valoración en Google</span></div>
+      <div class="trust-item"><strong>+500</strong><span>Pacientes atendidos</span></div>
+      <div class="trust-item"><strong>98%</strong><span>Recomendarían</span></div>
+      <div class="trust-item"><strong>10+</strong><span>Años de experiencia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">¿Hablamos?<br>Pide tu cita</h2>
+        <p>Escríbeme directamente y te respondo en menos de una hora en horario de consulta. Sin esperas, sin formularios complicados, sin intermediarios.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="contact-item-text">
+              <strong>WhatsApp directo</strong>
+              <span><a href="https://wa.me/34600000000" target="_blank">+34 600 000 000</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text">
+              <strong>Teléfono</strong>
+              <span><a href="tel:+34600000000">+34 600 000 000</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text">
+              <strong>Ubicación</strong>
+              <span>Calle Gran Vía, 24 · Valencia 46001</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-item-text">
+              <strong>Horario</strong>
+              <span>Lun–Vie 9:00–20:00 · Sáb 9:00–14:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <h3>Pide tu cita ahora</h3>
+        <p>Rellena el formulario y te enviamos un mensaje directo por WhatsApp.</p>
