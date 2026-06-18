@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlos Martínez | Fontanería Profesional en Madrid</title>
+<meta name="description" content="Fontanería profesional en Madrid. Reparaciones urgentes, instalaciones y mantenimiento. Más de 15 años de experiencia. Disponible 24h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #1a6fc4;
+    --accent-dark: #145aa0;
+    --accent-light: #e8f1fb;
+    --accent-rgb: 26, 111, 196;
+    --text: #0f1923;
+    --text-light: #4a5568;
+    --bg: #ffffff;
+    --bg-soft: #f4f8fd;
+    --border: #e2eaf4;
+    --radius: 16px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(26,111,196,0.10);
+    --shadow-lg: 0 12px 48px rgba(26,111,196,0.16);
+    --font: 'Inter', sans-serif;
+    --max: 1200px;
+    --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow var(--transition);
+  }
+
+  nav.scrolled { box-shadow: 0 2px 20px rgba(26,111,196,0.10); }
+
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--text); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--accent); background: var(--accent-light); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    transition: all var(--transition) !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,111,196,0.30) !important; }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    background: none;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all var(--transition);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    z-index: 99;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+
+  .mobile-menu.open { display: block; }
+
+  .mobile-menu a {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color var(--transition);
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 24px 60px;
+    background: linear-gradient(135deg, var(--bg-soft) 0%, #ddeeff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(26,111,196,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,111,196,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(26,111,196,0.18);
+  }
+
+  .hero-badge::before { content: '●'; font-size: 0.5rem; }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 36px;
+    line-height: 1.75;
+    max-width: 480px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 30px;
+    border-radius: 50px;
+    transition: all var(--transition);
+    box-shadow: 0 4px 24px rgba(26,111,196,0.30);
+  }
+
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(26,111,196,0.38); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 30px;
+    border-radius: 50px;
+    border: 2px solid var(--accent);
+    transition: all var(--transition);
+  }
+
+  .btn-secondary:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat strong {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat span {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+  }
+
+  .hero-img-wrap img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-card {
+    position: absolute;
+    bottom: 32px;
+    left: -32px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 220px;
+  }
+
+  .hero-card-icon {
+    width: 48px; height: 48px;
+    background: var(--accent-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .hero-card strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .hero-card span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .hero-card-2 {
+    position: absolute;
+    top: 32px;
+    right: -24px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .hero-card-2 strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  .hero-card-2 span {
+    font-size: 0.78rem;
+    opacity: 0.85;
+    font-weight: 500;
+  }
+
+  /* SECTION BASE */
+  section { padding: 96px 24px; }
+
+  .section-inner { max-width: var(--max); margin: 0 auto; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .section-title em { font-style: normal; color: var(--accent); }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    max-width: 540px;
+    line-height: 1.75;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    padding: 28px 24px;
+    background: var(--text);
+  }
+
+  .trust-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .trust-item strong { color: #fff; }
+
+  .trust-icon {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* SERVICES */
+  .services { background: var(--bg-soft); }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .services-header .section-label { justify-content: center; }
+  .services-header .section-sub { margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+    transform-origin: left;
+  }
+
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 60px; height: 60px;
+    background: var(--accent-light);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 22px;
+    transition: background var(--transition);
+  }
+
+  .service-card:hover .service-icon { background: var(--accent); }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 18px;
+    transition: gap var(--transition);
+  }
+
+  .service-link:hover { gap: 10px; }
+
+  /* ABOUT */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .about-img-badge {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+
+  .about-img-badge strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .about-img-badge span {
+    font-size: 0.82rem;
+    opacity: 0.85;
+    font-weight: 500;
+  }
+
+  .about-content .section-sub { max-width: 100%; margin-bottom: 28px; }
+
+  .about-list { list-style: none; margin-bottom: 36px; }
+
+  .about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+
+  .about-list li:last-child { border-bottom: none; }
+
+  .about-list li::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PROCESS */
+  .process { background: var(--bg-soft); }
+
+  .process-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .process-header .section-label { justify-content: center; }
+  .process-header .section-sub { margin: 0 auto; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(12.5% + 16px);
+    right: calc(12.5% + 16px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(26,111,196,0.2));
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 64px; height: 64px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 20px rgba(26,111,196,0.30);
+    transition: all var(--transition);
+  }
+
+  .process-step:hover .step-num { transform: scale(1.12); box-shadow: 0 8px 28px rgba(26,111,196,0.40); }
+
+  .process-step h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .process-step p {
+    font-size: 0.87rem;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+
+  /* REVIEWS */
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .reviews-header .section-label { justify-content: center; }
+  .reviews-header .section-sub { margin: 0 auto; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .review-card {
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    position: relative;
+  }
+
+  .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: 16px; right: 24px;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--accent-light);
+    font-family: Georgia, serif;
+    font-weight: 900;
+  }
+
+  .stars {
+    color: #f59e0b;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .review-card p {
+    font-size: 0.93rem;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 22px;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .reviewer strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .reviewer span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  /* GALLERY */
+  .gallery { background: var(--bg-soft); }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .gallery-header .section-label { justify-content: center; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .gallery-item:first-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .gallery-item:first-child img { height: 100%; min-height: 496px; }
+
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,111,196,0.7) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  /* CTA BAND */
+  .cta-band {
+    padding: 80px 24px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-band::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .cta-band h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cta-band p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 30px;
+    border-radius: 50px;
+    transition: all var(--transition);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.20); }
+
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 30px;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all var(--transition);
+  }
+
+  .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+  /* FAQ */
+  .faq-inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .faq-header .section-label { justify-content: center; }
+  .faq-header .section-sub { margin: 0 auto; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .faq-item {
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+  }
+
+  .faq-item:hover { box-shadow: var(--shadow); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .faq-q:hover { color: var(--accent); }
+
+  .faq-q-icon {
+    width: 28px; height: 28px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    flex-shrink: 0;
+    transition: all var(--transition);
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-q-icon { background: var(--accent); color: #fff; transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding var(--transition);
+    padding: 0 28px;
+    font-size: 0.93rem;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 28px 22px; }
+
+  /* CONTACT */
+  .contact { background: var(--bg-soft); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+  }
+
+  .contact-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 16px; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    transition: all var(--transition);
+  }
+
+  .contact-item:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateX(4px); }
+
+  .contact-item-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .contact-item strong {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-light);
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  .contact-item span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .contact-form-wrap {
+    background: #fff;
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+  }
+
+  .contact-form-wrap h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .contact-form-wrap > p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-bottom: 28px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+
+  .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font);
+    font-size: 0.93rem;
+    color: var(--text);
+    background: var(--bg-soft);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(26,111,196,0.12);
+    background: #fff;
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+    margin-top: 8px;
+  }
+
+  .form-submit:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,111,196,0.30); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.75);
+    padding: 64px 24px 32px;
+  }
+
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand .nav-logo { display: block; margin-bottom: 14px; font-size: 1.3rem; color: #fff; }
+  .footer-brand .nav-logo span { color: rgba(255,255,255,0.6); }
+
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .footer-socials { display: flex; gap: 10px; }
+
+  .social-btn {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+    font-weight: 700;
+  }
+
+  .social-btn:hover { background: var(--accent); color: #fff; }
+
+  .footer-col h4 {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color var(--transition);
+  }
+
+  .footer-col ul a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+  }
+
+  .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color var(--transition); }
+  .footer-bottom a:hover { color: #fff; }
+
+  /* FLOATING CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .float-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 14px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(26,111,196,0.40);
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+
+  .float-btn:hover { background: var(--accent-dark); transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 28px rgba(26,111,196,0.50); }
+
+  .float-btn.whatsapp { background: #25d366; box-shadow: 0 4px 20px rgba(37,211,102,0.40); }
+  .float-btn.whatsapp:hover { background: #1dba58; box-shadow: 0 8px 28px rgba(37,211,102,0.50); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-img-wrap { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-img-wrap { display: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:first-child { grid-column: auto; grid-row: auto; }
+    .gallery-item:first-child img { height: 240px; min-height: auto; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .hero { padding: 88px 24px 56px; }
+    .hero-stats { gap: 20px; }
+    section { padding: 64px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .trust-inner { gap: 16px; justify-content: center; }
+    .contact-form-wrap { padding: 28px 22px; }
+    .floating-cta { bottom: 20px; right: 16px; }
+    .float-btn span.label { display: none; }
+    .float-btn { padding: 14px; border-radius: 50%; width: 52px; height: 52px; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
+    .cta-btns { flex-direction: column; align-items: center; }
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Carlos<span>Fontanería</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#proceso">Cómo trabajo</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacto" class="nav-cta">Pedir presupuesto</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios">Servicios</a>
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#proceso">Cómo trabajo</a>
+  <a href="#opiniones">Opiniones</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacto">Pedir presupuesto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge fade-up">Fontanero profesional en Madrid</div>
+      <h1 class="fade-up delay-1">Tu fontanero de<br><em>confianza</em> en<br>Madrid</h1>
+      <p class="hero-desc fade-up delay-2">Reparaciones urgentes, instalaciones y mantenimiento de fontanería. Respuesta rápida en toda la Comunidad de Madrid. Disponible 24 horas.</p>
+      <div class="hero-btns fade-up delay-3">
+        <a href="tel:+34600000000" class="btn-primary">📞 Llamar ahora</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios →</a>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div class="hero-stat"><strong>+15</strong><span>Años de experiencia</span></div>
+        <div class="hero-stat"><strong>+2.400</strong><span>Clientes satisfechos</span></div>
+        <div class="hero-stat"><strong>24h</strong><span>Urgencias</span></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap fade-up delay-2">
+      <img src="https://images.pexels.com/photos/5483071/pexels-photo-5483071.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fontanero profesional trabajando en Madrid">
+      <div class="hero-card">
+        <div class="hero-card-icon">🔧</div>
+        <div>
+          <strong>Reparación garantizada</strong>
+          <span>Garantía de 2 años en trabajos</span>
+        </div>
+      </div>
+      <div class="hero-card-2">
+        <strong>⚡ Urgente</strong>
+        <span>En 1h en Madrid</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">⭐</div>
+      <div><strong>4.9/5</strong> en Google Reviews</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🛡️</div>
+      <div><strong>Profesional</strong> certificado y asegurado</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📍</div>
+      <div><strong>Toda</strong> la Comunidad de Madrid</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">💳</div>
+      <div><strong>Presupuesto</strong> sin compromiso</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🕐</div>
+      <div><strong>Urgencias</strong> 24 horas, 365 días</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-inner">
+    <div class="services-header">
+      <div class="section-label">Nuestros servicios</div>
+      <h2 class="section-title">Todo lo que necesitas<br>en <em>fontanería</em></h2>
+      <p class="section-sub">Desde pequeñas reparaciones hasta grandes instalaciones. Trabajo limpio, rápido y con garantía por escrito.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚨</div>
+        <h3>Urgencias 24h</h3>
+        <p>Fugas de agua, roturas de tuberías, inundaciones. Respuesta inmediata en menos de 60 minutos en toda Madrid.</p>
+        <a href="#contacto" class="service-link">Llamar ahora →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <h3>Baños y duchas</h3>
+        <p>Instalación y sustitución de platos de ducha, bañeras, inodoros, lavabos y grifería. Reformas completas de baño.</p>
+        <a href="#contacto" class="service-link">Pedir presupuesto →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔩</div>
+        <h3>Reparación de fugas</h3>
+        <p>Localización y reparación de fugas en tuberías, juntas y grifos. Usamos tecnología de detección sin obras innecesarias.</p>
+        <a href="#contacto" class="service-link">Consultar →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌡️</div>
+        <h3>Calentadores y termos</h3>
+        <p>Instalación, mantenimiento y reparación de calentadores de gas, eléctricos y termos. Todas las marcas.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Instalaciones nuevas</h3>
+        <p>Instalación completa de fontanería en obra nueva o reforma. Trazado de tuberías, conexiones y puesta a punto.</p>
+        <a href="#contacto" class="service-link">Solicitar visita →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚰</div>
+        <h3>Desatascos</h3>
+        <p>Desatascos de tuberías, bajantes y alcantarillado. Limpieza con hidrojet de alta presión. Sin rotura de suelos.</p>
+        <a href="#contacto" class="service-link">Consultar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre-mi">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <img src="https://images.pexels.com/photos/5473950/pexels-photo-5473950.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Carlos Martínez fontanero profesional en Madrid">
+        <div class="about-img-badge">
+          <strong>+15</strong>
+          <span>años de experiencia</span>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">Sobre mí</div>
+        <h2 class="section-title">Hola, soy <em>Carlos Martínez</em>,<br>tu fontanero en Madrid</h2>
+        <p class="section-sub">Llevo más de 15 años resolviendo todo tipo de problemas de fontanería en hogares y negocios de Madrid. Me formé en la Escuela de Formación Profesional de Madrid y he trabajado con las mejores empresas del sector antes de montar mi propio negocio.</p>
+        <p class="section-sub" style="margin-top:12px;">Mi filosofía es sencilla: trabajo limpio, presupuesto honesto y solución definitiva. No te cobro desplazamiento en Madrid capital y siempre te explico qué se va a hacer antes de empezar.</p>
+        <ul class="about-list">
+          <li>Oficial de fontanería con más de 15 años de experiencia</li>
+          <li>Seguro de responsabilidad civil incluido en todos los trabajos</li>
+          <li>Garantía por escrito de 2 años en reparaciones e instalaciones</li>
+          <li>Presupuesto gratuito y sin compromiso, sin letra pequeña</li>
+          <li>Atención personalizada: siempre hablas directamente conmigo</li>
+          <li>Materiales de primera calidad con factura oficial</li>
+        </ul>
+        <a href="tel:+34600000000" class="btn-primary">📞 +34 600 000 000</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="section-inner">
+    <div class="process-header">
+      <div class="section-label">Cómo trabajo</div>
+      <h2 class="section-title">Un proceso <em>simple</em> y sin sorpresas</h2>
+      <p class="section-sub">Desde que me llamas hasta que termino el trabajo, sabrás en todo momento qué se hace y cuánto cuesta.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Llámame o escríbeme</h3>
+        <p>Cuéntame tu problema por teléfono o WhatsApp. Te respondo en menos de 5 minutos durante horario comercial.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Visita y diagnóstico</h3>
+        <p>Me desplazo a tu domicilio, analizo el problema con detalle y te doy un presupuesto claro y por escrito.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Apruebas y empezamos</h3>
+        <p>Solo empiezo el trabajo si apruebas el presupuesto. Sin costes ocultos ni sorpresas al final.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Trabajo garantizado</h3>
+        <p>Termino el trabajo, dejo todo limpio y te entrego garantía por escrito. Puedes llamarme si algo no va bien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="trabajos">
+  <div class="section-inner">
+    <div class="gallery-header">
+      <div class="section-label">Trabajos realizados</div>
+      <h2 class="section-title">Algunos de mis <em>proyectos</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Instalación de fontanería en baño">
+        <div class="gallery-overlay">Reforma de baño completo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6419120/pexels-photo-6419120.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Reparación de tuberías">
+        <div class="gallery-overlay">Reparación de fuga en tubería</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5691585/pexels-photo-5691585.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Instalación de calentador">
+        <div class="gallery-overlay">Instalación calentador a gas</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Instalación de grifería">
+        <div class="gallery-overlay">Cambio de grifería en cocina</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.pexels.com/photos/6419094/pexels-photo-6419094.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Desatasco profesional">
+        <div class="gallery-overlay">Desatasco con hidrojet</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="opiniones">
+  <div class="section-inner">
+    <div class="reviews-header">
+      <div class="section-label">Opiniones reales</div>
+      <h2 class="section-title">Lo que dicen mis <em>clientes</em></h2>
+      <p class="section-sub">Más de 2.400 clientes satisfechos en toda la Comunidad de Madrid. Estas son algunas de sus opiniones.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Tuve una fuga importante un domingo por la tarde y Carlos llegó en menos de 45 minutos. Resolvió el problema en dos horas y el precio fue muy razonable. Totalmente recomendable, ya es mi fontanero de confianza.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">AM</div>
+          <div>
+            <strong>Ana Morales</strong>
+            <span>Madrid, Chamartín</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Reformé el baño completo con Carlos y el resultado fue espectacular. Muy profesional, puntual y limpio. El presupuesto inicial fue exactamente lo que acabé pagando. Sin sorpresas. Muy recomendable.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JR</div>
+          <div>
+            <strong>Javier Romero</strong>
+            <span>Madrid, Vallecas</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Llevaba semanas con un grifo que goteaba y al final me decidí a llamar. Carlos vino al día siguiente, lo arregló en 20 minutos y me cobró un precio justo. Atención muy cercana y profesional. 100% recomendado.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">LP</div>
+          <div>
+            <strong>Laura Pérez</strong>
+            <span>Madrid, Getafe</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Llamé para un desatasco urgente en el local de mi empresa. Llegó en media hora y lo solucionó todo perfectamente. Muy eficaz y dejó todo limpio. A partir de ahora solo llamo a Carlos para todo lo relacionado con fontanería.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MG</div>
+          <div>
+            <strong>Marcos García</strong>
+            <span>Madrid, Alcobendas</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Instalación de termo eléctrico nuevo. V
