@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marc García | Clínica Dental Barcelona</title>
+<meta name="description" content="Clínica dental en Barcelona. Odontología estética, implantes y ortodoncia. Dr. Marc García.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #2a7d6f;
+    --accent-light: #3a9d8f;
+    --accent-dark: #1a5d4f;
+    --accent-bg: #f0f8f6;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a4a6a;
+    --text-light: #7a7a9a;
+    --bg-white: #ffffff;
+    --bg-soft: #f8fffe;
+    --bg-section: #f4faf8;
+    --border: #ddeee9;
+    --shadow: rgba(42,125,111,0.10);
+    --shadow-strong: rgba(42,125,111,0.18);
+    --gold: #c8a96e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s;
+  }
+
+  nav.scrolled { box-shadow: 0 4px 24px var(--shadow); }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  .nav-logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    line-height: 1.1;
+  }
+
+  .nav-logo-title {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+    border-radius: 2px;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent-dark) !important;
+    transform: translateY(-1px);
+    color: #fff !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8f7f4 0%, #f0faf8 40%, #fafffe 100%);
+    z-index: 0;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .hero-blob-1 {
+    width: 600px; height: 600px;
+    background: var(--accent);
+    top: -100px; right: -100px;
+  }
+
+  .hero-blob-2 {
+    width: 400px; height: 400px;
+    background: var(--gold);
+    bottom: -50px; left: -80px;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(42,125,111,0.1);
+    border: 1px solid rgba(42,125,111,0.2);
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px var(--shadow-strong);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--shadow-strong);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--accent-dark);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--accent);
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent-bg);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image-card {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 3/4;
+  }
+
+  .hero-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,93,79,0.35) 0%, transparent 60%);
+  }
+
+  .hero-float-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1rem 1.4rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 2;
+  }
+
+  .hero-float-card-1 {
+    bottom: 2rem;
+    left: -2rem;
+  }
+
+  .hero-float-card-2 {
+    top: 2rem;
+    right: -2rem;
+  }
+
+  .float-icon {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .float-text-label {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  .float-text-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 2rem; }
+
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ABOUT */
+  .about { background: var(--bg-section); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-main {
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    aspect-ratio: 4/5;
+  }
+
+  .about-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 200px;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    aspect-ratio: 1/1;
+    border: 4px solid #fff;
+  }
+
+  .about-img-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-content { padding: 1rem 0; }
+
+  .about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-title em { font-style: italic; color: var(--accent); }
+
+  .about-text {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 2rem 0;
+  }
+
+  .about-credential {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+
+  .credential-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* SERVICES */
+  .services { background: var(--bg-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px var(--shadow);
+    border-color: rgba(42,125,111,0.2);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    background: var(--accent-bg);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .service-link:hover { gap: 0.7rem; }
+
+  /* GALLERY */
+  .gallery { background: var(--bg-section); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 260px;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-item {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,93,79,0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  .gallery-label {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--bg-white); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 12px 40px var(--shadow);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 0.2rem;
+    margin-bottom: 1.2rem;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .testimonial-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--accent-bg);
+  }
+
+  .testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .testimonial-role {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.1rem;
+  }
+
+  /* PROCESS */
+  .process { background: var(--accent-dark); }
+
+  .process .section-tag { color: var(--gold); }
+
+  .process .section-title { color: #fff; }
+
+  .process .section-desc { color: rgba(255,255,255,0.7); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 10%;
+    width: 80%;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    z-index: 0;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-num {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .process-step:hover .process-num {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+    transform: scale(1.1);
+  }
+
+  .process-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .process-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-bg), #e0f5f0);
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .cta-title em { color: var(--accent); font-style: italic; }
+
+  .cta-desc {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-phone {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border: 2px solid var(--accent);
+    border-radius: 50px;
+    transition: all 0.3s;
+  }
+
+  .cta-phone:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* CONTACT */
+  .contact { background: var(--bg-section); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-info-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .contact-info-desc {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-item-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+
+  .contact-item-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-item-value {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .contact-form {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 8px 40px var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.8rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--bg-soft);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    resize: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(42,125,111,0.1);
+    background: #fff;
+  }
+
+  .form-group textarea { height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.03em;
+  }
+
+  .form-submit:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-strong);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.75);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    max-width: 300px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .footer-social a {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-social a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .footer-col-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent-light); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-legal a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* MOBILE MENU */
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+
+  .nav-mobile.open { display: flex; }
+
+  .nav-mobile a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+
+  .nav-mobile a:hover { color: var(--accent); }
+
+  .nav-mobile a:last-child { border-bottom: none; }
+
+  .nav-mobile .nav-cta {
+    text-align: center;
+    border-bottom: none;
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeInUp 0.7s ease forwards; }
+
+  /* SCROLL INDICATOR */
+  .scroll-progress {
+    position: fixed;
+    top: 72px; left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 999;
+    transition: width 0.1s;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .hero-container { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-image-card { max-width: 340px; margin: 0 auto; }
+    .hero-float-card-1 { left: 0; }
+    .hero-float-card-2 { right: 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:first-child { grid-column: span 2; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: span 1; }
+    .process-grid { grid-template-columns: 1fr; }
+    .hero-float-card { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">
+    <span class="nav-logo-name">Dr. Marc García</span>
+    <span class="nav-logo-title">Clínica Dental Barcelona</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="tel:+34600000000" class="nav-cta">📞 Llamar ahora</a></li>
+  </ul>
+  <button class="nav-burger" id="burgerBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#sobre-mi" onclick="closeMobileMenu()">Sobre mí</a>
+  <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+  <a href="#galeria" onclick="closeMobileMenu()">Galería</a>
+  <a href="#opiniones" onclick="closeMobileMenu()">Opiniones</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+  <a href="tel:+34600000000" class="nav-cta">📞 Llamar ahora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-container">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">Clínica dental · Barcelona</div>
+      <h1>Tu sonrisa perfecta comienza <em>aquí</em></h1>
+      <p class="hero-desc">En la Clínica Dental Dr. Marc García ofrecemos odontología estética, implantes y ortodoncia de última generación. Cuidamos tu salud bucal con la tecnología y el trato humano que mereces.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">✨ Pedir cita gratuita</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">+2.500</span>
+          <span class="hero-stat-label">Pacientes satisfechos</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">15+</span>
+          <span class="hero-stat-label">Años de experiencia</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">98%</span>
+          <span class="hero-stat-label">Valoraciones positivas</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-card">
+        <img src="https://images.pexels.com/photos/3845741/pexels-photo-3845741.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dr. Marc García, odontólogo en Barcelona">
+        <div class="hero-image-overlay"></div>
+      </div>
+      <div class="hero-float-card hero-float-card-1">
+        <div class="float-icon">🦷</div>
+        <div>
+          <div class="float-text-label">Próxima disponibilidad</div>
+          <div class="float-text-value">Esta semana</div>
+        </div>
+      </div>
+      <div class="hero-float-card hero-float-card-2">
+        <div class="float-icon">⭐</div>
+        <div>
+          <div class="float-text-label">Google Reviews</div>
+          <div class="float-text-value">4.9 / 5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img-main">
+        <img src="https://images.pexels.com/photos/4687362/pexels-photo-4687362.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dr. Marc García en su clínica dental">
+      </div>
+      <div class="about-img-accent">
+        <img src="https://images.pexels.com/photos/6502285/pexels-photo-6502285.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Tecnología dental avanzada">
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">Sobre el Dr. García</span>
+      <h2 class="about-title">Más de 15 años cuidando <em>sonrisas</em> en Barcelona</h2>
+      <p class="about-text">Soy el Dr. Marc García, especialista en odontología estética e implantología. Me formé en la Universitat de Barcelona y realicé un máster en Estética Dental en Madrid. Desde el primer día, mi filosofía ha sido clara: cada paciente merece un trato personalizado, sin prisas y con los mejores materiales.</p>
+      <p class="about-text">Mi clínica en el centro de Barcelona está equipada con la tecnología más avanzada: escáner intraoral, ortopantomografía digital 3D y sistemas de blanqueamiento de última generación. Tu comodidad y tranquilidad son nuestra prioridad.</p>
+      <div class="about-credentials">
+        <div class="about-credential"><div class="credential-dot"></div> Licenciado en Odontología – Universitat de Barcelona</div>
+        <div class="about-credential"><div class="credential-dot"></div> Máster en Estética Dental y Carillas – Madrid</div>
+        <div class="about-credential"><div class="credential-dot"></div> Miembro del Colegio de Odontólogos de Cataluña</div>
+        <div class="about-credential"><div class="credential-dot"></div> Certificado en Implantología Oral Avanzada</div>
+        <div class="about-credential"><div class="credential-dot"></div> Especialista en Ortodoncia Invisible Invisalign</div>
+      </div>
+      <a href="#contacto" class="btn-primary">Reservar primera visita gratuita →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-header">
+    <span class="section-tag">Lo que ofrecemos</span>
+    <h2 class="section-title">Tratamientos dentales para <em>cada necesidad</em></h2>
+    <p class="section-desc">Desde una revisión preventiva hasta una transformación completa de tu sonrisa. Atendemos a toda la familia con la máxima profesionalidad.</p>
+  </div>
+  <div class="services-grid container">
+    <div class="service-card">
+      <div class="service-icon">✨</div>
+      <h3 class="service-title">Estética Dental</h3>
+      <p class="service-desc">Carillas de porcelana, blanqueamiento profesional y diseño de sonrisa digital. Transformamos tu estética con resultados naturales y duraderos.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🦷</div>
+      <h3 class="service-title">Implantes Dentales</h3>
+      <p class="service-desc">Implantes de titanio de última generación con carga inmediata. Recupera tu sonrisa y funcionalidad en una sola intervención indolora.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">😁</div>
+      <h3 class="service-title">Ortodoncia Invisible</h3>
+      <p class="service-desc">Alineadores Invisalign personalizados para corregir tu mordida sin brackets visibles. Cómodos, higiénicos y efectivos a cualquier edad.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔬</div>
+      <h3 class="service-title">Periodoncia</h3>
+      <p class="service-desc">Tratamiento especializado de encías para combatir la periodontitis y mantener la salud bucal a largo plazo con técnicas mínimamente invasivas.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👶</div>
+      <h3 class="service-title">Odontología Infantil</h3>
+      <p class="service-desc">Revisiones y tratamientos adaptados para los más pequeños. Creamos un ambiente tranquilo y divertido para que el dentista no dé miedo.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3 class="service-title">Revisión y Prevención</h3>
+      <p class="service-desc">Control rutinario, limpieza profesional y radiografías digitales. La mejor inversión es prevenir: revisiones completas sin listas de espera.</p>
+      <a href="#contacto" class="service-link">Saber más →</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="section-header">
+    <span class="section-tag">Nuestra clínica</span>
+    <h2 class="section-title">Instalaciones de <em>última generación</em></h2>
+    <p class="section-desc">Un espacio moderno, cálido y equipado con la mejor tecnología para que te sientas cómodo desde el primer momento.</p>
+  </div>
+  <div class="gallery-grid container">
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/3845741/pexels-photo-3845741.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Clínica dental Dr. Marc García">
+      <div class="gallery-overlay"><span class="gallery-label">Sala de tratamientos</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/6502289/pexels-photo-6502289.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tecnología dental">
+      <div class="gallery-overlay"><span class="gallery-label">Tecnología digital</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4687362/pexels-photo-4687362.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Atención al paciente">
+      <div class="gallery-overlay"><span class="gallery-label">Atención personalizada</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/4269694/pexels-photo-4269694.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Zona de espera">
+      <div class="gallery-overlay"><span class="gallery-label">Zona de espera</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.pexels.com/photos/6502285/pexels-photo-6502285.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Equipamiento avanzado">
+      <div class="gallery-overlay"><span class="gallery-label">Equipamiento avanzado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="opiniones">
+  <div class="section-header">
+    <span class="section-tag">Opiniones reales</span>
+    <h2 class="section-title">Lo que dicen nuestros <em>pacientes</em></h2>
+    <p class="section-desc">La confianza de nuestros pacientes es el mejor reconocimiento. Más de 2.500 sonrisas transformadas en Barcelona.</p>
+  </div>
+  <div class="testimonials-grid container">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Me hice las carillas de porcelana con el Dr. García y el resultado es espectacular. Superó todas mis expectativas. El trato es muy cercano y profesional, me explicaron cada paso del proceso."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">
+          <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Laura M.">
+        </div>
+        <div>
+          <div class="testimonial-name">Laura Martínez</div>
+          <div class="testimonial-role">Diseño de sonrisa · Barcelona</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Tenía mucho miedo al dentista pero aquí me sentí completamente tranquilo. El implante fue indoloro y en pocas semanas ya comía con normalidad. Totalmente recomendable."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">
+          <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Jordi P.">
+        </div>
+        <div>
+          <div class="testimonial-name">Jordi Puig</div>
+          <div class="testimonial-role">Implante dental · L'Hospitalet</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Llevo 6 meses con Invisalign y los cambios son increíbles. La clínica es muy moderna y el equipo siempre está disponible para resolver dudas. Es la mejor decisión que he tomado."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">
+          <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Marta S.">
+        </div>
+        <div>
+          <div class="testimonial-name">Marta Solà</div>
+          <div class="testimonial-role">Ortodoncia invisible · Barcelona</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-header">
+    <span class="section-tag">Cómo trabajamos</span>
+    <h2 class="section-title">Tu camino hacia una <em>sonrisa perfecta</em></h2>
+    <p class="section-desc">Un proceso claro, transparente y sin sorpresas. Desde la primera visita hasta los resultados finales.</p>
+  </div>
+  <div class="process-grid container">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-title">Primera consulta gratuita</div>
+      <p class="process-desc">Nos conocemos, escuchamos tus objetivos y realizamos una exploración completa sin compromiso.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-title">Diagnóstico digital</div>
+      <p class="process-desc">Radiografías y escáner 3D para obtener un diagnóstico preciso y diseñar tu plan de tratamiento personalizado.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-title">Tratamiento sin dolor</div>
+      <p class="process-desc">Aplicamos las técnicas más avanzadas para que tu experiencia sea cómoda, rápida y completamente indolora.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-title">Seguimiento continuo</div>
+      <p class="process-desc">Te acompañamos después del tratamiento con revisiones de seguimiento para garantizar resultados duraderos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="section-tag">¿Listo para empezar?</span>
+    <h2 class="cta-title">Tu primera consulta es <em>completamente gratuita</em></h2>
+    <p class="cta-desc">Sin compromiso ni listas de espera. Llámanos o rellena el formulario y nos ponemos en contacto contigo en menos de 24 horas.</p>
+    <div class="cta-actions">
+      <a href="#contacto" class="btn-primary">📅 Reservar cita ahora</a>
+      <a href="tel:+34600000000" class="cta-phone">📞 +34 600 000 000</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="section-header">
+    <span class="section-tag">Contacto</span>
+    <h2 class="section-title">Estamos aquí para <em>ayudarte</em></h2>
+    <p class="section-desc">Escríbenos o llámanos. Respondemos todas las consultas en menos de 24 horas.</p>
+  </div>
+  <div class="contact-grid container">
+    <div class="contact-info">
+      <h3 class="contact-info-title">Clínica Dental Dr. Marc García</h3>
+      <p class="contact-info-desc">Atendemos en el centro de Barcelona con horario amplio para adaptarnos a tu agenda. Primera visita de diagnóstico gratuita y sin compromiso.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Dirección</div>
+            <div class="contact-item-value">Carrer de Balmes, 120, Barcelona</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">Teléfono</div>
+            <div class="contact-item-value">+34 600 000 000</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">info@clinicamarcgarcia.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">Horario</div>
+            <div class="contact-item-value">Lun–Vie: 9:00–20:00 · Sáb: 9:00–14:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="tu@email.com" required>
