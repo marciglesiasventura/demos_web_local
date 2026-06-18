@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Negocio Local - Profesional</title>
+<meta name="description" content="Servicios profesionales locales. Contacta con nosotros hoy.">
+<style>
+  :root {
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --accent-light: #eff6ff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-light: #94a3b8;
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+    --radius: 14px;
+    --radius-sm: 8px;
+    --transition: .25s cubic-bezier(.4,0,.2,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text-primary); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow var(--transition);
+  }
+  nav.scrolled { box-shadow: var(--shadow-md); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--accent); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 1.1rem; letter-spacing: -.5px;
+  }
+  .nav-logo-text { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
+  .nav-logo-text span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: .9rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition); }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    padding: .5rem 1.25rem; border-radius: 8px;
+    font-size: .88rem; font-weight: 600;
+    transition: background var(--transition), transform var(--transition);
+  }
+  .nav-cta:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all var(--transition); }
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: #fff; border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5%; flex-direction: column; gap: 1.2rem;
+    box-shadow: var(--shadow-md); z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--text-secondary); padding: .4rem 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f0f4ff 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -80px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(37,99,235,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light); color: var(--accent);
+    padding: .4rem 1rem; border-radius: 100px;
+    font-size: .8rem; font-weight: 600; margin-bottom: 1.2rem;
+    border: 1px solid rgba(37,99,235,.15);
+  }
+  .hero-badge::before { content: '●'; font-size: .6rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .hero h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 800; line-height: 1.15;
+    color: var(--text-primary); margin-bottom: 1.2rem;
+    letter-spacing: -.02em;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-desc { font-size: 1.08rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 480px; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: .85rem 2rem; border-radius: 10px;
+    font-weight: 700; font-size: .95rem;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 14px rgba(37,99,235,.35);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,.4); }
+  .btn-secondary {
+    background: transparent; color: var(--text-primary);
+    padding: .85rem 2rem; border-radius: 10px;
+    font-weight: 600; font-size: .95rem;
+    border: 2px solid var(--border);
+    transition: border-color var(--transition), transform var(--transition);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-stat-num { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); }
+  .hero-stat-num span { color: var(--accent); }
+  .hero-stat-label { font-size: .8rem; color: var(--text-secondary); font-weight: 500; }
+  .hero-img-wrap {
+    position: relative; border-radius: 24px; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-img-wrap img { width: 100%; height: 520px; object-fit: cover; }
+  .hero-img-card {
+    position: absolute; bottom: 24px; left: 24px;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+    border-radius: 14px; padding: 1rem 1.4rem;
+    box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 12px;
+  }
+  .hero-img-card-icon { font-size: 1.8rem; }
+  .hero-img-card-text strong { display: block; font-size: .9rem; font-weight: 700; }
+  .hero-img-card-text span { font-size: .78rem; color: var(--text-secondary); }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 90px 5%; }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-tag {
+    display: inline-block;
+    background: var(--accent-light); color: var(--accent);
+    padding: .3rem .9rem; border-radius: 100px;
+    font-size: .78rem; font-weight: 700; margin-bottom: .9rem;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  .section-header h2 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 800; color: var(--text-primary);
+    letter-spacing: -.02em; margin-bottom: .7rem;
+  }
+  .section-header h2 span { color: var(--accent); }
+  .section-header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ── ABOUT ── */
+  .about { background: var(--bg-soft); }
+  .about-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; align-items: center;
+  }
+  .about-img-wrap { position: relative; }
+  .about-img-wrap img { width: 100%; height: 480px; object-fit: cover; border-radius: 20px; box-shadow: var(--shadow-lg); }
+  .about-badge {
+    position: absolute; top: 28px; right: -20px;
+    background: var(--accent); color: #fff;
+    border-radius: 14px; padding: 1rem 1.4rem; text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .about-badge-num { font-size: 2rem; font-weight: 800; display: block; }
+  .about-badge-text { font-size: .75rem; font-weight: 600; opacity: .9; }
+  .about-content h2 { font-size: clamp(1.8rem,3vw,2.3rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -.02em; }
+  .about-content h2 span { color: var(--accent); }
+  .about-content p { color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 1rem; }
+  .about-list { margin: 1.5rem 0; display: flex; flex-direction: column; gap: .75rem; }
+  .about-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--text-secondary); font-size: .95rem; }
+  .about-list li::before {
+    content: '✓'; color: #fff; background: var(--accent);
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--accent); transform: scaleX(0);
+    transform-origin: left; transition: transform var(--transition);
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.2rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+  .service-card p { color: var(--text-secondary); font-size: .9rem; line-height: 1.65; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    color: var(--accent); font-size: .85rem; font-weight: 600;
+    margin-top: 1rem; transition: gap var(--transition);
+  }
+  .service-link:hover { gap: 9px; }
+
+  /* ── GALLERY ── */
+  .gallery { background: var(--bg-soft); }
+  .gallery-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .gallery-item {
+    border-radius: var(--radius); overflow: hidden;
+    position: relative; cursor: pointer;
+  }
+  .gallery-item:first-child { grid-column: span 2; }
+  .gallery-item img { width: 100%; height: 260px; object-fit: cover; transition: transform .4s ease; }
+  .gallery-item:first-child img { height: 360px; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 50%);
+    opacity: 0; transition: opacity var(--transition);
+    display: flex; align-items: flex-end; padding: 1.2rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span { color: #fff; font-weight: 600; font-size: .9rem; }
+
+  /* ── PROCESS ── */
+  .process-steps {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute; top: 34px; left: 12%; right: 12%;
+    height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: 1.4rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 0 0 6px var(--accent-light);
+    transition: transform var(--transition);
+  }
+  .step:hover .step-num { transform: scale(1.1); }
+  .step h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+  .step p { font-size: .83rem; color: var(--text-secondary); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--bg-soft); }
+  .testimonials-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testimonial-text { color: var(--text-secondary); font-size: .93rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    overflow: hidden; background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .author-name { font-weight: 700; font-size: .92rem; }
+  .author-location { font-size: .78rem; color: var(--text-light); }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+  .faq-item { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 1.1rem 1.4rem; text-align: left;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .95rem; font-weight: 600; color: var(--text-primary);
+    transition: background var(--transition);
+  }
+  .faq-question:hover { background: var(--bg-soft); }
+  .faq-icon { font-size: 1.2rem; color: var(--accent); transition: transform var(--transition); flex-shrink: 0; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer { display: none; padding: 0 1.4rem 1.2rem; color: var(--text-secondary); font-size: .92rem; line-height: 1.7; }
+  .faq-item.open .faq-answer { display: block; }
+
+  /* ── CONTACT ── */
+  .contact { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); color: #fff; }
+  .contact-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .contact-info h2 { font-size: clamp(1.8rem,3vw,2.3rem); font-weight: 800; margin-bottom: 1rem; }
+  .contact-info p { opacity: .88; margin-bottom: 2rem; font-size: 1rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: center; gap: 12px; }
+  .contact-item-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,255,255,.15); display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-item-text strong { display: block; font-size: .85rem; opacity: .7; font-weight: 500; }
+  .contact-item-text span { font-size: .95rem; font-weight: 600; }
+  .contact-form-card {
+    background: #fff; border-radius: 20px;
+    padding: 2.5rem; box-shadow: var(--shadow-lg);
+  }
+  .contact-form-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; }
+  .form-group label { font-size: .83rem; font-weight: 600; color: var(--text-secondary); }
+  .form-group input, .form-group textarea, .form-group select {
+    padding: .75rem 1rem; border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); font-size: .9rem;
+    font-family: inherit; color: var(--text-primary);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none; background: var(--bg-soft);
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    background: #fff;
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group-full { margin-bottom: 1rem; }
+  .btn-submit {
+    width: 100%; background: var(--accent); color: #fff;
+    padding: .9rem; border: none; border-radius: 10px;
+    font-size: .95rem; font-weight: 700; cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+    font-family: inherit; margin-top: .5rem;
+  }
+  .btn-submit:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--text-primary); color: rgba(255,255,255,.75); padding: 60px 5% 30px; }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand { }
+  .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+  .footer-logo-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--accent); display: flex; align-items: center;
+    justify-content: center; color: #fff; font-weight: 800; font-size: 1.1rem;
+  }
+  .footer-logo-text { font-weight: 700; font-size: 1rem; color: #fff; }
+  .footer-brand p { font-size: .88rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { color: #fff; font-size: .9rem; font-weight: 700; margin-bottom: 1rem; }
+  .footer-col ul { display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col ul li a { font-size: .85rem; transition: color var(--transition); }
+  .footer-col ul li a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    padding-top: 1.5rem; display: flex; justify-content: space-between;
+    align-items: center; font-size: .82rem; flex-wrap: wrap; gap: .5rem;
+  }
+  .footer-bottom a { color: var(--accent); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25d366; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; box-shadow: 0 4px 16px rgba(37,211,102,.4);
+    transition: transform var(--transition), box-shadow var(--transition);
+    animation: bounceIn .6s .5s both;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,.5); }
+  @keyframes bounceIn { 0%{transform:scale(0);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1024px) {
+    .hero-inner { gap: 2.5rem; }
+    .about-inner { gap: 2.5rem; }
+    .services-grid { grid-template-columns: repeat(2,1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width:768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-badge { margin: 0 auto 1.2rem; }
+    .hero-desc { margin: 0 auto 2rem; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-img-wrap { order: -1; }
+    .hero-img-wrap img { height: 320px; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-badge { right: 10px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:first-child { grid-column: span 2; }
+    .process-steps { grid-template-columns: repeat(2,1fr); }
+    .process-steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media(max-width:480px) {
+    section { padding: 70px 5%; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item:first-child { grid-column: span 1; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">TN</div>
+    <div class="nav-logo-text">Tu<span>Negocio</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">Sobre nosotros</a>
+    <a href="#services">Servicios</a>
+    <a href="#gallery">Galería</a>
+    <a href="#testimonials">Opiniones</a>
+    <a href="#contact" class="nav-cta">Contactar</a>
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Menú" role="button">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Sobre nosotros</a>
+  <a href="#services">Servicios</a>
+  <a href="#gallery">Galería</a>
+  <a href="#testimonials">Opiniones</a>
+  <a href="#contact">Contactar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Disponible en tu ciudad</div>
+      <h1>Tu negocio <span>profesional</span> de confianza</h1>
+      <p class="hero-desc">Ofrecemos servicios de la más alta calidad adaptados a tus necesidades. Profesionalidad, dedicación y resultados excepcionales garantizados.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Solicitar presupuesto →</a>
+        <a href="#services" class="btn-secondary">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">+200<span>*</span></div>
+          <div class="hero-stat-label">Clientes satisfechos</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">10<span>+</span></div>
+          <div class="hero-stat-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4.9<span>★</span></div>
+          <div class="hero-stat-label">Valoración media</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-wrap reveal">
+      <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Negocio profesional">
+      <div class="hero-img-card">
+        <div class="hero-img-card-icon">✅</div>
+        <div class="hero-img-card-text">
+          <strong>Servicio garantizado</strong>
+          <span>Satisfacción o solución</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner container">
+    <div class="about-img-wrap reveal">
+      <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Equipo profesional">
+      <div class="about-badge">
+        <span class="about-badge-num">10</span>
+        <span class="about-badge-text">años de<br>experiencia</span>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-tag">Sobre nosotros</div>
+      <h2>Un servicio <span>cercano</span> y profesional</h2>
+      <p>Somos un negocio local comprometido con la excelencia y la satisfacción de nuestros clientes. Desde nuestros inicios, hemos apostado por la calidad y el trato personalizado.</p>
+      <p>Nuestro equipo cuenta con una amplia trayectoria, garantizando resultados excepcionales en cada proyecto que emprendemos.</p>
+      <ul class="about-list">
+        <li>Atención personalizada y trato cercano</li>
+        <li>Presupuestos sin compromiso y transparentes</li>
+        <li>Resultados garantizados con materiales de calidad</li>
+        <li>Disponibilidad y respuesta rápida</li>
+        <li>Valoraciones positivas de cientos de clientes</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="margin-top:1rem;">Conocernos mejor →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-tag">Servicios</div>
+    <h2>¿En qué podemos <span>ayudarte</span>?</h2>
+    <p>Ofrecemos una amplia gama de servicios para cubrir todas tus necesidades con la máxima calidad.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🎯</div>
+      <h3>Servicio Principal</h3>
+      <p>Descripción detallada del servicio principal que ofrece el negocio con todas las ventajas incluidas.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">⚡</div>
+      <h3>Servicio Rápido</h3>
+      <p>Para cuando necesitas una solución urgente, ofrecemos un servicio express con la misma calidad.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛠️</div>
+      <h3>Mantenimiento</h3>
+      <p>Planes de mantenimiento periódico para que todo funcione siempre a la perfección sin preocupaciones.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📦</div>
+      <h3>Paquete Integral</h3>
+      <p>Solución completa que incluye todos los servicios en un único paquete con precio especial.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌟</div>
+      <h3>Servicio Premium</h3>
+      <p>Para clientes que buscan lo mejor, con materiales de primera calidad y atención exclusiva.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💬</div>
+      <h3>Consultoría y Asesoría</h3>
+      <p>Te ayudamos a tomar las mejores decisiones con nuestra experiencia y conocimiento del sector.</p>
+      <a href="#contact" class="service-link">Solicitar info →</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-header reveal">
+    <div class="section-tag">Galería</div>
+    <h2>Nuestros <span>trabajos</span></h2>
+    <p>Una muestra de algunos de los proyectos realizados para nuestros clientes.</p>
+  </div>
+  <div class="gallery-grid container">
+    <div class="gallery-item reveal">
+      <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Trabajo destacado">
+      <div class="gallery-overlay"><span>Proyecto destacado</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trabajo 2">
+      <div class="gallery-overlay"><span>Resultado satisfactorio</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trabajo 3">
+      <div class="gallery-overlay"><span>Calidad garantizada</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trabajo 4">
+      <div class="gallery-overlay"><span>Trabajo en equipo</span></div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Trabajo 5">
+      <div class="gallery-overlay"><span>Proyecto completado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header reveal">
+    <div class="section-tag">Cómo trabajamos</div>
+    <h2>Proceso <span>sencillo</span> y transparente</h2>
+    <p>En solo cuatro pasos te ofrecemos la solución que necesitas.</p>
+  </div>
+  <div class="process-steps container">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h3>Contacto</h3>
+      <p>Nos cuentas qué necesitas por teléfono, WhatsApp o formulario.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h3>Presupuesto</h3>
+      <p>Analizamos tu caso y te enviamos un presupuesto detallado y sin compromiso.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h3>Ejecución</h3>
+      <p>Nuestro equipo lleva a cabo el trabajo con la máxima precisión y calidad.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h3>Entrega</h3>
+      <p>Revisamos juntos el resultado y nos aseguramos de tu total satisfacción.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <div class="section-tag">Opiniones</div>
+    <h2>Lo que dicen nuestros <span>clientes</span></h2>
+    <p>Más de 200 familias y empresas han confiado en nosotros. Esto es lo que opinan.</p>
+  </div>
+  <div class="testimonials-grid container">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Un servicio impecable de principio a fin. El equipo fue muy profesional, llegaron en el horario acordado y el resultado superó mis expectativas. Sin duda los recomendaría."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩</div>
+        <div>
+          <div class="author-name">María García</div>
+          <div class="author-location">Madrid</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Llevaba tiempo buscando un profesional de confianza y por fin lo encontré. Precio justo, trabajo excelente y muy buena comunicación durante todo el proceso."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨</div>
+        <div>
+          <div class="author-name">Carlos López</div>
+          <div class="author-location">Barcelona</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Rapidez, limpieza y profesionalidad. Resolvieron nuestro problema en tiempo récord y a un precio más que razonable. Ya son nuestros proveedores habituales."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩‍💼</div>
+        <div>
+          <div class="author-name">Ana Martínez</div>
+          <div class="author-location">Valencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header reveal">
+    <div class="section-tag">FAQ</div>
+    <h2>Preguntas <span>frecuentes</span></h2>
+    <p>Resolvemos las dudas más comunes de nuestros clientes.</p>
+  </div>
+  <div class="faq-list container">
+    <div class="faq-item reveal">
+      <button class="faq-question">¿Cómo puedo solicitar un presupuesto? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Puedes solicitar tu presupuesto gratuito y sin compromiso a través de nuestro formulario de contacto, por teléfono o por WhatsApp. Te responderemos en menos de 24 horas.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">¿En qué zonas trabajáis? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Operamos principalmente en la ciudad y área metropolitana. Para proyectos fuera de nuestra zona habitual, consúltanos y lo valoramos sin problema.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">¿Cuánto tiempo tarda el servicio? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Los plazos varían según el tipo y alcance del trabajo. Te informamos con exactitud en el presupuesto para que puedas organizarte con tranquilidad.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">¿Ofrecéis garantía en vuestros trabajos? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Sí, todos nuestros trabajos incluyen garantía. Si por cualquier motivo no estás satisfecho, lo solucionamos sin coste adicional.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question">¿Qué formas de pago aceptáis? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Aceptamos efectivo, transferencia bancaria y tarjeta. También ofrecemos facilidades de pago para proyectos de mayor envergadura. Consúltanos.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner container">
+    <div class="contact-info reveal">
+      <div class="section-tag" style="background:rgba(255,255,255,.2);color:#fff;">Contacto</div>
+      <h2>Hablemos de tu proyecto</h2>
+      <p>Estamos aquí para ayudarte. Escríbenos o llámanos y te atenderemos lo antes posible.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Teléfono / WhatsApp</strong>
+            <span>+34 600 000 000</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>info@tunegocio.es</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Zona de trabajo</strong>
+            <span>Ciudad y área metropolitana</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div class="contact-item-text">
+            <strong>Horario</strong>
+            <span>Lun–Vie: 9:00–20:00 · Sáb: 9:00–14:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-card reveal">
+      <h3>Solicitar presupuesto gratis</h3>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" placeholder="6XX XXX XXX" required>
+          </div>
+        </div>
+        <div class="form-group form-group-full">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="tu@email.com">
+        </div>
+        <div class="form-group form-group-full">
+          <label for="service">Servicio de interés</label>
+          <select id="service">
+            <option value="">Selecciona un servicio</option>
+            <option>Servicio Principal</option>
+            <option>Servicio Rápido</option>
+            <option>Mantenimiento</option>
+            <option>Paquete Integral</option>
+            <option>Servicio Premium</option>
+            <option>Consultoría y Asesoría</option>
+          </select>
+        </div>
+        <div class="form-group form-group-full">
+          <label for="message">Cuéntanos más</label>
+          <textarea id="message" placeholder="Describe brevemente lo que necesitas..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar solicitud →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">TN</div>
+        <div class="footer-logo-text">Tu Negocio Local</div>
+      </div>
+      <p>Servicios profesionales de calidad para particulares y empresas. Tu satisfacción es nuestra prioridad.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#services">Servicio Principal</a></li>
+        <li><a href="#services">Servicio Rápido</a></li>
+        <li><a href="#services">Mantenimiento</a></li>
+        <li><a href="#services">Paquete Integral</a></li>
+        <li><a href="#services">Servicio Premium</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#about">Sobre nosotros</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#testimonials">Opiniones</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+        <li><a href="mailto:info@tunegocio.es">info@tunegocio.es</a></li>
+        <li><a href="#contact">Tu ciudad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Tu Negocio Local · Todos los derechos reservados</span>
+    <span><a href="#">Aviso legal</a> · <a href="#">Privacidad</a></span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Solicitud enviada';
+    btn.style.background = '#16a34a';
+    setTimeout(() => {
+      btn.textContent = 'Enviar solicitud →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+</body>
+</html>
