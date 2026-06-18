@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Negocio Local | Profesionales en tu Ciudad</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #2a7a5a;
+    --accent-light: #3a9a72;
+    --dark: #0a0a0a;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e8edf0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--dark);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 10px 0;
+  }
+  .topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 0.4rem; }
+  .topbar-left svg { width: 13px; height: 13px; fill: var(--accent); }
+  .topbar-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .topbar-right a { color: rgba(255,255,255,0.75); transition: color 0.2s; }
+  .topbar-right a:hover { color: var(--accent); }
+  .topbar-item { display: flex; align-items: center; gap: 0.4rem; }
+  .topbar-item svg { width: 13px; height: 13px; fill: var(--accent); }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .btn-nav {
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .btn-nav:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-menu .btn-mobile {
+    background: var(--accent);
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .mobile-close {
+    position: absolute;
+    top: 22px;
+    right: 2rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    background: var(--white);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 strong {
+    font-weight: 800;
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 2px solid var(--border);
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 18px;
+    width: fit-content;
+  }
+  .hero-badge-stars { color: #f5a623; font-size: 0.9rem; letter-spacing: 1px; }
+  .hero-badge-text { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+  .hero-badge-text strong { color: var(--dark); }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-right-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(42,122,90,0.15) 0%, transparent 60%);
+  }
+
+  /* INTRO EDITORIAL */
+  .intro {
+    padding: 8rem 0;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .intro-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .intro-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .intro-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .intro h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.75rem;
+  }
+  .intro-text p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .intro-text p:last-child { margin-bottom: 0; }
+  .intro-img-wrap {
+    position: relative;
+  }
+  .intro-img-box {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--off-white);
+  }
+  .intro-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    background: var(--accent);
+    color: var(--white);
+    padding: 1.5rem 1.75rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .intro-badge-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    display: block;
+  }
+  .intro-badge-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.85;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  /* SOBRE MÍ */
+  .about {
+    padding: 8rem 0;
+    background: var(--off-white);
+  }
+  .about-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--dark);
+  }
+  .about-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .about-photo {
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+  }
+  .about-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #eef3f7 0%, #dde8ed 100%);
+  }
+  .about-photo-placeholder svg { width: 48px; height: 48px; fill: var(--muted); opacity: 0.4; }
+  .about-info { padding-top: 0.5rem; }
+  .about-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+  }
+  .about-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .about-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .about-bio {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .about-tag {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .about-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SERVICIOS */
+  .service-section {
+    padding: 7rem 0;
+  }
+  .service-section.alt { background: var(--off-white); }
+  .service-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: -0.5rem;
+    letter-spacing: -0.04em;
+  }
+  .service-title {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .service-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .service-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .service-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .service-list li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .service-img {
+    aspect-ratio: 5/4;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .service-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #eef3f7 0%, #dde8ed 100%);
+  }
+  .service-img-placeholder svg { width: 40px; height: 40px; fill: var(--muted); opacity: 0.35; }
+
+  /* PILARES */
+  .pillars {
+    padding: 7rem 0;
+    background: var(--dark);
+    color: var(--white);
+  }
+  .pillars-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .pillars-header { text-align: center; margin-bottom: 4.5rem; }
+  .pillars-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .pillars-label::before, .pillars-label::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .pillars-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .pillar {
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+  .pillar:hover { background: rgba(255,255,255,0.04); }
+  .pillar-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    opacity: 0.6;
+  }
+  .pillar-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .pillar-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+  }
+
+  /* RESEÑAS */
+  .reviews {
+    padding: 7rem 0;
+    background: var(--off-white);
+  }
+  .reviews-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .reviews-header-left .section-label { justify-content: flex-start; }
+  .reviews-header-left .section-label::after { display: none; }
+  .reviews-score {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .reviews-score-num {
+    font-size: 4rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .reviews-score-right { display: flex; flex-direction: column; gap: 0.25rem; }
+  .reviews-score-stars { color: #f5a623; font-size: 1rem; letter-spacing: 2px; }
+  .reviews-score-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.2s;
+  }
+  .review-card:hover { transform: translateY(-3px); }
+  .review-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .review-meta { flex: 1; }
+  .review-name { font-size: 0.9rem; font-weight: 800; color: var(--dark); }
+  .review-source { font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .review-stars { color: #f5a623; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 0.75rem; }
+  .review-text {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-style: italic;
+  }
+  .review-text::before { content: '"'; color: var(--accent); font-size: 1.5rem; font-weight: 800; line-height: 0; vertical-align: -0.35em; margin-right: 0.15em; }
+  .review-text::after { content: '"'; color: var(--accent); font-size: 1.5rem; font-weight: 800; line-height: 0; vertical-align: -0.35em; margin-left: 0.15em; }
+
+  /* CONTACTO */
+  .contact {
+    padding: 7rem 0;
+    background: var(--white);
+  }
+  .contact-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contact-left .intro-label { justify-content: flex-start; }
+  .contact-h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+  }
+  .contact-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 18px; height: 18px; fill: var(--accent); }
+  .contact-item-info { padding-top: 0.1rem; }
+  .contact-item-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.2rem; }
+  .contact-item-value { font-size: 0.95rem; font-weight: 700; color: var(--dark); }
+  .contact-item-value a { color: var(--dark); transition: color 0.2s; }
+  .contact-item-value a:hover { color: var(--accent); }
+  .contact-form {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+  .form-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit {
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-submit svg { width: 18px; height: 18px; fill: currentColor; }
+  .form-privacy {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    padding: 4rem 0 2.5rem;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .footer-brand-name span { color: var(--accent); }
+  .footer-brand-desc {
+    font-size: 0.87rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.45);
+    max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+  }
+  .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a {
+    font-size: 0.87rem;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s;
+    font-weight: 600;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-copy span { color: var(--accent); }
+
+  /* WHATSAPP FLOTANTE */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+  .wa-float svg { width: 28px; height: 28px; fill: var(--white); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-left { padding: 4rem 2.5rem 4rem 3rem; }
+    .intro-inner { gap: 3.5rem; }
+    .contact-inner { gap: 3rem; }
+  }
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 2rem; order: 2; }
+    .hero-right { order: 1; height: 50vw; min-height: 280px; }
+    .intro-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .intro-img-wrap { max-width: 480px; margin: 0 auto; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { max-width: 220px; aspect-ratio: 1/1; border-radius: 50%; }
+    .service-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .service-inner.reverse { direction: ltr; }
+    .service-img { max-width: 100%; aspect-ratio: 16/9; }
+    .pillars-grid { grid-template-columns: 1fr; gap: 0; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-top > :first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .topbar-left { display: none; }
+    .hero-left { padding: 3rem 1.25rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+    .intro-inner, .service-inner, .contact-inner { padding: 0 1.25rem; }
+    .intro-inner { gap: 2rem; }
+    .intro-badge { bottom: -1rem; left: -0.75rem; padding: 1rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 1.75rem 1.25rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-top > :first-child { grid-column: auto; }
+    .service-section { padding: 4rem 0; }
+    .intro, .about, .reviews, .contact { padding: 4.5rem 0; }
+    .pillars { padding: 4.5rem 0; }
+    .pillar { padding: 2rem 1.5rem; }
+    .about-inner { padding: 0 1.25rem; }
+    .reviews-inner { padding: 0 1.25rem; }
+    .pillars-inner { padding: 0 1.25rem; }
+    .footer-inner { padding: 0 1.25rem; }
+    .nav-inner { padding: 0 1.25rem; }
+    .topbar-inner { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Madrid, España
+    </div>
+    <div class="topbar-right">
+      <a href="tel:+34600000000" class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +34 600 000 000
+      </a>
+      <span class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        Lun–Vie 9:00–18:00
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">Tu<span>Negocio</span></a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#reseñas">Reseñas</a>
+      <a href="#contacto" class="btn-nav">Contactar</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">&#x2715;</span>
+  <a href="#inicio" class="mobile-link">Inicio</a>
+  <a href="#nosotros" class="mobile-link">Nosotros</a>
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#reseñas" class="mobile-link">Reseñas</a>
+  <a href="#contacto" class="btn-mobile mobile-link">Contactar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Profesionales en tu ciudad</span>
+    <h1>El servicio que<br><strong>tu negocio</strong><br>necesita hoy</h1>
+    <p class="hero-desc">Ofrecemos soluciones personalizadas con la experiencia y dedicación que mereces. Tu satisfacción es nuestra prioridad desde el primer día.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Solicitar Presupuesto</a>
+      <a href="#servicios" class="btn-outline">Ver Servicios</a>
+    </div>
+    <div class="hero-badge">
+      <span class="hero-badge-stars">★★★★★</span>
+      <span class="hero-badge-text"><strong>4.9/5</strong> — Más de 150 clientes satisfechos</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-overlay"></div>
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#c8dbd4 0%,#8fbfae 50%,#5a9982 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:rgba(255,255,255,0.7);">
+      <svg style="width:64px;height:64px;fill:rgba(255,255,255,0.5);" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <span style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Foto del negocio</span>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro" id="nosotros">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <span class="intro-label">Quiénes somos</span>
+      <h2>Experiencia y calidad en cada proyecto</h2>
+      <p>Somos un equipo apasionado por lo que hacemos. Llevamos años ayudando a personas y empresas a alcanzar sus objetivos con un enfoque cercano, honesto y orientado a resultados reales.</p>
+      <p>Cada cliente es único para nosotros. Por eso escuchamos, analizamos y diseñamos soluciones a medida que marcan la diferencia en el día a día de quienes confían en nosotros.</p>
+      <p>Nuestro compromiso va más allá del trabajo: construimos relaciones duraderas basadas en la confianza, la transparencia y la excelencia en cada detalle.</p>
+    </div>
+    <div class="intro-img-wrap">
+      <div class="intro-img-box">
+        <div style="width:100%;height:100%;background:linear-gradient(160deg,#dceee7 0%,#a8d0be 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.75rem;color:var(--muted);">
+          <svg style="width:52px;height:52px;fill:var(--muted);opacity:0.35;" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Foto del equipo</span>
+        </div>
+      </div>
+      <div class="intro-badge">
+        <span class="intro-badge-num">10+</span>
+        <span class="intro-badge-label">Años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about">
+  <div class="about-inner">
+    <div class="section-header">
+      <span class="section-label">El equipo</span>
+      <h2 class="section-title">Conoce a quién hay detrás</h2>
+    </div>
+    <div class="about-card">
+      <div class="about-photo">
+        <div class="about-photo-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          Foto del<br>profesional
+        </div>
+      </div>
+      <div class="about-info">
+        <h3 class="about-name">Nombre Apellido</h3>
+        <p class="about-role">Fundador y Profesional Principal</p>
+        <div class="about-divider"></div>
+        <p class="about-bio">Con más de 10 años de experiencia en el sector, me apasiona ofrecer un servicio de calidad que realmente marque la diferencia. Cada proyecto lo afronto con la misma dedicación y entusiasmo que el primero, poniendo siempre al cliente en el centro de todo lo que hago.<br><br>Me formé en las mejores escuelas del sector y he tenido la suerte de trabajar con clientes de toda España, lo que me ha dado una visión amplia y versátil para afrontar cualquier reto con soluciones creativas y eficaces.</p>
+        <div class="about-tags">
+          <span class="about-tag">Especialidad 1</span>
+          <span class="about-tag">Especialidad 2</span>
+          <span class="about-tag">Especialidad 3</span>
+          <span class="about-tag">Especialidad 4</span>
+          <span class="about-tag">Atención personalizada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="service-section" id="servicios">
+  <div class="service-inner">
+    <div class="service-text">
+      <p class="service-num">01</p>
+      <h3 class="service-title">Servicio Principal</h3>
+      <p class="service-desc">Descripción detallada del primer servicio que ofreces. Explica en qué consiste, cómo lo realizas y por qué es valioso para tus clientes. Usa un tono cercano y profesional.</p>
+      <ul class="service-list">
+        <li>Característica o ventaja destacada</li>
+        <li>Proceso claro y transparente</li>
+        <li>Resultados garantizados</li>
+        <li>Atención personalizada incluida</li>
+        <li>Seguimiento post-servicio</li>
+      </ul>
+    </div>
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Foto del servicio 1
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-section alt">
+  <div class="service-inner reverse">
+    <div class="service-text">
+      <p class="service-num">02</p>
+      <h3 class="service-title">Segundo Servicio</h3>
+      <p class="service-desc">Descripción del segundo servicio. Aquí puedes explicar una oferta complementaria o diferente que amplía tu propuesta de valor y cubre más necesidades de tus clientes.</p>
+      <ul class="service-list">
+        <li>Adaptado a cada cliente</li>
+        <li>Materiales y recursos de calidad</li>
+        <li>Presupuesto sin compromiso</li>
+        <li>Plazos de entrega acordados</li>
+        <li>Garantía de satisfacción</li>
+      </ul>
+    </div>
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Foto del servicio 2
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-section">
+  <div class="service-inner">
+    <div class="service-text">
+      <p class="service-num">03</p>
+      <h3 class="service-title">Tercer Servicio</h3>
+      <p class="service-desc">Descripción del tercer servicio. Destaca su valor diferencial, a quién va dirigido y cómo puede transformar la experiencia o el resultado que obtiene el cliente.</p>
+      <ul class="service-list">
+        <li>Consultoría inicial gratuita</li>
+        <li>Soluciones a medida</li>
+        <li>Equipo experto y comprometido</li>
+        <li>Comunicación constante</li>
+        <li>Resultados medibles y reales</li>
+      </ul>
+    </div>
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Foto del servicio 3
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="pillars-label">Por qué elegirnos</span>
+      <h2 class="pillars-title">Nuestros pilares fundamentales</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <p class="pillar-num">01</p>
+        <h3 class="pillar-title">Compromiso Total</h3>
+        <p class="pillar-desc">Cada proyecto es tratado con la máxima dedicación. No cerramos un trabajo hasta que el cliente está completamente satisfecho con el resultado obtenido.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">02</p>
+        <h3 class="pillar-title">Transparencia</h3>
+        <p class="pillar-desc">Precios claros desde el principio, sin sorpresas. Te informamos de cada paso del proceso para que siempre estés al tanto de cómo avanza tu proyecto.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">03</p>
+        <h3 class="pillar-title">Experiencia Probada</h3>
+        <p class="pillar-desc">Más de una década trabajando en el sector nos avala. Hemos resuelto todo tipo de situaciones y eso nos permite ofrecerte soluciones eficaces y contrastadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="reseñas">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div class="reviews-header-left">
+        <span class="section-label" style="justify-content:flex-start;">Lo que dicen nuestros clientes</span>
+        <h2 class="section-title">Reseñas reales</h2>
+      </div>
+      <div class="reviews-score">
+        <span class="reviews-score-num">4.9</span>
+        <div class="reviews-score-right">
+          <span class="reviews-score-stars">★★★★★</span>
+          <span class="reviews-score-label">+150 opiniones verificadas</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div class="review-meta">
+            <p class="review-name">María García</p>
+            <p class="review-source">Google Reviews</p>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Un servicio excepcional de principio a fin. El equipo fue muy profesional, puntual y los resultados superaron todas mis expectativas. Sin duda repetiré y lo recomendaré a todos mis conocidos.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#4a7a9a;">C</div>
+          <div class="review-meta">
+            <p class="review-name">Carlos Martínez</p>
+            <p class="review-source">Google Reviews</p>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Llevaba tiempo buscando alguien de confianza y por fin lo encontré. Trato cercano, presupuesto ajustado y un resultado impecable. La atención al detalle es lo que más me sorprendió.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#7a4a9a;">L</div>
+          <div class="review-meta">
+            <p class="review-name">Laura Sánchez</p>
+            <p class="review-source">Google Reviews</p>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Rapidez, profesionalidad y un resultado que no puedo dejar de recomendar. Respondieron a todas mis dudas antes y después del servicio. Es exactamente lo que buscaba desde hace tiempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <span class="intro-label">Hablemos</span>
+      <h2 class="contact-h2">¿Tienes un proyecto en mente?</h2>
+      <p class="contact-desc">Cuéntanos qué necesitas y te responderemos lo antes posible con toda la información y un presupuesto sin compromiso. Estamos aquí para ayudarte.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-
