@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ompter – Clínica de Fisioterapia en Valencia</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #4a9e8e;
+    --accent-light: #e8f5f2;
+    --accent-dark: #357a6d;
+    --dark: #0a0a0a;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e2eaec;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--dark);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.55rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s; }
+  .topbar a:hover { color: var(--accent); }
+  .topbar-left, .topbar-right { display: flex; align-items: center; gap: 1.5rem; }
+  .topbar-item { display: flex; align-items: center; gap: 0.4rem; }
+  .topbar-item svg { opacity: .7; flex-shrink: 0; }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: background .2s, transform .15s !important;
+  }
+  .nav-cta:hover { background: var(--accent-dark) !important; color: var(--white) !important; transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    gap: 4rem;
+  }
+  .hero-text { max-width: 580px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 strong {
+    font-weight: 800;
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2.2rem;
+    max-width: 460px;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--dark);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid var(--border);
+    transition: border-color .2s, transform .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 60px;
+    padding: 0.6rem 1.2rem 0.6rem 0.6rem;
+  }
+  .badge-stars { display: flex; gap: 2px; }
+  .badge-stars svg { color: #f5a623; }
+  .badge-text { font-size: 0.82rem; font-weight: 600; color: var(--dark); }
+  .badge-text span { color: var(--muted); font-weight: 400; }
+  .hero-image {
+    position: relative;
+    height: 580px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #c8e8e2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--accent);
+  }
+  .hero-image-placeholder svg { opacity: .4; }
+  .hero-image-placeholder p { font-size: 0.85rem; font-weight: 600; opacity: .5; }
+
+  /* ── INTRO EDITORIAL ── */
+  .intro {
+    padding: 7rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .intro-title {
+    font-size: clamp(2rem, 3.5vw, 2.9rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.8rem;
+  }
+  .intro-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .intro p {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .intro-image-wrap { position: relative; }
+  .intro-image {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+  .intro-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #d4ede9 0%, var(--accent-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--accent);
+  }
+  .intro-image-placeholder p { font-size: 0.85rem; font-weight: 600; opacity: .5; }
+  .exp-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    min-width: 110px;
+  }
+  .exp-badge .num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+    display: block;
+  }
+  .exp-badge .label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: .85;
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* ── SOBRE NOSOTROS ── */
+  .about {
+    background: var(--off-white);
+    padding: 7rem 2rem;
+  }
+  .about-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .about-header { margin-bottom: 3.5rem; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    overflow: hidden;
+    transition: transform .2s;
+  }
+  .team-card:hover { transform: translateY(-4px); }
+  .team-photo {
+    background: linear-gradient(160deg, var(--accent-light) 0%, #c8e8e2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    color: var(--accent);
+    min-height: 260px;
+  }
+  .team-photo svg { opacity: .35; }
+  .team-photo p { font-size: 0.78rem; font-weight: 600; opacity: .4; }
+  .team-info { padding: 2rem; }
+  .team-name {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+  .team-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .team-bio {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+  }
+  .team-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.8rem;
+    border-radius: 50px;
+  }
+
+  /* ── SERVICIOS ── */
+  .service-block {
+    padding: 6rem 2rem;
+  }
+  .service-block.alt { background: var(--off-white); }
+  .service-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1;
+    color: var(--accent-light);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .service-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 1.2rem;
+    line-height: 1.15;
+  }
+  .service-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .service-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.92rem;
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .service-list li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+  .service-image {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 420px;
+  }
+  .service-image img { width: 100%; height: 100%; object-fit: cover; }
+  .service-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-light) 0%, #d4ede9 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--accent);
+  }
+  .service-image-placeholder p { font-size: 0.85rem; font-weight: 600; opacity: .5; }
+
+  /* ── PILARES ── */
+  .pillars {
+    background: var(--dark);
+    padding: 6rem 2rem;
+  }
+  .pillars-inner { max-width: 1300px; margin: 0 auto; }
+  .pillars-header { margin-bottom: 4rem; }
+  .pillars-header .section-label { color: var(--accent); }
+  .pillars-header .section-label::before { background: var(--accent); }
+  .pillars-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .pillar {
+    background: #111;
+    padding: 3rem 2.5rem;
+    border-radius: 0;
+    transition: background .2s;
+  }
+  .pillar:first-child { border-radius: 16px 0 0 16px; }
+  .pillar:last-child { border-radius: 0 16px 16px 0; }
+  .pillar:hover { background: #161616; }
+  .pillar-num {
+    font-size: 3rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--accent);
+    opacity: .6;
+    line-height: 1;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .pillar-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.8rem;
+  }
+  .pillar-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+  }
+
+  /* ── RESEÑAS ── */
+  .reviews {
+    background: var(--off-white);
+    padding: 7rem 2rem;
+  }
+  .reviews-inner { max-width: 1300px; margin: 0 auto; }
+  .reviews-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .reviews-score-big {
+    text-align: right;
+  }
+  .score-num {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+  .score-stars { display: flex; gap: 3px; justify-content: flex-end; margin-bottom: 0.3rem; }
+  .score-stars svg { color: #f5a623; }
+  .score-source { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .review-card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: transform .2s;
+  }
+  .review-card:hover { transform: translateY(-3px); }
+  .review-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .review-meta { flex: 1; }
+  .review-name { font-size: 0.92rem; font-weight: 700; color: var(--dark); }
+  .review-source { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-top: 0.1rem; }
+  .review-stars { display: flex; gap: 2px; }
+  .review-stars svg { color: #f5a623; }
+  .review-text {
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .review-text::before { content: '\201C'; font-size: 1.4rem; color: var(--accent); font-style: normal; line-height: 0; vertical-align: -0.4rem; margin-right: 0.2rem; }
+
+  /* ── CONTACTO ── */
+  .contact { padding: 7rem 2rem; }
+  .contact-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contact-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+    line-height: 1.15;
+  }
+  .contact-desc { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--accent-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .contact-item-text .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.2rem; }
+  .contact-item-text .value { font-size: 0.95rem; font-weight: 600; color: var(--dark); }
+  .contact-item-text a { color: var(--dark); text-decoration: none; }
+  .contact-item-text a:hover { color: var(--accent); }
+  .contact-form {
+    background: var(--off-white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+  .form-title { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 1.8rem; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 700; color: var(--dark); letter-spacing: 0.04em; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: var(--dark);
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-full { grid-column: 1 / -1; }
+  .form-submit {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 2rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: background .2s, transform .15s;
+  }
+  .form-submit:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .form-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 4rem 2rem 2rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .nav-logo { display: block; margin-bottom: 1rem; color: var(--white); }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.75; max-width: 280px; }
+  .footer-col h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-col ul a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-col ul a:hover { color: var(--accent); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.78rem;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent); }
+
+  /* ── WHATSAPP FLOTANTE ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 900;
+    width: 58px;
+    height: 58px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform .2s, background .2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); background: #1ebe5d; }
+  .whatsapp-float svg { width: 30px; height: 30px; }
+
+  /* ── UTILS ── */
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    line-height: 1.15;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; min-height: auto; padding: 3rem 2rem; }
+    .hero-text { max-width: 100%; }
+    .hero-image { height: 400px; }
+    .intro { grid-template-columns: 1fr; gap: 3rem; }
+    .intro-image { height: 380px; }
+    .exp-badge { bottom: -1rem; left: 1rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .team-card { grid-template-columns: 160px 1fr; }
+    .service-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .service-inner.reverse { direction: ltr; }
+    .pillars-grid { grid-template-columns: 1fr; gap: 2px; }
+    .pillar:first-child { border-radius: 16px 16px 0 0; }
+    .pillar:last-child { border-radius: 0 0 16px 16px; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 768px) {
+    .topbar { font-size: 0.7rem; padding: 0.5rem 1rem; }
+    .topbar-left { flex-wrap: wrap; gap: 0.8rem; }
+    .nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 2.5rem 1.2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-image { height: 300px; }
+    .intro { padding: 4rem 1.2rem; }
+    .about { padding: 4rem 1.2rem; }
+    .team-card { grid-template-columns: 1fr; }
+    .team-photo { min-height: 180px; }
+    .service-block { padding: 4rem 1.2rem; }
+    .service-image { height: 280px; }
+    .pillars { padding: 4rem 1.2rem; }
+    .pillar { padding: 2rem 1.5rem; }
+    .reviews { padding: 4rem 1.2rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; }
+    .reviews-score-big { text-align: left; }
+    .score-stars { justify-content: flex-start; }
+    .contact { padding: 4rem 1.2rem; }
+    .contact-form { padding: 1.8rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    footer { padding: 3rem 1.2rem 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-brand { grid-column: auto; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-item">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      Valencia, España
+    </span>
+    <span class="topbar-item">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="tel:+34600000000">+34 600 000 000</a>
+    </span>
+  </div>
+  <div class="topbar-right">
+    <span class="topbar-item">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Lun–Vie: 9:00–20:00 · Sáb: 9:00–14:00
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#inicio" class="nav-logo">Om<span>pter</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir cita</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#equipo" onclick="closeMobile()">Equipo</a>
+  <a href="#resenas" onclick="closeMobile()">Reseñas</a>
+  <a href="#contacto" onclick="closeMobile()" style="color: var(--accent);">Pedir cita</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <span class="eyebrow">Clínica de Fisioterapia · Valencia</span>
+    <h1>Tu cuerpo merece <strong>cuidado experto</strong> y atención real</h1>
+    <p class="hero-desc">En Ompter combinamos fisioterapia clínica y masoterapia para ayudarte a recuperarte, moverte mejor y vivir sin dolor. Un trato cercano, profesional y pensado para ti.</p>
+    <div class="hero-buttons">
+      <a href="#contacto" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Pedir cita ahora
+      </a>
+      <a href="#servicios" class="btn-secondary">
+        Ver servicios
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <span class="badge-text">5.0 en Google <span>· +120 pacientes satisfechos</span></span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <p>Foto de la clínica</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro" id="nosotros">
+  <div class="intro-text">
+    <span class="section-label">Quiénes somos</span>
+    <h2 class="intro-title">Fisioterapia con <em>propósito</em> en el corazón de Valencia</h2>
+    <p>En Ompter creemos que cada cuerpo cuenta una historia diferente. Por eso nuestro enfoque es siempre personalizado: escuchamos, evaluamos y diseñamos un plan de tratamiento adaptado a tus necesidades reales.</p>
+    <p>Nuestro equipo combina la precisión clínica de la fisioterapia con el poder terapéutico del masaje profesional. Dos disciplinas, un mismo objetivo: que te sientas bien en tu propio cuerpo.</p>
+    <p>Trabajamos con pacientes de todas las edades, desde lesiones deportivas hasta dolores crónicos o contracturas del día a día. Siempre con rigor, cercanía y vocación de servicio.</p>
+  </div>
+  <div class="intro-image-wrap">
+    <div class="intro-image">
+      <div class="intro-image-placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <p>Foto de clínica / equipo</p>
+      </div>
+    </div>
+    <div class="exp-badge">
+      <span class="num">+8</span>
+      <span class="label">Años de experiencia</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS – EQUIPO -->
+<section class="about" id="equipo">
+  <div class="about-inner">
+    <div class="about-header">
+      <span class="section-label">El equipo</span>
+      <h2 class="section-title">Las personas detrás de <em style="font-style:normal;color:var(--accent)">Ompter</em></h2>
+    </div>
+    <div class="about-grid">
+      <!-- ESTHER -->
+      <div class="team-card">
+        <div class="team-photo">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+          <p>Foto de Esther</p>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Esther</h3>
+          <p class="team-role">Fisioterapeuta Colegiada</p>
+          <p class="team-bio">Graduada en Fisioterapia y especializada en fisioterapia musculoesquelética y neurológica. Esther combina técnicas manuales avanzadas con ejercicio terapéutico para ayudarte a recuperar la función y eliminar el dolor de forma duradera.</p>
+          <div class="team-tags">
+            <span class="tag">Fisioterapia manual</span>
+            <span class="tag">Ejercicio terapéutico</span>
+            <span class="tag">Punción seca</span>
+            <span class="tag">Neurológica</span>
+            <span class="tag">Deportiva</span>
+          </div>
+        </div>
+      </div>
+      <!-- JUAN -->
+      <div class="team-card">
+        <div class="team-photo">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+          <p>Foto de Juan</p>
+        </div>
+        <div class="team-info">
+          <h3 class="team-name">Juan</h3>
+          <p class="team-role">Terapeuta de Masaje Profesional</p>
+          <p class="team-bio">Especialista en masoterapia con formación en técnicas de masaje terapéutico, deportivo y de relajación. Juan tiene un don especial para localizar tensiones y liberar la musculatura con precisión, dejando a sus pacientes completamente renovados.</p>
+          <div class="team-tags">
+            <span class="tag">Masaje terapéutico</span>
+            <span class="tag">Masaje deportivo</span>
+            <span class="tag">Tejido profundo</span>
+            <span class="tag">Relajación</span>
+            <span class="tag">Drenaje linfático</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+
+  <!-- 01 FISIOTERAPIA MUSCULOESQUELÉTICA -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-text">
+        <span class="service-num">01</span>
+        <h3 class="service-title">Fisioterapia Musculoesquelética</h3>
+        <p class="service-desc">Tratamos las lesiones y disfunciones del sistema locomotor: músculos, articulaciones, tendones y ligamentos. Nuestro enfoque combina terapia manual con ejercicio activo para conseguir resultados reales y duraderos.</p>
+        <ul class="service-list">
+          <li>Cervicalgias, lumbalgias y dorsalgias</li>
+          <li>Lesiones de hombro, rodilla y tobillo</li>
+          <li>Tendinopatías y esguinces</li>
+          <li>Síndrome del túnel carpiano</li>
+          <li>Artrosis y artritis</li>
+          <li>Hernia discal y ciática</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <div class="service-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Foto del servicio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 MASAJE TERAPÉUTICO -->
+  <div class="service-block alt">
+    <div class="service-inner reverse">
+      <div class="service-text">
+        <span class="service-num">02</span>
+        <h3 class="service-title">Masaje Terapéutico y Deportivo</h3>
+        <p class="service-desc">Mucho más que relajación. Nuestros masajes están orientados a tratar contracturas, mejorar la circulación, acelerar la recuperación muscular y aliviar el estrés acumulado en el cuerpo.</p>
+        <ul class="service-list">
+          <li>Masaje terapéutico de tejido profundo</li>
+          <li>Masaje deportivo pre y post competición</li>
+          <li>Masaje de relajación y bienestar</li>
+          <li>Drenaje linfático manual</li>
+          <li>Masaje descontracturante</li>
+          <li>Tratamiento de puntos gatillo</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <div class="service-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Foto del servicio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 FISIOTERAPIA DEPORTIVA -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-text">
+        <span class="service-num">03</span>
+        <h3 class="service-title">Fisioterapia Deportiva</h3>
+        <p class="service-desc">Diseñada para deportistas que quieren recuperarse rápido y volver a rendir al máximo. Evaluamos la lesión, tratamos el tejido dañado y trabajamos la readaptación para prevenir recaídas.</p>
+        <ul class="service-list">
+          <li>Valoración funcional del deportista</li>
+          <li>Tratamiento de lesiones agudas y crónicas</li>
+          <li>Readaptación al deporte</li>
+          <li>Vendaje funcional y neuromuscular</li>
+          <li>Electroestimulación muscular (EMS)</li>
+          <li>Prevención de lesiones</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <div class="service-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Foto del servicio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 PUNCIÓN SECA -->
+  <div class="service-block alt">
+    <div class="service-inner reverse">
+      <div class="service-text">
+        <span class="service-num">04</span>
+        <h3 class="service-title">Punción Seca e Infiltraciones Ecoguiadas</h3>
+        <p class="service-desc">Técnica avanzada con aguja fina que actúa directamente sobre los puntos gatillo miofasciales. Ideal para dolores musculares resistentes a otras técnicas, con resultados muy rápidos y efectivos.</p>
+        <ul class="service-list">
+          <li>Punción seca profunda y superficial</li>
+          <li>Tratamiento de puntos gatillo activos</li>
+          <li>Síndrome de dolor miofascial</li>
+          <li>Cervicalgias y cefaleas tensionales</li>
+          <li>Dolores crónicos de espalda</li>
+          <li>Técnica indolora y mínimamente invasiva</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <div class="service-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Foto del servicio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 REHABILITACIÓN POSTOPERATORIA -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-text">
+        <span class="service-num">05</span>
+        <h3 class="service-title">Rehabilitación Postoperatoria</h3>
+        <p class="service-desc">Acompañamos tu recuperación tras una intervención quirúrgica. Diseñamos un programa progresivo y personalizado para que recuperes la movilidad, la fuerza y la funcionalidad en el menor tiempo posible.</p>
+        <ul class="service-list">
+          <li>Postoperatorio de rodilla (prótesis, LCA)</li>
+          <li>Postoperatorio de hombro y cadera</li>
+          <li>Recuperación tras cirugía de columna</li>
+          <li>Cicatrización y trabajo de tejidos</li>
+          <li>Movilización articular progresiva</li>
+          <li>Ejercicio terapéutico supervisado</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <div class="service-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Foto del servicio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Nuestro enfoque</span>
+      <h2 class="pillars-title">Por qué elegir Ompter</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-title">Valoración Individualizada</h3>
+        <p class="pillar-desc">Cada paciente es único. Realizamos una evaluación completa antes de diseñar tu plan de tratamiento, porque un diagnóstico preciso es la base de una recuperación exitosa.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-title">Técnicas Contrastadas</h3>
+        <p class="pillar-desc">Trabajamos con técnicas avaladas por la evidencia científica, en constante formación para ofrecerte siempre los tratamientos más efectivos y actualizados del sector.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-title">Trato Cercano y Humano</h3>
+        <p class="pillar-desc">Más allá del tratamiento, en Ompter encontrarás un espacio donde te escuchan, te explican y te acompañan en cada paso de tu recuperación con honestidad y calidez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen nuestros pacientes</span>
+        <h2 class="section-title">Reseñas reales,<br>resultados reales</h2>
+      </div>
+      <div class="reviews-score-big">
+        <div class="score-stars">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91
