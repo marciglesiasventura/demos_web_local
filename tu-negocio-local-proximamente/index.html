@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Negocio Local — Próximamente</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #c8a97e;
+    --accent-dark: #a8845a;
+    --dark: #0a0a0a;
+    --dark-2: #161616;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e8ecef;
+    --radius: 4px;
+    --font: 'Nunito', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--dark);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 9px 0;
+  }
+  .topbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .topbar-item svg { opacity: 0.6; flex-shrink: 0; }
+  .topbar-right { display: flex; gap: 24px; }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 24px;
+  }
+  .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    border-color: var(--dark);
+  }
+  .btn-outline:hover {
+    background: var(--dark);
+    color: var(--white);
+  }
+  .btn-outline-light {
+    background: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.5);
+  }
+  .btn-outline-light:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--white);
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--dark);
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 105px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-text {
+    padding: 80px 60px 80px 0;
+    padding-left: max(24px, calc((100vw - 1180px) / 2 + 24px));
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 460px;
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .badge-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 16px 8px 8px;
+  }
+  .badge-rating .stars {
+    display: flex;
+    gap: 2px;
+  }
+  .badge-rating .star {
+    color: #f5a623;
+    font-size: 1rem;
+  }
+  .badge-rating-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .badge-rating-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .hero-image {
+    position: relative;
+    height: 100%;
+    min-height: 600px;
+    overflow: hidden;
+  }
+  .hero-image img,
+  .hero-image .img-placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .img-placeholder {
+    background: linear-gradient(135deg, #e8e0d8 0%, #d4c4b0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: rgba(0,0,0,0.25);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .img-placeholder svg { opacity: 0.3; }
+
+  /* ── SECTION COMMON ── */
+  section { position: relative; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ── INTRO EDITORIAL ── */
+  .intro {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .intro .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .intro-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--dark);
+  }
+  .intro-title span { color: var(--accent); }
+  .intro p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+  .intro-image {
+    position: relative;
+  }
+  .intro-image .img-placeholder,
+  .intro-image img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .intro-image .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #ede5db 0%, #d9c8b0 100%);
+    color: rgba(0,0,0,0.2);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .exp-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--dark);
+    color: var(--white);
+    padding: 20px 24px;
+    border-radius: 2px;
+  }
+  .exp-badge .num {
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .exp-badge .label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* ── SOBRE MÍ ── */
+  .about {
+    padding: 80px 0;
+    background: var(--off-white);
+  }
+  .about-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+  .about-photo {
+    background: linear-gradient(160deg, #e8ddd2 0%, #c8b89a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+    color: rgba(0,0,0,0.18);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .about-content {
+    padding: 48px;
+  }
+  .about-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .about-bio {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-size: 0.97rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    color: var(--dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  /* ── SERVICIOS ── */
+  .service-section {
+    padding: 80px 0;
+  }
+  .service-section:nth-child(even) { background: var(--off-white); }
+  .service-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.25;
+    margin-bottom: -16px;
+    letter-spacing: -0.04em;
+  }
+  .service-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .service-desc {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .service-list li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 7px;
+  }
+  .service-img {
+    border-radius: 2px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .service-img img,
+  .service-img .img-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .service-img .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #e5e0da 0%, #cfc7bb 100%);
+    color: rgba(0,0,0,0.2);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── PILARES ── */
+  .pillars {
+    background: var(--dark);
+    padding: 100px 0;
+  }
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .pillars-header .section-label { justify-content: center; }
+  .pillars-header .section-label::before { display: none; }
+  .pillars-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .pillar {
+    padding: 48px 36px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.02);
+  }
+  .pillar:hover { background: rgba(255,255,255,0.04); }
+  .pillar-num {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .pillar-desc {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+  }
+
+  /* ── RESEÑAS ── */
+  .reviews {
+    padding: 100px 0;
+    background: var(--off-white);
+  }
+  .reviews-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .reviews-score {
+    text-align: right;
+  }
+  .reviews-score .big-num {
+    font-size: 4rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--dark);
+    letter-spacing: -0.04em;
+  }
+  .reviews-score .stars {
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+  .reviews-score .star { color: #f5a623; font-size: 1.1rem; }
+  .reviews-score .count {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 32px;
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-weight: 800;
+    font-size: 0.92rem;
+    color: var(--dark);
+  }
+  .review-source {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .review-text {
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.93rem;
+  }
+
+  /* ── CONTACTO ── */
+  .contact {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-title {
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .contact-desc {
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    font-size: 0.97rem;
+  }
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { color: var(--accent); }
+  .contact-item-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .contact-item-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  /* FORM */
+  .form {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 40px;
+  }
+  .form-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dark);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: var(--font);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 0.9rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark-2);
+    color: rgba(255,255,255,0.55);
+    padding: 64px 0 32px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .footer-brand span { color: var(--accent); }
+  .footer-tagline {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── WHATSAPP FLOTANTE ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 800;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text {
+      padding: 60px 24px 40px;
+      padding-left: 24px;
+    }
+    .hero-image { min-height: 340px; height: 340px; }
+    .intro .container { grid-template-columns: 1fr; gap: 40px; }
+    .intro-image { order: -1; }
+    .exp-badge { bottom: 16px; left: 16px; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { min-height: 200px; }
+    .about-content { padding: 32px 24px; }
+    .service-inner { grid-template-columns: 1fr; gap: 40px; }
+    .service-inner.reverse { direction: ltr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; }
+    .reviews-score { text-align: left; }
+    .reviews-score .stars { justify-content: flex-start; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links, .nav .btn { display: none; }
+    .hamburger { display: flex; }
+    .form-row { grid-template-columns: 1fr; }
+    .topbar-right { gap: 12px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.2rem; }
+    .form { padding: 24px; }
+    .pillar { padding: 32px 24px; }
+    .review-card { padding: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+  <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+  <a href="#sobre-mi" onclick="closeMobileMenu()">Sobre mí</a>
+  <a href="#resenas" onclick="closeMobileMenu()">Reseñas</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+  <a href="#contacto" class="btn btn-primary" onclick="closeMobileMenu()">Reservar cita</a>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Tu Ciudad, España
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32a2 2 0 0 1 1.995-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +34 600 000 000
+      </div>
+      <div class="topbar-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Lun–Sáb: 09:00 – 20:00
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#inicio" class="nav-logo">Tu<span>Marca</span></a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-primary">Reservar cita</a>
+    <button class="hamburger" onclick="openMobileMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <span class="eyebrow">Tu sector · Tu ciudad</span>
+    <h1>El nombre de<br>tu negocio va<br><em>aquí mismo</em></h1>
+    <p class="hero-desc">
+      Estamos preparando algo especial para ti. Muy pronto encontrarás aquí toda la información sobre nuestros servicios, valores y la mejor forma de contactarnos.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Reservar cita</a>
+      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+    </div>
+    <div class="badge-rating">
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+      <div>
+        <div class="badge-rating-text">5.0 · Valoración media</div>
+        <div class="badge-rating-sub">+100 clientes satisfechos</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="img-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Foto del negocio
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="container">
+    <div>
+      <span class="section-label">Nuestra historia</span>
+      <h2 class="intro-title">Un proyecto<br>hecho con<br><span>pasión</span></h2>
+      <p>
+        Aquí irá la historia de tu negocio. Una descripción que conecte emocionalmente con tus clientes, que explique por qué haces lo que haces y qué te diferencia del resto.
+      </p>
+      <p>
+        Cada proyecto, cada cliente y cada detalle importa. Porque cuando haces algo con verdadero compromiso, los resultados hablan por sí solos.
+      </p>
+    </div>
+    <div class="intro-image">
+      <div class="img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Foto interior / equipo
+      </div>
+      <div class="exp-badge">
+        <div class="num">+5</div>
+        <div class="label">Años de experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <div class="about-card">
+      <div class="about-photo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Tu foto aquí
+      </div>
+      <div class="about-content">
+        <div class="section-label">Sobre mí</div>
+        <div class="about-name">Tu Nombre Completo</div>
+        <div class="about-role">Fundador · Especialista en tu sector</div>
+        <p class="about-bio">
+          Aquí irá tu biografía profesional. Cuéntanos quién eres, tu trayectoria, tu formación y qué te motivó a crear este negocio. Los clientes quieren saber con quién van a trabajar antes de dar el paso.
+          <br><br>
+          Personaliza este texto con tu historia real: tus años de experiencia, los retos que has superado y por qué amas lo que haces.
+        </p>
+        <div class="tags">
+          <span class="tag">Especialidad 1</span>
+          <span class="tag">Especialidad 2</span>
+          <span class="tag">Especialidad 3</span>
+          <span class="tag">Especialidad 4</span>
+          <span class="tag">Certificado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="service-section" id="servicios">
+  <div class="container">
+    <div class="service-inner">
+      <div>
+        <div class="service-num">01</div>
+        <h3 class="service-title">Nombre del<br>primer servicio</h3>
+        <p class="service-desc">
+          Descripción detallada del servicio. Explica en qué consiste, para quién está pensado y qué beneficio concreto obtiene el cliente al contratarlo.
+        </p>
+        <ul class="service-list">
+          <li>Punto clave del servicio número uno</li>
+          <li>Otro beneficio destacado de este servicio</li>
+          <li>Detalle diferenciador que te hace único</li>
+          <li>Garantía o compromiso de calidad</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Foto servicio 01
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-section">
+  <div class="container">
+    <div class="service-inner reverse">
+      <div>
+        <div class="service-num">02</div>
+        <h3 class="service-title">Nombre del<br>segundo servicio</h3>
+        <p class="service-desc">
+          Descripción del segundo servicio. Sé específico y usa el lenguaje que usa tu cliente ideal. Habla de sus necesidades y de cómo tú las resuelves.
+        </p>
+        <ul class="service-list">
+          <li>Característica principal de este servicio</li>
+          <li>Resultado medible que obtiene el cliente</li>
+          <li>Proceso o metodología diferenciadora</li>
+          <li>Tiempo de entrega o condiciones claras</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Foto servicio 02
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-section">
+  <div class="container">
+    <div class="service-inner">
+      <div>
+        <div class="service-num">03</div>
+        <h3 class="service-title">Nombre del<br>tercer servicio</h3>
+        <p class="service-desc">
+          Tercer servicio. Puedes añadir tantos como necesites siguiendo esta misma estructura. Recuerda alternar el fondo y la posición de la imagen.
+        </p>
+        <ul class="service-list">
+          <li>Primer punto diferenciador del servicio</li>
+          <li>Qué incluye y qué no incluye</li>
+          <li>Para quién está especialmente indicado</li>
+          <li>Precio orientativo o cómo solicitarlo</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Foto servicio 03
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="container">
+    <div class="pillars-header">
+      <span class="section-label" style="color:var(--accent);">Por qué elegirnos</span>
+      <h2 class="pillars-title">Nuestros pilares<br>fundamentales</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Calidad sin compromiso</div>
+        <p class="pillar-desc">Utilizamos los mejores materiales, herramientas y técnicas del sector. Cada detalle importa y se nota en el resultado final.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Trato personalizado</div>
+        <p class="pillar-desc">Cada cliente es único. Escuchamos, entendemos y adaptamos nuestro servicio a tus necesidades específicas sin protocolos rígidos.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Resultados garantizados</div>
+        <p class="pillar-desc">Trabajamos orientados al resultado. Si no quedas satisfecho, buscamos soluciones. Tu confianza es lo más valioso que tenemos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen de nosotros</span>
+        <h2 class="intro-title" style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.1;">Clientes que<br>ya confían en nosotros</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="big-num">5.0</div>
+        <div class="stars">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <div class="count">Basado en +100 reseñas</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">María García</div>
+            <div class="review-source">Google · ★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"Aquí irá la reseña real de tu cliente. Pega el texto literal de lo que escribieron en Google o en la plataforma que uses. Las reseñas auténticas generan muchísima confianza."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#6a9bbf;">C</div>
+          <div>
+            <div class="review-name">Carlos Romero</div>
+            <div class="review-source">Google · ★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"Segunda reseña de un cliente satisfecho. Cuanto más específica y detallada sea, mejor. Los clientes potenciales buscan experiencias reales que se parezcan a la suya."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background:#8faf7e;">A</div>
+          <div>
+            <div class="review-name">Ana Martínez</div>
+            <div class="review-source">Google · ★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"Tercera reseña. Puedes añadir más filas al grid si tienes más testimonios. Elige las que mejor representen el valor de tu servicio y los problemas que resuelves."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="section-label">Hablemos</span>
+        <h2 class="contact-title">¿Listo para<br>dar el primer<br>paso?</h2>
+        <p class="contact-desc">
+          Rellena el formulario y te contactamos en menos de 24 horas. También puedes escribirnos directamente por WhatsApp o llamarnos en horario de atención.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Dirección</div>
+              <div class="contact-item-value">Calle Ejemplo 1, Tu Ciudad</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32a2 2 0 0 1 1.995-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">WhatsApp / Teléfono</div>
+              <div class="contact-item-value">+34 600 000 000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Horario de atención</div>
+              <div class="contact-item-value">Lun–Sáb: 09:00 – 20:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULARIO WHATSAPP -->
+      <div class="form">
+        <div class="form-title">Solicitar información</div>
+        <form id="waForm" onsubmit="sendToWhatsApp(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Nombre</label>
+              <input type="text" id="fname" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Teléfono</label>
+              <input type="tel" id="fphone" name="telefono" placeholder="+34 600 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fservice">Servicio de interés</label>
+            <select id="fservice" name="servicio">
+              <option value="">Selecciona un servicio</option>
+              <option value="Servicio 01">Servicio 01</option>
+              <option value="Servicio 02">Servicio 02</option>
+              <option value="Servicio 03">Servicio 03</option>
+              <option value="Otro">Otro / Consulta general</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Mensaje</label>
+            <textarea id="fmsg" name="mensaje" placeholder="Cuéntanos qué necesitas…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Enviar por WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Tu<span>Marca</span></div>
+        <p class="footer-tagline">
+          Tu negocio local, tu sector,<br>tu ciudad. Próximamente con<br>todos los detalles.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navegación</div>
+        <ul class="footer-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+          <li><a href="https://wa.me/34600000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#">info@tunegocio.es</a></li>
+          <li><a href="#">Calle Ejemplo 1, Tu Ciudad</a></li>
+          <li><a href="#">Lun–Sáb: 09:00 – 20:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 TuMarca. Todos los derechos reservados.</div>
+      <div class="footer-copy">Diseño web profesional para negocios locales</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20vuestros%20servicios." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.
