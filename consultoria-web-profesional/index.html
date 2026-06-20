@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultoría Web Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+    --dark: #0a0a0a;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--dark);
+    color: #ccc;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.5rem 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .topbar-item { display: flex; align-items: center; gap: 0.4rem; }
+  .topbar-item svg { width: 13px; height: 13px; opacity: 0.7; }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-cta {
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-cta:hover { background: var(--accent-dark); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .mobile-menu ul a {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .mobile-menu .btn-cta { margin-top: 1rem; display: block; text-align: center; }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .hero-text {
+    padding: 5rem 4rem 5rem 2rem;
+    max-width: 640px;
+    margin-left: auto;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 strong { font-weight: 800; font-style: normal; }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2.2rem;
+    font-weight: 400;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border: 2px solid var(--dark);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--dark); color: var(--white); }
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .badge-stars { color: #f59e0b; font-size: 1.1rem; }
+  .badge-text { font-size: 0.82rem; font-weight: 700; color: var(--muted); }
+  .badge-text strong { color: var(--dark); }
+  .hero-image {
+    height: 100%;
+    min-height: 92vh;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #60a5fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&q=80') center/cover no-repeat;
+    opacity: 0.35;
+  }
+  .hero-image-label {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    opacity: 0.6;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 7rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .intro-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.8rem;
+    color: var(--dark);
+  }
+  .intro p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .intro-image-wrap {
+    position: relative;
+  }
+  .intro-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #dbeafe 0%, #93c5fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .exp-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    left: -1.5rem;
+    background: var(--accent);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+  }
+  .exp-badge .num { font-size: 2.5rem; font-weight: 800; line-height: 1; display: block; }
+  .exp-badge .lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+
+  /* SOBRE MÍ */
+  .about {
+    background: var(--off-white);
+    padding: 6rem 2rem;
+  }
+  .about-inner { max-width: 900px; margin: 0 auto; }
+  .about-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #1e3a8a, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+    font-weight: 800;
+  }
+  .about-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+  }
+  .about-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .about-bio {
+    font-size: 0.98rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border: 1.5px solid var(--border);
+    color: var(--dark);
+    background: white;
+  }
+
+  /* SERVICIOS */
+  .service-block { padding: 6rem 0; }
+  .service-block.alt { background: var(--off-white); }
+  .service-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: -1rem;
+    display: block;
+  }
+  .service-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+  .service-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .service-list li {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .service-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .service-image {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #dbeafe, #93c5fd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* PILARES */
+  .pillars {
+    background: var(--dark);
+    padding: 6rem 2rem;
+    color: white;
+  }
+  .pillars-header { text-align: center; margin-bottom: 4rem; }
+  .pillars-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .pillars-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; color: white; }
+  .pillars-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .pillar {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 2rem;
+  }
+  .pillar-num {
+    font-size: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .pillar-title { font-size: 1.1rem; font-weight: 800; color: white; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .pillar-desc { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+  /* RESEÑAS */
+  .reviews {
+    background: var(--off-white);
+    padding: 6rem 2rem;
+  }
+  .reviews-header {
+    max-width: 1200px;
+    margin: 0 auto 3.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .reviews-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .reviews-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; color: var(--dark); }
+  .reviews-score-wrap { text-align: right; }
+  .reviews-score { font-size: 4rem; font-weight: 800; color: var(--dark); line-height: 1; }
+  .reviews-score-sub { font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .reviews-stars { color: #f59e0b; font-size: 1rem; }
+  .reviews-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: white;
+    padding: 2rem;
+    border-top: 3px solid var(--accent);
+  }
+  .review-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-name { font-size: 0.95rem; font-weight: 800; color: var(--dark); }
+  .review-source { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+  .review-text { font-size: 0.92rem; font-style: italic; color: var(--muted); line-height: 1.75; }
+  .review-stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 1rem; }
+
+  /* CONTACTO */
+  .contact { padding: 6rem 2rem; }
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .contact-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--dark); }
+  .contact-desc { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
+  .contact-icons { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-icon-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-icon-box {
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon-box svg { width: 18px; height: 18px; fill: white; }
+  .contact-icon-info { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .contact-icon-info strong { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dark); margin-bottom: 0.2rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dark); }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--dark);
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    background: #25d366;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: #1da851; }
+  .form-submit svg { width: 18px; height: 18px; fill: white; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 4rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand { font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .footer-brand span { color: var(--accent); }
+  .footer-desc { font-size: 0.88rem; line-height: 1.75; max-width: 300px; }
+  .footer-col-title { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: white; margin-bottom: 1.2rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 2000;
+    background: #25d366;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.08); background: #1da851; }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 4rem 2rem 3rem; margin: 0 auto; }
+    .hero-image { min-height: 360px; }
+    .intro { grid-template-columns: 1fr; gap: 3rem; }
+    .service-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .service-inner.reverse { direction: ltr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 16/7; font-size: 3rem; }
+  }
+  @media (max-width: 640px) {
+    .topbar-inner { flex-direction: column; gap: 0.25rem; text-align: center; }
+    .nav-links { display: none; }
+    .btn-cta.desktop { display: none; }
+    .hamburger { display: flex; }
+    .hero h1 { font-size: 2rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+    .reviews-score-wrap { text-align: left; }
+    .footer-top { grid-template-columns: 1fr; }
+    .exp-badge { bottom: -1rem; left: -0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Madrid, España
+    </span>
+    <span class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      +34 600 000 000
+    </span>
+    <span class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      Lun–Vie 9:00–18:00
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Web<span>Pro</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-cta desktop">Solicitar presupuesto</a>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#servicios" onclick="toggleMenu()">Servicios</a></li>
+      <li><a href="#sobre-mi" onclick="toggleMenu()">Sobre mí</a></li>
+      <li><a href="#resenas" onclick="toggleMenu()">Reseñas</a></li>
+      <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-cta" onclick="toggleMenu()">Solicitar presupuesto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Desarrollo web profesional</span>
+    <h1>Tu negocio merece<br><strong>una presencia digital</strong><br>que venda.</h1>
+    <p class="hero-desc">Diseño y desarrollo páginas web a medida para negocios locales que quieren crecer online. Rápidas, bonitas y optimizadas para atraer clientes.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Quiero mi web</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-stars">★★★★★</span>
+      <p class="badge-text"><strong>4.9 / 5</strong> — Más de 60 proyectos entregados</p>
+    </div>
+  </div>
+  <div class="hero-image">
+    <span class="hero-image-label">Diseño · Desarrollo · Resultados</span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section style="background: var(--white);">
+  <div class="intro">
+    <div class="intro-text">
+      <p class="section-label">¿Por qué nosotros?</p>
+      <h2 class="intro-title">Webs que generan confianza y clientes</h2>
+      <p>Muchos negocios locales pierden clientes cada día porque su web no transmite profesionalidad o simplemente no aparece en Google. Eso tiene solución.</p>
+      <p>Trabajo contigo desde el primer boceto hasta el lanzamiento, asegurándome de que tu página web sea una herramienta real de captación de clientes, no solo un escaparate bonito.</p>
+      <p>Con un enfoque editorial, limpio y moderno, cada web que entrego está pensada para convertir visitantes en clientes.</p>
+    </div>
+    <div class="intro-image-wrap">
+      <div class="intro-image">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80" alt="Desarrollo web profesional" />
+      </div>
+      <div class="exp-badge">
+        <span class="num">6+</span>
+        <span class="lbl">Años de<br>experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="sobre-mi">
+  <div class="about-inner">
+    <p class="section-label" style="margin-bottom: 2.5rem;">Quién hay detrás</p>
+    <div class="about-card">
+      <div class="about-photo">A</div>
+      <div class="about-info">
+        <p class="about-name">Alejandro García</p>
+        <p class="about-role">Desarrollador Web & Consultor Digital</p>
+        <p class="about-bio">Soy diseñador y desarrollador web especializado en negocios locales. Llevo más de 6 años ayudando a autónomos, pequeñas empresas y comercios a tener una presencia online que realmente funcione.<br><br>Me apasiona combinar el buen diseño con la estrategia digital: una web tiene que ser bonita, sí, pero sobre todo tiene que trabajar para ti las 24 horas del día, los 7 días de la semana.</p>
+        <div class="tags">
+          <span class="tag">Diseño UI/UX</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">SEO Local</span>
+          <span class="tag">React</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">Google Ads</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+
+  <!-- Servicio 01 -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-content">
+        <span class="service-num">01</span>
+        <h3 class="service-title">Diseño Web a Medida</h3>
+        <p class="service-desc">Creamos tu web desde cero, con un diseño único adaptado a tu marca y sector. Sin plantillas genéricas, sin compromisos. Una web que te distinga de la competencia desde el primer segundo.</p>
+        <ul class="service-list">
+          <li>Diseño personalizado para tu sector</li>
+          <li>Adaptada a móviles, tablets y escritorio</li>
+          <li>Integración con Google Analytics</li>
+          <li>Formularios de contacto funcionales</li>
+          <li>Entrega en 2–3 semanas</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80" alt="Diseño web a medida" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 02 -->
+  <div class="service-block alt">
+    <div class="service-inner reverse">
+      <div class="service-content">
+        <span class="service-num">02</span>
+        <h3 class="service-title">SEO Local y Posicionamiento</h3>
+        <p class="service-desc">Aparecer en Google cuando alguien busca tu servicio en tu ciudad es la mejor publicidad que existe. Te ayudo a posicionarte en los primeros resultados de forma orgánica y duradera.</p>
+        <ul class="service-list">
+          <li>Auditoría SEO inicial gratuita</li>
+          <li>Optimización de Google My Business</li>
+          <li>Palabras clave de alta conversión</li>
+          <li>Contenido optimizado para tu zona</li>
+          <li>Informe mensual de posiciones</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80" alt="SEO local" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 03 -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-content">
+        <span class="service-num">03</span>
+        <h3 class="service-title">Mantenimiento y Soporte</h3>
+        <p class="service-desc">Tu web es un activo vivo que necesita cuidados. Me encargo de mantener tu página siempre actualizada, segura y funcionando al 100%, para que tú puedas centrarte en tu negocio.</p>
+        <ul class="service-list">
+          <li>Actualizaciones mensuales garantizadas</li>
+          <li>Copias de seguridad automáticas</li>
+          <li>Protección contra ataques y spam</li>
+          <li>Soporte por WhatsApp en horario laboral</li>
+          <li>Pequeños cambios de contenido incluidos</li>
+        </ul>
+      </div>
+      <div class="service-image">
+        <img src="https://images.unsplash.com/photo-1607798748738-b15c40d33d57?w=800&q=80" alt="Mantenimiento web" />
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="pillars-header">
+    <p class="pillars-label">Mi forma de trabajar</p>
+    <h2 class="pillars-title">Tres pilares, un resultado</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <p class="pillar-num">01</p>
+      <h3 class="pillar-title">Claridad antes que decoración</h3>
+      <p class="pillar-desc">Cada elemento de tu web tiene un propósito: que el visitante entienda qué ofreces y tome acción. El diseño sirve a la conversión, no al revés.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-num">02</p>
+      <h3 class="pillar-title">Rapidez y rendimiento</h3>
+      <p class="pillar-desc">Una web lenta pierde clientes. Todas mis webs pasan los tests de Google PageSpeed y cargan en menos de 2 segundos en cualquier dispositivo.</p>
+    </div>
+    <div class="pillar">
+      <p class="pillar-num">03</p>
+      <h3 class="pillar-title">Comunicación directa</h3>
+      <p class="pillar-desc">Sin intermediarios, sin agencias enormes. Trabajas directamente conmigo, con actualizaciones constantes y respuesta en menos de 24 horas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="reviews-header">
+    <div>
+      <p class="reviews-label">Lo que dicen los clientes</p>
+      <h2 class="reviews-title">Resultados que hablan por sí solos</h2>
+    </div>
+    <div class="reviews-score-wrap">
+      <div class="reviews-stars">★★★★★</div>
+      <div class="reviews-score">4.9</div>
+      <div class="reviews-score-sub">Puntuación media · Google</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-header">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">María López</div>
+          <div class="review-source">Google Reviews · Clínica Dental</div>
+        </div>
+      </div>
+      <p class="review-text">"Desde que Alejandro me hizo la web, las consultas por internet han aumentado un 40%. El diseño es precioso y mis pacientes siempre me dicen que se ve muy profesional. Totalmente recomendado."</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-header">
+        <div class="review-avatar">C</div>
+        <div>
+          <div class="review-name">Carlos Jiménez</div>
+          <div class="review-source">Google Reviews · Fontanero</div>
+        </div>
+      </div>
+      <p class="review-text">"No entendía nada de webs pero él me lo explicó todo con mucha paciencia. Ahora aparezco el primero en Google cuando buscan fontanero en mi ciudad. El precio fue muy razonable para todo lo que incluía."</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-header">
+        <div class="review-avatar">S</div>
+        <div>
+          <div class="review-name">Sara Rodríguez</div>
+          <div class="review-source">Google Reviews · Estudio de Yoga</div>
+        </div>
+      </div>
+      <p class="review-text">"Pedí presupuesto a varias agencias y era el triple de caro. Con Alejandro el trato fue directo y la web quedó justo como yo quería: tranquila, elegante y con toda la información bien organizada."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p class="contact-label">¿Hablamos?</p>
+      <h2 class="contact-title">Pide tu presupuesto sin compromiso</h2>
+      <p class="contact-desc">Cuéntame qué necesitas y te respondo en menos de 24 horas con una propuesta adaptada a tu negocio y tu presupuesto. Sin rodeos, sin letra pequeña.</p>
+      <div class="contact-icons">
+        <div class="contact-icon-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="contact-icon-info">
+            <strong>Dirección</strong>
+            Madrid, España — Trabajo en remoto para todo el país
+          </div>
+        </div>
+        <div class="contact-icon-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-icon-info">
+            <strong>WhatsApp directo</strong>
+            +34 600 000 000 — Respondo rápido
+          </div>
+        </div>
+        <div class="contact-icon-item">
+          <div class="contact-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          </div>
+          <div class="contact-icon-info">
+            <strong>Horario de atención</strong>
+            Lunes a Viernes · 9:00 – 18:00 h
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+        <div class="form-group">
+          <label for="nombre">Tu nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="María García" required />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" />
+        </div>
+        <div class="form-group">
+          <label for="servicio">¿Qué necesitas?</label>
+          <select id="servicio" name="servicio">
+            <option value="">Selecciona un servicio</option>
+            <option value="Web nueva">Diseño web nueva</option>
+            <option value="Rediseño web">Rediseño de web existente</option>
+            <option value="SEO local">SEO y posicionamiento local</option>
+            <option value="Mantenimiento">Mantenimiento y soporte</option>
+            <option value="Otro">Otro / Tengo dudas</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Cuéntame tu proyecto</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Tengo una clínica dental en Madrid y me gustaría una web profesional con cita online..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Web<span>Pro</span></div>
+        <p class="footer-desc">Diseño y desarrollo webs profesionales para negocios locales que quieren crecer y conseguir más clientes en internet.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Servicios</p>
+        <ul class="footer-links">
+          <li><a href="#servicios">Diseño web a medida</a></li>
+          <li><a href="#servicios">SEO local</a></li>
+          <li><a href="#servicios">Mantenimiento web</a></li>
+          <li><a href="#contacto">Presupuesto gratuito</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Empresa</p>
+        <ul class="footer-links">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#resenas">Reseñas de clientes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 WebPro · Todos los derechos reservados</span>
+      <a href="#">Aviso legal</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34600000000?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20web" target="_blank" class="wa-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function sendToWhatsApp(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    let text = '¡Hola! Me llamo *' + nombre + '* y me gustaría pedir información.';
+    if (servicio) text += '\n\n*Servicio de interés:* ' + servicio;
+    if (telefono) text += '\n*Mi teléfono:* ' + telefono;
+    if (mensaje) text += '\n\n*Mi proyecto:* ' + mensaje;
+
+    const url = 'https://wa.me/34600000000?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
