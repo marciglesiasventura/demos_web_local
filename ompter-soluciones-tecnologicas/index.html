@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ompter | Soluciones Tecnológicas</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent: #2563eb;
+    --accent-light: #3b82f6;
+    --accent-dark: #1d4ed8;
+    --dark: #0a0a0a;
+    --dark2: #141414;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e5e9ec;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--dark);
+    color: #aab0b2;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 9px 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .topbar-item svg { width: 13px; height: 13px; fill: var(--accent-light); flex-shrink: 0; }
+  .topbar-right { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 24px;
+  }
+  .nav-logo {
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .btn-nav {
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    padding: 11px 22px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-nav:hover { background: var(--accent-dark); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--white);
+    z-index: 9999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .mobile-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 300;
+  }
+  .mobile-menu .btn-nav { margin-top: 8px; }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 107px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-text { padding: 80px 0; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(37,99,235,0.08);
+    padding: 5px 14px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-outline {
+    background: transparent;
+    color: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: 2px solid var(--dark);
+    padding: 13px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--dark); color: var(--white); }
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .badge-stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; }
+  .badge-text { font-size: 0.82rem; font-weight: 700; color: var(--muted); line-height: 1.4; }
+  .badge-text strong { color: var(--dark); font-size: 1.1rem; display: block; }
+  .hero-img-wrap {
+    position: relative;
+    height: 580px;
+    background: var(--off-white);
+    overflow: hidden;
+  }
+  .hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8f0fe 0%, #c7d9f8 50%, #dbeafe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hero-img-placeholder svg { width: 80px; height: 80px; fill: var(--accent); opacity: 0.3; }
+  .hero-img-placeholder span { font-size: 0.85rem; font-weight: 700; color: var(--accent); opacity: 0.5; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-accent-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 60px; height: 4px;
+    background: var(--accent);
+  }
+
+  /* INTRO EDITORIAL */
+  .intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .intro-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 20px;
+  }
+  .intro h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    color: var(--dark);
+  }
+  .intro p {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .intro p:last-of-type { margin-bottom: 0; }
+  .intro-img-wrap {
+    position: relative;
+    height: 520px;
+    background: var(--off-white);
+  }
+  .intro-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .intro-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f0f4ff 0%, #dbeafe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .intro-img-placeholder svg { width: 60px; height: 60px; fill: var(--accent); opacity: 0.25; }
+  .intro-img-placeholder span { font-size: 0.8rem; font-weight: 700; color: var(--accent); opacity: 0.4; letter-spacing: 0.1em; text-transform: uppercase; }
+  .exp-badge {
+    position: absolute;
+    bottom: -20px; left: -20px;
+    background: var(--accent);
+    color: var(--white);
+    padding: 22px 26px;
+    text-align: center;
+  }
+  .exp-badge strong { display: block; font-size: 2.4rem; font-weight: 900; line-height: 1; font-style: italic; }
+  .exp-badge span { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-top: 4px; }
+
+  /* SOBRE MÍ */
+  .about-section {
+    background: var(--off-white);
+    padding: 100px 24px;
+  }
+  .about-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--dark);
+  }
+  .about-card {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .about-photo {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .about-photo svg { width: 72px; height: 72px; fill: var(--accent); opacity: 0.3; }
+  .about-photo span { font-size: 0.75rem; font-weight: 700; color: var(--accent); opacity: 0.4; letter-spacing: 0.1em; text-transform: uppercase; }
+  .about-content { padding: 44px 48px; }
+  .about-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .about-divider {
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    margin-bottom: 20px;
+  }
+  .about-bio {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: rgba(37,99,235,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(37,99,235,0.15);
+  }
+
+  /* SERVICIOS */
+  .service-block {
+    padding: 90px 24px;
+  }
+  .service-block.off { background: var(--off-white); }
+  .service-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.04em;
+  }
+  .service-title {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .service-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-list li {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .service-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .service-img {
+    height: 420px;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-img img { width: 100%; height: 100%; object-fit: cover; }
+  .service-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .service-img-placeholder svg { width: 56px; height: 56px; fill: var(--accent); opacity: 0.25; }
+  .service-img-placeholder span { font-size: 0.75rem; font-weight: 700; color: var(--accent); opacity: 0.4; letter-spacing: 0.1em; text-transform: uppercase; }
+  .service-img-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px;
+    height: 60px;
+    background: var(--accent);
+  }
+
+  /* PILARES */
+  .pillars {
+    background: var(--dark);
+    padding: 100px 24px;
+  }
+  .pillars-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .pillars-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .pillars-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .pillars-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .pillars-sub {
+    font-size: 0.95rem;
+    color: #6a7879;
+    max-width: 320px;
+    line-height: 1.7;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .pillar {
+    background: #111111;
+    padding: 44px 36px;
+    transition: background 0.2s;
+  }
+  .pillar:hover { background: #161616; }
+  .pillar-num {
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+  }
+  .pillar-title {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .pillar-desc {
+    font-size: 0.88rem;
+    color: #6a7879;
+    line-height: 1.75;
+  }
+
+  /* RESEÑAS */
+  .reviews {
+    background: var(--off-white);
+    padding: 100px 24px;
+  }
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .reviews-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .reviews-header-left .section-label { text-align: left; margin-bottom: 10px; }
+  .reviews-header-left .section-title { text-align: left; margin-bottom: 0; }
+  .reviews-score {
+    text-align: right;
+  }
+  .score-big {
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .score-stars { color: #f59e0b; font-size: 1.1rem; letter-spacing: 3px; margin: 4px 0; }
+  .score-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .review-card {
+    background: var(--white);
+    padding: 36px 32px;
+  }
+  .review-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--dark);
+    display: block;
+  }
+  .review-source {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .review-stars { color: #f59e0b; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .review-text {
+    font-size: 0.93rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* CONTACTO */
+  .contact {
+    padding: 100px 24px;
+    background: var(--white);
+  }
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .contact h2 {
+    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .contact-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(37,99,235,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 20px; height: 20px; fill: var(--accent); }
+  .contact-info-text strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 3px;
+  }
+  .contact-info-text span {
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .contact-form {
+    background: var(--off-white);
+    padding: 48px 44px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 13px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .btn-form {
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn-form:hover { background: var(--accent-dark); }
+  .btn-form svg { width: 18px; height: 18px; fill: var(--white); }
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 24px 32px;
+    color: #6a7879;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .footer-brand-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .footer-brand-name span { color: var(--accent); }
+  .footer-brand-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: #6a7879;
+    max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #6a7879;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #3a4445;
+    font-weight: 600;
+  }
+  .footer-legal { display: flex; gap: 20px; }
+  .footer-legal a {
+    font-size: 0.78rem;
+    color: #3a4445;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .footer-legal a:hover { color: #6a7879; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.45);
+  }
+  .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 968px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding: 60px 24px;
+    }
+    .hero-text { padding: 0; }
+    .hero-img-wrap { height: 340px; }
+    .intro {
+      grid-template-columns: 1fr;
+      padding: 60px 24px;
+      gap: 50px;
+    }
+    .intro-img-wrap { height: 360px; }
+    .exp-badge { bottom: -16px; left: 16px; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { min-height: 220px; }
+    .about-content { padding: 32px 28px; }
+    .service-inner, .service-inner.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: 40px;
+    }
+    .service-img { height: 280px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .pillars-header { flex-direction: column; align-items: flex-start; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+    .reviews-score { text-align: left; }
+    .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+    .contact-form { padding: 32px 28px; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .nav-links { display: none; }
+    .btn-nav { display: none; }
+    .hamburger { display: flex; }
+    .topbar-right { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+    .service-block { padding: 60px 20px; }
+    .reviews { padding: 60px 20px; }
+    .pillars { padding: 60px 20px; }
+    .contact { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      España
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +34 600 000 000
+      </div>
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        Lun–Vie 9:00–18:00
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Omp<span>ter</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#pilares">Por qué nosotros</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-nav">Solicitar presupuesto</a>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Cerrar menú">&times;</button>
+  <a href="#nosotros" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosotros</a>
+  <a href="#servicios" onclick="document.getElementById('mobileMenu').classList.remove('open')">Servicios</a>
+  <a href="#pilares" onclick="document.getElementById('mobileMenu').classList.remove('open')">Por qué nosotros</a>
+  <a href="#resenas" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reseñas</a>
+  <a href="#contacto" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacto</a>
+  <a href="#contacto" class="btn-nav" onclick="document.getElementById('mobileMenu').classList.remove('open')">Solicitar presupuesto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Soluciones tecnológicas para empresas</span>
+    <h1>Tu negocio merece<br>la mejor tecnología</h1>
+    <p class="hero-desc">En Ompter diseñamos, desarrollamos y optimizamos soluciones digitales a medida. Transformamos tus necesidades en herramientas que impulsan el crecimiento real de tu empresa.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Solicitar presupuesto</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+    <div class="hero-badge">
+      <div>
+        <div class="badge-stars">★★★★★</div>
+      </div>
+      <div class="badge-text">
+        <strong>5.0 / 5.0</strong>
+        Valoración media de nuestros clientes
+      </div>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <div class="hero-img-placeholder">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 11.25 12 11.25 9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-.75c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"/></svg>
+      <span>Foto principal</span>
+    </div>
+    <div class="hero-accent-bar"></div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section id="nosotros">
+  <div class="intro">
+    <div class="intro-text">
+      <span class="intro-label">Quiénes somos</span>
+      <h2>Tecnología que<br>trabaja para ti</h2>
+      <p>Ompter nace de la convicción de que la tecnología debe ser una aliada real de los negocios, no un obstáculo. Somos un equipo apasionado por crear soluciones digitales eficientes, escalables y adaptadas a cada cliente.</p>
+      <p>Combinamos experiencia técnica con una visión estratégica del negocio. No solo escribimos código: analizamos, proponemos y acompañamos a nuestros clientes en cada etapa de su transformación digital.</p>
+      <p>Trabajamos con empresas de todos los tamaños, desde startups hasta organizaciones consolidadas, siempre con el mismo nivel de compromiso y atención al detalle.</p>
+    </div>
+    <div class="intro-img-wrap">
+      <div class="intro-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm4-4h8v2h-8z"/></svg>
+        <span>Foto equipo</span>
+      </div>
+      <div class="exp-badge">
+        <strong>+5</strong>
+        <span>Años de<br>experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about-section">
+  <div class="about-inner">
+    <span class="section-label">El equipo</span>
+    <h2 class="section-title">Personas detrás de Ompter</h2>
+    <div class="about-card">
+      <div class="about-photo">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        <span>Foto</span>
+      </div>
+      <div class="about-content">
+        <div class="about-name">Equipo Ompter</div>
+        <span class="about-role">Desarrollo & Consultoría Tecnológica</span>
+        <div class="about-divider"></div>
+        <p class="about-bio">Somos un equipo multidisciplinar con perfiles técnicos y estratégicos. Nos especializamos en entender las necesidades reales de cada negocio para proponer soluciones digitales que generen valor tangible. La transparencia, la calidad y la comunicación constante son los pilares de nuestra forma de trabajar.</p>
+        <div class="about-tags">
+          <span class="tag">Desarrollo Web</span>
+          <span class="tag">Apps a medida</span>
+          <span class="tag">Consultoría IT</span>
+          <span class="tag">UX / UI</span>
+          <span class="tag">Integraciones</span>
+          <span class="tag">Mantenimiento</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<div id="servicios">
+
+  <!-- Servicio 01 -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-text">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Desarrollo web<br>a medida</h3>
+        <p class="service-desc">Creamos páginas web y plataformas digitales diseñadas específicamente para los objetivos de tu negocio. Desde webs corporativas hasta portales complejos con lógica personalizada.</p>
+        <ul class="service-list">
+          <li>Diseño UI/UX profesional y adaptado a tu marca</li>
+          <li>Desarrollo frontend y backend escalable</li>
+          <li>Optimización para buscadores (SEO técnico)</li>
+          <li>Compatible con todos los dispositivos</li>
+          <li>Integración con tus herramientas existentes</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="service-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm4-4h8v2h-8z"/></svg>
+          <span>Imagen servicio</span>
+        </div>
+        <div class="service-img-accent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 02 -->
+  <div class="service-block off">
+    <div class="service-inner reverse">
+      <div class="service-text">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Aplicaciones<br>a medida</h3>
+        <p class="service-desc">Desarrollamos aplicaciones web y móviles personalizadas que automatizan procesos, mejoran la productividad y ofrecen experiencias digitales diferenciadoras a tus clientes.</p>
+        <ul class="service-list">
+          <li>Análisis y definición de requisitos funcionales</li>
+          <li>Aplicaciones web progresivas (PWA)</li>
+          <li>Apps nativas e híbridas para iOS y Android</li>
+          <li>Paneles de gestión y dashboards internos</li>
+          <li>Mantenimiento y evolución continua</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="service-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          <span>Imagen servicio</span>
+        </div>
+        <div class="service-img-accent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 03 -->
+  <div class="service-block">
+    <div class="service-inner">
+      <div class="service-text">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Consultoría<br>& estrategia IT</h3>
+        <p class="service-desc">Te acompañamos en la toma de decisiones tecnológicas para que cada inversión en tecnología sea eficiente y alineada con los objetivos reales de tu negocio.</p>
+        <ul class="service-list">
+          <li>Auditoría tecnológica de tu infraestructura</li>
+          <li>Hoja de ruta digital personalizada</li>
+          <li>Selección y evaluación de herramientas y plataformas</li>
+          <li>Optimización de procesos internos con tecnología</li>
+          <li>Formación y acompañamiento al equipo</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="service-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          <span>Imagen servicio</span>
+        </div>
+        <div class="service-img-accent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 04 -->
+  <div class="service-block off">
+    <div class="service-inner reverse">
+      <div class="service-text">
+        <div class="service-num">04</div>
+        <h3 class="service-title">Mantenimiento<br>& soporte técnico</h3>
+        <p class="service-desc">Garantizamos el correcto funcionamiento de tus sistemas digitales con planes de mantenimiento preventivo y soporte técnico ágil cuando lo necesitas.</p>
+        <ul class="service-list">
+          <li>Monitorización continua de rendimiento</li>
+          <li>Actualizaciones y parches de seguridad</li>
+          <li>Copias de seguridad automáticas</li>
+          <li>Soporte técnico con tiempos de respuesta garantizados</li>
+          <li>Informes mensuales de estado del sistema</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="service-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          <span>Imagen servicio</span>
+        </div>
+        <div class="service-img-accent"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PILARES -->
+<section class="pillars" id="pilares">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <div>
+        <span class="pillars-label">Nuestra filosofía</span>
+        <h2 class="pillars-title">Por qué elegir<br>Ompter</h2>
+      </div>
+      <p class="pillars-sub">Tres principios que guían cada proyecto y cada decisión que tomamos junto a nuestros clientes.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Resultados reales</div>
+        <p class="pillar-desc">No nos conformamos con entregar tecnología. Medimos el impacto de cada solución en los objetivos de negocio de nuestros clientes y ajustamos hasta conseguir resultados tangibles.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Comunicación transparente</div>
+        <p class="pillar-desc">Mantenemos a nuestros clientes informados en cada etapa del proyecto. Sin tecnicismos innecesarios, sin sorpresas. Claridad absoluta en plazos, costes y avances.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Tecnología duradera</div>
+        <p class="pillar-desc">Desarrollamos soluciones escalables y bien documentadas que crecen con tu negocio. Evitamos la dependencia tecnológica y apostamos por estándares abiertos y mantenibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div class="reviews-header-left">
+        <span class="section-label">Lo que dicen nuestros clientes</span>
+        <h2 class="section-title">Reseñas y<br>valoraciones</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="score-big">5.0</div>
+        <div class="score-stars">★★★★★</div>
+        <div class="score-label">Puntuación media</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">M</div>
+          <div>
+            <span class="review-name">María G.</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Contratamos a Ompter para desarrollar nuestro portal de clientes y el resultado superó todas las expectativas. El equipo fue muy profesional, cumplieron los plazos y el soporte post-lanzamiento fue impecable."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">C</div>
+          <div>
+            <span class="review-name">Carlos R.</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Lo que más valoro es la comunicación. Siempre supe en qué punto estaba el proyecto, qué decisiones se tomaban y por qué. Eso en el sector tecnológico no es tan habitual como debería ser."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">L</div>
+          <div>
+            <span class="review-name">Laura P.</span>
+            <span class="review-source">Google Reviews</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Llevamos más de dos años trabajando con Ompter para el mantenimiento y evolución de nuestra plataforma. Son un equipo de confianza, siempre disponibles y con propuestas de mejora continua."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <span class="contact-label">Hablemos</span>
+      <h2>Cuéntanos tu<br>proyecto</h2>
+      <p class="contact-desc">Tanto si tienes una idea clara como si aún estás explorando posibilidades, estaremos encantados de escucharte y orientarte sin compromiso.</p>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="contact-info-text">
+            <strong>Dirección</strong>
+            <span>España — atención también en remoto</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.107.55 4.084 1.512 5.802L
