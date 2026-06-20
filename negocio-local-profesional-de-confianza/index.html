@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negocio Local | Profesional de Confianza</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #2e7d5e;
+    --accent-light: #3a9b74;
+    --dark: #0a0a0a;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e8edf0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--dark);
+    color: #ccc;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 9px 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar-item { display: flex; align-items: center; gap: 7px; }
+  .topbar-item svg { width: 13px; height: 13px; fill: var(--accent); flex-shrink: 0; }
+  .topbar-right { display: flex; gap: 20px; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 32px;
+  }
+  .nav-logo {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .btn-nav {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-nav:hover { background: var(--accent-light); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--white);
+    z-index: 2000;
+    flex-direction: column;
+    padding: 32px 24px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .mobile-close {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 300;
+  }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .mobile-menu ul a {
+    display: block;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .mobile-cta { margin-top: 32px; }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-text { padding: 60px 0; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(46,125,94,0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 32px;
+    font-weight: 400;
+    max-width: 460px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+  }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--dark);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border: 2px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--dark); }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    padding: 12px 18px;
+    border-radius: 12px;
+  }
+  .badge-stars { color: #f5a623; font-size: 1rem; letter-spacing: 2px; }
+  .badge-text { font-size: 0.82rem; font-weight: 700; color: var(--dark); }
+  .badge-text span { color: var(--muted); font-weight: 500; }
+  .hero-image {
+    position: relative;
+    height: 580px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #d4e8de 0%, #a8d5bc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+  }
+
+  /* INTRO EDITORIAL */
+  .intro {
+    padding: 100px 24px;
+    background: var(--white);
+  }
+  .intro-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .intro h2 {
+    font-size: clamp(1.9rem, 3vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--dark);
+  }
+  .intro p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .intro-image-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 460px;
+  }
+  .intro-image-wrap .img-placeholder { border-radius: 16px; }
+  .exp-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: var(--dark);
+    color: var(--white);
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .exp-badge strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .exp-badge span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; }
+
+  /* SOBRE MÍ */
+  .about {
+    padding: 80px 24px;
+    background: var(--off-white);
+  }
+  .about-inner { max-width: 1200px; margin: 0 auto; }
+  .about-card {
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .about-photo {
+    width: 220px;
+    height: 260px;
+    border-radius: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .about-photo .img-placeholder { border-radius: 14px; font-size: 4rem; }
+  .about-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .about-bio {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    color: var(--dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  /* SERVICIOS */
+  .service-section { padding: 90px 24px; }
+  .service-section.bg-off { background: var(--off-white); }
+  .service-section.bg-white { background: var(--white); }
+  .service-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: -8px;
+    letter-spacing: -0.04em;
+  }
+  .service-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .service-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .service-list li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .service-img {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 400px;
+  }
+  .service-img .img-placeholder { border-radius: 16px; font-size: 4rem; }
+
+  /* PILARES */
+  .pillars {
+    background: var(--dark);
+    padding: 90px 24px;
+  }
+  .pillars-inner { max-width: 1200px; margin: 0 auto; }
+  .pillars-header { text-align: center; margin-bottom: 60px; }
+  .pillars-header .section-label { color: var(--accent); }
+  .pillars-header h2 {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .pillar {
+    padding: 48px 36px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  .pillar:hover { background: rgba(255,255,255,0.06); }
+  .pillar-num {
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.6;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .pillar h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+  .pillar p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+  /* RESEÑAS */
+  .reviews {
+    background: var(--off-white);
+    padding: 90px 24px;
+  }
+  .reviews-inner { max-width: 1200px; margin: 0 auto; }
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 52px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .reviews-header .section-label { color: var(--accent); margin-bottom: 8px; }
+  .reviews-header h2 {
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+  }
+  .score-display { text-align: right; }
+  .score-big {
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .score-big span { color: var(--accent); }
+  .score-stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 2px; }
+  .score-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .review-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .review-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 900;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 2px; }
+  .review-source { font-size: 0.75rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
+  .review-stars { color: #f5a623; font-size: 0.85rem; margin-bottom: 14px; }
+  .review-text {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* CONTACTO */
+  .contact {
+    padding: 90px 24px;
+    background: var(--white);
+  }
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-label { color: var(--accent); margin-bottom: 12px; }
+  .contact h2 {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .contact-desc { font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.92rem;
+    color: var(--dark);
+    font-weight: 600;
+  }
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: rgba(46,125,94,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 18px; height: 18px; fill: var(--accent); }
+  .contact-item span { color: var(--muted); font-weight: 400; font-size: 0.85rem; display: block; margin-top: 1px; }
+  .contact-form {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .form-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    color: var(--dark);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .btn-form {
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .btn-form:hover { background: var(--accent-light); }
+  .btn-form svg { width: 20px; height: 20px; fill: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 24px 30px;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-name {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .footer-brand-name span { color: var(--accent); }
+  .footer-brand-desc { font-size: 0.88rem; line-height: 1.75; max-width: 300px; }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* WHATSAPP FLOTANTE */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    background: #25D366;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.08); }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; gap: 40px; padding: 40px 24px; }
+    .hero-image { height: 320px; width: 100%; }
+    .intro-inner { grid-template-columns: 1fr; gap: 40px; }
+    .intro-image-wrap { height: 300px; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { width: 100%; height: 220px; }
+    .service-inner { grid-template-columns: 1fr; gap: 40px; }
+    .service-inner.reverse { direction: ltr; }
+    .service-img { height: 260px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links, .btn-nav { display: none; }
+    .hamburger { display: flex; }
+    .topbar-right { display: none; }
+  }
+  @media (max-width: 600px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+    .score-big { font-size: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+      Madrid, España
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6.5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+        +34 600 000 000
+      </div>
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        Lun–Vie 9:00–19:00
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Negocio<span>.</span>Local</a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-nav">Pedir cita</a>
+    <button class="hamburger" onclick="openMenu()" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="#" class="nav-logo">Negocio<span style="color:var(--accent)">.</span>Local</a>
+    <button class="mobile-close" onclick="closeMenu()" aria-label="Cerrar menú">✕</button>
+  </div>
+  <ul>
+    <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+    <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
+    <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+    <li><a href="#resenas" onclick="closeMenu()">Reseñas</a></li>
+    <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+  </ul>
+  <div class="mobile-cta">
+    <a href="#contacto" class="btn-primary" onclick="closeMenu()" style="display:inline-block">Pedir cita</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="inicio" style="background: var(--white);">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">✦ Servicio profesional de confianza</span>
+      <h1>Tu negocio local<br>de <em>toda la vida</em></h1>
+      <p class="hero-desc">Ofrecemos un servicio cercano, profesional y de calidad adaptado a tus necesidades. Años de experiencia avalan cada trabajo que realizamos.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">Contactar ahora</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+      <div class="hero-badge">
+        <div>
+          <div class="badge-stars">★★★★★</div>
+        </div>
+        <div class="badge-text">
+          5.0 en Google Maps<br>
+          <span>+120 clientes satisfechos</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="img-placeholder">🌿</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div>
+      <p class="section-label">Quiénes somos</p>
+      <h2>Un equipo comprometido con la excelencia</h2>
+      <p>Somos un negocio local con más de una década de trayectoria ofreciendo servicios de primera calidad a nuestros clientes. Cada proyecto lo tratamos con la misma dedicación y mimo, sin importar el tamaño.</p>
+      <p>Nuestra filosofía es sencilla: escuchar, entender y ofrecer la mejor solución posible. Por eso, nuestros clientes siempre vuelven y nos recomiendan.</p>
+    </div>
+    <div class="intro-image-wrap">
+      <div class="img-placeholder" style="height:100%">🏡</div>
+      <div class="exp-badge">
+        <strong>+10</strong>
+        <span>años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="about">
+  <div class="about-inner">
+    <div class="about-card">
+      <div class="about-photo">
+        <div class="img-placeholder" style="height:100%">👤</div>
+      </div>
+      <div>
+        <div class="about-name">María García López</div>
+        <div class="about-role">Fundadora &amp; Responsable</div>
+        <p class="about-bio">Llevo más de 10 años dedicada a ofrecer un servicio de calidad cercano y personalizado. Me apasiona mi trabajo y eso se nota en cada detalle. He formado a un equipo que comparte mis valores: honestidad, profesionalidad y compromiso con el cliente. Cada persona que confía en nosotros se convierte en parte de nuestra familia.</p>
+        <div class="tags">
+          <span class="tag">Atención personalizada</span>
+          <span class="tag">Calidad garantizada</span>
+          <span class="tag">Experiencia contrastada</span>
+          <span class="tag">Resultados reales</span>
+          <span class="tag">Trato cercano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+
+  <!-- Servicio 01 -->
+  <div class="service-section bg-white">
+    <div class="service-inner">
+      <div>
+        <div class="service-num">01</div>
+        <h3 class="service-title">Servicio principal</h3>
+        <p class="service-desc">Nuestro servicio estrella, diseñado para cubrir la necesidad más importante de nuestros clientes con la máxima calidad y eficiencia. Nos adaptamos a cada caso con total flexibilidad.</p>
+        <ul class="service-list">
+          <li>Valoración inicial sin coste ni compromiso</li>
+          <li>Presupuesto cerrado y transparente</li>
+          <li>Materiales y herramientas de primera calidad</li>
+          <li>Seguimiento personalizado del proceso</li>
+          <li>Garantía de satisfacción incluida</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder" style="height:100%">⭐</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 02 -->
+  <div class="service-section bg-off">
+    <div class="service-inner reverse">
+      <div>
+        <div class="service-num">02</div>
+        <h3 class="service-title">Servicio complementario</h3>
+        <p class="service-desc">Ampliamos nuestra oferta con soluciones complementarias que permiten a nuestros clientes tener todo cubierto en un solo lugar, ahorrando tiempo y dinero.</p>
+        <ul class="service-list">
+          <li>Disponibilidad flexible de horarios</li>
+          <li>Atención domiciliaria a petición</li>
+          <li>Planes personalizados según necesidades</li>
+          <li>Asesoramiento experto incluido</li>
+          <li>Revisiones periódicas sin cargo adicional</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder" style="height:100%">💡</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Servicio 03 -->
+  <div class="service-section bg-white">
+    <div class="service-inner">
+      <div>
+        <div class="service-num">03</div>
+        <h3 class="service-title">Servicio especializado</h3>
+        <p class="service-desc">Para necesidades específicas o más complejas, contamos con un servicio especializado que aborda cada caso con la dedicación y el conocimiento técnico que merece.</p>
+        <ul class="service-list">
+          <li>Diagnóstico detallado previo</li>
+          <li>Técnicos especializados en cada área</li>
+          <li>Soluciones a medida y sostenibles</li>
+          <li>Documentación completa del proceso</li>
+          <li>Soporte post-servicio incluido</li>
+        </ul>
+      </div>
+      <div class="service-img">
+        <div class="img-placeholder" style="height:100%">🔧</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <p class="section-label">Nuestros valores</p>
+      <h2>Por qué elegir nuestro negocio</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3>Confianza total</h3>
+        <p>Más de una década avalan nuestra trayectoria. Trabajamos con honestidad y transparencia en cada proyecto, sin sorpresas ni costes ocultos.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3>Calidad garantizada</h3>
+        <p>Utilizamos los mejores materiales y técnicas para asegurar resultados duraderos. Tu satisfacción es nuestra prioridad absoluta en cada trabajo.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3>Trato cercano</h3>
+        <p>Somos un negocio local. Conocemos a nuestros clientes por su nombre y adaptamos cada servicio a sus circunstancias particulares con cariño.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="resenas" class="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <p class="section-label">Reseñas de clientes</p>
+        <h2>Lo que dicen de nosotros</h2>
+      </div>
+      <div class="score-display">
+        <div class="score-big">5<span>.0</span></div>
+        <div class="score-stars">★★★★★</div>
+        <div class="score-label">+120 reseñas en Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ana Martínez</div>
+            <div class="review-source">Google Reviews</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Increíble el trato recibido desde el primer momento. Profesionales de verdad que se preocupan por el cliente. Volveré sin duda y los recomiendo a todo el mundo."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" style="background:#1a6b4a">J</div>
+          <div>
+            <div class="review-name">Javier Romero</div>
+            <div class="review-source">Google Reviews</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Llevaba tiempo buscando alguien de confianza y por fin los encontré. El resultado superó todas mis expectativas. Precio muy ajustado y servicio impecable."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" style="background:#2c5282">L</div>
+          <div>
+            <div class="review-name">Laura Sánchez</div>
+            <div class="review-source">Google Reviews</div>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Puntuales, cuidadosos y muy atentos a los detalles. Se nota que aman lo que hacen. Mi familia lleva años siendo cliente y siempre quedamos más que satisfechos."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label contact-label">Contacto</p>
+      <h2>Hablemos de tu proyecto</h2>
+      <p class="contact-desc">Estamos aquí para atenderte. Escríbenos o llámanos y te daremos respuesta en menos de 24 horas. Sin compromiso.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          </div>
+          <div>
+            Calle Ejemplo 123, Madrid
+            <span>28001, Comunidad de Madrid</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.82L.057 23.428a.75.75 0 00.921.921l5.607-1.451A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.68-.53-5.191-1.45l-.371-.22-3.851.996.996-3.851-.22-.371A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </div>
+          <div>
+            WhatsApp: +34 600 000 000
+            <span>Respuesta rápida garantizada</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          </div>
+          <div>
+            Lunes a Viernes: 9:00 – 19:00
+            <span>Sábados: 10:00 – 14:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <p class="form-title">Envíanos un mensaje</p>
+      <form id="contactForm" onsubmit="sendWhatsApp(event)">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+        </div>
+        <div class="form-group">
+          <label for="servicio">Servicio de interés</label>
+          <select id="servicio" name="servicio">
+            <option value="">Selecciona un servicio</option>
+            <option value="Servicio principal">Servicio principal</option>
+            <option value="Servicio complementario">Servicio complementario</option>
+            <option value="Servicio especializado">Servicio especializado</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas..." required></textarea>
+        </div>
+        <button type="submit" class="btn-form">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.82L.057 23.428a.75.75 0 00.921.921l5.607-1.451A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.68-.53-5.191-1.45l-.371-.22-3.851.996.996-3.851-.22-.371A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Negocio<span>.</span>Local</div>
+        <p class="footer-brand-desc">Negocio local de confianza con más de 10 años de experiencia. Comprometidos con la calidad y la satisfacción de cada cliente.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Servicio principal</a></li>
+          <li><a href="#servicios">Servicio complementario</a></li>
+          <li><a href="#servicios">Servicio especializado</a></li>
+          <li><a href="#contacto">Solicitar presupuesto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Negocio Local. Todos los derechos reservados.</span>
+      <span>Madrid, España · +34 600 000 000</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34600000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.099 1.508 5.82L.057 23.428a.75.75 0 00.921.921l5.607-1.451A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.68-.53-5.191-1.45l-.371-.22-3.851.996.996-3.851-.22-.371A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+
+<script>
+  function openMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function sendWhatsApp(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    let text = '¡Hola! Me pongo en contacto desde vuestra web.\n\n';
+    text += '👤 *Nombre:* ' + nombre + '\n';
+    if (telefono) text += '📞 *Teléfono:* ' + telefono + '\n';
+    if (servicio) text += '🔧 *Servicio:* ' + servicio + '\n';
+    text += '\n💬 *Mensaje:*\n' + mensaje;
+
+    const encoded = encodeURIComponent(text);
+    const number = '34600000000';
+    window.open('https://wa.me/' + number + '?text=' + encoded, '_blank');
+  }
+
+  // Sticky nav shadow on scroll
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 10) {
+      nav.style.boxShadow = '0 1px 20px rgba(0,0,0,0.06)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
