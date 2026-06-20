@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Dental | Sonrisas que transforman vidas</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #2a9d8f;
+    --accent-dark: #1f7a6e;
+    --dark: #0a0a0a;
+    --muted: #6a7879;
+    --off-white: #f7fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --text: #1a2e2e;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--dark);
+    color: #ccc;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 8px 0;
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 20px; }
+  .topbar-item { display: flex; align-items: center; gap: 6px; }
+  .topbar-item svg { width: 13px; height: 13px; fill: var(--accent); flex-shrink: 0; }
+  .topbar a { color: #ccc; transition: color 0.2s; }
+  .topbar a:hover { color: var(--accent); }
+
+  /* NAV */
+  .nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-links a:hover::after { width: 100%; }
+  .btn-cta {
+    background: var(--accent);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(42,157,143,0.08);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    border: 1px solid rgba(42,157,143,0.2);
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    color: var(--dark);
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+  .btn-secondary::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--dark);
+    transition: width 0.3s, background 0.2s;
+  }
+  .btn-secondary:hover { color: var(--accent); }
+  .btn-secondary:hover::before { width: 44px; background: var(--accent); }
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    width: fit-content;
+  }
+  .hero-badge-stars { color: #f4a261; font-size: 1rem; letter-spacing: 2px; }
+  .hero-badge-text { font-size: 0.82rem; font-weight: 700; color: var(--muted); }
+  .hero-badge-text strong { color: var(--dark); font-size: 1rem; display: block; }
+  .hero-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #d4f1ee 0%, #a8e6df 50%, #2a9d8f 100%);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* INTRO EDITORIAL */
+  .intro {
+    padding: 100px 24px;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .intro-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .intro-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .intro-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+  .intro-text {
+    font-size: 0.98rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .intro-image-wrap {
+    position: relative;
+  }
+  .intro-image {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #e8f8f6 0%, #b2e4de 100%);
+  }
+  .intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .intro-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+  .intro-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--accent);
+    color: var(--white);
+    padding: 20px 24px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .intro-badge-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    display: block;
+  }
+  .intro-badge-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* SOBRE MÍ */
+  .about {
+    background: var(--off-white);
+    padding: 100px 24px;
+  }
+  .about-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .about-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    border: 1px solid var(--border);
+  }
+  .about-photo {
+    background: linear-gradient(160deg, #d4f1ee, #2a9d8f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    min-height: 340px;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .about-content {
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .about-bio {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.78;
+    margin-bottom: 28px;
+  }
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--off-white);
+    color: var(--dark);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border);
+  }
+
+  /* SERVICIOS */
+  .service-block {
+    padding: 90px 24px;
+  }
+  .service-block.alt { background: var(--off-white); }
+  .service-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+  .service-num {
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: -10px;
+    letter-spacing: -0.04em;
+  }
+  .service-title {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .service-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.78;
+    margin-bottom: 24px;
+  }
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .service-list li {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .service-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .service-image {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #d4f1ee 0%, #2a9d8f 100%);
+  }
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .service-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+
+  /* PILARES */
+  .pillars {
+    background: var(--dark);
+    padding: 100px 24px;
+    color: var(--white);
+  }
+  .pillars-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .pillars-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .pillars-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .pillar {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+  }
+  .pillar-num {
+    font-size: 2.6rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.5;
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .pillar-title {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .pillar-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  /* RESEÑAS */
+  .reviews {
+    background: var(--off-white);
+    padding: 100px 24px;
+  }
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .reviews-header-left {}
+  .reviews-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .reviews-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    line-height: 1.1;
+  }
+  .reviews-score {
+    text-align: right;
+  }
+  .reviews-score-num {
+    font-size: 4rem;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .reviews-score-stars { color: #f4a261; font-size: 1.1rem; letter-spacing: 3px; }
+  .reviews-score-text { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-top: 2px; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .review-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--dark);
+    display: block;
+  }
+  .review-source {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+  }
+  .review-stars { color: #f4a261; font-size: 0.8rem; margin-bottom: 12px; }
+  .review-text {
+    font-size: 0.91rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.72;
+  }
+
+  /* CONTACTO */
+  .contact {
+    background: var(--white);
+    padding: 100px 24px;
+  }
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .contact-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .contact-desc {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.78;
+    margin-bottom: 36px;
+  }
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(42,157,143,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 18px; height: 18px; fill: var(--accent); }
+  .contact-item-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .contact-item-val {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .contact-item-val a { color: var(--dark); transition: color 0.2s; }
+  .contact-item-val a:hover { color: var(--accent); }
+
+  /* FORMULARIO */
+  .contact-form {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+  .form-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: #25D366;
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: #1ebe5d; transform: translateY(-1px); }
+  .form-submit svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 60px 24px 40px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand-name {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .footer-brand-name span { color: var(--accent); }
+  .footer-brand-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    max-width: 260px;
+  }
+  .footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.78rem;
+  }
+  .footer-bottom a { color: var(--accent); }
+
+  /* WHATSAPP FLOTANTE */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  }
+  .wa-float:hover { transform: scale(1.1); background: #1ebe5d; }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 24px 40px; gap: 40px; }
+    .hero-image { aspect-ratio: 16/9; }
+    .intro-inner { grid-template-columns: 1fr; gap: 50px; }
+    .intro-image { aspect-ratio: 16/9; }
+    .intro-badge { bottom: -16px; left: 16px; }
+    .about-card { grid-template-columns: 1fr; }
+    .about-photo { min-height: 220px; }
+    .about-content { padding: 32px 28px; }
+    .service-inner { grid-template-columns: 1fr; gap: 40px; }
+    .service-inner.reverse { direction: ltr; }
+    .pillars-grid { grid-template-columns: 1fr; gap: 28px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+    .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links, .btn-cta { display: none; }
+    .hamburger { display: flex; }
+    .topbar-left { gap: 12px; flex-wrap: wrap; }
+  }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .topbar-item:nth-child(3) { display: none; }
+    .contact-form { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        Madrid, España
+      </div>
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.47 11.47 0 00.57 3.58 1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+        <a href="tel:+34600000000">+34 600 000 000</a>
+      </div>
+      <div class="topbar-item">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        Lun–Vie 9:00–20:00 · Sáb 9:00–14:00
+      </div>
+    </div>
+    <div>
+      <a href="tel:+34600000000" style="color:var(--accent);font-weight:800;font-size:0.78rem;letter-spacing:0.06em;">PEDIR CITA →</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Dental<span>Vida</span></div>
+    <ul class="nav-links">
+      <li><a href="#intro">Clínica</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-cta">Pedir Cita</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#intro" onclick="closeMobile()">Clínica</a>
+    <a href="#equipo" onclick="closeMobile()">Equipo</a>
+    <a href="#servicios" onclick="closeMobile()">Servicios</a>
+    <a href="#resenas" onclick="closeMobile()">Reseñas</a>
+    <a href="#contacto" onclick="closeMobile()">Contacto</a>
+    <a href="#contacto" class="btn-cta" style="text-align:center;margin-top:4px;" onclick="closeMobile()">Pedir Cita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">✦ Clínica Dental en Madrid</div>
+    <h1>Tu sonrisa<br><span>empieza aquí</span></h1>
+    <p class="hero-desc">Tratamientos dentales personalizados con la última tecnología y el trato más cercano. Porque una sonrisa saludable cambia tu vida.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Reservar cita</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+    <div class="hero-badge">
+      <div>
+        <div class="hero-badge-stars">★★★★★</div>
+      </div>
+      <div class="hero-badge-text">
+        <strong>4.9 / 5.0</strong>
+        Más de 380 pacientes satisfechos
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-placeholder">🦷</div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="intro-left">
+      <div class="intro-label">Nuestra filosofía</div>
+      <h2 class="intro-title">Salud dental<br>con alma</h2>
+      <p class="intro-text">En DentalVida creemos que el cuidado dental va mucho más allá de los dientes. Es bienestar, confianza y calidad de vida. Por eso cada tratamiento comienza escuchándote.</p>
+      <p class="intro-text">Combinamos la última tecnología con un enfoque completamente humano, asegurándonos de que cada visita sea una experiencia cómoda, sin estrés y con resultados que duran.</p>
+      <p class="intro-text">Desde revisiones rutinarias hasta tratamientos complejos, nuestro equipo especializado está preparado para ofrecerte la mejor atención dental de Madrid.</p>
+    </div>
+    <div class="intro-image-wrap">
+      <div class="intro-image">
+        <div class="intro-image-placeholder" style="font-size:5rem;">😁</div>
+      </div>
+      <div class="intro-badge">
+        <span class="intro-badge-num">+15</span>
+        <span class="intro-badge-text">Años de<br>experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="equipo">
+  <div class="about-inner">
+    <div class="section-label">El equipo</div>
+    <div class="about-card">
+      <div class="about-photo">👨‍⚕️</div>
+      <div class="about-content">
+        <h3 class="about-name">Dr. Carlos Méndez</h3>
+        <div class="about-role">Doctor en Odontología · Director Clínico</div>
+        <p class="about-bio">Graduado en la Universidad Complutense de Madrid con Máster en Implantología Oral y Cirugía Bucal. Con más de 15 años de experiencia clínica, el Dr. Méndez ha tratado a más de 2.000 pacientes combinando precisión técnica con un trato excepcional. Su enfoque centrado en el paciente y su dominio de las últimas tecnologías hacen de cada tratamiento una experiencia de confianza y seguridad.</p>
+        <div class="about-tags">
+          <span class="tag">Implantología</span>
+          <span class="tag">Ortodoncia</span>
+          <span class="tag">Odontología Estética</span>
+          <span class="tag">Endodoncia</span>
+          <span class="tag">Periodoncia</span>
+          <span class="tag">Odontopediatría</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="service-block" id="servicios">
+  <div class="service-inner">
+    <div>
+      <div class="service-num">01</div>
+      <h3 class="service-title">Implantes<br>dentales</h3>
+      <p class="service-desc">Recupera la función y la estética de tu sonrisa con implantes de titanio de última generación. La solución permanente y más natural para dientes perdidos.</p>
+      <ul class="service-list">
+        <li>Implantes unitarios y múltiples</li>
+        <li>Implantes en carga inmediata</li>
+        <li>Rehabilitación total con implantes</li>
+        <li>Injertos óseos y membrana guiada</li>
+        <li>Garantía vitalicia del implante</li>
+      </ul>
+    </div>
+    <div class="service-image">
+      <div class="service-image-placeholder">🦷</div>
+    </div>
+  </div>
+</section>
+
+<section class="service-block alt">
+  <div class="service-inner reverse">
+    <div>
+      <div class="service-num">02</div>
+      <h3 class="service-title">Ortodoncia<br>invisible</h3>
+      <p class="service-desc">Alinea tu sonrisa sin que nadie lo note. Los alineadores invisibles permiten corregir la posición dental con total discreción y sin las molestias de los brackets tradicionales.</p>
+      <ul class="service-list">
+        <li>Alineadores Invisalign certificados</li>
+        <li>Ortodoncia estética con brackets cerámicos</li>
+        <li>Retenciones fijas y removibles</li>
+        <li>Ortodoncia para adultos y jóvenes</li>
+        <li>Simulación digital del resultado</li>
+      </ul>
+    </div>
+    <div class="service-image">
+      <div class="service-image-placeholder">😬</div>
+    </div>
+  </div>
+</section>
+
+<section class="service-block">
+  <div class="service-inner">
+    <div>
+      <div class="service-num">03</div>
+      <h3 class="service-title">Estética<br>dental</h3>
+      <p class="service-desc">Transforma tu sonrisa con los tratamientos estéticos más avanzados. Desde blanqueamientos profesionales hasta carillas de porcelana que imitan a la perfección el diente natural.</p>
+      <ul class="service-list">
+        <li>Blanqueamiento dental profesional</li>
+        <li>Carillas de porcelana y composite</li>
+        <li>Diseño de sonrisa digital</li>
+        <li>Coronas cerámicas libre de metal</li>
+        <li>Contorneado y alargamiento coronario</li>
+      </ul>
+    </div>
+    <div class="service-image">
+      <div class="service-image-placeholder">✨</div>
+    </div>
+  </div>
+</section>
+
+<section class="service-block alt">
+  <div class="service-inner reverse">
+    <div>
+      <div class="service-num">04</div>
+      <h3 class="service-title">Odontología<br>general</h3>
+      <p class="service-desc">Mantén tu salud bucal en perfecto estado con revisiones periódicas, limpiezas profesionales y tratamientos preventivos que evitan problemas mayores a largo plazo.</p>
+      <ul class="service-list">
+        <li>Revisión completa y diagnóstico digital</li>
+        <li>Limpieza dental e higiene oral</li>
+        <li>Empastes estéticos en composite</li>
+        <li>Endodoncia y tratamiento de conductos</li>
+        <li>Extracciones y cirugía oral menor</li>
+      </ul>
+    </div>
+    <div class="service-image">
+      <div class="service-image-placeholder">🪥</div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="pillars-label">Por qué elegirnos</span>
+      <h2 class="pillars-title">Nuestra promesa<br>contigo</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h4 class="pillar-title">Tecnología de vanguardia</h4>
+        <p class="pillar-desc">Escáner intraoral 3D, radiografía digital de baja dosis y software de diseño de sonrisa para diagnósticos precisos y tratamientos predecibles.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h4 class="pillar-title">Trato cercano y sin prisas</h4>
+        <p class="pillar-desc">Cada paciente merece tiempo, explicaciones claras y un plan personalizado. Nunca vendemos lo que no necesitas. Tu salud, primero.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h4 class="pillar-title">Financiación sin intereses</h4>
+        <p class="pillar-desc">Facilitamos el acceso a todos los tratamientos con planes de pago flexibles y financiación a 0% de interés. Tu sonrisa no puede esperar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div class="reviews-header-left">
+        <span class="reviews-label">Testimonios reales</span>
+        <h2 class="reviews-title">Lo que dicen<br>nuestros pacientes</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="reviews-score-num">4.9</div>
+        <div class="reviews-score-stars">★★★★★</div>
+        <div class="reviews-score-text">Basado en 380+ reseñas · Google Maps</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">M</div>
+          <div>
+            <span class="review-name">María González</span>
+            <span class="review-source">Google Maps · hace 2 semanas</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Me pusieron los implantes hace 6 meses y el resultado es increíble. El Dr. Méndez explicó todo el proceso con mucha claridad, sin prisas. No siento ninguna diferencia con mis dientes naturales. Totalmente recomendable."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" style="background:#e76f51;">J</div>
+          <div>
+            <span class="review-name">Javier Ruiz</span>
+            <span class="review-source">Google Maps · hace 1 mes</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Llevé a mi hija a ortodoncia con alineadores y la experiencia ha sido excelente desde el primer día. El equipo es muy profesional y amable. En 10 meses ya vemos un cambio brutal. Muy contentos con la clínica."</p>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar" style="background:#264653;">A</div>
+          <div>
+            <span class="review-name">Ana Martínez</span>
+            <span class="review-source">Google Maps · hace 3 semanas</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Vine para un diseño de sonrisa con carillas y superó todas mis expectativas. El resultado es completamente natural, no parecen postizas para nada. Por fin me atrevo a sonreír en las fotos. Gracias a todo el equipo."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <span class="contact-label">Estamos aquí para ti</span>
+      <h2 class="contact-title">Reserva tu<br>primera cita</h2>
+      <p class="contact-desc">La primera consulta es gratuita y sin compromiso. Cuéntanos qué necesitas y te preparamos un plan de tratamiento personalizado.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          </div>
+          <div>
+            <span class="contact-item-title">Dirección</span>
+            <span class="contact-item-val">Calle Gran Vía, 45, 2ª planta · Madrid 28013</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.3-.345.45-.525.149-.18.199-.3.3-.5.099-.195.05-.372-.025-.522-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345z"/><path d="M12.003 1.999c-5.514 0-9.998 4.484-9.998 9.998 0 1.76.463 3.408 1.261 4.845L1.999 22l5.278-1.247A9.942 9.942 0 0012.003 22c5.514 0 9.998-4.484 9.998-9.998s-4.484-10.003-9.998-10.003zm0 18.306a8.285 8.285 0 01-4.225-1.152l-.3-.178-3.135.819.836-3.051-.195-.314a8.285 8.285 0 01-1.275-4.432c0-4.584 3.729-8.313 8.298-8.313 4.569 0 8.298 3.729 8.298 8.313s-3.729 8.308-8.302 8.308z"/></svg>
+          </div>
+          <div>
+            <span class="contact-item-title">WhatsApp</span>
+            <span class="contact-item-val"><a href="https://wa.me/34600000000" target="_blank">+34 600 000 000</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          </div>
+          <div>
+            <span class="contact-item-title">Horario</span>
+            <span class="contact-item-val">Lun–Vie 9:00–20:00 · Sáb 9:00–14:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3 class="form-title">Envíanos un mensaje</h3>
+      <p class="form-subtitle">Te responderemos por WhatsApp en menos de 1 hora en horario de atención.</p>
+      <form id="contactForm" onsubmit="sendWhatsApp(event)">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+        </div>
+        <div class="form-group">
+          <label for="servicio">Tratamiento de interés</label>
+          <select id="servicio" name="servicio">
+            <option value="">Selecciona un tratamiento</option>
+            <option>Implantes dentales</option>
+            <option>Ortodoncia invisible</option>
+            <option>Estética dental / Carillas</option>
+            <option>Blanqueamiento dental</option>
+            <option>Revisión general</option>
+            <option>Limpieza dental</option>
+            <option>Endodoncia</option>
+            <option>Odontopediatría</option>
+            <option>Otro / No lo sé aún</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Cuéntanos más (opcional)</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente lo que necesitas o tienes alguna duda..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <svg viewBox="0 0 24 24"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.3-.345.45-.525.149-.18.199-.3.3-.5.099-.195.05-.372-.025-.522-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345z"/><path d="M12.003 1.999c-5.514 0-9.998 4.484-9.998 9.998 0 1.76.463 3.408 1.261 4.845L1.999 22l5.278-1.247A9.942 9.942 0 0012.003 22c5.514 0 9.998-4.484 9.998-9.998s-4.484-10.003-9.998-10.003zm0 18.306a8.285 8.285 0 01-4.225-1.152l-.3-.178-3.135.819.836-3.051-.195-.314a8.285 8.285 0 01-1.275-4.432c0-4.584 3.729-8.313 8.298-8.313 4.569 0 8.298 3.729 8.298 8.313s-3.729 8.308-8.302 8.308z"/></svg>
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Dental<span>Vida</span></div>
+      <p class
