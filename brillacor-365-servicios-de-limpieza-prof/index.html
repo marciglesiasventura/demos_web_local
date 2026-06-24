@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brillacor 365 · Servicios de Limpieza Profesional</title>
+<meta name="description" content="Servicios de limpieza profesional con Brillacor 365. Limpieza de hogares, oficinas, comunidades, cristales, fin de obra y más. Pide presupuesto hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #e8a020;
+  --accent2: #c98510;
+  --accent-light: #fdf6e8;
+  --accent-mid: #f5dfa0;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #f0e8d8;
+  --white: #ffffff;
+  --off-white: #fdfaf5;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 240px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: stretch;
+  background: var(--accent-light);
+}
+.hero-bg { display: none; }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  flex: 0 0 440px; height: 520px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(232,160,32,0.18);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(38px, 5vw, 68px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 600px; color: var(--dark);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 18px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s, background .15s; display: inline-block;
+}
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 12px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(232,160,32,0.35);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── SOBRE NOSOTROS ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── SERVICIOS ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 12px;
+}
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: #e8c97a; margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #e8c97a; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 280px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(32px, 7vw, 52px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 3/4; max-height: 420px; width: 65%; margin: 0 auto; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-badge { display: none; }
+  .intro, .team-section, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Barcelona · Servicio a domicilio y empresas</span>
+    <a href="tel:+34618102583">📞 +34 618 10 25 83</a>
+    <span>Lun–Sáb · 8:00–20:00</span>
+  </div>
+  <span>Limpieza Profesional · Hogares, Oficinas y Comunidades</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      <span style="display:inline-flex;flex-direction:row;align-items:center;gap:8px;">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+          <circle cx="17" cy="17" r="17" fill="#e8a020"/>
+          <text x="17" y="23" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="900" fill="#fff">B</text>
+        </svg>
+        <span style="display:inline-flex;flex-direction:column;line-height:1.2;">
+          Brillacor <strong style="color:var(--accent);">365</strong>
+          <span style="color:var(--accent);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">Limpieza Profesional</span>
+        </span>
+      </span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Residencial</span>
+            <li><a href="#limpieza-hogar">Limpieza de Hogar</a></li>
+            <li><a href="#limpieza-profunda">Limpieza Profunda</a></li>
+            <li><a href="#fin-de-obra">Fin de Obra</a></li>
+            <span class="dropdown-label">Empresas y Comunidades</span>
+            <li><a href="#oficinas">Oficinas y Comercios</a></li>
+            <li><a href="#comunidades">Comunidades de Vecinos</a></li>
+            <li><a href="#cristales">Limpieza de Cristales</a></li>
+            <li><a href="#desinfeccion">Desinfección y Tratamientos</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Residencial</div>
+      <div class="mobile-sub">
+        <a href="#limpieza-hogar" onclick="closeMenu()">Limpieza de Hogar</a>
+        <a href="#limpieza-profunda" onclick="closeMenu()">Limpieza Profunda</a>
+        <a href="#fin-de-obra" onclick="closeMenu()">Fin de Obra</a>
+      </div>
+      <div class="mobile-label">Empresas y Comunidades</div>
+      <div class="mobile-sub">
+        <a href="#oficinas" onclick="closeMenu()">Oficinas y Comercios</a>
+        <a href="#comunidades" onclick="closeMenu()">Comunidades de Vecinos</a>
+        <a href="#cristales" onclick="closeMenu()">Limpieza de Cristales</a>
+        <a href="#desinfeccion" onclick="closeMenu()">Desinfección y Tratamientos</a>
+      </div>
+      <a href="#sobre-nosotros" onclick="closeMenu()">Sobre nosotros</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir presupuesto</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34618102583?text=Hola%20Brillacor%20365,%20me%20gustar%C3%ADa%20pedir%20presupuesto')">
+      Pedir presupuesto
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Limpieza Profesional en Barcelona</div>
+      <h1>Tu espacio, siempre<br><em>impecable</em></h1>
+      <p class="hero-sub">
+        Limpieza profesional para hogares, oficinas y comunidades. Equipos de confianza, productos de calidad y resultados garantizados desde el primer día.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34618102583?text=Hola%20Brillacor%20365,%20me%20gustar%C3%ADa%20pedir%20presupuesto">
+          Pedir presupuesto por WhatsApp
+        </a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=880&h=1100&q=80" alt="Limpieza profesional de interiores">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-badge-info">
+      <strong>4,9 / 5</strong>
+      4,9 sobre 5 en Google
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">La empresa</div>
+      <h2 class="intro-title">Brillacor 365,<br>limpieza profesional<br>de confianza</h2>
+      <div class="intro-body">
+        <p>
+          Somos Brillacor 365, una empresa de limpieza profesional con base en Barcelona. Llevamos años ayudando a hogares, empresas y comunidades a mantener sus espacios en perfecto estado.
+        </p>
+        <p>
+          Nuestro trabajo se basa en la confianza. <strong>Cada cliente recibe un servicio personalizado</strong>, adaptado a sus necesidades reales, sus horarios y el tipo de espacio que necesita mantener.
+        </p>
+        <p>
+          Utilizamos productos de alta calidad, maquinaria profesional y un equipo comprometido con los resultados. Porque un espacio limpio no es solo estética —es bienestar, salud y tranquilidad.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1527515637462-cff94aca55e6?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Equipo de limpieza profesional Brillacor 365"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>365</strong>
+        <span>días al año disponibles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="team-section" id="sobre-nosotros">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quiénes somos</span>
+      <h2 class="section-title">Tu empresa de limpieza</h2>
+      <p class="section-body">
+        Formación continua, productos de calidad y un equipo comprometido. Porque un buen servicio de limpieza no termina cuando salimos por la puerta.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&h=800&q=80" alt="Brillacor 365 — Limpieza Profesional" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Brillacor 365</div>
+        <div class="team-role">Empresa de Limpieza Profesional · Barcelona</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Nacimos con un objetivo claro: ofrecer un servicio de limpieza profesional que de verdad marque la diferencia. No solo pasar el trapo —sino cuidar cada rincón de tu espacio como si fuera el nuestro.
+          </p>
+          <p>
+            Nuestra filosofía es sencilla: <strong>tratar cada espacio con la misma atención al detalle</strong>. Antes de empezar, escuchamos qué necesitas, cuáles son tus prioridades y cómo podemos adaptarnos a ti.
+          </p>
+          <p>
+            Trabajamos con hogares, oficinas, comercios, comunidades de vecinos y todo tipo de espacios. Flexibles en horarios, rigurosos en resultados y siempre disponibles cuando nos necesitas.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Limpieza de Hogar</span>
+          <span class="team-tag">Oficinas</span>
+          <span class="team-tag">Comunidades</span>
+          <span class="team-tag">Fin de Obra</span>
+          <span class="team-tag">Cristales</span>
+          <span class="team-tag">Desinfección</span>
+          <span class="team-tag">Limpieza Profunda</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS: cabecera -->
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que hacemos</span>
+    <h2 class="section-title">Servicios de limpieza<br>profesional para cada espacio</h2>
+  </div>
+</div>
+
+<!-- SERVICIO 1: Limpieza de Hogar -->
+<section class="treatment" id="limpieza-hogar">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Limpieza<br>de Hogar</h2>
+      <div class="treatment-body">
+        <p>
+          Servicio de limpieza regular para tu casa o piso. Mantenemos tu hogar siempre en perfecto estado con la frecuencia que necesites: semanal, quincenal o mensual.
+        </p>
+        <p>
+          Nuestro equipo se encarga de todo: baños, cocina, suelos, mobiliario y zonas comunes. Siempre con el mismo nivel de exigencia, siempre con respeto a tu espacio y tus cosas.
+        </p>
+        <ul class="treatment-list">
+          <li>Limpieza de baños y cocina</li>
+          <li>Suelos y superficies</li>
+          <li>Mobiliario y electrodomésticos</li>
+          <li>Terrazas y zonas exteriores</li>
+          <li>Servicio regular o puntual</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza profesional de hogar" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 2: Limpieza Profunda -->
+<section class="treatment treatment-alt" id="limpieza-profunda">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Limpieza<br>Profunda</h2>
+      <div class="treatment-body">
+        <p>
+          Cuando el mantenimiento habitual no es suficiente, la limpieza profunda actúa sobre las zonas más difíciles: juntas, azulejos, interior de electrodomésticos, armarios y todos los rincones que se escapan en el día a día.
+        </p>
+        <p>
+          Ideal para cambios de temporada, antes o después de mudanzas, o simplemente cuando quieres un reinicio total. Salimos y tu espacio huele, brilla y se siente completamente renovado.
+        </p>
+        <ul class="treatment-list">
+          <li>Interior de electrodomésticos</li>
+          <li>Juntas y azulejos</li>
+          <li>Armarios y cajones</li>
+          <li>Molduras y techos</li>
+          <li>Desengrase profundo de cocina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza profunda profesional" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 3: Fin de Obra -->
+<section class="treatment" id="fin-de-obra">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Limpieza<br>Fin de Obra</h2>
+      <div class="treatment-body">
+        <p>
+          La limpieza postconstrucción requiere técnica, maquinaria específica y experiencia. Eliminamos polvo de obra, restos de pintura, cemento, silicona y todo lo que deja una reforma o construcción nueva.
+        </p>
+        <p>
+          Dejamos el espacio listo para entrar a vivir o para la entrega al cliente. Un trabajo minucioso que marca la diferencia entre un espacio acabado y uno verdaderamente listo.
+        </p>
+        <ul class="treatment-list">
+          <li>Eliminación de polvo de obra</li>
+          <li>Restos de pintura y cemento</li>
+          <li>Limpieza de cristales y marcos</li>
+          <li>Suelos y revestimientos nuevos</li>
+          <li>Espacios listos para entrega</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza fin de obra profesional" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 4: Oficinas y Comercios -->
+<section class="treatment treatment-alt" id="oficinas">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Oficinas<br>y Comercios</h2>
+      <div class="treatment-body">
+        <p>
+          Un espacio de trabajo limpio y ordenado mejora la productividad, la imagen de tu empresa y el bienestar de tu equipo. Adaptamos el servicio a tus horarios —antes de abrir, al cierre o en fines de semana— para que no interfiera con tu actividad.
+        </p>
+        <p>
+          Trabajamos con pequeñas y medianas empresas, locales comerciales, consultorios, clínicas y todo tipo de espacios profesionales. Servicio diario, semanal o a medida.
+        </p>
+        <ul class="treatment-list">
+          <li>Zonas de trabajo y salas de reunión</li>
+          <li>Baños y zonas comunes</li>
+          <li>Recepción y escaparates</li>
+          <li>Cocinas y office</li>
+          <li>Adaptado a tus horarios</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza de oficinas y comercios" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 5: Comunidades de Vecinos -->
+<section class="treatment" id="comunidades">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">05</div>
+      <h2 class="treatment-title">Comunidades<br>de Vecinos</h2>
+      <div class="treatment-body">
+        <p>
+          Las zonas comunes de una comunidad son la tarjeta de presentación del edificio. Mantenemos portales, escaleras, ascensores, garajes y jardines en perfecto estado con un servicio periódico y de confianza.
+        </p>
+        <p>
+          Nos coordinamos directamente con la administración de fincas o con la junta de vecinos para garantizar un servicio ágil, transparente y sin complicaciones. Presupuesto personalizado sin compromiso.
+        </p>
+        <ul class="treatment-list">
+          <li>Portales y escaleras</li>
+          <li>Ascensores y garajes</li>
+          <li>Zonas comunes y jardines</li>
+          <li>Gestión con administradores de fincas</li>
+          <li>Servicio diario, semanal o quincenal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza de comunidades de vecinos" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 6: Cristales -->
+<section class="treatment treatment-alt" id="cristales">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">06</div>
+      <h2 class="treatment-title">Limpieza<br>de Cristales</h2>
+      <div class="treatment-body">
+        <p>
+          Los cristales limpios transforman cualquier espacio. Utilizamos técnicas y productos profesionales para dejar ventanas, escaparates, mamparas y fachadas acristaladas sin marcas, sin rayas y con una transparencia perfecta.
+        </p>
+        <p>
+          Servicio disponible para hogares, locales comerciales, oficinas y edificios de comunidades. Trabajamos en altura con los medios adecuados y con total seguridad.
+        </p>
+        <ul class="treatment-list">
+          <li>Ventanas y balcones</li>
+          <li>Escaparates y vitrinas</li>
+          <li>Mamparas de baño</li>
+          <li>Fachadas acristaladas</li>
+          <li>Interior y exterior</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza profesional de cristales" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 7: Desinfección y Tratamientos -->
+<section class="treatment" id="desinfeccion">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">07</div>
+      <h2 class="treatment-title">Desinfección<br>y Tratamientos</h2>
+      <div class="treatment-body">
+        <p>
+          Más allá de la limpieza visual, ofrecemos servicios de desinfección profunda, tratamientos antiácaros, eliminación de olores y desinfección de superficies de alto contacto. Especialmente indicado para consultorios, guarderías, colegios y espacios con alta afluencia de personas.
+        </p>
+        <p>
+          Utilizamos productos homologados y maquinaria de nebulización profesional para garantizar una desinfección real y documentada. Ideal también para empresas que necesiten certificado de desinfección.
+        </p>
+        <ul class="treatment-list">
+          <li>Desinfección certificada</li>
+          <li>Tratamiento antiácaros</li>
+          <li>Eliminación de olores</li>
+          <li>Nebulización profesional</li>
+          <li>Consultorios, guarderías y colegios</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1615461066841-6116e61059e6?auto=format&fit=crop&w=600&h=440&q=80" alt="Desinfección y tratamientos profesionales" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Nuestra forma de trabajar</span>
+      <h2 class="section-title">Tres pilares en<br>cada servicio</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Escuchar</div>
+        <h3>Escuchar</h3>
+        <p>Antes de empezar, queremos entenderte. Qué espacios tienes, qué necesitas, qué horarios te van mejor y cuáles son tus prioridades. Cada cliente es diferente y cada servicio se diseña desde cero.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Limpiar</div>
+        <h3>Limpiar</h3>
+        <p>Con el plan claro, nuestro equipo se pone en marcha con productos de calidad y maquinaria profesional. Sin atajos, sin descuidos. Cada rincón importa y cada detalle cuenta.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Cuidar</div>
+        <h3>Cuidar</h3>
+        <p>El objetivo es que confíes en nosotros a largo plazo. Te damos seguimiento, atendemos cualquier incidencia al momento y nos aseguramos de que el resultado siempre esté a la altura de lo que esperabas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen nuestros clientes</span>
+        <h2 class="section-title">Opiniones reales<br>en Google</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">4,9</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">4,9 sobre 5 · Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Llevaba tiempo buscando una empresa de limpieza de confianza para mi piso en Barcelona. Desde la primera vez quedé encantada. Son muy detallistas, puntuales y dejan todo impecable. No cambio.</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ana Martínez</div>
+            <div class="review-source">Google · hace 1 semana</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Contratamos el servicio para nuestra oficina y el cambio ha sido brutal. Llegan antes de que abramos, trabajan sin molestar y el resultado es perfecto. Muy profesionales y con muy buena comunicación.</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carlos Vega</div>
+            <div class="review-source">Google · hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Hicieron la limpieza fin de obra en nuestro piso nuevo y dejaron todo listo para entrar. Polvo de obra, pintura, cemento... desaparecieron por completo. Trabajo impecable y muy buen precio. Totalmente recomendables.</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marta Soler</div>
+            <div class="review-source">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide tu presupuesto</span>
+      <h2 class="section-title">Empieza hoy<br>con un espacio impecable</h2>
+      <p class="contact-desc">
+        Escríbenos por WhatsApp o rellena el formulario y te contactamos en menos de una hora. Presupuesto gratuito y sin compromiso adaptado a tu espacio y necesidades.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Zona de servicio</h4>
+            <p>Barcelona y área metropolitana</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34618102583">+34 618 10 25 83</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Horario de atención</h4>
+            <p>Lunes a Sábado · 8:00 – 20:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué podemos ayudarte?</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué servicio necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Limpieza de Hogar</option>
+            <option>Limpieza Profunda</option>
+            <option>Limpieza Fin de Obra</option>
+            <option>Oficinas y Comercios</option>
+            <option>Comunidades de Vecinos</option>
+            <option>Limpieza de Cristales</option>
+            <option>Desinfección y Tratamientos</option>
+            <option>No sé, necesito presupuesto</option>
