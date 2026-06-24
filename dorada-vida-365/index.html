@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dorada Vida 365 · Cuidado a domicilio · Barcelona</title>
+<meta name="description" content="Dorada Vida 365. Cuidado a domicilio, adaptación de vivienda y gestión de trámites de dependencia en Barcelona. Tu familia merece cuidado de calidad los 365 días del año.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #b8902e;
+  --accent2: #8f6e1f;
+  --accent-light: #fbf6ea;
+  --accent-mid: #ecd9ab;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #ece4d2;
+  --white: #ffffff;
+  --off-white: #f8f6f1;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 240px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: stretch;
+  background: var(--accent-light);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  flex: 0 0 440px; height: 520px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(184,144,46,0.20);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(36px, 5vw, 60px); font-weight: 900;
+  line-height: 1.06; letter-spacing: -2px; margin-bottom: 22px;
+  max-width: 620px; color: var(--dark);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 18px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s, background .15s; display: inline-block;
+}
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 12px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(184,144,46,0.40);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── EQUIPO ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── SERVICIOS ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 12px;
+}
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: #e8c66b; margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #e8c66b; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 280px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(30px, 7vw, 48px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 3/4; max-height: 420px; width: 65%; margin: 0 auto; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-badge { display: none; }
+  .intro, .team-section, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Barcelona, España</span>
+    <a href="tel:+34622898928">📞 +34 622 89 89 28</a>
+    <span>Disponibles 24/7 · 365 días al año</span>
+  </div>
+  <span>Dorada Vida 365 · Cuidado a domicilio</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      Dorada<span style="color:var(--accent);">Vida</span>365
+      <span>Cuidado a domicilio · Barcelona</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Servicios</span>
+            <li><a href="#cuidado">Cuidado a domicilio</a></li>
+            <li><a href="#adaptacion">Adaptación de vivienda</a></li>
+            <li><a href="#tramites">Gestión de trámites</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Servicios</div>
+      <div class="mobile-sub">
+        <a href="#cuidado" onclick="closeMenu()">Cuidado a domicilio</a>
+        <a href="#adaptacion" onclick="closeMenu()">Adaptación de vivienda</a>
+        <a href="#tramites" onclick="closeMenu()">Gestión de trámites</a>
+      </div>
+      <a href="#sobre-nosotros" onclick="closeMenu()">Sobre nosotros</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Consultar</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34622898928?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20cuidado%20a%20domicilio')">
+      Consultar
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Cuidado a domicilio · Barcelona</div>
+      <h1>Tu familia merece<br>cuidado de <em>calidad</em>,<br>los 365 días del año</h1>
+      <p class="hero-sub">
+        Cuidadores profesionales, adaptación del hogar y gestión de trámites de dependencia. Nosotros lo hacemos posible, vosotros solo tenéis que estar tranquilos.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34622898928?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20cuidado%20a%20domicilio">
+          Consultar por WhatsApp
+        </a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1576765608866-5b51f8d3c6b9?auto=compress&cs=tinysrgb&w=880&h=1100&fit=crop" alt="Cuidadora profesional acompañando a una persona mayor">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-badge-info">
+      <strong>4,9 / 5</strong>
+      Valorado por familias en Barcelona
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">Quiénes somos</div>
+      <h2 class="intro-title">Dorada Vida 365,<br>cuidado integral<br>para tu familia</h2>
+      <div class="intro-body">
+        <p>
+          En Dorada Vida 365 acompañamos a familias de Barcelona que necesitan cuidado profesional para un familiar mayor o dependiente. Lo hacemos posible los 365 días del año, sin excepciones.
+        </p>
+        <p>
+          Nuestro equipo está formado por <strong>cuidadores, enfermeras y psicólogos</strong> con formación específica en dependencia, además de especialistas en la gestión de ayudas públicas.
+        </p>
+        <p>
+          No solo cuidamos: también adaptamos el hogar para que sea seguro y nos encargamos de toda la documentación que implica solicitar ayudas de dependencia.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Cuidado profesional a domicilio"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>24/7</strong>
+        <span>disponibilidad todo el año</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS / EQUIPO -->
+<section class="team-section" id="sobre-nosotros">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Nuestro equipo</span>
+      <h2 class="section-title">Profesionales en quienes confiar</h2>
+      <p class="section-body">
+        Detrás de cada familia que atendemos hay un equipo multidisciplinar pensado para cubrir cada necesidad, no solo el cuidado del día a día.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=800&q=80" alt="Equipo de Dorada Vida 365" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Equipo Dorada Vida 365</div>
+        <div class="team-role">Cuidadores · Enfermería · Psicología · Gestión</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Nuestros cuidadores están seleccionados y formados específicamente para el acompañamiento de personas mayores y dependientes, con seguimiento constante de cada caso.
+          </p>
+          <p>
+            Contamos con <strong>enfermería propia</strong> para los casos que requieren atención sanitaria, y con un equipo de psicología para el acompañamiento emocional de la persona cuidada y su familia.
+          </p>
+          <p>
+            Nuestro equipo de gestión se encarga de toda la parte administrativa: solicitudes de dependencia, ayudas públicas y trámites, para que la familia no tenga que lidiar con el papeleo.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Cuidadores certificados</span>
+          <span class="team-tag">Enfermería</span>
+          <span class="team-tag">Psicología</span>
+          <span class="team-tag">Gestión de dependencia</span>
+          <span class="team-tag">Disponibilidad 24/7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS: cabecera -->
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que ofrecemos</span>
+    <h2 class="section-title">Cuidado integral, en casa<br>y sin complicaciones</h2>
+  </div>
+</div>
+
+<!-- SERVICIO 1: Cuidado a domicilio -->
+<section class="treatment" id="cuidado">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Cuidado<br>a Domicilio</h2>
+      <div class="treatment-body">
+        <p>
+          Cuidadores profesionales disponibles las 24 horas, los 365 días del año. Acompañamiento, higiene, alimentación y compañía adaptados a las necesidades de cada persona.
+        </p>
+        <p>
+          Todo nuestro personal está formado específicamente en el cuidado de personas mayores y dependientes, con seguimiento continuo de cada caso por parte de nuestro equipo.
+        </p>
+        <ul class="treatment-list">
+          <li>Cuidado las 24 horas</li>
+          <li>Cuidadores certificados</li>
+          <li>Apoyo en higiene y alimentación</li>
+          <li>Compañía y acompañamiento</li>
+          <li>Seguimiento continuo del caso</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1576765607924-3f7b3a3c8214?auto=format&fit=crop&w=600&h=440&q=80" alt="Cuidado a domicilio" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 2: Adaptación de vivienda -->
+<section class="treatment treatment-alt" id="adaptacion">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Adaptación<br>de Vivienda</h2>
+      <div class="treatment-body">
+        <p>
+          Adaptamos el hogar para que sea un espacio seguro y accesible: baños adaptados, barras de apoyo, duchas accesibles y rampas, pensado para reducir riesgos en el día a día.
+        </p>
+        <p>
+          Evaluamos cada vivienda de forma personalizada y proponemos las adaptaciones necesarias según el grado de movilidad y autonomía de la persona.
+        </p>
+        <ul class="treatment-list">
+          <li>Baños adaptados</li>
+          <li>Barras de apoyo y agarre</li>
+          <li>Duchas accesibles</li>
+          <li>Rampas y eliminación de barreras</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&h=440&q=80" alt="Adaptación de vivienda accesible" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 3: Gestión de trámites -->
+<section class="treatment" id="tramites">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Gestión de<br>Trámites</h2>
+      <div class="treatment-body">
+        <p>
+          Nos encargamos de toda la documentación relacionada con la dependencia: solicitudes, ayudas públicas y seguimiento de expedientes, para que la familia no tenga que perderse en el papeleo.
+        </p>
+        <p>
+          Acompañamos en cada paso del proceso administrativo, desde la solicitud inicial hasta la resolución, informando con claridad de cada novedad.
+        </p>
+        <ul class="treatment-list">
+          <li>Solicitud de grado de dependencia</li>
+          <li>Ayudas públicas y subvenciones</li>
+          <li>Seguimiento de expedientes</li>
+          <li>Asesoramiento administrativo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&h=440&q=80" alt="Gestión de trámites de dependencia" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Nuestra forma de trabajar</span>
+      <h2 class="section-title">Tres pilares en<br>cada familia que atendemos</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Confianza</div>
+        <h3>Confianza</h3>
+        <p>Sabemos lo que significa dejar el cuidado de un familiar en manos de otra persona. Por eso seleccionamos a nuestro equipo con el máximo cuidado y mantenemos comunicación constante con la familia.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Profesionalidad</div>
+        <h3>Profesionalidad</h3>
+        <p>Cuidadores, enfermería y psicología trabajando de forma coordinada, con formación específica en dependencia y seguimiento real de cada caso, no solo presencia.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Disponibilidad</div>
+        <h3>Disponibilidad</h3>
+        <p>24 horas al día, los 365 días del año. El cuidado no tiene horario, y nosotros tampoco.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen las familias</span>
+        <h2 class="section-title">Opiniones reales<br>en Google</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">4,9</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">4,9 sobre 5 · Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Necesitábamos cuidado para mi madre y el equipo de Dorada Vida 365 nos acompañó desde el primer día. Se encargaron incluso de la solicitud de dependencia, algo que a nosotros nos agobiaba muchísimo.</p>
+        <div class="review-author">
+          <div class="review-avatar">E</div>
+          <div>
+            <div class="review-name">Elena Suárez</div>
+            <div class="review-source">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Adaptaron el baño de mi padre con barras y ducha accesible en pocos días. El trato fue muy cercano y profesional en todo momento. Se nota que saben lo que hacen.</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Ricard Soler</div>
+            <div class="review-source">Google · hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Llevamos meses con una cuidadora de Dorada Vida 365 para mi abuela y estamos encantados. Disponibilidad total y siempre nos informan de cualquier cambio. Totalmente recomendable.</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marta Coll</div>
+            <div class="review-source">Google · hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Hablemos</span>
+      <h2 class="section-title">Empieza hoy<br>el cuidado que necesitan</h2>
+      <p class="contact-desc">
+        Escríbenos por WhatsApp o rellena el formulario y te contactamos en menos de una hora. Primera consulta sin compromiso.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Dirección</h4>
+            <p>Carrer Pi i Margall 81, Barcelona</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34622898928">+34 622 89 89 28</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Horario</h4>
+            <p>24 horas · 365 días al año</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué podemos ayudarte?</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué servicio necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Cuidado a domicilio</option>
+            <option>Adaptación de vivienda</option>
+            <option>Gestión de trámites de dependencia</option>
+            <option>No sé, necesito asesoramiento</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos brevemente</label>
+          <textarea placeholder="¿Para quién es el cuidado? ¿Qué grado de dependencia tiene?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Solicitar información →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Dorada <span>Vida 365</span></div>
+      <div class="footer-brand-tagline">Cuidado a domicilio · Barcelona</div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#cuidado">Cuidado a domicilio</a></li>
+        <li><a href="#adaptacion">Adaptación de vivienda</a></li>
+        <li><a href="#tramites">Gestión de trámites</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Dorada Vida 365 · Cuidado a domicilio</span>
+    <span>Barcelona, España</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-float" href="https://wa.me/34622898928?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20cuidado%20a%20domicilio" target="_blank" title="Consultar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="white">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleForm(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type=text]').value;
+  const phone = e.target.querySelector('input[type=tel]').value;
+  const servicio = e.target.querySelector('select').value;
+  const msg = e.target.querySelector('textarea').value;
+  let text = `Hola, me llamo ${name} y quería pedir información.`;
+  if (servicio) text += ` Servicio: ${servicio}.`;
+  if (msg) text += ` ${msg}`;
+  text += ` Mi teléfono es ${phone}.`;
+  window.open('https://wa.me/34622898928?text=' + encodeURIComponent(text), '_blank');
+}
+</script>
+
+</body>
+</html>
