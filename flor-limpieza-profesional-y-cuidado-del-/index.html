@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flor · Limpieza Profesional y Cuidado del Hogar</title>
+<meta name="description" content="Servicios profesionales de limpieza de hogar, oficinas y cuidado de personas mayores con Flor. Atención personalizada, resultados garantizados. Pide cita hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #2e9e6b;
+  --accent2: #227a52;
+  --accent-light: #f0faf5;
+  --accent-mid: #c8eedd;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #e2f0ea;
+  --white: #ffffff;
+  --off-white: #f7fcf9;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 240px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: stretch;
+  background: var(--accent-light);
+}
+.hero-bg { display: none; }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  flex: 0 0 440px; height: 520px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(46,158,107,0.18);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(38px, 5vw, 68px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 600px; color: var(--dark);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 18px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s, background .15s; display: inline-block;
+}
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 12px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(46,158,107,0.35);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── SOBRE MÍ ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── TRATAMIENTOS ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 12px;
+}
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: #6ddba8; margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #6ddba8; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 280px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(32px, 7vw, 52px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 3/4; max-height: 420px; width: 65%; margin: 0 auto; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-badge { display: none; }
+  .intro, .team-section, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 España · Disponible en tu zona</span>
+    <a href="tel:+34671361614">📞 +34 671 36 16 14</a>
+    <span>Lun–Vie · 8:00–20:00</span>
+  </div>
+  <span>Limpieza Profesional y Cuidado del Hogar · Atención personalizada</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      <span style="display:inline-flex;flex-direction:column;line-height:1.2;vertical-align:middle;font-size:19px;font-weight:900;color:var(--dark);">
+        Flor
+        <span style="color:var(--accent);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">Limpieza y Cuidado del Hogar</span>
+      </span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Limpieza</span>
+            <li><a href="#limpieza-hogar">Limpieza del Hogar</a></li>
+            <li><a href="#limpieza-oficinas">Limpieza de Oficinas</a></li>
+            <li><a href="#limpieza-profunda">Limpieza en Profundidad</a></li>
+            <li><a href="#postconstruccion">Post-construcción</a></li>
+            <span class="dropdown-label">Cuidado</span>
+            <li><a href="#cuidado-mayores">Cuidado de Mayores</a></li>
+            <li><a href="#plancha-ropa">Plancha y Ropa</a></li>
+            <li><a href="#mudanzas">Ayuda con Mudanzas</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Limpieza</div>
+      <div class="mobile-sub">
+        <a href="#limpieza-hogar" onclick="closeMenu()">Limpieza del Hogar</a>
+        <a href="#limpieza-oficinas" onclick="closeMenu()">Limpieza de Oficinas</a>
+        <a href="#limpieza-profunda" onclick="closeMenu()">Limpieza en Profundidad</a>
+        <a href="#postconstruccion" onclick="closeMenu()">Post-construcción</a>
+      </div>
+      <div class="mobile-label">Cuidado</div>
+      <div class="mobile-sub">
+        <a href="#cuidado-mayores" onclick="closeMenu()">Cuidado de Mayores</a>
+        <a href="#plancha-ropa" onclick="closeMenu()">Plancha y Ropa</a>
+        <a href="#mudanzas" onclick="closeMenu()">Ayuda con Mudanzas</a>
+      </div>
+      <a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir presupuesto</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34671361614?text=Hola%20Flor,%20me%20gustar%C3%ADa%20pedir%20presupuesto')">
+      Pedir presupuesto
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Limpieza Profesional y Cuidado del Hogar</div>
+      <h1>Tu hogar,<br>siempre <em>impecable</em></h1>
+      <p class="hero-sub">
+        Servicios de limpieza y cuidado del hogar totalmente personalizados. Profesionalidad, confianza y resultados que se notan desde el primer día.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34671361614?text=Hola%20Flor,%20me%20gustar%C3%ADa%20pedir%20presupuesto">
+          Pedir presupuesto por WhatsApp
+        </a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=880&h=1100&q=80" alt="Servicio profesional de limpieza del hogar">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-badge-info">
+      <strong>4,9 / 5</strong>
+      Clientes satisfechos
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">El servicio</div>
+      <h2 class="intro-title">Flor,<br>limpieza y cuidado<br>profesional</h2>
+      <div class="intro-body">
+        <p>
+          Soy Flor, profesional de la limpieza y el cuidado del hogar con años de experiencia atendiendo a familias, personas mayores y empresas. Mi trabajo es que tu espacio esté siempre en perfectas condiciones.
+        </p>
+        <p>
+          No existen servicios estándar. <strong>Cada cliente recibe una atención adaptada</strong> a sus necesidades, horarios y preferencias, con la máxima discreción y confianza.
+        </p>
+        <p>
+          Ofrezco limpieza de hogar, oficinas, limpiezas en profundidad, cuidado de personas mayores, plancha, ayuda con mudanzas y mucho más. Todo con productos de calidad y un trato cercano.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Flor, limpieza profesional y cuidado del hogar"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>+8</strong>
+        <span>años de experiencia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="team-section" id="sobre-mi">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quién soy</span>
+      <h2 class="section-title">Tu profesional de confianza</h2>
+      <p class="section-body">
+        La dedicación, la honestidad y el cuidado por los detalles son los valores que guían mi trabajo cada día. Porque un hogar limpio y ordenado transforma la vida de las personas.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=800&q=80" alt="Flor — Profesional de Limpieza y Cuidado del Hogar" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Flor</div>
+        <div class="team-role">Profesional de Limpieza · Cuidadora de Mayores</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Con más de ocho años de experiencia en limpieza profesional y cuidado de personas, he trabajado con familias, oficinas y personas mayores que necesitan atención y compañía en su día a día.
+          </p>
+          <p>
+            Mi filosofía es simple: <strong>tratar cada hogar como si fuera el mío</strong>. Antes de empezar cualquier servicio, escucho lo que necesitas y me adapto completamente a tus rutinas y prioridades.
+          </p>
+          <p>
+            Trabajo con total discreción, puntualidad y productos de calidad respetuosos con el medio ambiente. Disponible para servicios puntuales o contratos regulares, siempre con la misma dedicación.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Limpieza del Hogar</span>
+          <span class="team-tag">Limpieza de Oficinas</span>
+          <span class="team-tag">Limpieza Profunda</span>
+          <span class="team-tag">Cuidado de Mayores</span>
+          <span class="team-tag">Plancha y Ropa</span>
+          <span class="team-tag">Post-construcción</span>
+          <span class="team-tag">Mudanzas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS: cabecera -->
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que ofrezco</span>
+    <h2 class="section-title">Servicios profesionales<br>adaptados a cada necesidad</h2>
+  </div>
+</div>
+
+<!-- SERVICIO 1: Limpieza del Hogar -->
+<section class="treatment" id="limpieza-hogar">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Limpieza<br>del Hogar</h2>
+      <div class="treatment-body">
+        <p>
+          El servicio más completo para mantener tu casa siempre lista. Limpieza de todas las estancias, cocina, baños, suelos, superficies y ventanas. Trabajo de forma metódica y cuidadosa, respetando tus objetos y tu espacio.
+        </p>
+        <p>
+          Disponible en formato puntual o con visitas periódicas semanales o quincenales. Puedo adaptar el horario y las tareas a lo que realmente necesitas en cada momento.
+        </p>
+        <ul class="treatment-list">
+          <li>Cocina y baños a fondo</li>
+          <li>Aspirado y fregado de suelos</li>
+          <li>Limpieza de superficies y muebles</li>
+          <li>Cambio y tendido de ropa de cama</li>
+          <li>Ventanas y cristales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza profesional del hogar" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 2: Limpieza de Oficinas -->
+<section class="treatment treatment-alt" id="limpieza-oficinas">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Limpieza<br>de Oficinas</h2>
+      <div class="treatment-body">
+        <p>
+          Un espacio de trabajo limpio y ordenado mejora la productividad y transmite una imagen profesional a tus clientes. Me encargo de mantener tu oficina, local o negocio en perfectas condiciones.
+        </p>
+        <p>
+          Horarios flexibles para no interferir con tu actividad: antes de abrir, después de cerrar o en cualquier momento que mejor se adapte a tu empresa.
+        </p>
+        <ul class="treatment-list">
+          <li>Oficinas y despachos</li>
+          <li>Locales comerciales</li>
+          <li>Zonas comunes y baños</li>
+          <li>Desinfección de superficies</li>
+          <li>Gestión de residuos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza profesional de oficinas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 3: Limpieza en Profundidad -->
+<section class="treatment" id="limpieza-profunda">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Limpieza<br>en Profundidad</h2>
+      <div class="treatment-body">
+        <p>
+          Para esos momentos en los que el hogar necesita una puesta a punto total. La limpieza en profundidad llega donde no llega la limpieza habitual: interior de armarios, electrodomésticos, azulejos, juntas, persianas y rincones.
+        </p>
+        <p>
+          Ideal para el inicio de temporada, antes o después de alquilar un inmueble, tras una mudanza o simplemente cuando quieres empezar de cero con todo impecable.
+        </p>
+        <ul class="treatment-list">
+          <li>Interior de armarios y cajones</li>
+          <li>Electrodomésticos por dentro</li>
+          <li>Azulejos, juntas y sanitarios</li>
+          <li>Persianas y marcos de ventanas</li>
+          <li>Detrás y debajo de muebles</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza en profundidad del hogar" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 4: Post-construcción -->
+<section class="treatment treatment-alt" id="postconstruccion">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Limpieza<br>Post-construcción</h2>
+      <div class="treatment-body">
+        <p>
+          Después de una obra o reforma, el polvo y los restos de materiales se acumulan en cada rincón. La limpieza post-construcción requiere técnicas y productos específicos para dejar el espacio listo para habitar.
+        </p>
+        <p>
+          Me encargo de eliminar el polvo de obra, restos de pintura, adhesivos, cal y cualquier rastro de la reforma para que puedas estrenar tu hogar o local renovado desde el primer día.
+        </p>
+        <ul class="treatment-list">
+          <li>Eliminación de polvo de obra</li>
+          <li>Restos de pintura y adhesivos</li>
+          <li>Limpieza de suelos y pavimentos</li>
+          <li>Cristales y ventanas tras obra</li>
+          <li>Desinfección completa del espacio</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&h=440&q=80" alt="Limpieza post-construcción y reformas" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 5: Cuidado de Mayores -->
+<section class="treatment" id="cuidado-mayores">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">05</div>
+      <h2 class="treatment-title">Cuidado<br>de Mayores</h2>
+      <div class="treatment-body">
+        <p>
+          El cuidado de una persona mayor requiere paciencia, empatía y profesionalidad. Ofrezco compañía, supervisión y apoyo en las tareas del día a día para que tus familiares estén bien atendidos y se sientan acompañados.
+        </p>
+        <p>
+          Colaboro tanto en el domicilio como en acompañamiento a citas médicas, paseos o recados. Mi objetivo es que la persona mayor mantenga su autonomía y calidad de vida con el apoyo necesario.
+        </p>
+        <ul class="treatment-list">
+          <li>Compañía y supervisión diaria</li>
+          <li>Ayuda con higiene personal</li>
+          <li>Preparación de comidas</li>
+          <li>Acompañamiento a médicos y recados</li>
+          <li>Gestión del hogar y medicación</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&h=440&q=80" alt="Cuidado profesional de personas mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 6: Plancha y Ropa -->
+<section class="treatment treatment-alt" id="plancha-ropa">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">06</div>
+      <h2 class="treatment-title">Plancha<br>y Ropa</h2>
+      <div class="treatment-body">
+        <p>
+          El planchado y el cuidado de la ropa son tareas que consumen mucho tiempo. Me encargo de toda la ropa del hogar con la máxima atención: clasificación, lavado, tendido y planchado profesional de prendas y ropa de cama.
+        </p>
+        <p>
+          Puedo realizar el servicio en tu domicilio o recoger y entregar la ropa según lo que más te convenga. Cada prenda tratada con el cuidado que merece.
+        </p>
+        <ul class="treatment-list">
+          <li>Planchado de camisas y prendas delicadas</li>
+          <li>Ropa de cama y toallas</li>
+          <li>Clasificación y orden en armarios</li>
+          <li>Lavado y tendido</li>
+          <li>Recogida y entrega a domicilio</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=600&h=440&q=80" alt="Servicio de plancha y cuidado de ropa" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 7: Mudanzas -->
+<section class="treatment" id="mudanzas">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">07</div>
+      <h2 class="treatment-title">Ayuda con<br>Mudanzas</h2>
+      <div class="treatment-body">
+        <p>
+          Una mudanza es uno de los momentos más estresantes para una familia. Te ayudo antes, durante y después: limpieza del piso que dejas, limpieza y preparación del nuevo hogar, organización de cajas y colocación de objetos.
+        </p>
+        <p>
+          También me encargo de la limpieza de pisos de alquiler entre inquilinos o antes de poner un inmueble en el mercado, para que todo esté en perfectas condiciones desde el primer momento.
+        </p>
+        <ul class="treatment-list">
+          <li>Limpieza del piso que dejas</li>
+          <li>Preparación del nuevo hogar</li>
+          <li>Organización y colocación</li>
+          <li>Limpieza entre inquilinos</li>
+          <li>Pisos de alquiler vacacional</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=440&q=80" alt="Ayuda con mudanzas y limpieza de pisos" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Mi forma de trabajar</span>
+      <h2 class="section-title">Tres pilares en<br>cada servicio</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Escuchar</div>
+        <h3>Escuchar</h3>
+        <p>Antes de empezar, necesito entender qué necesitas exactamente. Tu hogar, tus rutinas, tus prioridades. Escuchar bien es lo que me permite ofrecerte un servicio que realmente marque la diferencia.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Trabajar</div>
+        <h3>Trabajar</h3>
+        <p>Con las necesidades claras, me pongo a trabajar con dedicación y meticulosidad. Cada rincón, cada superficie, cada detalle. Productos de calidad, técnicas adecuadas y el cuidado que tu espacio merece.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Cuidar</div>
+        <h3>Cuidar</h3>
+        <p>Mi objetivo es que puedas despreocuparte por completo. Genero confianza, respeto tu privacidad y cuido tus pertenencias como si fueran mías. Una relación a largo plazo basada en la tranquilidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen mis clientes</span>
+        <h2 class="section-title">Opiniones reales<br>de familias satisfechas</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">4,9</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">4,9 sobre 5 · Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Flor lleva más de dos años viniendo a casa cada semana y no cambiaría nada. Es muy cuidadosa, de confianza absoluta y deja la casa impecable. Para mí es ya como de la familia.</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carmen Ruiz</div>
+            <div class="review-source">Google · hace 1 semana</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Llamé a Flor para una limpieza a fondo antes de poner el piso en alquiler y quedó perfectamente. Muy profesional, puntual y con un trato excelente. La recomiendo sin dudarlo.</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Antonio Molina</div>
+            <div class="review-source">Google · hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Contraté a Flor para cuidar a mi madre mientras yo trabajaba. Es una persona increíble: paciente, cariñosa y muy responsable. Mi madre está encantada con ella y yo completamente tranquila.</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sara Domínguez</div>
+            <div class="review-source">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide tu presupuesto</span>
+      <h2 class="section-title">Empieza hoy<br>a disfrutar de tu hogar</h2>
+      <p class="contact-desc">
+        Escríbeme por WhatsApp o rellena el formulario y te contacto en menos de una hora. El presupuesto es completamente gratuito y sin compromiso.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Zona de servicio</h4>
+            <p>Disponible en tu zona · Consulta disponibilidad</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34671361614">+34 671 36 16 14</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Horario de atención</h4>
+            <p>Lunes a Viernes · 8:00 – 20:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué puedo ayudarte?</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué servicio necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Limpieza del Hogar</option>
+            <option>Limpieza de Oficinas</option>
+            <option>Limpieza en Profundidad</option>
+            <option>Limpieza Post-construcción</option>
+            <option>Cuidado de Mayores</option>
+            <option>Plancha y Ropa</option>
+            <option>Ayuda con Mudanza</option>
+            <option>No sé, necesito información</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntame brevemente</label>
+          <textarea placeholder="¿Qué necesitas? ¿Con qué frecuencia? ¿Tienes alguna necesidad especial?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Solicitar pres
