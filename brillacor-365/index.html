@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brillacor 365 · Limpieza, Jardinería y Cuidado de Mascotas · Barcelona</title>
+<meta name="description" content="Brillacor 365. Servicios de limpieza, jardinería y cuidado de mascotas en Barcelona. Profesionales de confianza para tu hogar o negocio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #5b6b7a; --accent2: #44515d; --accent-light: #f2f4f5; --accent-mid: #ccd3d8;
+  --dark: #0a0a0a; --muted: #6a7879; --border: #e4e7e9; --white: #ffffff; --off-white: #f7f8f8;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+.topbar { background: var(--dark); color: rgba(255,255,255,0.65); padding: 10px 32px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; }
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); }
+.topbar a:hover { color: #fff; }
+header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 300; }
+.nav-wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { font-size: 19px; font-weight: 900; letter-spacing: -0.5px; color: var(--dark); display: flex; flex-direction: column; line-height: 1.15; }
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a { display: block; padding: 10px 16px; font-size: 14px; font-weight: 600; color: var(--muted); border-radius: 6px; transition: color .15s, background .15s; white-space: nowrap; }
+nav ul li > a:hover, nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-width: 220px; padding: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .18s, transform .18s, visibility .18s; z-index: 100; }
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a { display: block; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--muted); border-radius: 8px; }
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.nav-cta { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s; }
+.nav-cta:hover { background: var(--accent2); }
+.hero { position: relative; overflow: hidden; min-height: 560px; display: flex; align-items: stretch; background: var(--accent-light); }
+.hero-content { position: relative; z-index: 2; max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px; color: var(--dark); display: flex; align-items: center; gap: 60px; }
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo { flex: 0 0 440px; height: 460px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 64px rgba(91,107,122,0.20); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent); }
+.hero h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 900; line-height: 1.08; letter-spacing: -2px; margin-bottom: 22px; max-width: 600px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 18px; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 40px; font-weight: 500; }
+.btn-hero { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 15px 30px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background .15s, transform .12s; display: inline-block; }
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 14px; display: block; }
+.section-title { font-size: clamp(26px, 3vw, 40px); font-weight: 900; letter-spacing: -1px; line-height: 1.12; text-transform: uppercase; margin-bottom: 16px; }
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.services { background: var(--white); padding: 96px 32px; }
+.services-inner { max-width: 1180px; margin: 0 auto; }
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-body { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.service-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
+.service-card img { width: 100%; height: 220px; object-fit: cover; }
+.service-card-body { padding: 28px; }
+.service-card h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.3px; }
+.service-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+.service-card-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 700; font-size: 14px; }
+.service-card-link::after { content: '→'; transition: transform .15s; }
+.service-card:hover .service-card-link::after { transform: translateX(4px); }
+.pillars { background: var(--dark); color: #fff; padding: 90px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 60px; text-align: center; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(255,255,255,0.08); }
+.pillar { padding: 48px 36px; border-right: 1px solid rgba(255,255,255,0.08); }
+.pillar:last-child { border-right: none; }
+.pillar-n { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #a9b6bf; margin-bottom: 22px; }
+.pillar h3 { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+.contact { background: var(--off-white); padding: 96px 32px; text-align: center; }
+.contact-inner { max-width: 680px; margin: 0 auto; }
+.contact p { color: var(--muted); font-size: 16px; margin: 16px 0 32px; }
+footer { background: var(--dark); padding: 48px 32px 28px; text-align: center; }
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #a9b6bf; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: #25d366; color: #fff; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform .2s; }
+.wa-float:hover { transform: scale(1.08); }
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 201; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform .25s, opacity .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; inset: 0; top: 60px; background: var(--white); z-index: 200; padding: 24px 20px; overflow-y: auto; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { display: block; padding: 12px 16px; font-size: 15px; font-weight: 600; color: var(--dark); border-radius: 8px; }
+.mobile-menu .mobile-cta { margin-top: 16px; background: var(--accent); color: #fff !important; text-align: center; border-radius: 8px; }
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 260px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(30px, 7vw, 44px); }
+  .services-grid { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  .hero { min-height: 460px; }
+  .services, .pillars, .contact { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Barcelona, España</span>
+    <a href="tel:+34722183330">📞 +34 722 18 33 30</a>
+    <span>Lun–Sáb · 8:00–20:00</span>
+  </div>
+  <span>Brillacor 365 · Servicios para tu hogar y negocio</span>
+</div>
+
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      Brillacor<span>365</span>
+      <span>Barcelona</span>
+    </div>
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <li><a href="/brillacor-365/limpieza/">Limpieza</a></li>
+            <li><a href="/brillacor-365/jardineria/">Jardinería</a></li>
+            <li><a href="/brillacor-365/mascotas/">Cuidado de mascotas</a></li>
+          </ul>
+        </li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/brillacor-365/limpieza/">Limpieza</a>
+      <a href="/brillacor-365/jardineria/">Jardinería</a>
+      <a href="/brillacor-365/mascotas/">Cuidado de mascotas</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="https://wa.me/34722183330">Escríbenos</a>
+    </div>
+    <button class="nav-cta" onclick="window.open('https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n')">Consultar</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Servicios para tu hogar y negocio</div>
+      <h1>Limpieza, jardinería<br>y cuidado de mascotas,<br>todo en <em>un mismo lugar</em></h1>
+      <p class="hero-sub">En Brillacor 365 nos encargamos de que tu hogar, tu jardín y tus mascotas estén siempre bien cuidados, con profesionales de confianza en Barcelona.</p>
+      <a class="btn-hero" href="https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n">Consultar por WhatsApp</a>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=compress&cs=tinysrgb&w=880&h=900&fit=crop" alt="Brillacor 365">
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="services-inner">
+    <div class="services-header">
+      <span class="section-label">Nuestros servicios</span>
+      <h2 class="section-title">Elige lo que necesitas</h2>
+      <p class="section-body">Cada servicio tiene su propio espacio, con todo el detalle de lo que incluye y cómo trabajamos.</p>
+    </div>
+    <div class="services-grid">
+      <a class="service-card" href="/brillacor-365/limpieza/">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&h=400&q=80" alt="Limpieza">
+        <div class="service-card-body">
+          <h3>Limpieza</h3>
+          <p>Limpieza residencial, comercial y servicios especiales como post-obra o desinfección.</p>
+          <span class="service-card-link">Ver servicio</span>
+        </div>
+      </a>
+      <a class="service-card" href="/brillacor-365/jardineria/">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=500&h=400&q=80" alt="Jardinería">
+        <div class="service-card-body">
+          <h3>Jardinería</h3>
+          <p>Mantenimiento regular, poda, diseño de jardines y cuidado de comunidades y negocios.</p>
+          <span class="service-card-link">Ver servicio</span>
+        </div>
+      </a>
+      <a class="service-card" href="/brillacor-365/mascotas/">
+        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=500&h=400&q=80" alt="Cuidado de mascotas">
+        <div class="service-card-body">
+          <h3>Cuidado de Mascotas</h3>
+          <p>Paseos diarios, visitas a domicilio y cuidado prolongado para perros y gatos.</p>
+          <span class="service-card-link">Ver servicio</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Por qué elegirnos</span>
+      <h2 class="section-title">Un mismo equipo<br>de confianza</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar"><div class="pillar-n">01 — Fiabilidad</div><h3>Fiabilidad</h3><p>Cumplimos lo que prometemos, con el mismo nivel de cuidado en cada servicio que ofrecemos.</p></div>
+      <div class="pillar"><div class="pillar-n">02 — Flexibilidad</div><h3>Flexibilidad</h3><p>Servicios puntuales o recurrentes, adaptados a lo que necesite tu hogar, tu jardín o tu mascota.</p></div>
+      <div class="pillar"><div class="pillar-n">03 — Cercanía</div><h3>Cercanía</h3><p>Hablas siempre con el mismo equipo, sin intermediarios ni vueltas innecesarias.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <span class="section-label">Hablemos</span>
+    <h2 class="section-title">¿En qué podemos ayudarte?</h2>
+    <p>Escríbenos por WhatsApp y cuéntanos qué necesitas — te respondemos en menos de una hora.</p>
+    <a class="btn-hero" href="https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n">Escríbenos por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand-name">Brillacor <span>365</span></div>
+  <div class="footer-brand-tagline">Limpieza, jardinería y cuidado de mascotas · Barcelona</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n" target="_blank" title="Consultar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<script>
+function toggleMenu() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open'); }
+</script>
+</body>
+</html>
