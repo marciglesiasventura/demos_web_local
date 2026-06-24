@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dorada Vida 365 · Cuidado y Bienestar para Mayores</title>
+<meta name="description" content="Dorada Vida 365 ofrece servicios de cuidado, acompañamiento y bienestar para personas mayores. Atención personalizada, profesional y cercana. Pide información hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #d4813a;
+  --accent2: #b8692a;
+  --accent-light: #fdf4ec;
+  --accent-mid: #f5d9bc;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #f0e4d7;
+  --white: #ffffff;
+  --off-white: #fdf8f4;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 240px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: stretch;
+  background: var(--accent-light);
+}
+.hero-bg { display: none; }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  flex: 0 0 440px; height: 520px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(212,129,58,0.18);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(38px, 5vw, 68px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 600px; color: var(--dark);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 18px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s, background .15s; display: inline-block;
+}
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 12px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(212,129,58,0.35);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── SOBRE NOSOTROS ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── SERVICIOS ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 12px;
+}
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: #f0a96a; margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #f0a96a; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 280px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(32px, 7vw, 52px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 3/4; max-height: 420px; width: 65%; margin: 0 auto; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-badge { display: none; }
+  .intro, .team-section, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 España · Atención a domicilio y en centro</span>
+    <a href="tel:+34671361614">📞 +34 671 36 16 14</a>
+    <span>Lun–Dom · Atención continuada</span>
+  </div>
+  <span>Cuidado y Bienestar para Personas Mayores · Trato cercano y profesional</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      <span style="display:inline-flex;flex-direction:column;line-height:1.2;vertical-align:middle;">
+        Dorada Vida <span style="color:var(--accent);">365</span>
+        <span style="color:var(--accent);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">Cuidado y Bienestar para Mayores</span>
+      </span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Cuidado Personal</span>
+            <li><a href="#asistencia-domicilio">Asistencia a Domicilio</a></li>
+            <li><a href="#acompanamiento">Acompañamiento y Compañía</a></li>
+            <li><a href="#cuidados-nocturnos">Cuidados Nocturnos</a></li>
+            <span class="dropdown-label">Bienestar y Salud</span>
+            <li><a href="#estimulacion">Estimulación Cognitiva</a></li>
+            <li><a href="#movilidad">Apoyo a la Movilidad</a></li>
+            <li><a href="#gestion">Gestión del Hogar</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Cuidado Personal</div>
+      <div class="mobile-sub">
+        <a href="#asistencia-domicilio" onclick="closeMenu()">Asistencia a Domicilio</a>
+        <a href="#acompanamiento" onclick="closeMenu()">Acompañamiento y Compañía</a>
+        <a href="#cuidados-nocturnos" onclick="closeMenu()">Cuidados Nocturnos</a>
+      </div>
+      <div class="mobile-label">Bienestar y Salud</div>
+      <div class="mobile-sub">
+        <a href="#estimulacion" onclick="closeMenu()">Estimulación Cognitiva</a>
+        <a href="#movilidad" onclick="closeMenu()">Apoyo a la Movilidad</a>
+        <a href="#gestion" onclick="closeMenu()">Gestión del Hogar</a>
+      </div>
+      <a href="#sobre-nosotros" onclick="closeMenu()">Sobre nosotros</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir información</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34671361614?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20cuidado')">
+      Pedir información
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Cuidado profesional para mayores</div>
+      <h1>Cuida a quien<br>siempre te <em>cuidó</em></h1>
+      <p class="hero-sub">
+        Servicios de cuidado, acompañamiento y bienestar para personas mayores. Un trato humano, cercano y totalmente personalizado, los 365 días del año.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34671361614?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20cuidado">
+          Contactar por WhatsApp
+        </a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=880&h=1100&q=80" alt="Cuidadora acompañando a persona mayor">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-badge-info">
+      <strong>365 días</strong>
+      Disponibles todo el año
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">Quiénes somos</div>
+      <h2 class="intro-title">Dorada Vida 365,<br>cuidado con<br>alma y vocación</h2>
+      <div class="intro-body">
+        <p>
+          En Dorada Vida 365 creemos que envejecer bien es un derecho. Por eso ofrecemos servicios de cuidado y acompañamiento para personas mayores pensados desde la calidez, el respeto y la profesionalidad.
+        </p>
+        <p>
+          No somos una agencia más. <strong>Cada familia recibe una atención completamente personalizada</strong>, adaptada a las necesidades reales de su ser querido, sin fórmulas genéricas.
+        </p>
+        <p>
+          Nuestro equipo combina experiencia, formación especializada y, sobre todo, vocación de servicio. Porque cuidar bien va mucho más allá de cubrir necesidades básicas.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Cuidadora profesional con persona mayor"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>365</strong>
+        <span>días al año a tu lado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="team-section" id="sobre-nosotros">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quiénes somos</span>
+      <h2 class="section-title">Tu equipo de confianza</h2>
+      <p class="section-body">
+        El compromiso con la dignidad, el bienestar y la felicidad de cada persona mayor que acompañamos guía cada uno de nuestros pasos. Porque cada vida merece ser vivida plenamente.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=600&h=800&q=80" alt="Equipo Dorada Vida 365" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Dorada Vida 365</div>
+        <div class="team-role">Servicio de Cuidado y Bienestar para Mayores</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            Somos un equipo de profesionales especializados en el cuidado integral de personas mayores. Nuestra misión es garantizar que cada persona que acompañamos viva con dignidad, seguridad y alegría, ya sea en su propio hogar o en centros especializados.
+          </p>
+          <p>
+            Nuestra filosofía es clara: <strong>la persona mayor siempre en el centro</strong>. Escuchamos, observamos y adaptamos cada servicio a sus necesidades, preferencias y ritmos de vida, respetando siempre su autonomía e identidad.
+          </p>
+          <p>
+            Trabajamos codo a codo con las familias, manteniéndolas informadas y tranquilas, porque sabemos que delegar el cuidado de un ser querido requiere confianza total.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Asistencia a Domicilio</span>
+          <span class="team-tag">Acompañamiento</span>
+          <span class="team-tag">Cuidados Nocturnos</span>
+          <span class="team-tag">Estimulación Cognitiva</span>
+          <span class="team-tag">Apoyo a la Movilidad</span>
+          <span class="team-tag">Gestión del Hogar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS: cabecera -->
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que ofrecemos</span>
+    <h2 class="section-title">Servicios especializados<br>adaptados a cada persona</h2>
+  </div>
+</div>
+
+<!-- SERVICIO 1: Asistencia a Domicilio -->
+<section class="treatment" id="asistencia-domicilio">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Asistencia<br>a Domicilio</h2>
+      <div class="treatment-body">
+        <p>
+          Permitir que tu familiar continúe viviendo en su propio hogar, rodeado de sus cosas y recuerdos, es uno de los mayores regalos que puedes hacerle. Nuestro servicio de asistencia a domicilio cubre todas sus necesidades cotidianas con profesionalidad y cariño.
+        </p>
+        <p>
+          Desde el apoyo en la higiene personal y la alimentación hasta la supervisión de medicación y la ayuda en las actividades del día a día. Siempre con respeto por su ritmo y sus preferencias.
+        </p>
+        <ul class="treatment-list">
+          <li>Higiene personal y aseo diario</li>
+          <li>Preparación y supervisión de comidas</li>
+          <li>Control y administración de medicación</li>
+          <li>Apoyo en desplazamientos dentro del hogar</li>
+          <li>Supervisión y seguridad continua</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?auto=format&fit=crop&w=600&h=440&q=80" alt="Asistencia a domicilio para mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 2: Acompañamiento y Compañía -->
+<section class="treatment treatment-alt" id="acompanamiento">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Acompañamiento<br>y Compañía</h2>
+      <div class="treatment-body">
+        <p>
+          La soledad es uno de los mayores enemigos del bienestar en la vejez. Nuestro servicio de acompañamiento va más allá de la presencia física: ofrecemos conversación, escucha activa, actividades compartidas y una relación de confianza que combate el aislamiento.
+        </p>
+        <p>
+          También acompañamos a médicos, gestiones, paseos y cualquier salida que el mayor desee o necesite. Una persona de confianza siempre a su lado.
+        </p>
+        <ul class="treatment-list">
+          <li>Compañía en el hogar y conversación</li>
+          <li>Acompañamiento a consultas médicas</li>
+          <li>Paseos y actividades al aire libre</li>
+          <li>Lectura, juegos y actividades de ocio</li>
+          <li>Gestiones y recados acompañados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&h=440&q=80" alt="Acompañamiento y compañía para personas mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 3: Cuidados Nocturnos -->
+<section class="treatment" id="cuidados-nocturnos">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Cuidados<br>Nocturnos</h2>
+      <div class="treatment-body">
+        <p>
+          La noche puede ser el momento de mayor inquietud tanto para la persona mayor como para su familia. Nuestro servicio de cuidados nocturnos garantiza una supervisión segura y un descanso tranquilo para todos.
+        </p>
+        <p>
+          Nuestros cuidadores nocturnos están formados para atender cualquier necesidad que surja durante la noche: desde cambios posturales hasta acompañamiento en momentos de desorientación, siempre con calma y cariño.
+        </p>
+        <ul class="treatment-list">
+          <li>Supervisión y vigilancia nocturna</li>
+          <li>Cambios posturales en cama</li>
+          <li>Acompañamiento en desorientación nocturna</li>
+          <li>Atención en urgencias leves</li>
+          <li>Tranquilidad total para la familia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=440&q=80" alt="Cuidados nocturnos para personas mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 4: Estimulación Cognitiva -->
+<section class="treatment treatment-alt" id="estimulacion">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Estimulación<br>Cognitiva</h2>
+      <div class="treatment-body">
+        <p>
+          Mantener la mente activa es fundamental para el bienestar y la calidad de vida en la vejez. Nuestro programa de estimulación cognitiva trabaja la memoria, la atención, el lenguaje y las funciones ejecutivas mediante actividades adaptadas a cada persona.
+        </p>
+        <p>
+          Especialmente recomendado para personas con deterioro cognitivo leve o moderado, Alzheimer en fases iniciales o simplemente para quienes quieren mantener su mente en forma el mayor tiempo posible.
+        </p>
+        <ul class="treatment-list">
+          <li>Ejercicios de memoria y atención</li>
+          <li>Actividades de orientación temporal y espacial</li>
+          <li>Estimulación del lenguaje y comunicación</li>
+          <li>Talleres de reminiscencia</li>
+          <li>Juegos cognitivos adaptados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&w=600&h=440&q=80" alt="Estimulación cognitiva para personas mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 5: Apoyo a la Movilidad -->
+<section class="treatment" id="movilidad">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">05</div>
+      <h2 class="treatment-title">Apoyo a<br>la Movilidad</h2>
+      <div class="treatment-body">
+        <p>
+          La movilidad es libertad. Ayudar a las personas mayores a moverse de forma segura, ya sea dentro del hogar o en el exterior, es clave para mantener su independencia y prevenir caídas y lesiones.
+        </p>
+        <p>
+          Nuestros cuidadores están formados en técnicas seguras de movilización y transferencias, y trabajan de la mano con los profesionales sanitarios para garantizar la máxima seguridad y bienestar en cada movimiento.
+        </p>
+        <ul class="treatment-list">
+          <li>Apoyo en transferencias cama-sillón</li>
+          <li>Acompañamiento en desplazamientos</li>
+          <li>Prevención de caídas en el hogar</li>
+          <li>Ejercicios de mantenimiento funcional</li>
+          <li>Uso seguro de ayudas técnicas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=440&q=80" alt="Apoyo a la movilidad para personas mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 6: Gestión del Hogar -->
+<section class="treatment treatment-alt" id="gestion">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">06</div>
+      <h2 class="treatment-title">Gestión<br>del Hogar</h2>
+      <div class="treatment-body">
+        <p>
+          Un hogar ordenado, limpio y bien organizado contribuye enormemente al bienestar y la seguridad de las personas mayores. Nuestro servicio de gestión del hogar se encarga de que el entorno de tu familiar sea siempre un lugar seguro y agradable.
+        </p>
+        <p>
+          Desde la limpieza y el orden hasta la compra, la colada y la organización de citas y gestiones. Todo lo que necesite para que su hogar siga siendo su hogar.
+        </p>
+        <ul class="treatment-list">
+          <li>Limpieza y mantenimiento del hogar</li>
+          <li>Compra y gestión de la despensa</li>
+          <li>Preparación de menús y cocina</li>
+          <li>Organización de citas y gestiones</li>
+          <li>Lavado y planchado de ropa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&h=440&q=80" alt="Gestión del hogar para mayores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Nuestra forma de cuidar</span>
+      <h2 class="section-title">Tres pilares en<br>cada servicio</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Escuchar</div>
+        <h3>Escuchar</h3>
+        <p>Antes de cuidar, necesitamos conocer. La historia de vida, las preferencias, los miedos y los sueños de cada persona mayor son la base de un cuidado verdaderamente personalizado y respetuoso.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Cuidar</div>
+        <h3>Cuidar</h3>
+        <p>Con el conocimiento claro de lo que cada persona necesita, aplicamos el servicio más adecuado: asistencia, acompañamiento, estimulación cognitiva o apoyo en el hogar. Siempre con profesionalidad y cariño.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Acompañar</div>
+        <h3>Acompañar</h3>
+        <p>El cuidado no termina cuando cerramos la puerta. Acompañamos a las familias, las mantenemos informadas y las apoyamos en cada decisión. Porque cuidar bien es un compromiso de 365 días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen las familias</span>
+        <h2 class="section-title">Opiniones reales<br>de quienes confían en nosotros</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">5,0</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">5,0 sobre 5 · Google</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Mi madre tiene 87 años y desde que está con Dorada Vida 365 es otra persona. Está más animada, más cuidada y nosotros por fin podemos descansar sabiendo que está en buenas manos. Un servicio excepcional.</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carmen Villanueva</div>
+            <div class="review-source">Google · hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Llevamos más de un año con ellos cuidando a mi padre, que tiene Alzheimer. El trato es increíblemente humano y profesional a la vez. No concibo que otra empresa pueda cuidarle mejor. Eternamente agradecidos.</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Antonio Ruiz</div>
+            <div class="review-source">Google · hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Empezamos con el servicio de acompañamiento para mi abuela, que estaba muy sola, y ha cambiado por completo su actitud ante la vida. Lleva meses esperando la visita de su cuidadora como si fuera una amiga. Gracias por todo.</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">María José Sánchez</div>
+            <div class="review-source">Google · hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide información</span>
+      <h2 class="section-title">Empieza hoy<br>a cuidar mejor</h2>
+      <p class="contact-desc">
+        Escríbenos por WhatsApp o rellena el formulario y te contactamos en menos de una hora. La primera consulta es completamente gratuita y sin compromiso.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Cobertura</h4>
+            <p>Servicio a domicilio en toda España</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34671361614">+34 671 36 16 14</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌐</div>
+          <div class="contact-detail-text">
+            <h4>Web</h4>
+            <p><a href="https://doradavida365.com" target="_blank">doradavida365.com</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Disponibilidad</h4>
+            <p>Los 365 días del año · Atención continuada</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿En qué podemos ayudarte?</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué servicio necesitas?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Asistencia a Domicilio</option>
+            <option>Acompañamiento y Compañía</option>
+            <option>Cuidados Nocturnos</option>
+            <option>Estimulación Cognitiva</option>
+            <option>Apoyo a la Movilidad</option>
+            <option>Gestión del Hogar</option>
+            <option>No sé, necesito asesoramiento</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos brevemente</label>
+          <textarea placeholder="¿A quién necesitas cuidar? ¿Cuál es la situación? ¿Qué horas o días necesitáis cobertura?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Solicitar información →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Dorada Vida <span>365</span></div>
+      <div class="footer-brand-tagline">Cuidado y Bienestar para Personas Mayores</div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#asistencia-domicilio">Asistencia a Domicilio</a></li>
+        <li><a href="#acompanamiento">Acompañamiento</a></li>
+        <li><a href="#cuidados-nocturnos">Cuidados Nocturnos</a>
