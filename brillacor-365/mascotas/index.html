@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brillacor 365 · Paseo y Cuidado de Mascotas · Barcelona</title>
+<meta name="description" content="Brillacor 365. Paseo y cuidado de mascotas en Barcelona. Paseos diarios, visitas a domicilio y cuidado mientras estás fuera. Pide presupuesto hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #c2773f; --accent2: #9c5c2d; --accent-light: #fbf2ea; --accent-mid: #ecd2b8;
+  --dark: #0a0a0a; --muted: #6a7879; --border: #efe2d2; --white: #ffffff; --off-white: #f9f6f2;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+.topbar { background: var(--dark); color: rgba(255,255,255,0.65); padding: 10px 32px; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; }
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 300; }
+.nav-wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { font-size: 19px; font-weight: 900; letter-spacing: -0.5px; color: var(--dark); display: flex; flex-direction: column; line-height: 1.15; }
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li > a { display: block; padding: 10px 16px; font-size: 14px; font-weight: 600; color: var(--muted); border-radius: 6px; transition: color .15s, background .15s; white-space: nowrap; }
+nav ul li > a:hover { color: var(--dark); background: var(--accent-light); }
+.nav-cta { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s; }
+.nav-cta:hover { background: var(--accent2); }
+.hero { position: relative; overflow: hidden; min-height: 600px; display: flex; align-items: stretch; background: var(--accent-light); }
+.hero-content { position: relative; z-index: 2; max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px; color: var(--dark); display: flex; align-items: center; gap: 60px; }
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo { flex: 0 0 440px; height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 64px rgba(194,119,63,0.20); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent); }
+.hero h1 { font-size: clamp(34px, 5vw, 58px); font-weight: 900; line-height: 1.08; letter-spacing: -2px; margin-bottom: 22px; max-width: 600px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 18px; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 44px; font-weight: 500; }
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 15px 30px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background .15s, transform .12s; display: inline-block; }
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s; display: inline-block; }
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge { position: absolute; bottom: 36px; right: 32px; background: var(--white); border-radius: 12px; padding: 16px 22px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); }
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+.intro { background: var(--white); padding: 90px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center; }
+.intro-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 16px; }
+.intro-title { font-size: clamp(26px, 2.8vw, 38px); font-weight: 900; letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px; text-transform: uppercase; }
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo img { width: 100%; height: 480px; object-fit: cover; border-radius: 12px; }
+.section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 14px; display: block; }
+.section-title { font-size: clamp(26px, 3vw, 40px); font-weight: 900; letter-spacing: -1px; line-height: 1.12; text-transform: uppercase; margin-bottom: 16px; }
+.treatments-intro { background: var(--off-white); padding: 80px 32px 0; }
+.treatments-intro-inner { max-width: 1180px; margin: 0 auto; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); background: var(--off-white); }
+.treatment-alt { background: var(--white); }
+.treatment-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center; }
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num { font-size: 80px; font-weight: 900; color: var(--accent-mid); line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic; }
+.treatment-title { font-size: clamp(24px, 2.5vw, 34px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08; }
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list { list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+.treatment-list li { font-size: 14px; font-weight: 600; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.treatment-list li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.treatment-img img { width: 100%; height: 420px; object-fit: cover; border-radius: 12px; }
+.pillars { background: var(--dark); color: #fff; padding: 90px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 60px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(255,255,255,0.08); }
+.pillar { padding: 48px 36px; border-right: 1px solid rgba(255,255,255,0.08); transition: background .2s; }
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #e3a468; margin-bottom: 22px; }
+.pillar h3 { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+.reviews { background: var(--off-white); padding: 90px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 52px; font-weight: 900; letter-spacing: -2px; line-height: 1; }
+.reviews-score-stars { font-size: 20px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review { background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 30px; }
+.review-stars { font-size: 15px; margin-bottom: 16px; }
+.review-text { font-size: 15px; color: var(--muted); line-height: 1.82; margin-bottom: 22px; font-style: italic; }
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-mid); color: var(--accent2); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; flex-shrink: 0; }
+.review-name { font-size: 14px; font-weight: 800; }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.contact { background: var(--white); padding: 90px 32px; }
+.contact-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start; }
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 36px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon { width: 44px; height: 44px; border-radius: 8px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.contact-detail-text h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+.contact-detail-text p { font-size: 15px; font-weight: 700; }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 38px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 26px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input, .form-group select, .form-group textarea { border: 1px solid var(--border); background: var(--white); border-radius: 5px; padding: 12px 14px; font-size: 15px; font-family: inherit; color: var(--dark); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn { width: 100%; background: var(--accent); color: #fff; border: none; border-radius: 5px; padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: background .15s; margin-top: 6px; }
+.form-btn:hover { background: var(--accent2); }
+footer { background: var(--dark); padding: 48px 32px 28px; text-align: center; }
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #e3a468; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: #25d366; color: #fff; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform .2s; }
+.wa-float:hover { transform: scale(1.08); }
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 201; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform .25s, opacity .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; inset: 0; top: 60px; background: var(--white); z-index: 200; padding: 24px 20px; overflow-y: auto; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { display: block; padding: 12px 16px; font-size: 15px; font-weight: 600; color: var(--dark); border-radius: 8px; }
+.mobile-menu .mobile-cta { margin-top: 16px; background: var(--accent); color: #fff !important; text-align: center; border-radius: 8px; }
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 260px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(30px, 7vw, 46px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .treatment-inner, .treatment-inner.reverse { grid-template-columns: 1fr; gap: 36px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 600px) {
+  .hero { min-height: 480px; }
+  .hero-badge { display: none; }
+  .intro, .pillars, .reviews, .contact { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 56px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 26px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Barcelona, España</span>
+    <a href="tel:+34722183330">📞 +34 722 18 33 30</a>
+    <span>Lun–Sáb · 8:00–20:00</span>
+  </div>
+  <span>Brillacor 365 · Paseo y cuidado de mascotas</span>
+</div>
+
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      Brillacor<span>365</span>
+      <span>Mascotas · Barcelona</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#servicios" onclick="closeMenu()">Servicios</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Pedir presupuesto</a>
+    </div>
+    <button class="nav-cta" onclick="window.open('https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20pedir%20presupuesto%20de%20cuidado%20de%20mascotas')">Pedir presupuesto</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Paseo y cuidado de mascotas</div>
+      <h1>Tu mascota,<br>feliz y cuidada<br>aunque <em>tú</em> no estés</h1>
+      <p class="hero-sub">Paseos diarios, visitas a domicilio y cuidado mientras trabajas o viajas. Cuidadores que tratan a tu mascota como si fuera suya.</p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20pedir%20presupuesto%20de%20cuidado%20de%20mascotas">Pedir presupuesto por WhatsApp</a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=compress&cs=tinysrgb&w=880&h=1000&fit=crop" alt="Paseador de perros profesional">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">⭐⭐⭐⭐⭐</div>
+    <div class="hero-badge-info"><strong>4,9 / 5</strong>Valorado en Google</div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="intro-inner">
+    <div>
+      <div class="intro-label">Quiénes somos</div>
+      <h2 class="intro-title">Brillacor 365,<br>cuidado de mascotas<br>en Barcelona</h2>
+      <div class="intro-body">
+        <p>En Brillacor 365 cuidamos de tu mascota cuando tú no puedes — con paseos, visitas a domicilio y cuidado mientras trabajas, viajas o tienes un día complicado.</p>
+        <p>Nuestro <strong>equipo de cuidadores</strong> trata a cada animal con paciencia y cariño, adaptándose a su carácter y sus rutinas habituales.</p>
+        <p>Trabajamos con perros y gatos de todas las edades, incluyendo mascotas con necesidades especiales o de movilidad reducida.</p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=500&h=600&q=80" alt="Cuidado de mascotas a domicilio" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que ofrecemos</span>
+    <h2 class="section-title">Cuidado pensado<br>para cada mascota</h2>
+  </div>
+</div>
+
+<section class="treatment">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Paseos<br>Diarios</h2>
+      <div class="treatment-body">
+        <p>Paseos individuales o en grupos reducidos, a la hora que mejor te venga. Ejercicio, socialización y mucho cariño para tu perro cada día.</p>
+        <ul class="treatment-list">
+          <li>Paseos individuales o en grupo</li>
+          <li>Horarios flexibles</li>
+          <li>Seguimiento con fotos del paseo</li>
+          <li>Adaptado al carácter de tu perro</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img"><img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=600&h=440&q=80" alt="Paseo de perros" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="treatment treatment-alt">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Visitas a<br>Domicilio</h2>
+      <div class="treatment-body">
+        <p>Visitas en tu casa para dar de comer, cambiar el agua, limpiar el arenero o simplemente hacer compañía a tu mascota mientras no estás.</p>
+        <ul class="treatment-list">
+          <li>Alimentación y agua</li>
+          <li>Limpieza de arenero</li>
+          <li>Compañía y juego</li>
+          <li>Ideal para gatos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img"><img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&h=440&q=80" alt="Visita a domicilio para mascotas" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="treatment">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Cuidado<br>Prolongado</h2>
+      <div class="treatment-body">
+        <p>Si te vas de viaje, nos encargamos del cuidado completo de tu mascota durante el tiempo que necesites, con actualizaciones frecuentes para que estés tranquilo.</p>
+        <ul class="treatment-list">
+          <li>Cuidado mientras viajas</li>
+          <li>Actualizaciones diarias</li>
+          <li>Mismo cuidador de confianza</li>
+          <li>Mascotas con necesidades especiales</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img"><img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&h=440&q=80" alt="Cuidado prolongado de mascotas" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Por qué elegirnos</span>
+      <h2 class="section-title">Cuidamos a tu mascota<br>como si fuera nuestra</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar"><div class="pillar-n">01 — Cariño</div><h3>Cariño</h3><p>Cada mascota es distinta, y la tratamos según su carácter y sus necesidades — no como un servicio más en la lista.</p></div>
+      <div class="pillar"><div class="pillar-n">02 — Confianza</div><h3>Confianza</h3><p>Mismo cuidador siempre que sea posible, para que tu mascota se sienta segura y tú tengas tranquilidad total.</p></div>
+      <div class="pillar"><div class="pillar-n">03 — Comunicación</div><h3>Comunicación</h3><p>Fotos y actualizaciones durante el servicio, para que sepas en todo momento cómo está tu mascota.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div><span class="section-label">Lo que dicen nuestros clientes</span><h2 class="section-title">Opiniones reales en Google</h2></div>
+      <div class="reviews-score-block"><div class="reviews-score-number">4,9</div><div class="reviews-score-stars">⭐⭐⭐⭐⭐</div><div class="reviews-score-label">4,9 sobre 5 · Google</div></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">Paseo a mi perro todos los días mientras trabajo y siempre me mandan fotos. Se nota que lo cuidan de verdad, no es solo un trámite.</p><div class="review-author"><div class="review-avatar">L</div><div><div class="review-name">Laia Bosch</div><div class="review-source">Google · hace 2 semanas</div></div></div></div>
+      <div class="review"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">Me fui de viaje 10 días y cuidaron a mi gato en casa cada día. Total tranquilidad, me actualizaban con fotos siempre.</p><div class="review-author"><div class="review-avatar">G</div><div><div class="review-name">Gerard Solà</div><div class="review-source">Google · hace 1 mes</div></div></div></div>
+      <div class="review"><div class="review-stars">⭐⭐⭐⭐⭐</div><p class="review-text">Mi perro tiene movilidad reducida y han sido súper pacientes y cuidadosos con él. No todos los servicios se adaptan así, muy agradecida.</p><div class="review-author"><div class="review-avatar">C</div><div><div class="review-name">Clara Domènech</div><div class="review-source">Google · hace 3 semanas</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Pide tu presupuesto</span>
+      <h2 class="section-title">Tu mascota en<br>las mejores manos</h2>
+      <p class="contact-desc">Escríbenos por WhatsApp o rellena el formulario y te respondemos en menos de una hora con tu presupuesto.</p>
+      <div class="contact-details">
+        <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><h4>Dirección</h4><p>Carrer Pi i Margall 81, Barcelona</p></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon">💬</div><div class="contact-detail-text"><h4>WhatsApp</h4><p><a href="https://wa.me/34722183330">+34 722 18 33 30</a></p></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon">🕐</div><div class="contact-detail-text"><h4>Horario</h4><p>Lunes a Sábado · 8:00 – 20:00</p></div></div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>¿Qué necesita tu mascota?</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+          <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+34 600 000 000" required></div>
+        </div>
+        <div class="form-group">
+          <label>Tipo de servicio</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Paseos diarios</option>
+            <option>Visitas a domicilio</option>
+            <option>Cuidado prolongado</option>
+            <option>No sé, necesito asesoramiento</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Cuéntanos brevemente</label><textarea placeholder="¿Qué mascota es y qué necesita?"></textarea></div>
+        <button type="submit" class="form-btn">Pedir presupuesto →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand-name">Brillacor <span>365</span></div>
+  <div class="footer-brand-tagline">Paseo y cuidado de mascotas · Barcelona</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/34722183330?text=Hola,%20me%20gustar%C3%ADa%20pedir%20presupuesto%20de%20cuidado%20de%20mascotas" target="_blank" title="Pedir presupuesto por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<script>
+function toggleMenu() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open'); }
+function handleForm(e) {
+  e.preventDefault();
+  const name = e.target.querySelector('input[type=text]').value;
+  const phone = e.target.querySelector('input[type=tel]').value;
+  const tipo = e.target.querySelector('select').value;
+  const msg = e.target.querySelector('textarea').value;
+  let text = `Hola, me llamo ${name} y quería pedir presupuesto de cuidado de mascotas.`;
+  if (tipo) text += ` Tipo: ${tipo}.`;
+  if (msg) text += ` ${msg}`;
+  text += ` Mi teléfono es ${phone}.`;
+  window.open('https://wa.me/34722183330?text=' + encodeURIComponent(text), '_blank');
+}
+</script>
+</body>
+</html>
