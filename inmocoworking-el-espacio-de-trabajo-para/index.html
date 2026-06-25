@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InmoCoworking · El espacio de trabajo para agentes inmobiliarios independientes</title>
+<meta name="description" content="InmoCoworking: el primer coworking especializado para agentes inmobiliarios independientes. Espacio profesional, herramientas, red de contactos y todo lo que necesitas para crecer. Abre en septiembre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #c8a45a;
+  --accent2: #a8863e;
+  --accent-light: #fdf8f0;
+  --accent-mid: #f0deb8;
+  --dark: #0a0a0a;
+  --muted: #6a7879;
+  --border: #ede8df;
+  --white: #ffffff;
+  --off-white: #faf8f5;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--dark); background: var(--white); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--dark); color: rgba(255,255,255,0.65);
+  padding: 10px 32px; font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; gap: 28px; align-items: center; }
+.topbar a { color: rgba(255,255,255,0.65); transition: color .15s; }
+.topbar a:hover { color: #fff; }
+
+/* ─── HEADER + NAV ─── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 300;
+}
+.nav-wrap {
+  max-width: 1180px; margin: 0 auto; padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--dark); display: flex; flex-direction: column; line-height: 1.15;
+}
+.nav-logo span { color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+
+nav ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+nav ul li { position: relative; }
+nav ul li > a {
+  display: block; padding: 10px 16px;
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  border-radius: 6px; transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+nav ul li > a:hover,
+nav ul li:hover > a { color: var(--dark); background: var(--accent-light); }
+
+.has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; min-width: 240px; padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+  z-index: 100;
+}
+.has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.dropdown li a {
+  display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+  color: var(--muted); border-radius: 8px; transition: color .12s, background .12s;
+}
+.dropdown li a:hover { color: var(--dark); background: var(--accent-light); }
+.dropdown-label {
+  display: block; padding: 8px 14px 2px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 12px 22px;
+  font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent2); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 640px; display: flex; align-items: stretch;
+  background: var(--accent-light);
+}
+.hero-bg { display: none; }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1180px; width: 100%; margin: 0 auto; padding: 90px 32px;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-photo {
+  flex: 0 0 440px; height: 520px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(200,164,90,0.18);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-eyebrow {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.5px; color: var(--accent); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 32px; height: 1.5px; background: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(38px, 5vw, 68px); font-weight: 900;
+  line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 22px;
+  max-width: 600px; color: var(--dark);
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 18px; color: var(--muted); max-width: 480px;
+  line-height: 1.75; margin-bottom: 44px; font-weight: 500;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-hero {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px; padding: 15px 30px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: background .15s, transform .12s; display: inline-block;
+}
+.btn-hero:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-hero-outline {
+  background: transparent; color: var(--accent);
+  border: 1.5px solid var(--accent); border-radius: 8px; padding: 14px 28px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: border-color .15s, color .15s, background .15s; display: inline-block;
+}
+.btn-hero-outline:hover { background: var(--accent); color: #fff; }
+.hero-badge {
+  position: absolute; bottom: 36px; right: 32px;
+  background: var(--white); border-radius: 12px; padding: 16px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.hero-badge-info { font-size: 13px; line-height: 1.45; color: var(--muted); }
+.hero-badge-info strong { display: block; font-size: 16px; font-weight: 900; color: var(--dark); }
+
+/* ─── INTRO EDITORIAL ─── */
+.intro { background: var(--white); padding: 96px 32px; border-bottom: 1px solid var(--border); }
+.intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 400px; gap: 88px; align-items: center;
+}
+.intro-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 16px;
+}
+.intro-title {
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.intro-body { font-size: 16px; color: var(--muted); line-height: 1.9; }
+.intro-body p + p { margin-top: 16px; }
+.intro-body strong { color: var(--dark); font-weight: 700; }
+.intro-photo { position: relative; }
+.intro-photo img {
+  width: 100%; height: 530px; object-fit: cover; border-radius: 12px;
+}
+.intro-photo-badge {
+  position: absolute; bottom: -18px; left: -18px;
+  background: var(--accent); color: #fff;
+  border-radius: 10px; padding: 18px 22px;
+  box-shadow: 0 8px 28px rgba(200,164,90,0.35);
+}
+.intro-photo-badge strong { display: block; font-size: 30px; font-weight: 900; line-height: 1; }
+.intro-photo-badge span { font-size: 12px; opacity: 0.85; font-weight: 600; }
+
+/* ─── SOBRE EL PROYECTO ─── */
+.team-section {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.team-inner { max-width: 1180px; margin: 0 auto; }
+.team-header { margin-bottom: 60px; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 14px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(26px, 3vw, 40px); font-weight: 900;
+  letter-spacing: -1px; line-height: 1.12; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-body { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+.team-card { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
+.team-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--accent-mid) 0%, var(--accent-light) 100%);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+}
+.team-info { padding-top: 8px; }
+.team-name { font-size: 32px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 6px; }
+.team-role { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+.team-divider { width: 36px; height: 2px; background: var(--accent); margin-bottom: 24px; }
+.team-bio { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.team-bio p + p { margin-top: 14px; }
+.team-bio strong { color: var(--dark); }
+.team-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.team-tag {
+  border: 1px solid var(--border); border-radius: 5px; padding: 6px 14px;
+  font-size: 13px; font-weight: 600; color: var(--muted);
+}
+
+/* ─── SERVICIOS ─── */
+.treatments-intro { background: var(--white); padding: 80px 32px 0; }
+.treatments-intro-inner {
+  max-width: 1180px; margin: 0 auto;
+  border-bottom: 1px solid var(--border); padding-bottom: 60px;
+}
+
+.treatment { padding: 80px 32px; border-bottom: 1px solid var(--border); }
+.treatment-alt { background: var(--off-white); }
+.treatment-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 500px; gap: 72px; align-items: center;
+}
+.treatment-inner.reverse { grid-template-columns: 500px 1fr; }
+.treatment-inner.reverse .treatment-img { order: -1; }
+.treatment-num {
+  font-size: 80px; font-weight: 900; color: var(--accent-mid);
+  line-height: 1; margin-bottom: 4px; letter-spacing: -3px; font-style: italic;
+}
+.treatment-title {
+  font-size: clamp(24px, 2.5vw, 34px); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -0.5px; margin-bottom: 22px; line-height: 1.08;
+}
+.treatment-body { font-size: 16px; color: var(--muted); line-height: 1.88; }
+.treatment-body p + p { margin-top: 14px; }
+.treatment-list {
+  list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 10px;
+}
+.treatment-list li {
+  font-size: 14px; font-weight: 600; color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.treatment-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.treatment-img img {
+  width: 100%; height: 420px; object-fit: cover; border-radius: 12px;
+}
+
+/* ─── PILARES ─── */
+.pillars { background: var(--dark); color: #fff; padding: 96px 32px; }
+.pillars-inner { max-width: 1180px; margin: 0 auto; }
+.pillars-header { margin-bottom: 64px; }
+.pillars-header .section-label { color: rgba(255,255,255,0.4); }
+.pillars-header .section-title { color: #fff; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pillar {
+  padding: 52px 40px; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background .2s;
+}
+.pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255,255,255,0.03); }
+.pillar-n {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: #e0b86a; margin-bottom: 22px;
+}
+.pillar h3 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+.pillar p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+/* ─── RESEÑAS ─── */
+.reviews {
+  background: var(--off-white); padding: 96px 32px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.reviews-inner { max-width: 1180px; margin: 0 auto; }
+.reviews-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+}
+.reviews-score-block { text-align: right; }
+.reviews-score-number { font-size: 56px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--dark); }
+.reviews-score-stars { font-size: 22px; margin: 4px 0; }
+.reviews-score-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 32px;
+}
+.review-stars { font-size: 16px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: var(--muted); line-height: 1.82;
+  margin-bottom: 24px; font-style: italic;
+}
+.review-text::before { content: '\201C'; }
+.review-text::after { content: '\201D'; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent-mid); color: var(--accent2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900; flex-shrink: 0;
+}
+.review-name { font-size: 14px; font-weight: 800; color: var(--dark); }
+.review-source { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ─── CONTACTO ─── */
+.contact { background: var(--white); padding: 96px 32px; }
+.contact-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: start;
+}
+.contact-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin: 20px 0 40px; max-width: 420px; }
+.contact-details { display: flex; flex-direction: column; gap: 24px; }
+.contact-detail { display: flex; gap: 16px; }
+.contact-detail-icon {
+  width: 44px; height: 44px; border-radius: 8px;
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-detail-text h4 {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;
+}
+.contact-detail-text p { font-size: 15px; font-weight: 700; color: var(--dark); }
+.contact-detail-text a { color: var(--accent); }
+.contact-form { background: var(--off-white); border: 1px solid var(--border); padding: 40px; }
+.contact-form h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.3px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid var(--border); background: var(--white);
+  border-radius: 5px; padding: 12px 14px;
+  font-size: 15px; font-family: inherit; color: var(--dark);
+  transition: border-color .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: none; border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-btn {
+  width: 100%; background: var(--accent); color: #fff;
+  border: none; border-radius: 5px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s; margin-top: 6px;
+}
+.form-btn:hover { background: var(--accent2); }
+
+/* ─── FOOTER ─── */
+footer { background: var(--dark); padding: 52px 32px 32px; }
+.footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 48px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.footer-brand-name span { color: #e0b86a; }
+.footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); transition: color .15s; }
+.footer-col ul a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1180px; margin: 28px auto 0;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+}
+
+/* ─── WHATSAPP FLOTANTE ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  background: #25d366; color: #fff; border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 40px; height: 40px; background: none; border: none;
+  cursor: pointer; padding: 4px; z-index: 201;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--dark); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  .topbar { display: none; }
+  .hero-content { flex-direction: column-reverse; padding: 60px 24px; gap: 36px; }
+  .hero-photo { flex: none; width: 100%; height: 280px; border-radius: 14px; }
+  .hero h1 { font-size: clamp(32px, 7vw, 52px); }
+  .intro-inner { grid-template-columns: 1fr; }
+  .intro-photo { display: none; }
+  .team-card { grid-template-columns: 1fr; }
+  .team-photo-placeholder { aspect-ratio: 3/4; max-height: 420px; width: 65%; margin: 0 auto; }
+  .treatment-inner,
+  .treatment-inner.reverse { grid-template-columns: 1fr; gap: 40px; }
+  .treatment-img { display: none; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .pillar:last-child { border-bottom: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-col { display: none; }
+  nav ul { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo { font-size: 14px; }
+  .nav-logo span { font-size: 9px; }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: 60px;
+  background: var(--white); z-index: 200;
+  padding: 24px 20px; overflow-y: auto;
+  flex-direction: column; gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; padding: 12px 16px;
+  font-size: 15px; font-weight: 600; color: var(--dark);
+  border-radius: 8px; transition: background .12s;
+}
+.mobile-menu a:hover { background: var(--accent-light); }
+.mobile-menu .mobile-label {
+  padding: 16px 16px 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent);
+}
+.mobile-menu .mobile-sub a {
+  padding-left: 28px; font-size: 14px; color: var(--muted);
+}
+.mobile-menu .mobile-cta {
+  margin-top: 16px; background: var(--accent); color: #fff !important;
+  text-align: center; border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 500px; }
+  .hero-content { padding: 80px 20px; }
+  .hero-badge { display: none; }
+  .intro, .team-section, .pillars, .reviews, .contact, footer { padding-left: 20px; padding-right: 20px; }
+  .treatment { padding: 60px 20px; }
+  .treatments-intro { padding: 60px 20px 0; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>🏢 España · Apertura septiembre 2025</span>
+    <a href="tel:+34626171089">📞 +34 626 17 10 89</a>
+    <span>Lun–Vie · 9:00–20:00</span>
+  </div>
+  <span>Coworking especializado para agentes inmobiliarios independientes</span>
+</div>
+
+<!-- HEADER + NAV -->
+<header>
+  <div class="nav-wrap">
+    <div class="nav-logo">
+      <span style="display:inline-flex;flex-direction:column;line-height:1.2;vertical-align:middle;">
+        Inmo<span style="color:var(--accent);display:inline;">Coworking</span>
+        <span style="color:var(--accent);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">El espacio del agente inmobiliario</span>
+      </span>
+    </div>
+
+    <nav>
+      <ul>
+        <li class="has-dropdown">
+          <a href="#servicios">Servicios</a>
+          <ul class="dropdown">
+            <span class="dropdown-label">Espacio</span>
+            <li><a href="#coworking">Coworking Inmobiliario</a></li>
+            <li><a href="#salas">Salas de Reuniones</a></li>
+            <li><a href="#domicilio">Domicilio Profesional</a></li>
+            <span class="dropdown-label">Comunidad</span>
+            <li><a href="#red">Red de Agentes</a></li>
+            <li><a href="#formacion">Formación y Recursos</a></li>
+            <li><a href="#herramientas">Herramientas Pro</a></li>
+          </ul>
+        </li>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-label">Espacio</div>
+      <div class="mobile-sub">
+        <a href="#coworking" onclick="closeMenu()">Coworking Inmobiliario</a>
+        <a href="#salas" onclick="closeMenu()">Salas de Reuniones</a>
+        <a href="#domicilio" onclick="closeMenu()">Domicilio Profesional</a>
+      </div>
+      <div class="mobile-label">Comunidad</div>
+      <div class="mobile-sub">
+        <a href="#red" onclick="closeMenu()">Red de Agentes</a>
+        <a href="#formacion" onclick="closeMenu()">Formación y Recursos</a>
+        <a href="#herramientas" onclick="closeMenu()">Herramientas Pro</a>
+      </div>
+      <a href="#sobre-nosotros" onclick="closeMenu()">Sobre nosotros</a>
+      <a href="#opiniones" onclick="closeMenu()">Opiniones</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <a class="mobile-cta" href="#contacto" onclick="closeMenu()">Reservar plaza</a>
+    </div>
+
+    <button class="nav-cta" onclick="window.open('https://wa.me/34626171089?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mi%20plaza%20en%20InmoCoworking')">
+      Reservar plaza
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Coworking para agentes inmobiliarios</div>
+      <h1>Tu oficina.<br>Tu comunidad.<br>Tu <em>negocio</em>.</h1>
+      <p class="hero-sub">
+        El primer espacio de coworking diseñado exclusivamente para agentes inmobiliarios independientes. Infraestructura profesional, red de contactos y todo lo que necesitas para cerrar más operaciones.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero" href="https://wa.me/34626171089?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mi%20plaza%20en%20InmoCoworking">
+          Reservar plaza por WhatsApp
+        </a>
+        <a class="btn-hero-outline" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=880&h=1100&q=80" alt="Espacio de coworking inmobiliario profesional">
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div style="font-size:20px;">🏠🔑</div>
+    <div class="hero-badge-info">
+      <strong>Apertura Sep. 2025</strong>
+      Plazas limitadas · Reserva ya
+    </div>
+  </div>
+</section>
+
+<!-- INTRO EDITORIAL -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="intro-label">El proyecto</div>
+      <h2 class="intro-title">InmoCoworking,<br>el espacio que<br>el sector necesitaba</h2>
+      <div class="intro-body">
+        <p>
+          Ser agente inmobiliario independiente tiene muchas ventajas, pero también un problema serio: trabajar desde casa o desde una cafetería no transmite la profesionalidad que tus clientes esperan.
+        </p>
+        <p>
+          InmoCoworking nace para resolver eso. <strong>Un espacio diseñado desde cero para el agente inmobiliario moderno</strong>: sala de reuniones con pantalla para presentar inmuebles, domicilio profesional, herramientas del sector y una comunidad de profesionales con quien crecer.
+        </p>
+        <p>
+          No es un coworking genérico. Es tu oficina inmobiliaria, sin los costes fijos de mantener una. Con apertura prevista para septiembre de 2025, las plazas de la primera hornada son limitadas.
+        </p>
+      </div>
+    </div>
+    <div class="intro-photo">
+      <img
+        src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=500&h=640&q=80"
+        alt="Profesional inmobiliario trabajando en coworking"
+        loading="lazy"
+      >
+      <div class="intro-photo-badge">
+        <strong>Sep.</strong>
+        <span>2025 · Apertura</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="team-section" id="sobre-nosotros">
+  <div class="team-inner">
+    <div class="team-header">
+      <span class="section-label">Quiénes somos</span>
+      <h2 class="section-title">El equipo detrás<br>del proyecto</h2>
+      <p class="section-body">
+        InmoCoworking nace de la experiencia directa en el sector inmobiliario y del conocimiento profundo de los retos del agente independiente. Sabemos lo que necesitas porque hemos estado ahí.
+      </p>
+    </div>
+    <div class="team-card">
+      <div class="team-photo-placeholder">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&h=800&q=80" alt="Diego — Fundador de InmoCoworking" style="width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;">
+      </div>
+      <div class="team-info">
+        <div class="team-name">Diego</div>
+        <div class="team-role">Fundador · InmoCoworking</div>
+        <div class="team-divider"></div>
+        <div class="team-bio">
+          <p>
+            InmoCoworking es el resultado de años observando un problema real en el sector: los agentes inmobiliarios independientes tienen el talento, las ganas y la cartera de clientes, pero carecen de la infraestructura profesional que grandes agencias dan por supuesta.
+          </p>
+          <p>
+            Nuestra misión es sencilla: <strong>nivelar el campo de juego</strong>. Que un agente independiente pueda reunirse con sus clientes en un espacio que transmita confianza, tenga acceso a herramientas del sector y forme parte de una comunidad que impulse su negocio.
+          </p>
+          <p>
+            No vendemos mesas. Vendemos la infraestructura completa para que tu negocio inmobiliario crezca sin depender de nadie más.
+          </p>
+        </div>
+        <div class="team-tags">
+          <span class="team-tag">Coworking Inmobiliario</span>
+          <span class="team-tag">Salas de Reuniones</span>
+          <span class="team-tag">Domicilio Profesional</span>
+          <span class="team-tag">Red de Agentes</span>
+          <span class="team-tag">Formación</span>
+          <span class="team-tag">Herramientas CRM</span>
+          <span class="team-tag">Marketing Inmobiliario</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS: cabecera -->
+<div class="treatments-intro" id="servicios">
+  <div class="treatments-intro-inner">
+    <span class="section-label">Lo que incluye</span>
+    <h2 class="section-title">Todo lo que necesita<br>un agente inmobiliario profesional</h2>
+  </div>
+</div>
+
+<!-- SERVICIO 1: Coworking Inmobiliario -->
+<section class="treatment" id="coworking">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">01</div>
+      <h2 class="treatment-title">Coworking<br>Inmobiliario</h2>
+      <div class="treatment-body">
+        <p>
+          Un espacio de trabajo diseñado específicamente para el agente inmobiliario. Escritorios equipados, conexión de alta velocidad, ambiente profesional y todo lo que necesitas para trabajar con concentración y eficiencia.
+        </p>
+        <p>
+          Olvídate de trabajar desde casa o desde una cafetería. Aquí tienes una dirección profesional, un entorno que inspira confianza y compañeros de sector con quienes intercambiar oportunidades.
+        </p>
+        <ul class="treatment-list">
+          <li>Escritorios fijos y flexibles</li>
+          <li>Conexión fibra de alta velocidad</li>
+          <li>Impresión, escáner y firma digital</li>
+          <li>Taquilla individual de seguridad</li>
+          <li>Acceso en horario ampliado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&h=440&q=80" alt="Espacio coworking inmobiliario profesional" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 2: Salas de Reuniones -->
+<section class="treatment treatment-alt" id="salas">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">02</div>
+      <h2 class="treatment-title">Salas de<br>Reuniones</h2>
+      <div class="treatment-body">
+        <p>
+          Presentar un inmueble desde una cafetería o por videollamada improvisada no genera confianza. Nuestras salas están equipadas con pantalla de gran formato, sistema de videoconferencia y ambientación profesional pensada para cerrar operaciones.
+        </p>
+        <p>
+          Reserva la sala cuando la necesites, solo pagas lo que usas. Disponibles en formatos de 2 a 8 personas, perfectas para visitas virtuales, negociaciones y firma de contratos.
+        </p>
+        <ul class="treatment-list">
+          <li>Pantalla 65" para presentar inmuebles</li>
+          <li>Sistema de videoconferencia integrado</li>
+          <li>Reserva online en tiempo real</li>
+          <li>Capacidad de 2 a 8 personas</li>
+          <li>Disponible por horas o medias jornadas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&h=440&q=80" alt="Sala de reuniones profesional para agentes inmobiliarios" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 3: Domicilio Profesional -->
+<section class="treatment" id="domicilio">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">03</div>
+      <h2 class="treatment-title">Domicilio<br>Profesional</h2>
+      <div class="treatment-body">
+        <p>
+          Tu negocio necesita una dirección que inspire confianza. Con InmoCoworking puedes domiciliar tu actividad en nuestra dirección, recibir correspondencia y tener una presencia física profesional sin el coste de una oficina propia.
+        </p>
+        <p>
+          Ideal para autónomos y pequeñas agencias que quieren proyectar una imagen sólida desde el primer día. Gestión de correo incluida y notificación inmediata de recepciones.
+        </p>
+        <ul class="treatment-list">
+          <li>Dirección fiscal y comercial</li>
+          <li>Recepción y gestión de correo</li>
+          <li>Notificación de paquetes y documentos</li>
+          <li>Alta en Hacienda y Seguridad Social</li>
+          <li>Sin permanencia mínima</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=440&q=80" alt="Domicilio profesional para agentes inmobiliarios" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 4: Red de Agentes -->
+<section class="treatment treatment-alt" id="red">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">04</div>
+      <h2 class="treatment-title">Red de<br>Agentes</h2>
+      <div class="treatment-body">
+        <p>
+          El mayor activo de InmoCoworking no es el espacio físico: es la comunidad. Una red de agentes inmobiliarios independientes donde compartir inmuebles, buscar colaboraciones, hacer co-exclusivas y generar sinergias que multipliquen tus operaciones.
+        </p>
+        <p>
+          Organizamos encuentros mensuales, sesiones de networking y una plataforma interna donde los miembros comparten oportunidades en tiempo real. Juntos cerramos más.
+        </p>
+        <ul class="treatment-list">
+          <li>Plataforma interna de colaboración</li>
+          <li>Compartir inmuebles entre miembros</li>
+          <li>Co-exclusivas y operaciones compartidas</li>
+          <li>Eventos de networking mensuales</li>
+          <li>Directorio privado de agentes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&h=440&q=80" alt="Red de agentes inmobiliarios coworking" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 5: Formación -->
+<section class="treatment" id="formacion">
+  <div class="treatment-inner">
+    <div>
+      <div class="treatment-num">05</div>
+      <h2 class="treatment-title">Formación<br>y Recursos</h2>
+      <div class="treatment-body">
+        <p>
+          El mercado inmobiliario cambia constantemente. En InmoCoworking tendrás acceso a formación continua: talleres de captación, técnicas de negociación, marketing digital inmobiliario, normativa legal actualizada y mucho más.
+        </p>
+        <p>
+          Formaciones impartidas por expertos del sector, disponibles tanto en formato presencial en el propio espacio como en formato online para miembros que no puedan asistir en persona.
+        </p>
+        <ul class="treatment-list">
+          <li>Talleres de captación y venta</li>
+          <li>Marketing digital para inmobiliarias</li>
+          <li>Normativa y fiscalidad actualizada</li>
+          <li>Fotografía y home staging</li>
+          <li>Biblioteca de recursos descargables</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&h=440&q=80" alt="Formación para agentes inmobiliarios" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIO 6: Herramientas Pro -->
+<section class="treatment treatment-alt" id="herramientas">
+  <div class="treatment-inner reverse">
+    <div>
+      <div class="treatment-num">06</div>
+      <h2 class="treatment-title">Herramientas<br>Pro</h2>
+      <div class="treatment-body">
+        <p>
+          Acceso incluido a las herramientas que los mejores agentes usan cada día: CRM inmobiliario, portales de publicación, software de valoraciones automáticas, plantillas de contratos y mucho más.
+        </p>
+        <p>
+          Herramientas que individualmente costarían cientos de euros al mes, incluidas en tu membresía de InmoCoworking. Porque creemos que la tecnología no debería ser un privilegio de las grandes agencias.
+        </p>
+        <ul class="treatment-list">
+          <li>CRM inmobiliario incluido</li>
+          <li>Publicación en portales principales</li>
+          <li>Valoraciones automáticas de inmuebles</li>
+          <li>Plantillas de contratos actualizadas</li>
+          <li>Herramientas de firma digital</li>
+        </ul>
+      </div>
+    </div>
+    <div class="treatment-img">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=440&q=80" alt="Herramientas tecnológicas para agentes inmobiliarios" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TRES PILARES -->
+<section class="pillars">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <span class="section-label">Nuestra filosofía</span>
+      <h2 class="section-title">Tres pilares de<br>InmoCoworking</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-n">01 — Espacio</div>
+        <h3>Espacio</h3>
+        <p>Una oficina profesional sin los costes de mantenerla. Infraestructura de primer nivel para que tus clientes perciban la solidez y confianza que tu negocio merece desde el primer apretón de manos.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02 — Comunidad</div>
+        <h3>Comunidad</h3>
+        <p>La soledad del agente independiente termina aquí. Rodearte de otros profesionales del sector genera colaboraciones, referidos y operaciones que nunca habrías conseguido trabajando en solitario desde casa.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03 — Crecimiento</div>
+        <h3>Crecimiento</h3>
+        <p>Formación continua, herramientas tecnológicas y una red activa de apoyo. Todo lo que necesitas para pasar de agente a empresario inmobiliario, con más operaciones, mejores clientes y más libertad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label">Lo que dicen los interesados</span>
+        <h2 class="section-title">Agentes que ya<br>han reservado su plaza</h2>
+      </div>
+      <div class="reviews-score-block">
+        <div class="reviews-score-number">🏠</div>
+        <div class="reviews-score-stars">⭐⭐⭐⭐⭐</div>
+        <div class="reviews-score-label">Plazas limitadas · Sep. 2025</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Llevaba dos años trabajando desde casa y me cansé de reunirme con clientes en cafeterías. Cuando vi InmoCoworking lo tuve claro. Por fin un espacio pensado para nosotros, los agentes independientes.</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">Carlos Mendoza</div>
+            <div class="review-source">Agente inmobiliario independiente</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">El concepto es brillante. Pago por una oficina completa mucho menos de lo que me costaría alquilar un local, y encima tengo acceso a herramientas y a una comunidad de agentes con quienes colaborar. Reservé el primer día.</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sandra Villegas</div>
+            <div class="review-source">Agente inmobiliaria · Miembro fundadora</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">Lo que más me convenció fue la sala de reuniones con pantalla para presentar inmuebles. Mis clientes van a notar el cambio. Es exactamente lo que necesitaba para profesionalizar mi negocio sin dispararme los gastos fijos.</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Roberto Alonso</div>
+            <div class="review-source">Agente inmobiliario · Miembro fundador</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Reserva tu plaza</span>
+      <h2 class="section-title">Únete antes<br>de septiembre</h2>
+      <p class="contact-desc">
+        Las plazas de la primera hornada son limitadas. Escríbenos por WhatsApp o rellena el formulario y te contactamos en menos de una hora con toda la información y precios.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌐</div>
+          <div class="contact-detail-text">
+            <h4>Web</h4>
+            <p><a href="https://www.inmocoworking.es">www.inmocoworking.es</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34626171089">+34 626 17 10 89</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Atención</h4>
+            <p>Lunes a Viernes · 9:00 – 20:00</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📅</div>
+          <div class="contact-detail-text">
+            <h4>Apertura</h4>
+            <p>Septiembre 2025 · Plazas limitadas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <h3>Reserva tu plaza fundadora</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué servicio te interesa?</label>
+          <select>
+            <option value="">Selecciona</option>
+            <option>Puesto de coworking fijo</option>
+            <option>Puesto de coworking flexible</option>
+            <option>Sala de reuniones</option>
+            <option>Domicilio profesional</option>
+            <option>Membresía completa (todo incluido)</option>
+            <option>Quiero más información general</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos sobre ti</label>
+          <textarea placeholder="¿Eres agente independiente, tienes agencia propia? ¿Cuántas personas seríais? ¿Alguna pregunta?"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Reservar mi plaza →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Inmo<span>Coworking</span></div>
+      <div class="footer-brand-tagline">El espacio del agente inmobiliario independiente · Apertura Sep. 2025</div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#coworking">Coworking Inmobiliario</a></li>
+        <li><a href="#salas">Salas de Reuniones</a></li>
+        <li><a href="#domicilio">Domicilio Profesional</a></li>
+        <li><a href="#red">Red de Agentes</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#herramientas">Herramientas Pro</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Inmo
